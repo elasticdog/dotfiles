@@ -1,0 +1,15 @@
+[user]
+	name = Aaron Schaefer
+	email = aaron@elasticdog.com
+[alias]
+	br = branch
+	ci = commit
+	co = checkout
+	st = status
+[color]
+	ui = auto
+[core]
+	excludesfile = /home/aaron/.gitignore
+[merge]
+	log = true
+	tool = gvimdiff

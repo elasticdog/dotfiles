@@ -1,0 +1,37 @@
+#
+# ~/.screenrc
+#
+
+# Change default escape sequence from C-a to a backtic
+#escape ``            # default ^Aa
+
+# Do not display the copyright page
+startup_message off  # default: on
+
+# Change the number of scrollback lines
+defscrollback 1000   # default: 100
+
+# Ensure the default shell is the same as the $SHELL environment variable
+shell -$SHELL
+
+# Make navigating between regions easier
+bind s split
+bind j focus down
+bind k focus up
+
+# Make resizing regions easier
+bind = resize =
+bind + resize +1
+bind - resize -1
+
+# Configure status bar at the bottom of the terminal
+hardstatus alwayslastline
+hardstatus string "%{= kb}[ %=%{w}%?%-Lw%?%{C}(%{W}%n*%f %t%?(%u)%?%{C})%{w}%?%+Lw%?%?%= %{b}][%{C} %Y.%m.%d %{W}%0c %{b}]"
+
+# Configure 256 color support
+# Allow bold colors - necessary for some reason
+attrcolor b ".I"
+# Tell screen how to set colors. AB = background, AF=foreground
+termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+# Erase background with current bg color
+defbce "on"
