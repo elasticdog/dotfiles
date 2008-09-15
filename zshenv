@@ -5,7 +5,7 @@
 export BROWSER='firefox'
 export DISPLAY=':0.0'
 export EDITOR='vim'
-export PAGER='less'
+export PAGER='less -iM'
 
 typeset -U path  # keep only the first occurrence of each duplicated value
 case $OSTYPE in
