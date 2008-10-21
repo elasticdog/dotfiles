@@ -1,7 +1,7 @@
 " surround.vim - Surroundings
 " Author:       Tim Pope <vimNOSPAM@tpope.info>
 " GetLatestVimScripts: 1697 1 :AutoInstall: surround.vim
-" $Id: surround.vim,v 1.32 2008-01-29 15:46:22 tpope Exp $
+" $Id: surround.vim,v 1.34 2008-02-15 21:43:42 tpope Exp $
 "
 " See surround.txt for help.  This can be accessed by doing
 "
@@ -424,10 +424,6 @@ function! s:dosurround(...) " {{{1
         exe 'norm '.strcount.'[/d'.strcount.']/'
     else
         exe 'norm d'.strcount.'i'.char
-        " One character backwards
-        if getreg('"') != ""
-            call search('.','bW')
-        endif
     endif
     let keeper = getreg('"')
     let okeeper = keeper " for reindent below
@@ -444,13 +440,15 @@ function! s:dosurround(...) " {{{1
         " Do nothing
         call setreg('"','')
     elseif char =~ "[\"'`]"
-        exe "norm! a \<Esc>d2i".char
+        exe "norm! i \<Esc>d2i".char
         call setreg('"',substitute(getreg('"'),' ','',''))
     elseif char == '/'
         norm! "_x
         call setreg('"','/**/',"c")
         let keeper = substitute(substitute(keeper,'^/\*\s\=','',''),'\s\=\*$','','')
     else
+        " One character backwards
+        call search('.','bW')
         exe "norm da".char
     endif
     let removed = getreg('"')
@@ -527,10 +525,7 @@ function! s:opfunc(type,...) " {{{1
         silent exe 'norm! `[V`]"'.reg.'y'
         let type = 'V'
     elseif a:type ==# "v" || a:type ==# "V" || a:type ==# "\<C-V>"
-        let ve = &virtualedit
-        set virtualedit=
         silent exe 'norm! gv"'.reg.'y'
-        let &virtualedit = ve
     elseif a:type =~ '^\d\+$'
         let type = 'v'
         silent exe 'norm! ^v'.a:type.'$h"'.reg.'y'
@@ -615,10 +610,8 @@ if !exists("g:surround_no_mappings") || ! g:surround_no_mappings
     if !hasmapto("<Plug>VSurround","v")
         if exists(":xmap")
             xmap  S    <Plug>VSurround
-            xmap  SS   <Plug>VSurround
         else
             vmap  S    <Plug>VSurround
-            vmap  SS   <Plug>VSurround
         endif
     endif
     if !hasmapto("<Plug>Isurround","i") && "" == mapcheck("<C-S>","i")
