@@ -144,6 +144,9 @@ noremap <silent> <Leader>cd :cd %:p:h<CR>
 " Remove trailing whitespace
 noremap <silent> <Leader>rtw :%s/\s\+$//g<CR>``
 
+" Highlight lines longer than textwidth
+noremap <Leader>l m`:execute '/\%>' . &textwidth . 'v.\+'<CR>``
+
 " Remove last search pattern highlighting
 noremap <Leader>h :nohlsearch<CR>
 
