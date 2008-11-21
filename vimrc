@@ -147,6 +147,9 @@ noremap <silent> <Leader>rtw :%s/\s\+$//g<CR>``
 " Remove last search pattern highlighting
 noremap <Leader>h :nohlsearch<CR>
 
+" Save typing when doing a global search/replace
+noremap <Leader>s :%s//g<Left><Left>
+
 " Assist with common typo when trying to quit
 nnoremap q: q:iq<Esc>
 
