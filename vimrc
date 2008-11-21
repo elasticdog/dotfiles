@@ -145,10 +145,11 @@ noremap <silent> <Leader>cd :cd %:p:h<CR>
 noremap <silent> <Leader>rtw :%s/\s\+$//g<CR>``
 
 " Highlight lines longer than textwidth
-noremap <Leader>l m`:execute '/\%>' . &textwidth . 'v.\+'<CR>``
+" or column 79 if the textwidth option is not set
+noremap <silent> <Leader>l m`:execute '/\%>' . (&tw ? &tw : 79) . 'v.\+'<CR>``
 
 " Remove last search pattern highlighting
-noremap <Leader>h :nohlsearch<CR>
+noremap <silent> <Leader>h :nohlsearch<CR>
 
 " Save typing when doing a global search/replace
 noremap <Leader>s :%s//g<Left><Left>
