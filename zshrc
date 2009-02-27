@@ -125,6 +125,9 @@ alias duv='du -s *(/N) | sort -nr | cut -f 2- | while read a; do du -sh "$a"; do
 # show sorted directory sizes for hidden directories only
 alias duh='du -s .*(/N) | sort -nr | cut -f 2- | while read a; do du -sh "$a"; done'
 
+# show sorted file sizes in the current directory
+alias duf='find . -type f -maxdepth 1 -exec wc -c {} \; | sort -nr'
+
 alias -g C='clear && '
 alias -g G='| grep'
 alias -g H='| head'
