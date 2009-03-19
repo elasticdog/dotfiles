@@ -31,7 +31,7 @@ do
 		echo "*** WARNING *** $TARGET already exists; copying original to $file.bak"
 		cp -p "$TARGET" "$TARGET.bak"
 	fi
-	ln -fsv "$SOURCE" "$TARGET"
+	ln -hfsv "$SOURCE" "$TARGET"
 done
 
 exit 0
