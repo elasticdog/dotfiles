@@ -28,7 +28,7 @@ do
 	# Create backup file if the target already exists and is not a symlink
 	if [ -f "$TARGET" ] && [ ! -L "$TARGET" ]
 	then
-		echo "$TARGET exists; copying to $TARGET.bak"
+		echo "*** WARNING *** $TARGET already exists; copying original to $file.bak"
 		cp -p "$TARGET" "$TARGET.bak"
 	fi
 	ln -fsv "$SOURCE" "$TARGET"
