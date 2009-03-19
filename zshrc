@@ -90,7 +90,6 @@ alias mv='nocorrect mv'
 # set default options
 alias grep='grep --color=auto'  # show the matching string in color
 alias less='less --ignore-case --LONG-PROMPT'
-alias spec='spec --color'
 
 # ls hacking
 alias lsd='ls -d *(-/N)'      # list visible directories
