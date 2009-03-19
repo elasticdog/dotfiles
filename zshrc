@@ -126,7 +126,7 @@ alias duv='du -s *(/N) | sort -nr | cut -f 2- | while read directory; do du -sh 
 alias duh='du -s .*(/N) | sort -nr | cut -f 2- | while read directory; do du -sh "$directory/"; done'
 
 # show sorted file sizes in the current directory
-alias duf='find . -type f -maxdepth 1 -print0 | xargs -0 -L 1 wc -c | sort -nr | sed "s/ \.\//  /"'
+alias duf='find . -type f -maxdepth 1 -print0 | xargs -0 -L 1 wc -c | sort -nr | sed "s/\.\// /"'
 
 alias -g C='clear && '
 alias -g G='| grep'
