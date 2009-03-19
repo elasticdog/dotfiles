@@ -7,6 +7,8 @@ export DISPLAY=':0.0'
 export EDITOR='vim'
 export PAGER='less -iM'
 
+unset MANPATH  # man does a better job on its own
+
 typeset -U path  # keep only the first occurrence of each duplicated value
 case $OSTYPE in
 	darwin*)
