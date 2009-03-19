@@ -116,6 +116,11 @@ alias ler='ls -d **/*(-/DN^F)'     # list all empty directories recursively
 alias lle='ls -ld *(-/DN^F)'       # list details of all empty directories
 alias ller='ls -lhd **/*(-/DN^F)'  # list details of all empty directories recursively
 
+# fast directory changing
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+
 # show sorted directory sizes for all directories
 alias dua='du -s *(/DN) | sort -nr | cut -f 2- | while read directory; do du -sh "$directory/"; done'
 
