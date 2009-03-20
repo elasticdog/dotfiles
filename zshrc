@@ -115,11 +115,6 @@ alias ler='ls -d **/*(-/DN^F)'     # list all empty directories recursively
 alias lle='ls -ld *(-/DN^F)'       # list details of all empty directories
 alias ller='ls -lhd **/*(-/DN^F)'  # list details of all empty directories recursively
 
-# fast directory changing
-alias ..='cd ..'
-alias ...='cd ../..'
-alias ....='cd ../../..'
-
 # show sorted directory sizes for all directories
 alias dua='du -s *(/DN) | sort -nr | cut -f 2- | while read directory; do du -sh "$directory/"; done'
 
@@ -132,6 +127,19 @@ alias duh='du -s .*(/N) | sort -nr | cut -f 2- | while read directory; do du -sh
 # show sorted file sizes in the current directory
 alias duf='find . -type f -maxdepth 1 -print0 | xargs -0 -L 1 wc -c | sort -nr | sed "s/\.\// /"'
 
+# shortcut for optipng's most exhaustive search
+[[ -x $(which optipng) ]] && alias optimax='optipng -zc1-9 -zm1-9 -zs0-3 -f0-5'
+
+# web cat
+[[ -x $(which wget) ]] && alias wcat='wget -q -O - '
+
+
+##### Global Aliases
+
+alias -g ...='../..'
+alias -g ....='../../..'
+alias -g .....='../../../..'
+
 alias -g C='clear && '
 alias -g G='| grep'
 alias -g H='| head'
@@ -143,12 +151,6 @@ alias -g W='| wc -l'
 
 alias -g ND='$(ls -d *(/om[1])N)'  # newest directory
 alias -g NF='$(ls *(.om[1])N)'     # newest file
-
-# shortcut for optipng's most exhaustive search
-[[ -x $(which optipng) ]] && alias optimax='optipng -zc1-9 -zm1-9 -zs0-3 -f0-5'
-
-# web cat
-[[ -x $(which wget) ]] && alias wcat='wget -q -O - '
 
 
 ##### Custom Functions
