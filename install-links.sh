@@ -26,10 +26,10 @@ do
 	TARGET="$HOME/.$file"
 
 	# Create backup file if the target already exists and is not a symlink
-	if [ -f "$TARGET" ] && [ ! -L "$TARGET" ]
+	if [ -e "$TARGET" ] && [ ! -L "$TARGET" ]
 	then
-		echo "*** WARNING *** $TARGET already exists; copying original to $file.bak"
-		cp -p "$TARGET" "$TARGET.bak"
+		echo "*** WARNING *** $TARGET already exists; copying original to .$file.old"
+		mv "$TARGET" "$TARGET.old"
 	fi
 	ln -hfsv "$SOURCE" "$TARGET"
 done
