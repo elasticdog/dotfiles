@@ -11,5 +11,4 @@
 [core]
 	excludesfile = /home/aaron/.gitignore
 [merge]
-	log = true
 	tool = gvimdiff
