@@ -6,7 +6,7 @@ mkdir -p "$HOME/.ssh"
 FILES="
 bash_profile
 bashrc
-factor-rc
+factor-boot-rc
 gitconfig
 gitignore
 hgrc
