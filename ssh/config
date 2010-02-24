@@ -1,21 +1,28 @@
-Host halcyon
-Hostname elasticdog.dnsalias.com
-Compression yes
-Port 49645
+Host aur.archlinux.org
+ControlPath /home/aaron/.ssh/master-%h-%p-%r
+User aschaefer
 
-Host halcyon.lcl
+Host deadlight
+Hostname elasticdog.dnsalias.com
+Port 443
+
+Host deadlight.lcl
 Hostname 192.168.1.101
 
-Host purdue
-Hostname mentor.ics.purdue.edu
-Compression yes
-User aarons
+Host halcyon
+Hostname elasticdog.dnsalias.com
+#Port 49645
 
-Host purdue.lcl
-Hostname mentor.ics.purdue.edu
-User aarons
+Host halcyon.lcl
+Hostname 192.168.1.104
+
+Host linode
+Hostname 72.14.191.180
+
+Host lish
+Hostname dallas139.linode.com
+User linode40707
 
 Host slice
 Hostname 67.207.130.60
-Compression yes
 Port 50454
