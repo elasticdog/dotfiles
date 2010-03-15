@@ -232,3 +232,10 @@ if autoloadable edit-command-line; then
 	zle -N edit-command-line
 	bindkey "\ee" edit-command-line  # <Esc-e>
 fi
+
+
+##### External Programs
+
+# Invoke keychain to manage ssh/gpg keys
+/usr/bin/keychain --agents ssh --quick --quiet id_rsa
+[[ -f $HOME/.keychain/$HOST-sh ]] && source $HOME/.keychain/$HOST-sh
