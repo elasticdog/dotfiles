@@ -4,7 +4,7 @@
 
 ##### Shell Options
 
-HISTFILE="${HOME}/.zsh_history"
+HISTFILE="$HOME/.zsh_history"
 HISTSIZE=2000
 SAVEHIST=1500
 
@@ -25,10 +25,10 @@ zstyle ':completion:*:options' auto-description '%d'
 
 # use completion caching
 zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path ${HOME}/.zsh_cache
+zstyle ':completion:*' cache-path $HOME/.zsh_cache
 
 # case-insensitive completion (uppercase from lowercase & underscores from dashes)
-zstyle ':completion:*' matcher-list 'm:{a-z-}={A-Z_}'
+zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]} r:|[._-]=** r:|=**'
 
 # initialize the tab completion system
 autoload -Uz compinit
@@ -125,7 +125,16 @@ alias duv='du -s *(/N) | sort -nr | cut -f 2- | while read directory; do du -sh 
 alias duh='du -s .*(/N) | sort -nr | cut -f 2- | while read directory; do du -sh "$directory/"; done'
 
 # show sorted file sizes in the current directory
-alias duf='find . -type f -maxdepth 1 -print0 | xargs -0 -L 1 wc -c | sort -nr | sed "s/\.\// /"'
+function duf {
+	case $OSTYPE in
+		darwin*)
+			ls -AlhHS *(-.DN) | tr -s ' ' | cut -d ' ' -f 5,8 | awk '{ printf "%4s\t%s\n", $1, $2 }'
+			;;
+		linux*)
+			ls -AlhHS *(-.DN) | tr -s ' ' | cut -d ' ' -f 5,9 | awk '{ printf "%4s\t%s\n", $1, $2 }'
+			;;
+	esac
+}
 
 # shortcut for optipng's most exhaustive search
 [[ -x $(which optipng) ]] && alias optimax='optipng -zc1-9 -zm1-9 -zs0-3 -f0-5'
