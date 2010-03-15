@@ -15,6 +15,8 @@ screenrc
 ssh/config
 vim
 vimrc
+zpath
+zprofile
 zshenv
 zshrc
 "

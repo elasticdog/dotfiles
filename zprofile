@@ -1,0 +1,5 @@
+#
+# ~/.zprofile
+#
+
+source $HOME/.zpath

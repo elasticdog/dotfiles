@@ -1,0 +1,12 @@
+#
+# ~/.zpath
+#
+
+typeset -U path  # keep only the first occurrence of each duplicated value
+case $OSTYPE in
+	darwin*)
+		path=($HOME/bin /opt/local/bin /opt/local/sbin /usr/local/bin $path)
+		;;
+	linux*)
+		path=($HOME/bin /usr/local/bin $path)
+esac

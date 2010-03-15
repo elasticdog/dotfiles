@@ -236,6 +236,9 @@ fi
 
 ##### External Programs
 
-# Invoke keychain to manage ssh/gpg keys
+# use autojump if it's available
+[[ -f $HOME/.autojump.zsh ]] && source $HOME/.autojump.zsh
+
+# invoke keychain to manage ssh/gpg keys
 /usr/bin/keychain --agents ssh --quick --quiet id_rsa
 [[ -f $HOME/.keychain/$HOST-sh ]] && source $HOME/.keychain/$HOST-sh
