@@ -6,3 +6,6 @@ ssh = ssh -C
 [extensions]
 hgext.fetch =
 hgext.mq =
+
+[diff]
+git = True
