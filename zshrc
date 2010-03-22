@@ -74,7 +74,7 @@ case $OSTYPE in
 		# Arch Linux
 		if [[ -f /etc/arch-release ]]; then
 			# shortcut for full system upgrade with root privilege check
-			[[ -x $(which sudo) ]] && alias upgrade='sudo pacman -Syu'
+			[[ -x $(which sudo 2>/dev/null) ]] && alias upgrade='sudo pacman -Syu'
 		fi
 		;;
 esac
@@ -137,10 +137,10 @@ function duf {
 }
 
 # shortcut for optipng's most exhaustive search
-[[ -x $(which optipng) ]] && alias optimax='optipng -zc1-9 -zm1-9 -zs0-3 -f0-5'
+[[ -x $(which optipng 2>/dev/null) ]] && alias optimax='optipng -zc1-9 -zm1-9 -zs0-3 -f0-5'
 
 # web cat
-[[ -x $(which wget) ]] && alias wcat='wget -q -O - '
+[[ -x $(which wget 2>/dev/null) ]] && alias wcat='wget -q -O - '
 
 
 ##### Global Aliases
@@ -240,7 +240,7 @@ fi
 [[ -f $HOME/.autojump.zsh ]] && source $HOME/.autojump.zsh
 
 # invoke keychain to manage ssh/gpg keys
-if [[ -x $(which keychain) ]]; then
+if [[ -x $(which keychain 2>/dev/null) ]]; then
 	keychain --agents ssh --quick --quiet id_rsa
 	[[ -f $HOME/.keychain/$HOST-sh ]] && source $HOME/.keychain/$HOST-sh
 fi
