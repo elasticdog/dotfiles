@@ -149,6 +149,7 @@ alias -g ...='../..'
 alias -g ....='../../..'
 alias -g .....='../../../..'
 
+alias -g A='| column -t'
 alias -g C='clear && '
 alias -g G='| grep'
 alias -g H='| head'
