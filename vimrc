@@ -22,9 +22,10 @@ colorscheme desert  " Use the desert color scheme by default
 " NOTE: if &t_Co == 256 ... test for 256-color capable terminal
 
 if has('gui_running')
-	set columns=115    " Set the window's width
-	set lines=42       " Set the window's height
-	set guioptions-=T  " Remove the toolbar from the window
+	set columns=115                " Set the window's width
+	set fuoptions=maxvert,maxhorz  " Maximize when entering fullscreen
+	set lines=42                   " Set the window's height
+	set guioptions-=T              " Remove the toolbar from the window
 
 	" Set font according to operating system
 	if has('macunix')
@@ -54,21 +55,23 @@ endif
 " Allow backspacing over everything
 set backspace=eol,indent,start
 
-set cmdheight=1     " Reserve one row for the command bar
-set hidden          " Allow the changing of buffers without saving
-set hlsearch        " Highlight the last used search pattern
-set ignorecase      " Ignore case when searching
-set incsearch       " Enable incremental searching
-set lazyredraw      " Do not redraw screen while executing macros
-set matchtime=4     " Blink matched brackets for 4/10ths of a second
-set number          " Show line numbers
-set ruler           " Show the cursor position at all times
-set scrolloff=2     " Keep two lines above and below cursor when scrolling
-set showcmd         " Display incomplete commands
-set showmatch       " Highlight matching brackets
-set smartcase       " Override ignorecase if search has upper case characters
-set whichwrap+=h,l  " Allow cursor keys to line wrap
-set winminheight=0  " Minimal height of a non-current window
+set cmdheight=1      " Reserve one row for the command bar
+set hidden           " Allow the changing of buffers without saving
+set hlsearch         " Highlight the last used search pattern
+set ignorecase       " Ignore case when searching
+set incsearch        " Enable incremental searching
+set lazyredraw       " Do not redraw screen while executing macros
+set matchtime=4      " Blink matched brackets for 4/10ths of a second
+set number           " Show line numbers
+set ruler            " Show the cursor position at all times
+set scrolloff=2      " Keep two lines above and below cursor when scrolling
+set showcmd          " Display incomplete commands
+set showmatch        " Highlight matching brackets
+set sidescrolloff=3  " Keep two columns left and right of cursor when scrolling
+set smartcase        " Override ignorecase if search has upper case characters
+set ttyfast          " Improve smoothness or redraw for newer terminals
+set whichwrap+=h,l   " Allow cursor keys to line wrap
+set winminheight=0   " Minimal height of a non-current window
 
 " Show as much as possible of the last line in a window versus '@' lines
 set display=lastline
@@ -150,6 +153,11 @@ noremap <silent> <Leader>l m`:execute '/\%>' . (&tw ? &tw : 79) . 'v.\+'<CR>``
 
 " Remove last search pattern highlighting
 noremap <silent> <Leader>h :nohlsearch<CR>
+
+" Justify text center, left, or right
+noremap <silent> <Leader>jc :center<CR>
+noremap <silent> <Leader>jl :left<CR>
+noremap <silent> <Leader>jr :right<CR>
 
 " Save typing when doing a global search/replace
 noremap <Leader>s :%s//g<Left><Left>
