@@ -6,6 +6,7 @@ ssh = ssh -C
 [extensions]
 hgext.fetch =
 hgext.mq =
+color =
 
 [diff]
 git = True
