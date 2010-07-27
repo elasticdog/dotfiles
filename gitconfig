@@ -5,7 +5,7 @@
 	br = branch
 	ci = commit
 	co = checkout
-	st = status
+	st = status --short --branch
 [color]
 	ui = auto
 [core]
