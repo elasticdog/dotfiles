@@ -141,11 +141,27 @@ set foldlevel=99       " Default to no folds closed
 " MAPPINGS & CUSTOM COMMANDS
 " --------------------------------------
 
+" Execute a command while preserving the cursor location and search history
+function! Preserve(command)
+	" save the last search and cursor position
+	let _s=@/
+	let l = line(".")
+	let c = col(".")
+	" execute the given command
+	execute a:command
+	" restore the search history and cursor position
+	let @/=_s
+	call cursor(l, c)
+endfunction
+
 " Change the CWD to where the current file is located
 noremap <silent> <Leader>cd :cd %:p:h<CR>
 
 " Remove trailing whitespace
-noremap <silent> <Leader>rtw :%s/\s\+$//g<CR>``
+noremap <silent> <Leader>rtw :call Preserve("%s/\\s\\+$//e")<CR>
+
+" Run the entire file through the indent filter
+noremap <silent> <Leader>= :call Preserve("normal gg=G")<CR>
 
 " Highlight lines longer than textwidth
 " or column 79 if the textwidth option is not set
