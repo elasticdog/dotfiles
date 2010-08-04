@@ -2,9 +2,6 @@
 # ~/.screenrc
 #
 
-# Change default escape sequence from C-a to a backtic
-#escape ``            # default ^Aa
-
 # Do not display the copyright page
 startup_message off  # default: on
 
