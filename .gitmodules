@@ -31,3 +31,6 @@
 [submodule "vim/bundle/pastie"]
 	path = vim/bundle/pastie
 	url = http://github.com/tpope/vim-pastie.git
+[submodule "vim/bundle/textile"]
+	path = vim/bundle/textile
+	url = http://github.com/timcharper/textile.vim.git
