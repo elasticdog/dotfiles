@@ -22,3 +22,6 @@
 [submodule "vim/bundle/git"]
 	path = vim/bundle/git
 	url = http://github.com/tpope/vim-git.git
+[submodule "vim/bundle/endwise"]
+	path = vim/bundle/endwise
+	url = http://github.com/tpope/vim-endwise.git
