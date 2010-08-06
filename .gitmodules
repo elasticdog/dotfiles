@@ -1,0 +1,3 @@
+[submodule "vim/bundle/rails"]
+	path = vim/bundle/rails
+	url = http://github.com/tpope/vim-rails.git
