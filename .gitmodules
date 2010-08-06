@@ -10,3 +10,6 @@
 [submodule "vim/bundle/vim-vividchalk"]
 	path = vim/bundle/vim-vividchalk
 	url = http://github.com/tpope/vim-vividchalk.git
+[submodule "vim/bundle/vim-speeddating"]
+	path = vim/bundle/vim-speeddating
+	url = http://github.com/tpope/vim-speeddating.git
