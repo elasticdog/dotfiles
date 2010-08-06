@@ -16,3 +16,6 @@
 [submodule "vim/bundle/speeddating"]
 	path = vim/bundle/speeddating
 	url = http://github.com/tpope/vim-speeddating.git
+[submodule "vim/bundle/liquid"]
+	path = vim/bundle/liquid
+	url = http://github.com/tpope/vim-liquid.git
