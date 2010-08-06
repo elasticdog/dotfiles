@@ -16,3 +16,6 @@
 [submodule "vim/bundle/vim-liquid"]
 	path = vim/bundle/vim-liquid
 	url = http://github.com/tpope/vim-liquid.git
+[submodule "vim/bundle/vim-haml"]
+	path = vim/bundle/vim-haml
+	url = http://github.com/tpope/vim-haml.git
