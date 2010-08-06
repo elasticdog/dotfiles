@@ -28,3 +28,6 @@
 [submodule "vim/bundle/repeat"]
 	path = vim/bundle/repeat
 	url = http://github.com/tpope/vim-repeat.git
+[submodule "vim/bundle/pastie"]
+	path = vim/bundle/pastie
+	url = http://github.com/tpope/vim-pastie.git
