@@ -13,3 +13,6 @@
 [submodule "vim/bundle/vividchalk"]
 	path = vim/bundle/vividchalk
 	url = http://github.com/tpope/vim-vividchalk.git
+[submodule "vim/bundle/speeddating"]
+	path = vim/bundle/speeddating
+	url = http://github.com/tpope/vim-speeddating.git
