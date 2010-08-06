@@ -226,11 +226,6 @@ endif
 " bufexplorer.vim - Buffer Explorer
 let g:bufExplorerShowRelativePath = 1  " Show relative paths
 
-" NERD_commenter.vim - NERD Commenter
-let NERDDefaultNesting = 1       " Coments are nested automatically
-let NERDMapleader = '<Leader>c'  " Use the standard <Leader> instead of ,
-let NERDSpaceDelims = 1          " Add a space between delimeters and comments
-
 " project.vim - Project Plugin
 let g:proj_flags = 'cimst'    " Close Project window when file selected
 let g:proj_window_width = 30  " Width of Project window matches Taglist
