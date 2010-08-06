@@ -1,5 +1,5 @@
 [user]
-	name = Aaron Schaefer
+	name = Aaron Bull Schaefer
 	email = aaron@elasticdog.com
 [alias]
 	br = branch
@@ -9,6 +9,6 @@
 [color]
 	ui = auto
 [core]
-	excludesfile = /home/aaron/.gitignore
+	excludesfile = ~/.gitignore
 [merge]
 	tool = gvimdiff
