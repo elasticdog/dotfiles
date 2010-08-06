@@ -10,6 +10,8 @@ set autoread      " Automatically reload when a file is changed outside of Vim
 set nobackup      " Do not automatically backup files
 set history=100   " Remember 100 lines of command line history
 
+filetype off
+call pathogen#runtime_append_all_bundles()
 filetype plugin indent on  " Enable file type detection
 
 
