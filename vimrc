@@ -235,13 +235,6 @@ endif
 
 
 
-" INTERNAL VARIABLES
-" --------------------------------------
-
-let g:netrw_liststyle = 3  " default to the tree listing style
-
-
-
 " PLUGIN CONFIGURATION
 " --------------------------------------
 
@@ -250,6 +243,9 @@ let g:bufExplorerShowRelativePath = 1  " Show relative paths
 
 " factor.vim - Factor Plugin
 let g:FactorRoot = '/Applications/factor'
+
+" NERD_tree.vim - File Explorer
+noremap <silent> <Leader>fe :NERDTreeToggle<CR>
 
 " rails.vim - Ruby on Rails
 let g:rails_default_database = 'sqlite3'
