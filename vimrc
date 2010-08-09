@@ -265,8 +265,7 @@ let Tlist_Enable_Fold_Column = 0       " Do not show folding tree
 let Tlist_Exit_OnlyWindow = 1          " Exit Vim if only Taglist left open
 let Tlist_GainFocus_On_ToggleOpen = 1  " Taglist window gains focus on open
 let Tlist_Inc_Winwidth = 0             " Do not adjust window width
-nnoremap <silent> <Leader>t :TlistToggle<CR>
-nnoremap <silent> <Leader>T :TlistOpen<CR>
+nnoremap <silent> <Leader>T :TlistToggle<CR>
 highlight MyTagListFileName term=reverse ctermbg=8 guibg=#333333
 
 
