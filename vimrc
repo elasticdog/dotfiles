@@ -129,8 +129,10 @@ set shiftwidth=4
 set softtabstop=4
 set tabstop=4
 
-" Change default format options to prevent auto-wrapping during typing, and:
-set formatoptions=q   " format comments with gq
+" Change default format options:
+set formatoptions-=t  " turn off auto-wrapping type
+set formatoptions-=c  " turn off auto-wrapping comments
+set formatoptions+=q  " format comments manually with gq
 set formatoptions+=n  " gq recognizes numbered lists
 set formatoptions+=1  " prefer breaking before, not after, a one-letter word
 
