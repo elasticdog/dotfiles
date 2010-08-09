@@ -63,8 +63,11 @@ set hlsearch         " Highlight the last used search pattern
 set ignorecase       " Ignore case when searching
 set incsearch        " Enable incremental searching
 set lazyredraw       " Do not redraw screen while executing macros
+set list             " Display unprintable characters
 set matchtime=4      " Blink matched brackets for 4/10ths of a second
+set nostartofline    " Do not move cursor to SOL during jump commands
 set number           " Show line numbers
+set numberwidth=1    " Use the minimal number of columns for line numbers
 set ruler            " Show the cursor position at all times
 set scrolloff=2      " Keep two lines above and below cursor when scrolling
 set showcmd          " Display incomplete commands
@@ -114,7 +117,7 @@ match WhitespaceErrors /\s\+$\|[^\t]\@<=\t\+/
 " TEXT HANDLING
 " --------------------------------------
 
-set autoindent   " Copy indent from current line when starting a new line
+set autoindent   " Do dumb auto-indentation when no filetype is set
 set linebreak    " Wrap long lines at words boundaries
 set noexpandtab  " Do not convert tabs to spaces
 set smartindent  " Do smart autoindenting when starting a new line
@@ -126,9 +129,10 @@ set shiftwidth=4
 set softtabstop=4
 set tabstop=4
 
-" Change default format options to always recognize numbered lists and
-" automatically insert comment leader after hitting <Enter> in Insert mode
-set formatoptions+=rn
+" Change default format options to prevent auto-wrapping during typing, and:
+set formatoptions=q   " format comments with gq
+set formatoptions+=n  " gq recognizes numbered lists
+set formatoptions+=1  " prefer breaking before, not after, a one-letter word
 
 
 
@@ -183,12 +187,18 @@ noremap <Leader>s :%s//g<Left><Left>
 " Assist with common typo when trying to quit
 nnoremap q: q:iq<Esc>
 
+" Q formats paragraphs, instead of entering Ex mode
+noremap Q gq
+
 " Yank from the cursor to the end of the line
 noremap Y y$
 
+" Add full path and buffer number to Ctrl-G display
+nnoremap <C-g> 2<C-g>
+
 " Move between windows using Ctrl + home row motion keys
-noremap <C-j> <C-W>j<C-W>_
-noremap <C-k> <C-W>k<C-W>_
+noremap <C-j> <C-W>j
+noremap <C-k> <C-W>k
 noremap <C-h> <C-W>h
 noremap <C-l> <C-W>l
 
