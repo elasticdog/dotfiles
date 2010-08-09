@@ -251,12 +251,6 @@ let g:bufExplorerShowRelativePath = 1  " Show relative paths
 " factor.vim - Factor Plugin
 let g:FactorRoot = '/Applications/factor'
 
-" project.vim - Project Plugin
-let g:proj_flags = 'cimst'    " Close Project window when file selected
-let g:proj_window_width = 30  " Width of Project window matches Taglist
-nmap <silent> <Leader>p <Plug>ToggleProject
-nmap <silent> <Leader>P :Project<CR>
-
 " rails.vim - Ruby on Rails
 let g:rails_default_database = 'sqlite3'
 
