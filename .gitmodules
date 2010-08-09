@@ -37,3 +37,6 @@
 [submodule "vim/bundle/ruby"]
 	path = vim/bundle/ruby
 	url = http://github.com/vim-ruby/vim-ruby.git
+[submodule "vim/bundle/command-t"]
+	path = vim/bundle/command-t
+	url = git://git.wincent.com/command-t.git
