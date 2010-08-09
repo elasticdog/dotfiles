@@ -232,6 +232,13 @@ endif
 
 
 
+" INTERNAL VARIABLES
+" --------------------------------------
+
+let g:netrw_liststyle = 3  " default to the tree listing style
+
+
+
 " PLUGIN CONFIGURATION
 " --------------------------------------
 
