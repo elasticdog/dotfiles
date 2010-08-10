@@ -245,6 +245,10 @@ let g:bufExplorerShowRelativePath = 1  " Show relative paths
 let g:FactorRoot = '/Applications/factor'
 
 " NERD_tree.vim - File Explorer
+let g:NERDTreeChDirMode = 2     " the CDW will follow the root folder
+let g:NERDTreeQuitOnOpen = 1    " close the exporer window after opening a file
+let g:NERDTreeWinPos = 'right'  " position the explorer window on the right
+
 noremap <silent> <Leader>fe :NERDTreeToggle<CR>
 
 " rails.vim - Ruby on Rails
