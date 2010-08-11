@@ -48,17 +48,6 @@ setopt pushd_ignore_dups     # do not push dir multiply on stack
 setopt no_beep               # disable beep on all errors
 setopt no_case_glob          # disable glob case sensitivity
 
-function zsh_prompt {
-	local DEFAULT=$'%{\e[0m%}'
-	local LIGHT_BLUE=$'%{\e[1;34m%}'
-	local LIGHT_CYAN=$'%{\e[1;36m%}'
-	local LIGHT_RED=$'%{\e[1;31m%}'
-	local WHITE=$'%{\e[1;37m%}'
-
-	PROMPT="${LIGHT_BLUE}[${DEFAULT}%n@%m ${WHITE}%c${LIGHT_BLUE}]${LIGHT_CYAN} %# ${DEFAULT}"
-}
-zsh_prompt
-
 
 ##### OS-Specific Command Aliases
 
@@ -243,6 +232,51 @@ if autoloadable edit-command-line; then
 	zle -N edit-command-line
 	bindkey "\ee" edit-command-line  # <Esc-e>
 fi
+
+
+##### Custom Prompt
+
+precmd () { vcs_info 'prompt' }
+
+setprompt () {
+	# See these pages for info on special characters:
+	#   http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html
+	#   http://zsh.sourceforge.net/Doc/Release/User-Contributions.html#SEC273
+
+	autoload -Uz vcs_info  # enable the use of VCS information
+	setopt prompt_subst    # perform expansions and substitutions within prompts
+
+	local VCS_PATH="%F{green}%r/%S%f"            # display only repo path when inside a repo
+	local REG_PATH="%F{yellow}%~%f"              # display full path when outside a repo
+
+	local VCS_USER="%%(!.%F{red}.%F{blue})%n%f"  # display username in red when root inside a repo
+	local REG_USER="%(!.%F{red}.%F{blue})%n%f"   # display username in red when root outside a repo
+
+	local VCS_HOST="%F{cyan}%%m%f"               # display hostname when inside a repo
+	local REG_HOST="%F{cyan}%m%f"                # display hostname when outside a repo
+
+	local VCS_INFO="%s %F{green}%c%u%b%f"        # current VCS name and branch
+
+	zstyle ':vcs_info:*:prompt:*' enable cvs git hg svn    # only enable checking for these VCSs
+	zstyle ':vcs_info:*:prompt:*' check-for-changes true   # can be slow, but displays working dir & index changes
+	zstyle ':vcs_info:*:prompt:*' unstagedstr '%F{red}*'   # display this when there are unstaged changes
+	zstyle ':vcs_info:*:prompt:*' stagedstr '%F{yellow}+'  # display this when there are staged changes
+
+	# sets vcs_info_msg_{0,1}_ when inside a repo, when inside a repo and performing an action, and when not inside a repo
+	zstyle ':vcs_info:*:prompt:*' formats       "${VCS_PATH}" "${VCS_USER} at ${VCS_HOST} on ${VCS_INFO}"
+	zstyle ':vcs_info:*:prompt:*' actionformats "${VCS_PATH}" "${VCS_USER} at ${VCS_HOST} on ${VCS_INFO} (%a)"
+	zstyle ':vcs_info:*:prompt:*' nvcsformats   "${REG_PATH}" "${REG_USER} at ${REG_HOST}"
+
+	local FMT_PATH='${vcs_info_msg_0_}'    # necessary to allow expansion elsewhere
+	local ERR_EXIT="%(?..%F{red}[%?] )%f"  # conditionally display any non-zero exit status
+
+	# the actual prompt definitions
+	PROMPT="${FMT_PATH} ${ERR_EXIT}%F{magenta}%# %f"  # left prompt
+	RPROMPT='${vcs_info_msg_1_}'                      # right prompt
+	PS2="%_ %F{8}>%F{13}>%F{magenta}> %f"             # continuation prompt
+}
+
+setprompt
 
 
 ##### External Programs
