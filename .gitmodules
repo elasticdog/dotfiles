@@ -34,6 +34,9 @@
 [submodule "vim/bundle/textile"]
 	path = vim/bundle/textile
 	url = http://github.com/timcharper/textile.vim.git
+[submodule "vim/bundle/securemodelines"]
+	path = vim/bundle/securemodelines
+	url = http://github.com/ciaranm/securemodelines.git
 [submodule "vim/bundle/speeddating"]
 	path = vim/bundle/speeddating
 	url = http://github.com/tpope/vim-speeddating.git

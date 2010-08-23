@@ -262,6 +262,9 @@ let Tlist_Inc_Winwidth = 0             " Do not adjust window width
 nnoremap <silent> <Leader>T :TlistToggle<CR>
 highlight MyTagListFileName term=reverse ctermbg=8 guibg=#333333
 
+" yankring.vim - Yank Ring
+nnoremap <silent> <Leader>yr :YRShow<CR>
+
 
 
 " FILETYPE SPECIFIC SETTINGS
