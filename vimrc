@@ -248,7 +248,6 @@ let g:FactorRoot = '/Applications/factor'
 let g:NERDTreeChDirMode = 2     " the CDW will follow the root folder
 let g:NERDTreeQuitOnOpen = 1    " close the exporer window after opening a file
 let g:NERDTreeWinPos = 'right'  " position the explorer window on the right
-
 noremap <silent> <Leader>fe :NERDTreeToggle<CR>
 
 " rails.vim - Ruby on Rails
@@ -263,6 +262,8 @@ nnoremap <silent> <Leader>T :TlistToggle<CR>
 highlight MyTagListFileName term=reverse ctermbg=8 guibg=#333333
 
 " yankring.vim - Yank Ring
+let g:yankring_persist = 0
+let g:yankring_history_file = '.yankring_history'
 nnoremap <silent> <Leader>yr :YRShow<CR>
 
 
