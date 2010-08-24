@@ -71,25 +71,25 @@ URxvt*cursorColor: #FF8C00
 *foreground: #F5F6F7
 # Black + DarkGrey
 *color0:  #000000
-*color8:  #4B4C4D
+*color8:  #393A31
 # DarkRed + Red
-*color1:  #B80034
-*color9:  #E1697F
+*color1:  #E62221
+*color9:  #F34F4D
 # DarkGreen + Green
-*color2:  #608E32
-*color10: #A1DC6A
+*color2:  #A5E04B
+*color10: #C6EF99
 # DarkYellow + Yellow
-*color3:  #B29D41
-*color11: #F2EE91
+*color3:  #E2DA6E
+*color11: #FEF5AF
 # DarkBlue + Blue
-*color4:  #355B91
-*color12: #2390C7
+*color4:  #3877F6
+*color12: #509AC5
 # DarkMangenta + Mangenta
-*color5:  #AD456B
-*color13: #D8A2C3
+*color5:  #F6296C
+*color13: #F5779F
 #DarkCyan + Cyan
-*color6:  #258F88
-*color14: #00D1D1
+*color6:  #64D9ED
+*color14: #A1E0E9
 # LightGrey + White
-*color7:  #C1C1C2
+*color7:  #EDEDED
 *color15: #FFFFFF
