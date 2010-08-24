@@ -23,6 +23,10 @@ Host lish
 Hostname dallas139.linode.com
 User linode40707
 
+Host pkgbuild
+Hostname pkgbuild.com
+User aschaefer
+
 Host slice
 Hostname 67.207.130.60
 Port 50454
