@@ -274,6 +274,9 @@ nnoremap <silent> <Leader>yr :YRShow<CR>
 " For all Ruby/YAML files, use the standard 2 spaces for indentation
 autocmd FileType ruby,yaml setlocal et sts=2 sw=2 ts=2
 
+" ...do the same for JSON files
+autocmd FileType json setlocal et sts=2 sw=2 ts=2
+
 " Jump to the last known cursor position when opening any file
 autocmd BufReadPost *
 	\ if line("'\"") > 0 && line("'\"") <= line("$") |
