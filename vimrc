@@ -185,14 +185,7 @@ noremap <silent> <Leader>jl :left<CR>
 noremap <silent> <Leader>jr :right<CR>
 
 " Toggle spellchecking for the local buffer
-function! SpellToggle()
-	if &spell == 1
-		setlocal nospell
-	else
-		setlocal spell spelllang=en_us
-	endif
-endfunction
-noremap <silent> <Leader>sc :call SpellToggle()<CR>
+noremap <silent> <Leader>sc :setlocal spell! spelllang=en_us<CR>
 
 " Save typing when doing a global search/replace
 noremap <Leader>sr :%s//g<Left><Left>
