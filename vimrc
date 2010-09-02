@@ -184,8 +184,18 @@ noremap <silent> <Leader>jc :center<CR>
 noremap <silent> <Leader>jl :left<CR>
 noremap <silent> <Leader>jr :right<CR>
 
+" Toggle spellchecking for the local buffer
+function! SpellToggle()
+	if &spell == 1
+		setlocal nospell
+	else
+		setlocal spell spelllang=en_us
+	endif
+endfunction
+noremap <silent> <Leader>sc :call SpellToggle()<CR>
+
 " Save typing when doing a global search/replace
-noremap <Leader>s :%s//g<Left><Left>
+noremap <Leader>sr :%s//g<Left><Left>
 
 " Assist with common typo when trying to quit
 nnoremap q: q:iq<Esc>
