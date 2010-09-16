@@ -79,8 +79,7 @@ set ttyfast          " Improve smoothness or redraw for newer terminals
 set whichwrap+=h,l   " Allow cursor keys to line wrap
 set winminheight=0   " Minimal height of a non-current window
 
-" Centrally store all swap files (the double-trailing slash stores files using
-" full path names to eliminate potential conflicts)
+" Centrally store all swap files using full path names
 set directory=/var/tmp//
 
 " Show as much as possible of the last line in a window versus '@' lines
