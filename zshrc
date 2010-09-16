@@ -73,6 +73,7 @@ esac
 
 # no spelling correction for these commands
 alias cp='nocorrect cp'
+alias knife='nocorrect knife'
 alias mkdir='nocorrect mkdir'
 alias mv='nocorrect mv'
 
