@@ -8,7 +8,7 @@
 set nocompatible  " Use Vim settings (versus Vi compatible)
 set autoread      " Automatically reload when a file is changed outside of Vim
 set nobackup      " Do not automatically backup files
-set history=100   " Remember 100 lines of command line history
+set history=1000  " Remember 1000 lines of command line history
 
 filetype off
 call pathogen#runtime_append_all_bundles()
@@ -78,6 +78,10 @@ set smartcase        " Override ignorecase if search has upper case characters
 set ttyfast          " Improve smoothness or redraw for newer terminals
 set whichwrap+=h,l   " Allow cursor keys to line wrap
 set winminheight=0   " Minimal height of a non-current window
+
+" Centrally store all swap files (the double-trailing slash stores files using
+" full path names to eliminate potential conflicts)
+set directory=/var/tmp//
 
 " Show as much as possible of the last line in a window versus '@' lines
 set display=lastline
@@ -193,6 +197,9 @@ noremap <Leader>sr :%s//g<Left><Left>
 " Assist with common typo when trying to quit
 nnoremap q: q:iq<Esc>
 
+" Assist with common mistake of not opening file with sudo
+cmap w!! w !sudo tee % >/dev/null
+
 " Q formats paragraphs, instead of entering Ex mode
 noremap Q gq
 
@@ -201,6 +208,10 @@ noremap Y y$
 
 " Add full path and buffer number to Ctrl-G display
 nnoremap <C-g> 2<C-g>
+
+" Don't move linewise when long lines are wrapped
+noremap j gj
+noremap k gk
 
 " Move between windows using Ctrl + home row motion keys
 noremap <C-j> <C-W>j
