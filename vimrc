@@ -79,6 +79,9 @@ set ttyfast          " Improve smoothness or redraw for newer terminals
 set whichwrap+=h,l   " Allow cursor keys to line wrap
 set winminheight=0   " Minimal height of a non-current window
 
+" Use strong encryption for writing encrypted files
+set cryptmethod=blowfish
+
 " Centrally store all swap files using full path names
 set directory=/var/tmp//
 
