@@ -3,7 +3,7 @@
 	email = aaron@elasticdog.com
 [alias]
 	br = branch
-	ci = commit
+	ci = commit --verbose
 	co = checkout
 	st = status --short --branch
 [color]
