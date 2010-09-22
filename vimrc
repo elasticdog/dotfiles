@@ -215,7 +215,7 @@ cmap w!! w !sudo tee % >/dev/null
 noremap Q gqip
 
 " Yank from the cursor to the end of the line
-noremap Y y$
+nnoremap Y y$
 
 " Add full path and buffer number to Ctrl-G display
 nnoremap <C-g> 2<C-g>
@@ -292,6 +292,7 @@ highlight MyTagListFileName term=reverse ctermbg=8 guibg=#333333
 " yankring.vim - Yank Ring
 let g:yankring_persist = 0
 let g:yankring_history_file = '.yankring_history'
+let g:yankring_n_keys = 'D x X'  " prevent cloberring custom Y mapping above
 nnoremap <silent> <Leader>yr :YRShow<CR>
 
 
