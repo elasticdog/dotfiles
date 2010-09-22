@@ -126,6 +126,9 @@ function duf {
 	esac
 }
 
+# shortcut for git-add hunk staging
+alias gap='git add --patch'
+
 # shortcut for optipng's most exhaustive search
 [[ -x $(which optipng 2>/dev/null) ]] && alias optimax='optipng -zc1-9 -zm1-9 -zs0-3 -f0-5'
 
