@@ -92,7 +92,7 @@ set display=lastline
 set fillchars=vert:\ ,fold:-
 
 " In list mode, use these custom characters
-set listchars=tab:»\ ,extends:>,precedes:<
+set listchars=tab:▸\ ,extends:>,precedes:<
 
 " Time out on mappings after two seconds, key codes after a tenth of a second
 set timeoutlen=2000
