@@ -193,8 +193,17 @@ noremap <silent> <Leader>jr :right<CR>
 " Toggle spellchecking for the local buffer
 noremap <silent> <Leader>sc :setlocal spell! spelllang=en_us<CR>
 
+" Select the text that was just pasted
+noremap <silent> <Leader>v V`]
+
 " Save typing when doing a global search/replace
 noremap <Leader>sr :%s//g<Left><Left>
+
+" Save a keystroke when entering command-line mode
+noremap ; :
+
+" Save having to use a chord when escaping
+inoremap jj <Esc>
 
 " Assist with common typo when trying to quit
 nnoremap q: q:iq<Esc>
@@ -203,7 +212,7 @@ nnoremap q: q:iq<Esc>
 cmap w!! w !sudo tee % >/dev/null
 
 " Q formats paragraphs, instead of entering Ex mode
-noremap Q gq
+noremap Q gqip
 
 " Yank from the cursor to the end of the line
 noremap Y y$
@@ -214,6 +223,9 @@ nnoremap <C-g> 2<C-g>
 " Don't move linewise when long lines are wrapped
 noremap j gj
 noremap k gk
+
+" Open a new vertical split and switch over to it
+noremap <silent> <Leader>w <C-w>v<C-w>l
 
 " Move between windows using Ctrl + home row motion keys
 noremap <C-j> <C-W>j
