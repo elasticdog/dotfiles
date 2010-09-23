@@ -197,7 +197,7 @@ nnoremap <Leader>p :set invpaste paste?<CR>
 noremap <silent> <Leader>sc :setlocal spell! spelllang=en_us<CR>
 
 " Select the text that was just pasted
-noremap <silent> <Leader>v V`]
+noremap <Leader>v V`]
 
 " Save typing when doing a global search/replace
 noremap <Leader>sr :%s//g<Left><Left>
@@ -269,7 +269,7 @@ endif
 " PLUGIN CONFIGURATION
 " --------------------------------------
 
-" ack.vim - Ack
+" ack.vim - Ack Integration
 nnoremap <Leader>a :Ack
 
 " bufexplorer.vim - Buffer Explorer
