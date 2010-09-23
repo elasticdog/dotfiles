@@ -190,6 +190,9 @@ noremap <silent> <Leader>jc :center<CR>
 noremap <silent> <Leader>jl :left<CR>
 noremap <silent> <Leader>jr :right<CR>
 
+" Toggle paste mode
+nnoremap <Leader>p :set invpaste paste?<CR>
+
 " Toggle spellchecking for the local buffer
 noremap <silent> <Leader>sc :setlocal spell! spelllang=en_us<CR>
 
