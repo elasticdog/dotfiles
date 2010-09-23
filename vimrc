@@ -65,6 +65,7 @@ set incsearch        " Enable incremental searching
 set lazyredraw       " Do not redraw screen while executing macros
 set list             " Display unprintable characters
 set matchtime=4      " Blink matched brackets for 4/10ths of a second
+set nojoinspaces     " Do not insert 2 spaces after sentences when joining
 set nomodeline       " Do not read settings from modelines
 set nostartofline    " Do not move cursor to SOL during jump commands
 set numberwidth=1    " Use the minimal number of columns for line numbers
