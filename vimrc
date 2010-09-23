@@ -266,6 +266,9 @@ endif
 " PLUGIN CONFIGURATION
 " --------------------------------------
 
+" ack.vim - Ack
+nnoremap <Leader>a :Ack
+
 " bufexplorer.vim - Buffer Explorer
 let g:bufExplorerShowRelativePath = 1  " Show relative paths
 
