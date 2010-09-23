@@ -236,6 +236,10 @@ noremap Q gqip
 " Yank from the cursor to the end of the line
 nnoremap Y y$
 
+" Always use very magic regexes for search patterns
+nnoremap / /\v
+vnoremap / /\v
+
 " Add full path and buffer number to Ctrl-G display
 nnoremap <C-g> 2<C-g>
 
