@@ -58,9 +58,6 @@ match WhitespaceErrors /\s\+$\|[^\t]\@<=\t\+/
 " USER INTERFACE
 " --------------------------------------
 
-" Allow backspacing over everything
-set backspace=eol,indent,start
-
 set cmdheight=1      " Reserve one row for the command bar
 set hidden           " Allow the changing of buffers without saving
 set hlsearch         " Highlight the last used search pattern
@@ -83,6 +80,14 @@ set smartcase        " Override ignorecase if search has upper case characters
 set ttyfast          " Improve smoothness or redraw for newer terminals
 set whichwrap+=h,l   " Allow cursor keys to line wrap
 set winminheight=0   " Minimal height of a non-current window
+
+" Allow backspacing over everything
+set backspace=eol,indent,start
+
+" Disable sound/visual bell on errors
+set noerrorbells
+set novisualbell
+set t_vb=
 
 " Use strong encryption for writing encrypted files
 set cryptmethod=blowfish
@@ -109,11 +114,6 @@ set ttimeoutlen=100
 
 " Cursor can be positioned anywhere when in blockwise Visual mode
 set virtualedit=block
-
-" Disable sound/visual bell on errors
-set noerrorbells
-set novisualbell
-set t_vb=
 
 " Use enhanced command line completion
 set wildmenu
