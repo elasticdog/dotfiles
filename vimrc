@@ -154,7 +154,7 @@ set foldlevel=99       " Default to no folds closed
 
 
 
-" MAPPINGS & CUSTOM COMMANDS
+" HELPER FUNCTIONS
 " --------------------------------------
 
 " Execute a command while preserving the cursor location and search history
@@ -169,6 +169,21 @@ function! Preserve(command)
 	let @/=_s
 	call cursor(l, c)
 endfunction
+
+" See :help restore-cursor
+function! RestoreCursor()
+	" don't restore the cursor position for VCS commit logs
+	if line("'\"") > 0
+	\  && line("'\"") <= line("$")
+	\  && bufname('%') !~ '\.git\/COMMIT_EDITMSG\|svn-commit\.tmp'
+		exe "normal! g`\""
+	endif
+endfunction
+
+
+
+" MAPPINGS & CUSTOM COMMANDS
+" --------------------------------------
 
 " Change the CWD to where the current file is located
 noremap <silent> <Leader>cd :cd %:p:h<CR>
@@ -316,8 +331,5 @@ autocmd FileType ruby,yaml setlocal et sts=2 sw=2 ts=2
 " ...do the same for JSON files
 autocmd FileType json setlocal et sts=2 sw=2 ts=2
 
-" Jump to the last known cursor position when opening any file
-autocmd BufReadPost *
-	\ if line("'\"") > 0 && line("'\"") <= line("$") |
-	\	exe "normal! g`\"" |
-	\ endif
+" Jump to the last known cursor position when opening files
+autocmd BufReadPost * call RestoreCursor()
