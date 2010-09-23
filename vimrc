@@ -209,7 +209,7 @@ inoremap jj <Esc>
 nnoremap q: q:iq<Esc>
 
 " Assist with common mistake of not opening file with sudo
-cmap w!! w !sudo tee % >/dev/null
+cnoremap w!! w !sudo tee % >/dev/null
 
 " Q formats paragraphs, instead of entering Ex mode
 noremap Q gqip
