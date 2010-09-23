@@ -49,6 +49,10 @@ else
 	highlight Folded ctermfg=LightGray ctermbg=DarkBlue
 endif
 
+" Highlight trailing whitespace characters and tabs not used for indention
+highlight WhitespaceErrors ctermbg=Red guibg=Red
+match WhitespaceErrors /\s\+$\|[^\t]\@<=\t\+/
+
 
 
 " USER INTERFACE
@@ -95,6 +99,10 @@ set fillchars=vert:\ ,fold:-
 " In list mode, use these custom characters
 set listchars=tab:▸\ ,extends:>,precedes:<
 
+" Always show the customized statusline
+set laststatus=2
+set statusline=%<%f\ [%M%n%R%H]%=%l/%L,%v\ %p%%
+
 " Time out on mappings after two seconds, key codes after a tenth of a second
 set timeoutlen=2000
 set ttimeoutlen=100
@@ -111,14 +119,6 @@ set t_vb=
 set wildmenu
 set wildmode=longest:full,full
 set wildignore=*.o,*.obj,*.exe,*.class,*.swp
-
-" Always show the customized statusline
-set laststatus=2
-set statusline=%<%f\ [%M%n%R%H]%=%l/%L,%v\ %p%%
-
-" Highlight trailing whitespace characters and tabs not used for indention
-highlight WhitespaceErrors ctermbg=Red guibg=Red
-match WhitespaceErrors /\s\+$\|[^\t]\@<=\t\+/
 
 
 
@@ -185,18 +185,46 @@ endfunction
 " MAPPINGS & CUSTOM COMMANDS
 " --------------------------------------
 
-" Change the CWD to where the current file is located
-noremap <silent> <Leader>cd :cd %:p:h<CR>
+" Always use very magic regexes for search patterns
+nnoremap / /\v
+vnoremap / /\v
 
-" Remove trailing whitespace
-noremap <silent> <Leader>rtw :call Preserve("%s/\\s\\+$//e")<CR>
+" Save a keystroke when entering command-line mode
+noremap ; :
+
+" Don't move linewise when long lines are wrapped
+noremap j gj
+noremap k gk
+
+" Save having to use a chord when escaping
+inoremap jj <Esc>
+
+" Q formats paragraphs, instead of entering Ex mode
+noremap Q gqip
+
+" Assist with common typo when trying to quit
+nnoremap q: q:iq<Esc>
+
+" Assist with common mistake of not opening file with sudo
+cnoremap w!! w !sudo tee % >/dev/null
+
+" Yank from the cursor to the end of the line
+nnoremap Y y$
+
+" Add full path and buffer number to Ctrl-G display
+nnoremap <C-g> 2<C-g>
+
+" Move between windows using Ctrl + home row motion keys
+noremap <C-j> <C-W>j
+noremap <C-k> <C-W>k
+noremap <C-h> <C-W>h
+noremap <C-l> <C-W>l
 
 " Run the entire file through the indent filter
 noremap <silent> <Leader>= :call Preserve("normal gg=G")<CR>
 
-" Highlight lines longer than textwidth
-" or column 79 if the textwidth option is not set
-noremap <silent> <Leader>l m`:execute '/\%>' . (&tw ? &tw : 79) . 'v.\+'<CR>``
+" Change the CWD to where the current file is located
+noremap <silent> <Leader>cd :cd %:p:h<CR>
 
 " Remove last search pattern highlighting
 noremap <silent> <Leader>h :nohlsearch<CR>
@@ -206,69 +234,37 @@ noremap <silent> <Leader>jc :center<CR>
 noremap <silent> <Leader>jl :left<CR>
 noremap <silent> <Leader>jr :right<CR>
 
+" Highlight lines longer than textwidth
+" or column 79 if the textwidth option is not set
+noremap <silent> <Leader>l m`:execute '/\%>' . (&tw ? &tw : 79) . 'v.\+'<CR>``
+
 " Toggle paste mode
 nnoremap <Leader>p :set invpaste paste?<CR>
+
+" Remove trailing whitespace
+noremap <silent> <Leader>rtw :call Preserve("%s/\\s\\+$//e")<CR>
 
 " Toggle spellchecking for the local buffer
 noremap <silent> <Leader>sc :setlocal spell! spelllang=en_us<CR>
 
-" Select the text that was just pasted
-noremap <Leader>v V`]
-
 " Save typing when doing a global search/replace
 noremap <Leader>sr :%s//g<Left><Left>
 
-" Save a keystroke when entering command-line mode
-noremap ; :
-
-" Save having to use a chord when escaping
-inoremap jj <Esc>
-
-" Assist with common typo when trying to quit
-nnoremap q: q:iq<Esc>
-
-" Assist with common mistake of not opening file with sudo
-cnoremap w!! w !sudo tee % >/dev/null
-
-" Q formats paragraphs, instead of entering Ex mode
-noremap Q gqip
-
-" Yank from the cursor to the end of the line
-nnoremap Y y$
-
-" Always use very magic regexes for search patterns
-nnoremap / /\v
-vnoremap / /\v
-
-" Add full path and buffer number to Ctrl-G display
-nnoremap <C-g> 2<C-g>
-
-" Don't move linewise when long lines are wrapped
-noremap j gj
-noremap k gk
+" Select the text that was just pasted
+noremap <Leader>v V`]
 
 " Open a new vertical split and switch over to it
 noremap <silent> <Leader>w <C-w>v<C-w>l
 
-" Move between windows using Ctrl + home row motion keys
-noremap <C-j> <C-W>j
-noremap <C-k> <C-W>k
-noremap <C-h> <C-W>h
-noremap <C-l> <C-W>l
-
-" Scroll through a quickfix list using Ctrl + Up/Down cursor keys
 " NOTE: Using these in a non-gui Vim almost never works properly
 if has('gui_running')
+	" Scroll through a quickfix list using Ctrl + Up/Down cursor keys
 	noremap <C-Up> :cp<CR>
 	noremap <C-Down> :cn<CR>
 	inoremap <C-Up> <C-o>:cp<CR>
 	inoremap <C-Down> <C-o>:cn<CR>
-endif
 
-" Move a line of text up or down using the ...
-" NOTE: Using these in a non-gui Vim almost never works properly
-if has('gui_running')
-	" Set mapped keys according to operating system
+	" Move a line of text up or down using the ...
 	if has('macunix')
 		" ... Apple + cursor keys
 		nnoremap <silent> <D-j> m`:m+<CR>==g``
@@ -329,11 +325,8 @@ nnoremap <silent> <Leader>yr :YRShow<CR>
 " FILETYPE SPECIFIC SETTINGS
 " --------------------------------------
 
-" For all Ruby/YAML files, use the standard 2 spaces for indentation
-autocmd FileType ruby,yaml setlocal et sts=2 sw=2 ts=2
-
-" ...do the same for JSON files
-autocmd FileType json setlocal et sts=2 sw=2 ts=2
+" For all JSON/Ruby/YAML files, use the standard 2 spaces for indentation
+autocmd FileType json,ruby,yaml setlocal et sts=2 sw=2 ts=2
 
 " Jump to the last known cursor position when opening files
 autocmd BufReadPost * call RestoreCursor()
