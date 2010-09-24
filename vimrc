@@ -196,9 +196,6 @@ noremap ; :
 noremap j gj
 noremap k gk
 
-" Save having to use a chord when escaping
-inoremap jj <Esc>
-
 " Q formats paragraphs, instead of entering Ex mode
 noremap Q gqip
 
