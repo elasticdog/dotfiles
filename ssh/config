@@ -18,6 +18,7 @@ Hostname 192.168.1.104
 
 Host linode
 Hostname 72.14.191.180
+Port 50454
 
 Host lish
 Hostname dallas139.linode.com
