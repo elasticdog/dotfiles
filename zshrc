@@ -105,6 +105,9 @@ alias ler='ls -d **/*(-/DN^F)'     # list all empty directories recursively
 alias lle='ls -ld *(-/DN^F)'       # list details of all empty directories
 alias ller='ls -lhd **/*(-/DN^F)'  # list details of all empty directories recursively
 
+# force clear scrollback buffer on urxvt
+alias cls="echo -ne '\033c'"
+
 # show sorted directory sizes for all directories
 alias dua='du -s *(/DN) | sort -nr | cut -f 2- | while read directory; do du -sh "$directory/"; done'
 
