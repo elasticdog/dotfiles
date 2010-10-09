@@ -7,6 +7,7 @@ FILES="
 bash_profile
 bashrc
 factor-boot-rc
+gemrc
 gitconfig
 gitignore
 hgrc
