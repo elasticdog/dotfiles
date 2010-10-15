@@ -49,6 +49,9 @@
 [submodule "vim/bundle/surround"]
 	path = vim/bundle/surround
 	url = http://github.com/tpope/vim-surround.git
+[submodule "vim/bundle/tabular"]
+	path = vim/bundle/tabular
+	url = git://github.com/godlygeek/tabular.git
 [submodule "vim/bundle/vividchalk"]
 	path = vim/bundle/vividchalk
 	url = http://github.com/tpope/vim-vividchalk.git
