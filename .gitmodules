@@ -40,6 +40,9 @@
 [submodule "vim/bundle/textile"]
 	path = vim/bundle/textile
 	url = http://github.com/timcharper/textile.vim.git
+[submodule "vim/bundle/sass"]
+	path = vim/bundle/sass
+	url = git://github.com/cakebaker/scss-syntax.vim.git
 [submodule "vim/bundle/securemodelines"]
 	path = vim/bundle/securemodelines
 	url = http://github.com/ciaranm/securemodelines.git
