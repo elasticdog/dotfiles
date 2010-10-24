@@ -291,6 +291,9 @@ setprompt
 # use autojump if it's available
 [[ -f $HOME/.autojump.zsh ]] && source $HOME/.autojump.zsh
 
+# use ruby version manager if it's available
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+
 # invoke keychain to manage ssh/gpg keys
 if [[ -x $(which keychain 2>/dev/null) ]]; then
 	keychain --agents ssh --quick --quiet id_rsa
