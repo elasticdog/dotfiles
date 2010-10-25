@@ -60,6 +60,8 @@ case $OSTYPE in
 		alias ls='ls --color=auto --file-type'  # list in color with identifiers
 		alias vim='TERM=gnome-256color vim'     # force 256-color support
 
+		[[ -x $(which dtach 2>/dev/null) ]] && alias factor='dtach -n /tmp/factor.sock factor'
+
 		# Arch Linux
 		if [[ -f /etc/arch-release ]]; then
 			# shortcut for full system upgrade with root privilege check
