@@ -8,9 +8,6 @@ setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
 " any length.
 if expand("%:t") !~ "-docs\.factor$"
     setlocal textwidth=64
-
-    " Mark anything in column 64 or beyond as a syntax error.
-    match Error /\%>63v.\+/
 endif
 
 " Teach Vim what comments look like.
