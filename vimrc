@@ -58,6 +58,13 @@ match WhitespaceErrors /\s\+$\|[^\t]\@<=\t\+/
 " USER INTERFACE
 " --------------------------------------
 
+if version >= 703
+	set cryptmethod=blowfish  " Use strong encryption for writing encrypted files
+	set relativenumber        " Show line numbers relative to the cursor's line
+else
+	set number       " Show line numbers
+endif
+
 set cmdheight=1      " Reserve one row for the command bar
 set hidden           " Allow the changing of buffers without saving
 set hlsearch         " Highlight the last used search pattern
@@ -88,9 +95,6 @@ set backspace=eol,indent,start
 set noerrorbells
 set novisualbell
 set t_vb=
-
-" Use strong encryption for writing encrypted files
-set cryptmethod=blowfish
 
 " Centrally store all swap files using full path names
 set directory=/var/tmp//
