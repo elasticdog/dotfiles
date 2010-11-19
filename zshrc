@@ -58,7 +58,6 @@ case $OSTYPE in
 		;;
 	linux*)
 		alias ls='ls --color=auto --file-type'  # list in color with identifiers
-		alias vim='TERM=gnome-256color vim'     # force 256-color support
 
 		[[ -x $(which dtach 2>/dev/null) ]] && alias factor='dtach -n /tmp/factor.sock factor'
 
