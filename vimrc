@@ -77,7 +77,6 @@ set nojoinspaces     " Do not insert 2 spaces after sentences when joining
 set nomodeline       " Do not read settings from modelines
 set nostartofline    " Do not move cursor to SOL during jump commands
 set numberwidth=1    " Use the minimal number of columns for line numbers
-set relativenumber   " Show line numbers relative to the cursor's line
 set ruler            " Show the cursor position at all times
 set scrolloff=2      " Keep two lines above and below cursor when scrolling
 set showcmd          " Display incomplete commands
