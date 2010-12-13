@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Create needed directories if they don't already exist
+mkdir -p "$HOME/.hgext"
 mkdir -p "$HOME/.ssh"
 
 FILES="
@@ -10,6 +11,7 @@ factor-boot-rc
 gemrc
 gitconfig
 gitignore
+hgext/hgshelve.py
 hgrc
 irbrc
 screenrc
