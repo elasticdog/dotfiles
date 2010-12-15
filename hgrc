@@ -11,6 +11,7 @@ hgext.mq =
 hgext.record =
 hgext.shelve = ~/.hgext/hgshelve.py
 pager =
+progress =
 
 [diff]
 git = True
