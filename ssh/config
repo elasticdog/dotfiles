@@ -5,20 +5,25 @@ User aschaefer
 Host deadlight
 Hostname elasticdog.dnsalias.com
 Port 443
+User aaron
 
 Host deadlight.lcl
 Hostname 192.168.1.101
+User aaron
 
 Host halcyon
 Hostname elasticdog.dnsalias.com
 #Port 49645
+User aaron
 
 Host halcyon.lcl
 Hostname 192.168.1.104
+User aaron
 
 Host linode
 Hostname 72.14.191.180
 Port 50454
+User aaron
 
 Host lish
 Hostname dallas139.linode.com
