@@ -20,6 +20,7 @@ vim
 vimrc
 zpath
 zprofile
+zsh
 zshenv
 zshrc
 "
