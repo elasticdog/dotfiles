@@ -7,6 +7,9 @@ export DISPLAY=':0.0'
 export EDITOR='vim'
 export PAGER='less -iM'
 
+export CVSROOT='aarons@cvs:/cvs'
+export CVS_RSH='ssh'
+
 unset MANPATH  # man does a better job on its own
 
 # Various profile/rc/login files all get sourced *after* this file, so we
