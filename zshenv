@@ -4,7 +4,7 @@
 
 export BROWSER='firefox'
 export DISPLAY=':0.0'
-export EDITOR='vim'
+export EDITOR='/usr/bin/vim'
 export PAGER='less -iM'
 
 unset MANPATH  # man does a better job on its own
