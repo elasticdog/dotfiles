@@ -1,15 +1,20 @@
 #!/bin/bash
 
 # Create needed directories if they don't already exist
+mkdir -p "$HOME/.bazaar"
+mkdir -p "$HOME/.hgext"
 mkdir -p "$HOME/.ssh"
 
 FILES="
 bash_profile
 bashrc
+bazaar/authentication.conf
+bazaar/bazaar.conf
 factor-boot-rc
 gemrc
 gitconfig
 gitignore
+hgext/hgshelve.py
 hgrc
 irbrc
 screenrc
@@ -18,6 +23,7 @@ vim
 vimrc
 zpath
 zprofile
+zsh
 zshenv
 zshrc
 "

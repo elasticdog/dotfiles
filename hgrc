@@ -1,12 +1,21 @@
 [ui]
-username = Aaron Schaefer <aaron@elasticdog.com>
+username = Aaron Bull Schaefer <aaron@elasticdog.com>
 merge = vimdiff
 ssh = ssh -C
 
 [extensions]
-hgext.fetch =
-hgext.mq =
 color =
+hgext.fetch =
+hgext.graphlog =
+hgext.mq =
+hgext.record =
+hgext.shelve = ~/.hgext/hgshelve.py
+pager =
+progress =
 
 [diff]
 git = True
+
+[pager]
+pager = LESS='FSRX' less
+ignore = version, help, update, serve, record

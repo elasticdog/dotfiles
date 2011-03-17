@@ -265,10 +265,10 @@ setprompt () {
 
 	local VCS_INFO="%s %F{green}%c%u%b%f"        # current VCS name and branch
 
-	zstyle ':vcs_info:*:prompt:*' enable cvs git hg svn    # only enable checking for these VCSs
-	zstyle ':vcs_info:*:prompt:*' check-for-changes true   # can be slow, but displays working dir & index changes
-	zstyle ':vcs_info:*:prompt:*' unstagedstr '%F{red}*'   # display this when there are unstaged changes
-	zstyle ':vcs_info:*:prompt:*' stagedstr '%F{yellow}+'  # display this when there are staged changes
+	zstyle ':vcs_info:*:prompt:*' enable bzr cvs git hg svn  # only enable checking for these VCSs
+	zstyle ':vcs_info:*:prompt:*' check-for-changes true     # can be slow, but displays working dir & index changes
+	zstyle ':vcs_info:*:prompt:*' unstagedstr '%F{red}*'     # display this when there are unstaged changes
+	zstyle ':vcs_info:*:prompt:*' stagedstr '%F{yellow}+'    # display this when there are staged changes
 
 	# sets vcs_info_msg_{0,1}_ when inside a repo, when inside a repo and performing an action, and when not inside a repo
 	zstyle ':vcs_info:*:prompt:*' formats       "${VCS_PATH}" "${VCS_USER} at ${VCS_HOST} on ${VCS_INFO}"
