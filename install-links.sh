@@ -19,6 +19,7 @@ hgrc
 irbrc
 screenrc
 ssh/config
+tmux.conf
 vim
 vimrc
 zpath
