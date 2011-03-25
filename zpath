@@ -5,4 +5,11 @@
 typeset -U fpath path  # keep only the first occurrence of each duplicated value
 
 fpath=($HOME/.zsh/completion $fpath)
-path=($HOME/bin /usr/local/bin /usr/local/sbin $path)
+case $OSTYPE in
+	darwin*)
+		path=($HOME/bin /usr/local/bin /usr/local/sbin /usr/local/share/python $path)
+		;;
+	linux*)
+		path=($HOME/bin /usr/local/bin /usr/local/sbin $path)
+		;;
+esac

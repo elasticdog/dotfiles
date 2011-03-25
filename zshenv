@@ -10,6 +10,8 @@ export PAGER='less -iM'
 export CVSROOT='aarons@cvs:/cvs'
 export CVS_RSH='ssh'
 
+export WORKON_HOME="$HOME/.virtualenvs"
+
 unset MANPATH  # man does a better job on its own
 
 # Various profile/rc/login files all get sourced *after* this file, so we

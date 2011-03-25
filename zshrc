@@ -292,6 +292,10 @@ setprompt
 # use autojump if it's available
 [[ -f $HOME/.autojump.zsh ]] && source $HOME/.autojump.zsh
 
+# use python virtualenv if it's available
+[[ ! -d $HOME/.virtualenvs ]] && mkdir "$HOME/.virtualenvs"
+command -v virtualenvwrapper.sh >/dev/null && source virtualenvwrapper.sh
+
 # use ruby version manager if it's available
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
