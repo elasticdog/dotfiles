@@ -226,6 +226,16 @@ function sshs {
 	fi
 }
 
+# ssh and attach to or start a tmux session on the remote server
+function ssht {
+	if [[ -z $* ]]; then
+		echo 'Usage: sshs [options] [user@]hostname'
+		echo 'SSH and automatically start a GNU screen session on the remote server'
+	else
+		ssh -t $* tmux attach
+	fi
+}
+
 
 ##### http://www.cs.drexel.edu/~mjw452/.zshrc
 
