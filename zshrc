@@ -130,14 +130,25 @@ function duf {
 	esac
 }
 
-# shortcut for git-add hunk staging
-alias gap='git add --patch'
-
 # shortcut for optipng's most exhaustive search
 [[ -x $(which optipng 2>/dev/null) ]] && alias optimax='optipng -zc1-9 -zm1-9 -zs0-3 -f0-5'
 
 # web cat
 [[ -x $(which wget 2>/dev/null) ]] && alias wcat='wget -q -O - '
+
+### git aliases
+
+# shortcut for git-add hunk staging
+alias gap='git add --patch'
+
+alias gmup='master_up'
+alias gmpu='master_push'
+alias gsyn='sync_repo'
+alias gbcr='branch_create'
+alias gbup='branch_up'
+alias gblg='branch_log'
+alias gbdf='branch_diff'
+alias gbmg='branch_merge'
 
 
 ##### Global Aliases
@@ -236,8 +247,67 @@ function ssht {
 	fi
 }
 
+### git functions
 
-##### http://www.cs.drexel.edu/~mjw452/.zshrc
+master_update() {
+	local CURRENT
+	CURRENT=${$(git symbolic-ref -q HEAD)##refs/heads/}
+	git checkout master
+	git pull --rebase
+	git checkout $CURRENT
+}
+
+master_push() {
+	local CURRENT
+	CURRENT=${$(git symbolic-ref -q HEAD)##refs/heads/}
+	git checkout master
+	git push
+	git checkout $CURRENT
+}
+
+sync_repo() {
+	master_update
+	master_push
+}
+
+branch_create() {
+	if [[ -z $1 ]]; then
+		echo 'Usage: branch_create <branchname>'
+		echo 'Creates a new branch head named <branchname> which points to master'
+	else
+		git checkout -b "$1" master
+	fi
+}
+
+branch_update() {
+	master_update
+	git rebase master
+}
+
+branch_log() {
+	local CURRENT
+	CURRENT=${$(git symbolic-ref -q HEAD)##refs/heads/}
+	echo "Commits in branch \"${CURRENT}\", but not \"master\":"
+	git log master..${CURRENT} --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset" --abbrev-commit --date=relative
+}
+
+branch_diff() {
+	local CURRENT
+	CURRENT=${$(git symbolic-ref -q HEAD)##refs/heads/}
+	echo "Commits in branch \"${CURRENT}\", but not \"master\":"
+	git diff master..${CURRENT}
+}
+
+branch_merge() {
+	local CURRENT
+	CURRENT=${$(git symbolic-ref -q HEAD)##refs/heads/}
+	branch_update
+	git checkout master
+	git merge --squash --no-commit "$CURRENT"
+	git commit
+}
+
+### http://www.cs.drexel.edu/~mjw452/.zshrc
 
 # check if a file can be autoloaded by trying to load it in a subshell
 function autoloadable {
