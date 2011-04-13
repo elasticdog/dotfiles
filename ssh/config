@@ -3,7 +3,7 @@ ControlPath /home/aaron/.ssh/master-%h-%p-%r
 User aschaefer
 
 Host deadlight
-Hostname elasticdog.dnsalias.com
+Hostname home.elasticdog.com
 Port 443
 User aaron
 
@@ -12,7 +12,7 @@ Hostname 192.168.1.101
 User aaron
 
 Host halcyon
-Hostname elasticdog.dnsalias.com
+Hostname home.elasticdog.com
 #Port 49645
 User aaron
 
