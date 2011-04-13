@@ -226,6 +226,16 @@ function sshs {
 	fi
 }
 
+# ssh and attach to or start a tmux session on the remote server
+function ssht {
+	if [[ -z $* ]]; then
+		echo 'Usage: sshs [options] [user@]hostname'
+		echo 'SSH and automatically start a GNU screen session on the remote server'
+	else
+		ssh -t $* tmux attach
+	fi
+}
+
 
 ##### http://www.cs.drexel.edu/~mjw452/.zshrc
 
@@ -291,6 +301,10 @@ setprompt
 
 # use autojump if it's available
 [[ -f $HOME/.autojump.zsh ]] && source $HOME/.autojump.zsh
+
+# use python virtualenv if it's available
+[[ ! -d $HOME/.virtualenvs ]] && mkdir "$HOME/.virtualenvs"
+command -v virtualenvwrapper.sh >/dev/null && source virtualenvwrapper.sh
 
 # use ruby version manager if it's available
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
