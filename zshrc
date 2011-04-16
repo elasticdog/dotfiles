@@ -141,11 +141,11 @@ function duf {
 # shortcut for git-add hunk staging
 alias gap='git add --patch'
 
-alias gmup='master_up'
+alias gmup='master_update'
 alias gmpu='master_push'
 alias gsyn='sync_repo'
 alias gbcr='branch_create'
-alias gbup='branch_up'
+alias gbup='branch_update'
 alias gblg='branch_log'
 alias gbdf='branch_diff'
 alias gbmg='branch_merge'
