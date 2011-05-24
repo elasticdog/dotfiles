@@ -1,23 +1,18 @@
-Host aur.archlinux.org
-ControlPath /home/aaron/.ssh/master-%h-%p-%r
-User aschaefer
-
 Host deadlight
-Hostname home.elasticdog.com
+Hostname ashgateway.dyndns.info
 Port 443
 User aaron
 
 Host deadlight.lcl
-Hostname 192.168.1.101
+Hostname 10.10.95.10
 User aaron
 
 Host halcyon
-Hostname home.elasticdog.com
-#Port 49645
+Hostname ashgateway.dyndns.info
 User aaron
 
 Host halcyon.lcl
-Hostname 192.168.1.104
+Hostname 10.10.95.11
 User aaron
 
 Host linode
@@ -29,6 +24,6 @@ Host lish
 Hostname dallas139.linode.com
 User linode40707
 
-Host pkgbuild
-Hostname pkgbuild.com
-User aschaefer
+Host *
+User aarons
+ServerAliveInterval 240
