@@ -11,6 +11,8 @@ SAVEHIST=1500
 bindkey -v  # use vi-style command line editing
 stty -ixon  # disable ^S/^Q (XON/XOFF) flow control
 
+[[ $OSTYPE == darwin* ]] && stty status '^T'  # ensure status character is set
+
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
