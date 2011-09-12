@@ -374,12 +374,12 @@ setprompt
 # use autojump if it's available
 [[ -f $HOME/.autojump.zsh ]] && source $HOME/.autojump.zsh
 
+# use ruby rbenv if it's available
+command -v rbenv >/dev/null && eval "$(rbenv init -)"
+
 # use python virtualenv if it's available
 [[ ! -d $HOME/.virtualenvs ]] && mkdir "$HOME/.virtualenvs"
 command -v virtualenvwrapper.sh >/dev/null && source virtualenvwrapper.sh
-
-# use ruby version manager if it's available
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 # invoke keychain to manage ssh/gpg keys
 if [[ -x $(which keychain 2>/dev/null) ]]; then
