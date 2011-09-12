@@ -32,7 +32,7 @@ if has('gui_running')
 	" Set font according to operating system
 	if has('macunix')
 		set antialias
-		set guifont=Anonymous_Pro:h18
+		set guifont=Menlo:h16
 	elseif has('win32')
 		set guifont=Terminus:h12:cANSI
 	else
