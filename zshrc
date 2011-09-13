@@ -135,6 +135,9 @@ function duf {
 # shortcut for optipng's most exhaustive search
 [[ -x $(which optipng 2>/dev/null) ]] && alias optimax='optipng -zc1-9 -zm1-9 -zs0-3 -f0-5'
 
+# ssh without using known_hosts protection
+alias sshkh='ssh -o LogLevel=ERROR -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
+
 # web cat
 [[ -x $(which wget 2>/dev/null) ]] && alias wcat='wget -q -O - '
 
