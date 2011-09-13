@@ -219,16 +219,6 @@ function fd {
 	fi
 }
 
-# copy the local ssh public key to remote server's authorized_hosts file
-function ssh-copy-id {
-	if [[ -z $1 ]]; then
-		echo 'Usage: ssh-copy-id [user@]hostname'
-		echo 'Copy your public key to a remote host in order to allow passwordless SSH connections'
-	else
-		ssh $1 'cat >> $HOME/.ssh/authorized_keys' < $HOME/.ssh/id_rsa.pub
-	fi
-}
-
 # ssh and start a screen session on the remote server
 function sshs {
 	if [[ -z $* ]]; then
