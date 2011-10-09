@@ -138,6 +138,9 @@ function duf {
 # ssh without using known_hosts protection
 alias sshkh='ssh -o LogLevel=ERROR -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
 
+# scp without using known_hosts protection
+alias scpkh='scp -o LogLevel=ERROR -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
+
 # web cat
 [[ -x $(which wget 2>/dev/null) ]] && alias wcat='wget -q -O - '
 

@@ -9,6 +9,7 @@ User aaron
 
 Host halcyon
 Hostname ashgateway.dyndns.info
+Port 49645
 User aaron
 
 Host halcyon.lcl
