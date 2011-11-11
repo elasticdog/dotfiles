@@ -66,6 +66,9 @@
 	path = vim/bundle/securemodelines
 	url = http://github.com/ciaranm/securemodelines.git
 	ignore = dirty
+[submodule "vim/bundle/slim"]
+	path = vim/bundle/slim
+	url = git://github.com/bbommarito/vim-slim.git
 [submodule "vim/bundle/speeddating"]
 	path = vim/bundle/speeddating
 	url = http://github.com/tpope/vim-speeddating.git
