@@ -8,6 +8,10 @@ HISTFILE="$HOME/.zsh_history"
 HISTSIZE=2000
 SAVEHIST=1500
 
+# up/down browses history or searches for the specified string
+bindkey '^[[A' up-line-or-search
+bindkey '^[[B' down-line-or-search
+
 bindkey -v  # use vi-style command line editing
 stty -ixon  # disable ^S/^Q (XON/XOFF) flow control
 
