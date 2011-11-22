@@ -79,10 +79,9 @@ esac
 ##### Command Aliases
 
 # no spelling correction for these commands
-alias cp='nocorrect cp'
-alias knife='nocorrect knife'
-alias mkdir='nocorrect mkdir'
-alias mv='nocorrect mv'
+for com in cp knife mkdir mv; do
+	alias $com="nocorrect $com"
+done
 
 # set default options
 alias grep='grep --color=auto'  # show the matching string in color
