@@ -5,6 +5,7 @@
 	br = branch
 	ci = commit --verbose
 	co = checkout
+	lo = log --graph --date-order -C -M --pretty=format:'<%h> %ad [%an] %Cgreen%d%Creset %s' --all --date=short
 	st = status --short --branch
 [color]
 	ui = auto
