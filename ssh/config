@@ -1,3 +1,6 @@
+Host *
+ControlPath ~/.ssh/master-%h-%p-%r
+
 Host deadlight
 Hostname ashgateway.dyndns.info
 Port 443
