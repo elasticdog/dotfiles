@@ -364,6 +364,9 @@ setprompt () {
 	PROMPT="${FMT_PATH} ${ERR_EXIT}%F{magenta}%# %f"  # left prompt
 	RPROMPT='${vcs_info_msg_1_}'                      # right prompt
 	PS2="%_ %F{8}>%F{13}>%F{magenta}> %f"             # continuation prompt
+
+	# spelling prompt
+	SPROMPT="Correct %F{red}%R%f to %F{green}%r%f [Yes,No,Abort,Edit]? "
 }
 
 setprompt
