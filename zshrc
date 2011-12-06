@@ -20,6 +20,7 @@ stty -ixon  # disable ^S/^Q (XON/XOFF) flow control
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
+zstyle ':completion:*' menu select=4
 
 # message formatting
 zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
