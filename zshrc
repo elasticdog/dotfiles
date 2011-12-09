@@ -62,6 +62,7 @@ case $OSTYPE in
 	darwin*)
 		alias ls='ls -GF'            # list in color with identifiers
 		alias gvimdiff='mvim -d -g'  # use MacVim for gvimdiff
+		alias vim='mvim -v'          # use MacVim for vim
 		;;
 	linux*)
 		alias ls='ls --color=auto --file-type'  # list in color with identifiers
