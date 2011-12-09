@@ -20,10 +20,12 @@ filetype plugin indent on  " Enable file type detection
 " --------------------------------------
 
 syntax enable           " Enable syntax highlighting
+set background=dark     " Set the background color brightness
 colorscheme vividchalk  " Emulate TextMate's color scheme by default
 " NOTE: if &t_Co == 256 ... test for 256-color capable terminal
 
 if has('gui_running')
+	colorscheme solarized          " Use different color scheme in GUI
 	set columns=132                " Set the window's width
 	set fuoptions=maxvert,maxhorz  " Maximize when entering fullscreen
 	set lines=44                   " Set the window's height
@@ -36,13 +38,12 @@ if has('gui_running')
 	elseif has('win32')
 		set guifont=Terminus:h12:cANSI
 	else
-		colorscheme desert
 		set guifont=Terminus\ 12
 	endif
 
 	" Use slight transparency when available
 	if has('gui_macvim')
-		set transparency=16
+		set transparency=4
 	endif
 else
 	" Make sure folds can be read when using a dark terminal
