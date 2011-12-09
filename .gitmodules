@@ -1,6 +1,6 @@
 [submodule "vim/bundle/ack"]
 	path = vim/bundle/ack
-	url = http://github.com/mileszs/ack.vim.git
+	url = git://github.com/mileszs/ack.vim.git
 	ignore = dirty
 [submodule "vim/bundle/command-t"]
 	path = vim/bundle/command-t
@@ -8,27 +8,31 @@
 	ignore = dirty
 [submodule "vim/bundle/endwise"]
 	path = vim/bundle/endwise
-	url = http://github.com/tpope/vim-endwise.git
+	url = git://github.com/tpope/vim-endwise.git
 	ignore = dirty
 [submodule "vim/bundle/git"]
 	path = vim/bundle/git
-	url = http://github.com/tpope/vim-git.git
+	url = git://github.com/tpope/vim-git.git
 	ignore = dirty
 [submodule "vim/bundle/fugitive"]
 	path = vim/bundle/fugitive
-	url = http://github.com/tpope/vim-fugitive.git
+	url = git://github.com/tpope/vim-fugitive.git
 	ignore = dirty
 [submodule "vim/bundle/haml"]
 	path = vim/bundle/haml
-	url = http://github.com/tpope/vim-haml.git
+	url = git://github.com/tpope/vim-haml.git
 	ignore = dirty
 [submodule "vim/bundle/json"]
 	path = vim/bundle/json
-	url = http://github.com/leshill/vim-json.git
+	url = git://github.com/leshill/vim-json.git
 	ignore = dirty
 [submodule "vim/bundle/liquid"]
 	path = vim/bundle/liquid
-	url = http://github.com/tpope/vim-liquid.git
+	url = git://github.com/tpope/vim-liquid.git
+	ignore = dirty
+[submodule "vim/bundle/multimarkdown"]
+	path = vim/bundle/multimarkdown
+	url = git://github.com/jngeist/vim-multimarkdown.git
 	ignore = dirty
 [submodule "vim/bundle/mustache"]
 	path = vim/bundle/mustache
@@ -36,27 +40,27 @@
 	ignore = dirty
 [submodule "vim/bundle/nerdtree"]
 	path = vim/bundle/nerdtree
-	url = http://github.com/scrooloose/nerdtree.git
+	url = git://github.com/scrooloose/nerdtree.git
 	ignore = dirty
 [submodule "vim/bundle/pastie"]
 	path = vim/bundle/pastie
-	url = http://github.com/tpope/vim-pastie.git
+	url = git://github.com/tpope/vim-pastie.git
 	ignore = dirty
 [submodule "vim/bundle/rails"]
 	path = vim/bundle/rails
-	url = http://github.com/tpope/vim-rails.git
+	url = git://github.com/tpope/vim-rails.git
 	ignore = dirty
 [submodule "vim/bundle/repeat"]
 	path = vim/bundle/repeat
-	url = http://github.com/tpope/vim-repeat.git
+	url = git://github.com/tpope/vim-repeat.git
 	ignore = dirty
 [submodule "vim/bundle/ruby"]
 	path = vim/bundle/ruby
-	url = http://github.com/vim-ruby/vim-ruby.git
+	url = git://github.com/vim-ruby/vim-ruby.git
 	ignore = dirty
 [submodule "vim/bundle/textile"]
 	path = vim/bundle/textile
-	url = http://github.com/timcharper/textile.vim.git
+	url = git://github.com/timcharper/textile.vim.git
 	ignore = dirty
 [submodule "vim/bundle/sass"]
 	path = vim/bundle/sass
@@ -64,18 +68,18 @@
 	ignore = dirty
 [submodule "vim/bundle/securemodelines"]
 	path = vim/bundle/securemodelines
-	url = http://github.com/ciaranm/securemodelines.git
+	url = git://github.com/ciaranm/securemodelines.git
 	ignore = dirty
 [submodule "vim/bundle/slim"]
 	path = vim/bundle/slim
 	url = git://github.com/bbommarito/vim-slim.git
 [submodule "vim/bundle/speeddating"]
 	path = vim/bundle/speeddating
-	url = http://github.com/tpope/vim-speeddating.git
+	url = git://github.com/tpope/vim-speeddating.git
 	ignore = dirty
 [submodule "vim/bundle/surround"]
 	path = vim/bundle/surround
-	url = http://github.com/tpope/vim-surround.git
+	url = git://github.com/tpope/vim-surround.git
 	ignore = dirty
 [submodule "vim/bundle/tabular"]
 	path = vim/bundle/tabular
@@ -87,5 +91,5 @@
 	ignore = dirty
 [submodule "vim/bundle/vividchalk"]
 	path = vim/bundle/vividchalk
-	url = http://github.com/tpope/vim-vividchalk.git
+	url = git://github.com/tpope/vim-vividchalk.git
 	ignore = dirty
