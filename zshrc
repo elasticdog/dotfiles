@@ -63,6 +63,12 @@ case $OSTYPE in
 		alias ls='ls -GF'            # list in color with identifiers
 		alias gvimdiff='mvim -d -g'  # use MacVim for gvimdiff
 		alias vim='mvim -v'          # use MacVim for vim
+
+		# shenanigans to get pbcopy/pbpaste working in tmux
+		# https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard
+		if [[ -f $HOME/bin/reattach-to-user-namespace ]]; then
+			alias tmux='tmux attach || tmux new-session "reattach-to-user-namespace -l $SHELL"'
+		fi
 		;;
 	linux*)
 		alias ls='ls --color=auto --file-type'  # list in color with identifiers
