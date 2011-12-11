@@ -30,10 +30,6 @@
 	path = vim/bundle/liquid
 	url = git://github.com/tpope/vim-liquid.git
 	ignore = dirty
-[submodule "vim/bundle/multimarkdown"]
-	path = vim/bundle/multimarkdown
-	url = git://github.com/jngeist/vim-multimarkdown.git
-	ignore = dirty
 [submodule "vim/bundle/mustache"]
 	path = vim/bundle/mustache
 	url = git://github.com/juvenn/mustache.vim.git
