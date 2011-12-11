@@ -240,7 +240,7 @@ function fd {
 function sshs {
 	if [[ -z $* ]]; then
 		echo 'Usage: sshs [options] [user@]hostname'
-		echo 'SSH and automatically start a GNU screen session on the remote server'
+		echo 'SSH and automatically attach to or start a GNU screen session on the remote server'
 	else
 		ssh -t $* screen -DRU
 	fi
@@ -249,10 +249,10 @@ function sshs {
 # ssh and attach to or start a tmux session on the remote server
 function ssht {
 	if [[ -z $* ]]; then
-		echo 'Usage: sshs [options] [user@]hostname'
-		echo 'SSH and automatically start a GNU screen session on the remote server'
+		echo 'Usage: ssht [options] [user@]hostname'
+		echo 'SSH and automatically attach to or start a tmux session on the remote server'
 	else
-		ssh -t $* tmux attach
+		ssh -t $* tmuxx
 	fi
 }
 
