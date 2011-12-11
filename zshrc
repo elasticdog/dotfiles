@@ -22,6 +22,9 @@ zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
 zstyle ':completion:*' menu select=4
 
+autoload -U colors ; colors
+zstyle -e ':completion:*' list-colors 'thingy=${PREFIX##*/} reply=( "=(#b)($thingy)(?)*=00=$color[green]=$color[bold]" )'
+
 # message formatting
 zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
 zstyle ':completion:*:warnings' format '%BNo matches for: %d%b'
@@ -61,13 +64,9 @@ setopt no_case_glob          # disable glob case sensitivity
 case $OSTYPE in
 	darwin*)
 		alias ls='ls -GF'            # list in color with identifiers
-		alias gvimdiff='mvim -d -g'  # use MacVim for gvimdiff
-		alias vim='mvim -v'          # use MacVim for vim
-
-		# shenanigans to get pbcopy/pbpaste working in tmux
-		# https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard
-		if [[ -f $HOME/bin/reattach-to-user-namespace ]]; then
-			alias tmux='tmux attach || tmux new-session "reattach-to-user-namespace -l $SHELL"'
+		if [[ -x $(which mvim 2>/dev/null) ]]; then
+			alias gvimdiff='mvim -d -g'  # use MacVim for gvimdiff
+			alias vim='mvim -v'          # use MacVim for terminal vim
 		fi
 		;;
 	linux*)
