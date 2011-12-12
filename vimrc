@@ -25,11 +25,12 @@ colorscheme vividchalk  " Emulate TextMate's color scheme by default
 " NOTE: if &t_Co == 256 ... test for 256-color capable terminal
 
 if has('gui_running')
-	colorscheme solarized          " Use different color scheme in GUI
-	set columns=132                " Set the window's width
-	set fuoptions=maxvert,maxhorz  " Maximize when entering fullscreen
-	set lines=44                   " Set the window's height
-	set guioptions-=T              " Remove the toolbar from the window
+	colorscheme solarized  " Use different color scheme in GUI
+	set columns=132        " Set the window's width
+	set lines=44           " Set the window's height
+	set cursorline         " Highlight the screen line of the cursor
+	set guioptions-=T      " Remove the toolbar from the window
+
 
 	" Set font according to operating system
 	if has('macunix')
@@ -41,9 +42,9 @@ if has('gui_running')
 		set guifont=Terminus\ 12
 	endif
 
-	" Use slight transparency when available
 	if has('gui_macvim')
-		set transparency=4
+		set fuoptions=maxvert,maxhorz  " Maximize when entering fullscreen
+		set transparency=4             " Use slight window transparency
 	endif
 else
 	" Make sure folds can be read when using a dark terminal
