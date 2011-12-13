@@ -337,6 +337,9 @@ if has("autocmd")
 	autocmd BufRead,BufNewFile *.{md,mkd,mkdn,mdown,markdown} setfiletype markdown
 	autocmd BufRead,BufNewFile *.{mmd,multimarkdown} setfiletype markdown
 
+	" For all markdown files, Use 2 spaces for indentation
+	autocmd FileType markdown setlocal et sts=2 sw=2 ts=2 tw=74
+
 	" Jump to the last known cursor position when opening files
 	autocmd BufReadPost * call RestoreCursor()
 endif
