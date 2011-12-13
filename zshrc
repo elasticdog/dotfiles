@@ -150,6 +150,9 @@ function duf {
 # shortcut for optipng's most exhaustive search
 [[ -x $(which optipng 2>/dev/null) ]] && alias optimax='optipng -zc1-9 -zm1-9 -zs0-3 -f0-5'
 
+# use a more portable $TERM value when in tmux and connecting to a remote machine
+[[ -n $TMUX ]] && alias ssh='TERM="xterm-256color" ssh'
+
 # ssh without using known_hosts protection
 alias sshkh='ssh -o LogLevel=ERROR -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
 
