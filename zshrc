@@ -86,8 +86,13 @@ esac
 ##### Command Aliases
 
 # no spelling correction for these commands
-for com in cp knife mkdir mv; do
-	alias $com="nocorrect $com"
+for command in cp knife mkdir mv; do
+	alias $command="nocorrect $command"
+done
+
+# no globbing for these commands
+for command in bundle rake; do
+	alias $command="noglob $command"
 done
 
 # set default options
@@ -176,6 +181,7 @@ alias -g ....='../../..'
 alias -g .....='../../../..'
 
 alias -g A='| column -t'
+alias -g B='bundle exec'
 alias -g C='clear && '
 alias -g G='| grep'
 alias -g H='| head'
