@@ -47,7 +47,7 @@ compinit
 # enable powerful pattern-based renaming
 autoload zmv
 
-setopt append_history        # history appends to existing file
+setopt share_history         # use common history file for all sessions
 setopt auto_pushd            # cd uses directory stack too
 setopt correct_all           # correct spelling of all arguments
 setopt extended_glob         # use extended paterns while globbing
