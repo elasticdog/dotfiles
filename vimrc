@@ -330,14 +330,14 @@ nnoremap <silent> <Leader>yr :YRShow<CR>
 " FILETYPE SPECIFIC SETTINGS
 " --------------------------------------
 if has("autocmd")
-	" For all JSON/Ruby/YAML files, use the standard 2 spaces for indentation
-	autocmd FileType json,ruby,yaml setlocal et sts=2 sw=2 ts=2
+	" For all JavaScript/JSON/Ruby/YAML files, use the standard 2 spaces for indentation
+	autocmd FileType javascript,json,ruby,yaml setlocal et sts=2 sw=2 ts=2
 
 	" Make sure all markdown files have the correct filetype set
 	autocmd BufRead,BufNewFile *.{md,mkd,mkdn,mdown,markdown} setfiletype markdown
 	autocmd BufRead,BufNewFile *.{mmd,multimarkdown} setfiletype markdown
 
-	" For all markdown files, Use 2 spaces for indentation
+	" For all markdown files, use 2 spaces for indentation
 	autocmd FileType markdown setlocal et sts=2 sw=2 ts=2 tw=74
 
 	" Jump to the last known cursor position when opening files
