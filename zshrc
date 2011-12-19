@@ -63,6 +63,7 @@ setopt no_case_glob          # disable glob case sensitivity
 
 case $OSTYPE in
 	darwin*)
+		alias lock='/System/Library/CoreServices/"Menu Extras"/User.menu/Contents/Resources/CGSession -suspend'
 		alias ls='ls -GF'            # list in color with identifiers
 		if [[ -x $(which mvim 2>/dev/null) ]]; then
 			alias gvimdiff='mvim -d -g'  # use MacVim for gvimdiff
