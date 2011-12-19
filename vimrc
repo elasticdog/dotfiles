@@ -97,9 +97,6 @@ set noerrorbells
 set novisualbell
 set t_vb=
 
-" Sync the unnamed register with the system clipboard
-set clipboard=unnamed
-
 " Centrally store all swap files using full path names
 set directory=/var/tmp//
 
