@@ -142,6 +142,9 @@ set shiftwidth=4
 set softtabstop=4
 set tabstop=4
 
+" Indent bulleted lists properly
+set comments=://,b:#,:%,:XCOMM,n:>,fb:-,fb:*
+
 " Change default format options:
 set formatoptions-=t  " turn off auto-wrapping type
 set formatoptions-=c  " turn off auto-wrapping comments
