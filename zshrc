@@ -64,10 +64,17 @@ setopt no_case_glob          # disable glob case sensitivity
 case $OSTYPE in
 	darwin*)
 		alias lock='/System/Library/CoreServices/"Menu Extras"/User.menu/Contents/Resources/CGSession -suspend'
-		alias ls='ls -GF'            # list in color with identifiers
+		alias ls='ls -GF'                # list in color with identifiers
 		if [[ -x $(which mvim 2>/dev/null) ]]; then
 			alias gvimdiff='mvim -d -g'  # use MacVim for gvimdiff
 			alias vim='mvim -v'          # use MacVim for terminal vim
+		fi
+
+		# force all traffic through an ssh tunnel to my VPS
+		# useful when using insecure wireless connections
+		if [[ -x $(which sshuttle 2>/dev/null) ]]; then
+			alias tunnel='sshuttle --daemon --dns --pidfile=/tmp/sshuttle.pid --remote=linode 0/0'
+			alias tunnelx='[[ -f /tmp/sshuttle.pid ]] && kill $(cat /tmp/sshuttle.pid) && echo "Disconnected."'
 		fi
 		;;
 	linux*)
