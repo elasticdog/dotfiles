@@ -2,7 +2,6 @@
 # ~/.zshenv
 #
 
-export BROWSER='firefox'
 export DISPLAY=':0.0'
 export EDITOR='vim'
 export PAGER='less -iM'
