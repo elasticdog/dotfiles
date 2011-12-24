@@ -10,6 +10,10 @@ case $OSTYPE in
 		path=($HOME/bin /usr/local/bin /usr/local/sbin /usr/local/share/python $path)
 		;;
 	linux*)
-		path=($HOME/bin /usr/local/bin /usr/local/sbin $path)
+		if [[ -d $HOME/.rbenv/bin ]]; then
+			path=($HOME/bin $HOME/.rbenv/bin /usr/local/bin /usr/local/sbin $path)
+		else
+			path=($HOME/bin /usr/local/bin /usr/local/sbin $path)
+		fi
 		;;
 esac
