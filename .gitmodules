@@ -42,6 +42,10 @@
 	path = vim/bundle/pastie
 	url = git://github.com/tpope/vim-pastie.git
 	ignore = dirty
+[submodule "vim/bundle/puppet"]
+	path = vim/bundle/puppet
+	url = git://github.com/rodjek/vim-puppet.git
+	ignore = dirty
 [submodule "vim/bundle/rails"]
 	path = vim/bundle/rails
 	url = git://github.com/tpope/vim-rails.git
