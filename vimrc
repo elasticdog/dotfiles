@@ -340,6 +340,9 @@ if has("autocmd")
 	" For all markdown files, use 2 spaces for indentation
 	autocmd FileType markdown setlocal et sts=2 sw=2 ts=2 tw=74
 
+	" For all Python files, use the standard 4 spaces for indentation
+	autocmd FileType python setlocal et sts=4 sw=4 ts=4
+
 	" Jump to the last known cursor position when opening files
 	autocmd BufReadPost * call RestoreCursor()
 endif
