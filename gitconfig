@@ -7,6 +7,8 @@
 	co = checkout
 	lo = log --graph --date-order -C -M --pretty=format:'<%h> %ad [%an] %Cgreen%d%Creset %s' --all --date=short
 	st = status --short --branch
+	ribbon = tag --force _ribbon origin/master
+	catchup = log --patch --reverse --topo-order _ribbon..origin/master
 [color]
 	ui = auto
 [core]
