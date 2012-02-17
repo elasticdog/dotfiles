@@ -1,22 +1,13 @@
 Host *
 ControlPath ~/.ssh/master-%h-%p-%r
 
-Host deadlight
-Hostname ashgateway.dyndns.info
-Port 443
-User aaron
-
-Host deadlight.lcl
-Hostname 10.10.95.10
-User aaron
-
 Host halcyon
-Hostname ashgateway.dyndns.info
+Hostname elasticdog.bounceme.net
 Port 49645
 User aaron
 
 Host halcyon.lcl
-Hostname 10.10.95.11
+Hostname 192.168.1.111
 User aaron
 
 Host linode
