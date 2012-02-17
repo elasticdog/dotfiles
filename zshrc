@@ -170,6 +170,9 @@ alias sshkh='ssh -o LogLevel=ERROR -o StrictHostKeyChecking=no -o UserKnownHosts
 # scp without using known_hosts protection
 alias scpkh='scp -o LogLevel=ERROR -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
 
+# ssh using work configuration file
+alias sshw='ssh -F ~/.ssh/mnx-config'
+
 # web cat
 [[ -x $(which wget 2>/dev/null) ]] && alias wcat='wget -q -O - '
 
@@ -201,7 +204,7 @@ alias -g G='| grep'
 alias -g H='| head'
 alias -g L='| less'
 alias -g N='> /dev/null 2>&1'
-alias -g P='ps aux | grep'
+alias -g P='ps aux | head -1 && ps aux | grep'
 alias -g S='| sort'
 alias -g T='| tail'
 alias -g W='| wc -l'
