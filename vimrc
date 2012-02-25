@@ -252,6 +252,9 @@ nnoremap <Leader>p :set invpaste paste?<CR>
 " Remove trailing whitespace
 noremap <silent> <Leader>rtw :call Preserve("%s/\\s\\+$//e")<CR>
 
+" Replace word with the contents of the unnamed register (paste buffer)
+noremap <silent> <Leader>rw "_diwhp<CR>
+
 " Toggle spellchecking for the local buffer
 noremap <silent> <Leader>sc :setlocal spell! spelllang=en_us<CR>
 
