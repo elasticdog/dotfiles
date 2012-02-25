@@ -200,6 +200,9 @@ vnoremap / /\v
 " Save a keystroke when entering command-line mode
 noremap ; :
 
+" Highlight all occurrences of current word without moving
+nnoremap <D-*> :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
+
 " Don't move linewise when long lines are wrapped
 noremap j gj
 noremap k gk
