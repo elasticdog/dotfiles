@@ -317,6 +317,9 @@ let g:rails_default_database = 'sqlite3'
 " scratch.vim - Scratch Buffer
 noremap <silent> <Leader><Tab> :Scratch<CR>
 
+" tabular.vim - Tabularize Plugin
+nnoremap <Leader>A :Tabularize /
+
 " taglist.vim - Tag List
 let Tlist_Enable_Fold_Column = 0       " Do not show folding tree
 let Tlist_Exit_OnlyWindow = 1          " Exit Vim if only Taglist left open
