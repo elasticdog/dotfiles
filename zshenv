@@ -3,8 +3,9 @@
 #
 
 export DISPLAY=':0.0'
-export EDITOR='vim'
 export PAGER='less -iM'
+
+command -v mvim >/dev/null && export EDITOR='mvim -v' || export EDITOR='vim'
 
 export CVSROOT='aarons@cvs:/cvs'
 export CVS_RSH='ssh'
