@@ -283,19 +283,23 @@ function ssht {
 ### git functions
 
 master_update() {
-	local CURRENT
-	CURRENT=${$(git symbolic-ref -q HEAD)##refs/heads/}
+	local CURRENT_BRANCH="${$(git symbolic-ref -q HEAD)##refs/heads/}"
+	local WORKING_DIR="$PWD"
+	cd $(git rev-parse --show-toplevel)
 	git checkout master
 	git pull --rebase
-	git checkout $CURRENT
+	git checkout "$CURRENT_BRANCH"
+	cd "$WORKING_DIR"
 }
 
 master_push() {
-	local CURRENT
-	CURRENT=${$(git symbolic-ref -q HEAD)##refs/heads/}
+	local CURRENT_BRANCH="${$(git symbolic-ref -q HEAD)##refs/heads/}"
+	local WORKING_DIR="$PWD"
+	cd $(git rev-parse --show-toplevel)
 	git checkout master
 	git push
-	git checkout $CURRENT
+	git checkout "$CURRENT_BRANCH"
+	cd "$WORKING_DIR"
 }
 
 sync_repo() {
@@ -318,26 +322,26 @@ branch_update() {
 }
 
 branch_log() {
-	local CURRENT
-	CURRENT=${$(git symbolic-ref -q HEAD)##refs/heads/}
-	echo "Commits in branch \"${CURRENT}\", but not \"master\":"
-	git log master..${CURRENT} --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset" --abbrev-commit --date=relative
+	local CURRENT_BRANCH=${$(git symbolic-ref -q HEAD)##refs/heads/}
+	echo "Commits in branch \"${CURRENT_BRANCH}\", but not \"master\":"
+	git log master..${CURRENT_BRANCH} --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset" --abbrev-commit --date=relative
 }
 
 branch_diff() {
-	local CURRENT
-	CURRENT=${$(git symbolic-ref -q HEAD)##refs/heads/}
-	echo "Commits in branch \"${CURRENT}\", but not \"master\":"
-	git diff master..${CURRENT}
+	local CURRENT_BRANCH=${$(git symbolic-ref -q HEAD)##refs/heads/}
+	echo "Commits in branch \"${CURRENT_BRANCH}\", but not \"master\":"
+	git diff master..${CURRENT_BRANCH}
 }
 
 branch_merge() {
-	local CURRENT
-	CURRENT=${$(git symbolic-ref -q HEAD)##refs/heads/}
+	local CURRENT_BRANCH=${$(git symbolic-ref -q HEAD)##refs/heads/}
+	local WORKING_DIR="$PWD"
 	branch_update
+	cd $(git rev-parse --show-toplevel)
 	git checkout master
-	git merge --squash --no-commit "$CURRENT"
+	git merge --squash --no-commit "$CURRENT_BRANCH"
 	git commit
+	cd "$WORKING_DIR"
 }
 
 ### http://www.cs.drexel.edu/~mjw452/.zshrc
