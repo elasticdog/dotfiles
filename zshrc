@@ -94,7 +94,7 @@ esac
 ##### Command Aliases
 
 # no spelling correction for these commands
-for command in cp knife mkdir mv; do
+for command in cp knife mkdir mv ssh; do
 	alias $command="nocorrect $command"
 done
 
