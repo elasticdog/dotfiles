@@ -286,7 +286,8 @@ function ssht {
 ### git functions
 
 master_update() {
-	local CURRENT_BRANCH="${$(git symbolic-ref -q HEAD)##refs/heads/}"
+	local CURRENT_BRANCH="$(git symbolic-ref -q HEAD)"
+	CURRENT_BRANCH="${CURRENT_BRANCH##refs/heads/}"
 	local WORKING_DIR="$PWD"
 	cd $(git rev-parse --show-toplevel)
 	git checkout master
@@ -296,7 +297,8 @@ master_update() {
 }
 
 master_push() {
-	local CURRENT_BRANCH="${$(git symbolic-ref -q HEAD)##refs/heads/}"
+	local CURRENT_BRANCH="$(git symbolic-ref -q HEAD)"
+	CURRENT_BRANCH="${CURRENT_BRANCH##refs/heads/}"
 	local WORKING_DIR="$PWD"
 	cd $(git rev-parse --show-toplevel)
 	git checkout master
@@ -325,19 +327,22 @@ branch_update() {
 }
 
 branch_log() {
-	local CURRENT_BRANCH=${$(git symbolic-ref -q HEAD)##refs/heads/}
+	local CURRENT_BRANCH="$(git symbolic-ref -q HEAD)"
+	CURRENT_BRANCH="${CURRENT_BRANCH##refs/heads/}"
 	echo "Commits in branch \"${CURRENT_BRANCH}\", but not \"master\":"
 	git log master..${CURRENT_BRANCH} --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset" --abbrev-commit --date=relative
 }
 
 branch_diff() {
-	local CURRENT_BRANCH=${$(git symbolic-ref -q HEAD)##refs/heads/}
+	local CURRENT_BRANCH="$(git symbolic-ref -q HEAD)"
+	CURRENT_BRANCH="${CURRENT_BRANCH##refs/heads/}"
 	echo "Commits in branch \"${CURRENT_BRANCH}\", but not \"master\":"
 	git diff master..${CURRENT_BRANCH}
 }
 
 branch_merge() {
-	local CURRENT_BRANCH=${$(git symbolic-ref -q HEAD)##refs/heads/}
+	local CURRENT_BRANCH="$(git symbolic-ref -q HEAD)"
+	CURRENT_BRANCH="${CURRENT_BRANCH##refs/heads/}"
 	local WORKING_DIR="$PWD"
 	branch_update
 	cd $(git rev-parse --show-toplevel)
