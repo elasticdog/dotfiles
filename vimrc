@@ -11,9 +11,8 @@ set nobackup      " Do not automatically backup files
 set history=1000  " Remember 1000 lines of command line history
 
 filetype off
-call pathogen#runtime_append_all_bundles()
+call pathogen#infect()
 filetype plugin indent on  " Enable file type detection
-
 
 
 " COLORS AND FONTS
