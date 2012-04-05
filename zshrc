@@ -161,6 +161,9 @@ function duf {
 # shortcut for optipng's most exhaustive search
 [[ -x $(which optipng 2>/dev/null) ]] && alias optimax='optipng -zc1-9 -zm1-9 -zs0-3 -f0-5'
 
+# remove color escape codes from output
+alias rc='sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g"'
+
 # use a more portable $TERM value when in tmux and connecting to a remote machine
 [[ -n $TMUX ]] && alias ssh='TERM="xterm-256color" ssh'
 
