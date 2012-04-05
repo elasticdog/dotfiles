@@ -5,8 +5,11 @@
 	br = branch
 	ci = commit --verbose
 	co = checkout
-	lo = log --graph --date-order -C -M --pretty=format:'<%h> %ad [%an] %Cgreen%d%Creset %s' --all --date=short
+	dstat = diff --stat
+	fpatch = format-patch --patience --full-index -M -C
+	lo = log --all --date-order --oneline --graph --decorate -M -C
 	st = status --short --branch
+	staged = diff --cached
 	ribbon = tag --force _ribbon origin/master
 	catchup = log --patch --reverse --topo-order _ribbon..origin/master
 [color]
