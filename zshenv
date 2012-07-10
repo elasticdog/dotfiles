@@ -11,6 +11,7 @@ export CVSROOT='aarons@cvs:/cvs'
 export CVS_RSH='ssh'
 
 export WORKON_HOME="$HOME/.virtualenvs"
+export GOROOT='/usr/local/Cellar/go/1.0.1'
 
 unset MANPATH  # man does a better job on its own
 

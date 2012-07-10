@@ -423,6 +423,9 @@ setprompt
 # use autojump if it's available
 [[ -f $HOME/.autojump.zsh ]] && source $HOME/.autojump.zsh
 
+# load Go lang settings/completiong if it's available
+[[ -f $GOROOT/misc/zsh/go ]] && source $GOROOT/misc/zsh/go
+
 # use ruby rbenv if it's available
 command -v rbenv >/dev/null && eval "$(rbenv init -)"
 

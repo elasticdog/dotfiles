@@ -12,7 +12,8 @@ set history=1000  " Remember 1000 lines of command line history
 
 filetype off
 call pathogen#infect()
-filetype plugin indent on  " Enable file type detection
+set runtimepath+=$GOROOT/misc/vim  " Use upstream Go lang plugins
+filetype plugin indent on          " Enable file type detection
 
 
 " COLORS AND FONTS
