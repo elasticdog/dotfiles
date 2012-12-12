@@ -18,3 +18,5 @@
 	excludesfile = ~/.gitignore
 [merge]
 	tool = gvimdiff
+[push]
+	default = simple
