@@ -158,6 +158,15 @@ function duf {
 	esac
 }
 
+# alternative duv?
+# du --max-depth=1 | sort -r -n | awk '{split("k m g",v); s=1; while($1>1024){$1/=1024; s++} print int($1)" "v[s]"\t"$2}'
+
+# another alternative?
+# function duv {
+# du -sk "$@" | sort -n | while read size fname; do for unit in k M G T P E Z Y; do if [ $size -lt 1024 ]; then echo -e "${size}${unit}\t${fname}"; break; fi; size=$((size/1024)); done; done
+# }
+
+alias humanize="awk '{ split( \"B KB MB GB TB PB\" , unit ); s=1; while( \$1>1000 ){ \$1/=1000; s++ } printf \"%6.1f %s  %s\n\", \$1, unit[s], \$2 }'"
 # shortcut for optipng's most exhaustive search
 [[ -x $(which optipng 2>/dev/null) ]] && alias optimax='optipng -zc1-9 -zm1-9 -zs0-3 -f0-5'
 
