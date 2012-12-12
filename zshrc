@@ -167,6 +167,10 @@ function duf {
 # }
 
 alias humanize="awk '{ split( \"B KB MB GB TB PB\" , unit ); s=1; while( \$1>1000 ){ \$1/=1000; s++ } printf \"%6.1f %s  %s\n\", \$1, unit[s], \$2 }'"
+
+# remove duplicate lines in a file without sorting
+alias nodups="awk '!x[\$0]++'"
+
 # shortcut for optipng's most exhaustive search
 [[ -x $(which optipng 2>/dev/null) ]] && alias optimax='optipng -zc1-9 -zm1-9 -zs0-3 -f0-5'
 
