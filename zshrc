@@ -94,12 +94,12 @@ esac
 ##### Command Aliases
 
 # no spelling correction for these commands
-for command in cp knife mkdir mv ssh; do
+for command in cp git knife mkdir mv ssh; do
 	alias $command="nocorrect $command"
 done
 
 # no globbing for these commands
-for command in bundle rake; do
+for command in bundle git rake; do
 	alias $command="noglob $command"
 done
 
