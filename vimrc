@@ -339,6 +339,10 @@ nnoremap <silent> <Leader>yr :YRShow<CR>
 " FILETYPE SPECIFIC SETTINGS
 " --------------------------------------
 if has("autocmd")
+	" For all go files, use tabs for indentation and auto-format on write
+	autocmd FileType go setlocal noet sts=4 sw=4 ts=4 tw=74
+	autocmd BufWritePre *.go :silent Fmt
+
 	" For all JavaScript/JSON/Ruby/YAML files, use the standard 2 spaces for indentation
 	autocmd FileType javascript,json,ruby,yaml setlocal et sts=2 sw=2 ts=2
 
