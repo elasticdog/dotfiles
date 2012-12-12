@@ -107,7 +107,7 @@ set display=lastline
 set fillchars=vert:\ ,fold:-
 
 " In list mode, use these custom characters
-set listchars=tab:▸\ ,extends:>,precedes:<
+set listchars=tab:\|\ ,extends:>,precedes:<
 
 " Always show the customized statusline
 set laststatus=2
