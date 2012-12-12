@@ -138,9 +138,9 @@ set smarttab     " Use tabs at the start of a line, spaces elsewhere
 set nowrap       " Do not automatically wrap long lines
 
 " Set up default tab spacing
-set shiftwidth=4
-set softtabstop=4
-set tabstop=4
+set shiftwidth=2
+set softtabstop=2
+set tabstop=2
 
 " Indent bulleted lists properly
 set comments=://,b:#,:%,:XCOMM,n:>,fb:-,fb:*
