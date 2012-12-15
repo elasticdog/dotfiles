@@ -302,10 +302,10 @@ function ssht {
 ### git functions
 
 master_update() {
-	local CURRENT_BRANCH="$(git symbolic-ref -q HEAD)"
-	CURRENT_BRANCH="${CURRENT_BRANCH##refs/heads/}"
+	local TOPLEVEL_DIR=$(git rev-parse --show-toplevel)
+	local CURRENT_BRANCH="${$(git symbolic-ref -q HEAD)##refs/heads/}"
 	local WORKING_DIR="$PWD"
-	cd $(git rev-parse --show-toplevel)
+	cd "$TOPLEVEL_DIR"
 	git checkout master
 	git pull --rebase
 	git checkout "$CURRENT_BRANCH"
@@ -313,10 +313,10 @@ master_update() {
 }
 
 master_push() {
-	local CURRENT_BRANCH="$(git symbolic-ref -q HEAD)"
-	CURRENT_BRANCH="${CURRENT_BRANCH##refs/heads/}"
+	local TOPLEVEL_DIR=$(git rev-parse --show-toplevel)
+	local CURRENT_BRANCH="${$(git symbolic-ref -q HEAD)##refs/heads/}"
 	local WORKING_DIR="$PWD"
-	cd $(git rev-parse --show-toplevel)
+	cd "$TOPLEVEL_DIR"
 	git checkout master
 	git push
 	git checkout "$CURRENT_BRANCH"
@@ -324,48 +324,71 @@ master_push() {
 }
 
 sync_repo() {
-	master_update
-	master_push
+	if git config --get 'branch.master.remote'; then
+		master_update
+		master_push
+	fi
 }
 
 branch_create() {
 	if [[ -z $1 ]]; then
 		echo 'Usage: branch_create <branchname>'
-		echo 'Creates a new branch head named <branchname> which points to master'
+		echo 'Creates a new branch named <branchname> with master as its start point'
 	else
 		git checkout -b "$1" master
 	fi
 }
 
 branch_update() {
-	master_update
+	if git config --get 'branch.master.remote'; then
+		master_update
+	fi
 	git rebase master
 }
 
+# most commonly used; squash all branch commits into one
+branch_merge() {
+	local TOPLEVEL_DIR=$(git rev-parse --show-toplevel)
+	local CURRENT_BRANCH="${$(git symbolic-ref -q HEAD)##refs/heads/}"
+	local WORKING_DIR="$PWD"
+	if branch_update; then
+		cd "$TOPLEVEL_DIR"
+		git checkout master
+		# validate that the merge happens since we have to forcefully delete the branch
+		if git merge --ff-only --squash "$CURRENT_BRANCH"; then
+			git commit --verbose --edit -m "$(echo "Squashed commit of the following:\n\n$(git log master..${CURRENT_BRANCH} --pretty=format:'    * %ad %h - %s' --date=short)")"
+			git branch -D "$CURRENT_BRANCH"
+		fi
+		cd "$WORKING_DIR"
+	fi
+}
+
+# used for bigger branches; allows you to manually squash/fixup
+# branch commits into smaller, more logical/manageable chunks
+big_branch_merge() {
+	local TOPLEVEL_DIR=$(git rev-parse --show-toplevel)
+	local CURRENT_BRANCH="${$(git symbolic-ref -q HEAD)##refs/heads/}"
+	local WORKING_DIR="$PWD"
+	if branch_update; then
+		cd "$TOPLEVEL_DIR"
+		git rebase --interactive --autosquash master
+		git checkout master
+		git merge --no-ff --no-commit "$CURRENT_BRANCH"
+		git commit
+		cd "$WORKING_DIR"
+	fi
+}
+
 branch_log() {
-	local CURRENT_BRANCH="$(git symbolic-ref -q HEAD)"
-	CURRENT_BRANCH="${CURRENT_BRANCH##refs/heads/}"
+	local CURRENT_BRANCH="${$(git symbolic-ref -q HEAD)##refs/heads/}"
 	echo "Commits in branch \"${CURRENT_BRANCH}\", but not \"master\":"
-	git log master..${CURRENT_BRANCH} --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset" --abbrev-commit --date=relative
+	git log master..${CURRENT_BRANCH} --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
 }
 
 branch_diff() {
-	local CURRENT_BRANCH="$(git symbolic-ref -q HEAD)"
-	CURRENT_BRANCH="${CURRENT_BRANCH##refs/heads/}"
+	local CURRENT_BRANCH="${$(git symbolic-ref -q HEAD)##refs/heads/}"
 	echo "Commits in branch \"${CURRENT_BRANCH}\", but not \"master\":"
 	git diff master..${CURRENT_BRANCH}
-}
-
-branch_merge() {
-	local CURRENT_BRANCH="$(git symbolic-ref -q HEAD)"
-	CURRENT_BRANCH="${CURRENT_BRANCH##refs/heads/}"
-	local WORKING_DIR="$PWD"
-	branch_update
-	cd $(git rev-parse --show-toplevel)
-	git checkout master
-	git merge --squash --no-commit "$CURRENT_BRANCH"
-	git commit
-	cd "$WORKING_DIR"
 }
 
 ### http://www.cs.drexel.edu/~mjw452/.zshrc
