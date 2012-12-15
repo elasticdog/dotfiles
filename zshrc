@@ -208,6 +208,7 @@ alias gbup='branch_update'
 alias gblg='branch_log'
 alias gbdf='branch_diff'
 alias gbmg='branch_merge'
+alias gbbm='big_branch_merge'
 
 
 ##### Global Aliases
