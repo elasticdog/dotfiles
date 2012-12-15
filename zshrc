@@ -197,6 +197,7 @@ alias scpw='scp -F ~/.ssh/mnx-config'
 
 # shortcut for git-add hunk staging
 alias gap='git add --patch'
+alias g='git'
 
 # change into git repo's top-level directory
 alias gcd='cd $(git rev-parse --show-toplevel)'
