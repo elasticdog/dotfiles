@@ -303,7 +303,7 @@ function ssht {
 
 master_update() {
 	local TOPLEVEL_DIR=$(git rev-parse --show-toplevel)
-	local CURRENT_BRANCH="${$(git symbolic-ref -q HEAD)##refs/heads/}"
+	local CURRENT_BRANCH="${$(git symbolic-ref -q HEAD)#refs/heads/}"
 	local WORKING_DIR="$PWD"
 	cd "$TOPLEVEL_DIR"
 	git checkout master
@@ -314,7 +314,7 @@ master_update() {
 
 master_push() {
 	local TOPLEVEL_DIR=$(git rev-parse --show-toplevel)
-	local CURRENT_BRANCH="${$(git symbolic-ref -q HEAD)##refs/heads/}"
+	local CURRENT_BRANCH="${$(git symbolic-ref -q HEAD)#refs/heads/}"
 	local WORKING_DIR="$PWD"
 	cd "$TOPLEVEL_DIR"
 	git checkout master
@@ -349,7 +349,7 @@ branch_update() {
 # most commonly used; squash all branch commits into one
 branch_merge() {
 	local TOPLEVEL_DIR=$(git rev-parse --show-toplevel)
-	local CURRENT_BRANCH="${$(git symbolic-ref -q HEAD)##refs/heads/}"
+	local CURRENT_BRANCH="${$(git symbolic-ref -q HEAD)#refs/heads/}"
 	local WORKING_DIR="$PWD"
 	if branch_update; then
 		cd "$TOPLEVEL_DIR"
@@ -367,7 +367,7 @@ branch_merge() {
 # branch commits into smaller, more logical/manageable chunks
 big_branch_merge() {
 	local TOPLEVEL_DIR=$(git rev-parse --show-toplevel)
-	local CURRENT_BRANCH="${$(git symbolic-ref -q HEAD)##refs/heads/}"
+	local CURRENT_BRANCH="${$(git symbolic-ref -q HEAD)#refs/heads/}"
 	local WORKING_DIR="$PWD"
 	if branch_update; then
 		cd "$TOPLEVEL_DIR"
@@ -380,13 +380,13 @@ big_branch_merge() {
 }
 
 branch_log() {
-	local CURRENT_BRANCH="${$(git symbolic-ref -q HEAD)##refs/heads/}"
+	local CURRENT_BRANCH="${$(git symbolic-ref -q HEAD)#refs/heads/}"
 	echo "Commits in branch \"${CURRENT_BRANCH}\", but not \"master\":"
 	git log master..${CURRENT_BRANCH} --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
 }
 
 branch_diff() {
-	local CURRENT_BRANCH="${$(git symbolic-ref -q HEAD)##refs/heads/}"
+	local CURRENT_BRANCH="${$(git symbolic-ref -q HEAD)#refs/heads/}"
 	echo "Commits in branch \"${CURRENT_BRANCH}\", but not \"master\":"
 	git diff master..${CURRENT_BRANCH}
 }
