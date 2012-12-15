@@ -302,32 +302,34 @@ function ssht {
 ### git functions
 
 master_update() {
-	local TOPLEVEL_DIR=$(git rev-parse --show-toplevel)
-	local CURRENT_BRANCH="${$(git symbolic-ref -q HEAD)#refs/heads/}"
-	local WORKING_DIR="$PWD"
-	cd "$TOPLEVEL_DIR"
-	git checkout master
-	git pull --rebase
-	git checkout "$CURRENT_BRANCH"
-	cd "$WORKING_DIR"
+	if git config --get 'branch.master.remote'; then
+		local TOPLEVEL_DIR=$(git rev-parse --show-toplevel)
+		local CURRENT_BRANCH="${$(git symbolic-ref -q HEAD)#refs/heads/}"
+		local WORKING_DIR="$PWD"
+		cd "$TOPLEVEL_DIR"
+		git checkout master
+		git pull --rebase
+		git checkout "$CURRENT_BRANCH"
+		cd "$WORKING_DIR"
+	fi
 }
 
 master_push() {
-	local TOPLEVEL_DIR=$(git rev-parse --show-toplevel)
-	local CURRENT_BRANCH="${$(git symbolic-ref -q HEAD)#refs/heads/}"
-	local WORKING_DIR="$PWD"
-	cd "$TOPLEVEL_DIR"
-	git checkout master
-	git push
-	git checkout "$CURRENT_BRANCH"
-	cd "$WORKING_DIR"
+	if git config --get 'branch.master.remote'; then
+		local TOPLEVEL_DIR=$(git rev-parse --show-toplevel)
+		local CURRENT_BRANCH="${$(git symbolic-ref -q HEAD)#refs/heads/}"
+		local WORKING_DIR="$PWD"
+		cd "$TOPLEVEL_DIR"
+		git checkout master
+		git push
+		git checkout "$CURRENT_BRANCH"
+		cd "$WORKING_DIR"
+	fi
 }
 
 sync_repo() {
-	if git config --get 'branch.master.remote'; then
-		master_update
-		master_push
-	fi
+	master_update
+	master_push
 }
 
 branch_create() {
@@ -340,18 +342,16 @@ branch_create() {
 }
 
 branch_update() {
-	if git config --get 'branch.master.remote'; then
-		master_update
-	fi
+	master_update
 	git rebase master
 }
 
 # most commonly used; squash all branch commits into one
 branch_merge() {
-	local TOPLEVEL_DIR=$(git rev-parse --show-toplevel)
-	local CURRENT_BRANCH="${$(git symbolic-ref -q HEAD)#refs/heads/}"
-	local WORKING_DIR="$PWD"
 	if branch_update; then
+		local TOPLEVEL_DIR=$(git rev-parse --show-toplevel)
+		local CURRENT_BRANCH="${$(git symbolic-ref -q HEAD)#refs/heads/}"
+		local WORKING_DIR="$PWD"
 		cd "$TOPLEVEL_DIR"
 		git checkout master
 		# validate that the merge happens since we have to forcefully delete the branch
@@ -366,10 +366,10 @@ branch_merge() {
 # used for bigger branches; allows you to manually squash/fixup
 # branch commits into smaller, more logical/manageable chunks
 big_branch_merge() {
-	local TOPLEVEL_DIR=$(git rev-parse --show-toplevel)
-	local CURRENT_BRANCH="${$(git symbolic-ref -q HEAD)#refs/heads/}"
-	local WORKING_DIR="$PWD"
 	if branch_update; then
+		local TOPLEVEL_DIR=$(git rev-parse --show-toplevel)
+		local CURRENT_BRANCH="${$(git symbolic-ref -q HEAD)#refs/heads/}"
+		local WORKING_DIR="$PWD"
 		cd "$TOPLEVEL_DIR"
 		git rebase --interactive --autosquash master
 		git checkout master
