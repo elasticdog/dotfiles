@@ -301,11 +301,16 @@ function ssht {
 
 ### git functions
 
+git_environment_vars() {
+	CURRENT_BRANCH="$(git symbolic-ref -q HEAD)"
+	CURRENT_BRANCH="${CURRENT_BRANCH#refs/heads/}"
+	TOPLEVEL_DIR="$(git rev-parse --show-toplevel)"
+	WORKING_DIR="$PWD"
+}
+
 master_update() {
 	if git config --get 'branch.master.remote'; then
-		local TOPLEVEL_DIR=$(git rev-parse --show-toplevel)
-		local CURRENT_BRANCH="${$(git symbolic-ref -q HEAD)#refs/heads/}"
-		local WORKING_DIR="$PWD"
+		git_environment_vars
 		cd "$TOPLEVEL_DIR"
 		git checkout master
 		git pull --rebase
@@ -316,9 +321,7 @@ master_update() {
 
 master_push() {
 	if git config --get 'branch.master.remote'; then
-		local TOPLEVEL_DIR=$(git rev-parse --show-toplevel)
-		local CURRENT_BRANCH="${$(git symbolic-ref -q HEAD)#refs/heads/}"
-		local WORKING_DIR="$PWD"
+		git_environment_vars
 		cd "$TOPLEVEL_DIR"
 		git checkout master
 		git push
@@ -349,9 +352,7 @@ branch_update() {
 # most commonly used; squash all branch commits into one
 branch_merge() {
 	if branch_update; then
-		local TOPLEVEL_DIR=$(git rev-parse --show-toplevel)
-		local CURRENT_BRANCH="${$(git symbolic-ref -q HEAD)#refs/heads/}"
-		local WORKING_DIR="$PWD"
+		git_environment_vars
 		cd "$TOPLEVEL_DIR"
 		git checkout master
 		# validate that the merge happens since we have to forcefully delete the branch
@@ -367,9 +368,7 @@ branch_merge() {
 # branch commits into smaller, more logical/manageable chunks
 big_branch_merge() {
 	if branch_update; then
-		local TOPLEVEL_DIR=$(git rev-parse --show-toplevel)
-		local CURRENT_BRANCH="${$(git symbolic-ref -q HEAD)#refs/heads/}"
-		local WORKING_DIR="$PWD"
+		git_environment_vars
 		cd "$TOPLEVEL_DIR"
 		git rebase --interactive --autosquash master
 		git checkout master
@@ -380,13 +379,13 @@ big_branch_merge() {
 }
 
 branch_log() {
-	local CURRENT_BRANCH="${$(git symbolic-ref -q HEAD)#refs/heads/}"
+	git_environment_vars
 	echo "Commits in branch \"${CURRENT_BRANCH}\", but not \"master\":"
 	git log master..${CURRENT_BRANCH} --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
 }
 
 branch_diff() {
-	local CURRENT_BRANCH="${$(git symbolic-ref -q HEAD)#refs/heads/}"
+	git_environment_vars
 	echo "Commits in branch \"${CURRENT_BRANCH}\", but not \"master\":"
 	git diff master..${CURRENT_BRANCH}
 }
