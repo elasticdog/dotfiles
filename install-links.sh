@@ -17,6 +17,7 @@ gitignore
 hgext/hgshelve.py
 hgrc
 irbrc
+rpmmacros
 screenrc
 ssh/config
 tmux.conf
