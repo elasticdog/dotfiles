@@ -295,6 +295,7 @@ endif
 " --------------------------------------
 
 " ack.vim - Ack Integration
+let g:ackprg = 'ag --nogroup --nocolor --column'
 nnoremap <Leader>a :Ack
 
 " bufexplorer.vim - Buffer Explorer
