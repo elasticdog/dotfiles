@@ -11,7 +11,7 @@ set nobackup      " Do not automatically backup files
 set history=1000  " Remember 1000 lines of command line history
 
 filetype off
-call pathogen#infect()
+execute pathogen#infect()
 set runtimepath+=$GOROOT/misc/vim  " Use upstream Go lang plugins
 filetype plugin indent on          " Enable file type detection
 
