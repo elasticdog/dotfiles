@@ -298,9 +298,6 @@ endif
 let g:ackprg = 'ag --nogroup --nocolor --column'
 nnoremap <Leader>a :Ack
 
-" bufexplorer.vim - Buffer Explorer
-let g:bufExplorerShowRelativePath = 1  " Show relative paths
-
 " ctrlp.vim - Fuzzy Finder
 let g:ctrlp_map = '<c-l>'
 let g:ctrlp_cmd = 'CtrlPMixed'
