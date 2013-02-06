@@ -305,9 +305,6 @@ let g:ctrlp_cmd = 'CtrlPMixed'
 " factor.vim - Factor Plugin
 let g:FactorRoot = '/Applications/factor'
 
-" rails.vim - Ruby on Rails
-let g:rails_default_database = 'sqlite3'
-
 " scratch.vim - Scratch Buffer
 noremap <silent> <Leader><Tab> :Scratch<CR>
 
