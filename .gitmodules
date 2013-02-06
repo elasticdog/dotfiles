@@ -70,10 +70,6 @@
 	path = vim/bundle/securemodelines
 	url = git://github.com/ciaranm/securemodelines.git
 	ignore = dirty
-[submodule "vim/bundle/slim"]
-	path = vim/bundle/slim
-	url = git://github.com/bbommarito/vim-slim.git
-	ignore = dirty
 [submodule "vim/bundle/solarized"]
 	path = vim/bundle/solarized
 	url = git://github.com/altercation/vim-colors-solarized.git
