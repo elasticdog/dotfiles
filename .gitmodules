@@ -2,21 +2,21 @@
 	path = vim/bundle/ack
 	url = git://github.com/mileszs/ack.vim.git
 	ignore = dirty
-[submodule "vim/bundle/command-t"]
-	path = vim/bundle/command-t
-	url = git://git.wincent.com/command-t.git
+[submodule "vim/bundle/ctrlp"]
+	path = vim/bundle/ctrlp
+	url = git://github.com/kien/ctrlp.vim.git
 	ignore = dirty
 [submodule "vim/bundle/endwise"]
 	path = vim/bundle/endwise
 	url = git://github.com/tpope/vim-endwise.git
 	ignore = dirty
-[submodule "vim/bundle/git"]
-	path = vim/bundle/git
-	url = git://github.com/tpope/vim-git.git
-	ignore = dirty
 [submodule "vim/bundle/fugitive"]
 	path = vim/bundle/fugitive
 	url = git://github.com/tpope/vim-fugitive.git
+	ignore = dirty
+[submodule "vim/bundle/git"]
+	path = vim/bundle/git
+	url = git://github.com/tpope/vim-git.git
 	ignore = dirty
 [submodule "vim/bundle/haml"]
 	path = vim/bundle/haml
@@ -34,10 +34,6 @@
 	path = vim/bundle/mustache
 	url = git://github.com/juvenn/mustache.vim.git
 	ignore = dirty
-[submodule "vim/bundle/nerdtree"]
-	path = vim/bundle/nerdtree
-	url = git://github.com/scrooloose/nerdtree.git
-	ignore = dirty
 [submodule "vim/bundle/pastie"]
 	path = vim/bundle/pastie
 	url = git://github.com/tpope/vim-pastie.git
@@ -45,10 +41,6 @@
 [submodule "vim/bundle/puppet"]
 	path = vim/bundle/puppet
 	url = git://github.com/rodjek/vim-puppet.git
-	ignore = dirty
-[submodule "vim/bundle/rails"]
-	path = vim/bundle/rails
-	url = git://github.com/tpope/vim-rails.git
 	ignore = dirty
 [submodule "vim/bundle/repeat"]
 	path = vim/bundle/repeat
@@ -69,10 +61,6 @@
 [submodule "vim/bundle/securemodelines"]
 	path = vim/bundle/securemodelines
 	url = git://github.com/ciaranm/securemodelines.git
-	ignore = dirty
-[submodule "vim/bundle/slim"]
-	path = vim/bundle/slim
-	url = git://github.com/bbommarito/vim-slim.git
 	ignore = dirty
 [submodule "vim/bundle/solarized"]
 	path = vim/bundle/solarized
@@ -97,4 +85,8 @@
 [submodule "vim/bundle/vividchalk"]
 	path = vim/bundle/vividchalk
 	url = git://github.com/tpope/vim-vividchalk.git
+	ignore = dirty
+[submodule "vim/bundle/yankring"]
+	path = vim/bundle/yankring
+	url = git://github.com/vim-scripts/YankRing.vim.git
 	ignore = dirty

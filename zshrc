@@ -94,12 +94,12 @@ esac
 ##### Command Aliases
 
 # no spelling correction for these commands
-for command in cp knife mkdir mv ssh; do
+for command in cp git knife mkdir mv ssh; do
 	alias $command="nocorrect $command"
 done
 
 # no globbing for these commands
-for command in bundle rake; do
+for command in bundle git rake; do
 	alias $command="noglob $command"
 done
 
@@ -158,8 +158,24 @@ function duf {
 	esac
 }
 
+# alternative duv?
+# du --max-depth=1 -x | sort -r -n | awk '{split("k m g",v); s=1; while($1>1024){$1/=1024; s++} print int($1)" "v[s]"\t"$2}'
+
+# another alternative?
+# function duv {
+# du -sk "$@" | sort -n | while read size fname; do for unit in k M G T P E Z Y; do if [ $size -lt 1024 ]; then echo -e "${size}${unit}\t${fname}"; break; fi; size=$((size/1024)); done; done
+# }
+
+alias humanize="awk '{ split( \"B KB MB GB TB PB\" , unit ); s=1; while( \$1>1000 ){ \$1/=1000; s++ } printf \"%6.1f %s  %s\n\", \$1, unit[s], \$2 }'"
+
+# remove duplicate lines in a file without sorting
+alias nodups="awk '!x[\$0]++'"
+
 # shortcut for optipng's most exhaustive search
 [[ -x $(which optipng 2>/dev/null) ]] && alias optimax='optipng -zc1-9 -zm1-9 -zs0-3 -f0-5'
+
+# remove color escape codes from output
+alias rc='sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g"'
 
 # use a more portable $TERM value when in tmux and connecting to a remote machine
 [[ -n $TMUX ]] && alias ssh='TERM="xterm-256color" ssh'
@@ -179,8 +195,7 @@ alias scpw='scp -F ~/.ssh/mnx-config'
 
 ### git aliases
 
-# shortcut for git-add hunk staging
-alias gap='git add --patch'
+alias g='git'
 
 # change into git repo's top-level directory
 alias gcd='cd $(git rev-parse --show-toplevel)'
@@ -193,6 +208,7 @@ alias gbup='branch_update'
 alias gblg='branch_log'
 alias gbdf='branch_diff'
 alias gbmg='branch_merge'
+alias gbbm='big_branch_merge'
 
 
 ##### Global Aliases
@@ -285,26 +301,33 @@ function ssht {
 
 ### git functions
 
+git_environment_vars() {
+	CURRENT_BRANCH="$(git symbolic-ref -q HEAD)"
+	CURRENT_BRANCH="${CURRENT_BRANCH#refs/heads/}"
+	TOPLEVEL_DIR="$(git rev-parse --show-toplevel)"
+	WORKING_DIR="$PWD"
+}
+
 master_update() {
-	local CURRENT_BRANCH="$(git symbolic-ref -q HEAD)"
-	CURRENT_BRANCH="${CURRENT_BRANCH##refs/heads/}"
-	local WORKING_DIR="$PWD"
-	cd $(git rev-parse --show-toplevel)
-	git checkout master
-	git pull --rebase
-	git checkout "$CURRENT_BRANCH"
-	cd "$WORKING_DIR"
+	if git config --get 'branch.master.remote'; then
+		git_environment_vars
+		cd "$TOPLEVEL_DIR"
+		git checkout master
+		git pull --rebase
+		git checkout "$CURRENT_BRANCH"
+		cd "$WORKING_DIR"
+	fi
 }
 
 master_push() {
-	local CURRENT_BRANCH="$(git symbolic-ref -q HEAD)"
-	CURRENT_BRANCH="${CURRENT_BRANCH##refs/heads/}"
-	local WORKING_DIR="$PWD"
-	cd $(git rev-parse --show-toplevel)
-	git checkout master
-	git push
-	git checkout "$CURRENT_BRANCH"
-	cd "$WORKING_DIR"
+	if git config --get 'branch.master.remote'; then
+		git_environment_vars
+		cd "$TOPLEVEL_DIR"
+		git checkout master
+		git push
+		git checkout "$CURRENT_BRANCH"
+		cd "$WORKING_DIR"
+	fi
 }
 
 sync_repo() {
@@ -315,7 +338,7 @@ sync_repo() {
 branch_create() {
 	if [[ -z $1 ]]; then
 		echo 'Usage: branch_create <branchname>'
-		echo 'Creates a new branch head named <branchname> which points to master'
+		echo 'Creates a new branch named <branchname> with master as its start point'
 	else
 		git checkout -b "$1" master
 	fi
@@ -326,30 +349,45 @@ branch_update() {
 	git rebase master
 }
 
+# most commonly used; squash all branch commits into one
+branch_merge() {
+	if branch_update; then
+		git_environment_vars
+		cd "$TOPLEVEL_DIR"
+		git checkout master
+		# validate that the merge happens since we have to forcefully delete the branch
+		if git merge --ff-only --squash "$CURRENT_BRANCH"; then
+			git commit --verbose --edit -m "$(echo "Squashed commit of the following:\n\n$(git log master..${CURRENT_BRANCH} --pretty=format:'    * %ad %h - %s' --date=short)")"
+			git branch -D "$CURRENT_BRANCH"
+		fi
+		cd "$WORKING_DIR"
+	fi
+}
+
+# used for bigger branches; allows you to manually squash/fixup
+# branch commits into smaller, more logical/manageable chunks
+big_branch_merge() {
+	if branch_update; then
+		git_environment_vars
+		cd "$TOPLEVEL_DIR"
+		git rebase --interactive --autosquash master
+		git checkout master
+		git merge --no-ff --no-commit "$CURRENT_BRANCH"
+		git commit
+		cd "$WORKING_DIR"
+	fi
+}
+
 branch_log() {
-	local CURRENT_BRANCH="$(git symbolic-ref -q HEAD)"
-	CURRENT_BRANCH="${CURRENT_BRANCH##refs/heads/}"
+	git_environment_vars
 	echo "Commits in branch \"${CURRENT_BRANCH}\", but not \"master\":"
-	git log master..${CURRENT_BRANCH} --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset" --abbrev-commit --date=relative
+	git log master..${CURRENT_BRANCH} --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
 }
 
 branch_diff() {
-	local CURRENT_BRANCH="$(git symbolic-ref -q HEAD)"
-	CURRENT_BRANCH="${CURRENT_BRANCH##refs/heads/}"
+	git_environment_vars
 	echo "Commits in branch \"${CURRENT_BRANCH}\", but not \"master\":"
 	git diff master..${CURRENT_BRANCH}
-}
-
-branch_merge() {
-	local CURRENT_BRANCH="$(git symbolic-ref -q HEAD)"
-	CURRENT_BRANCH="${CURRENT_BRANCH##refs/heads/}"
-	local WORKING_DIR="$PWD"
-	branch_update
-	cd $(git rev-parse --show-toplevel)
-	git checkout master
-	git merge --squash --no-commit "$CURRENT_BRANCH"
-	git commit
-	cd "$WORKING_DIR"
 }
 
 ### http://www.cs.drexel.edu/~mjw452/.zshrc
@@ -419,6 +457,9 @@ setprompt
 
 # use autojump if it's available
 [[ -f $HOME/.autojump.zsh ]] && source $HOME/.autojump.zsh
+
+# load Go lang settings/completiong if it's available
+[[ -f $GOROOT/misc/zsh/go ]] && source $GOROOT/misc/zsh/go
 
 # use ruby rbenv if it's available
 command -v rbenv >/dev/null && eval "$(rbenv init -)"

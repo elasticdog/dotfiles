@@ -11,8 +11,9 @@ set nobackup      " Do not automatically backup files
 set history=1000  " Remember 1000 lines of command line history
 
 filetype off
-call pathogen#infect()
-filetype plugin indent on  " Enable file type detection
+execute pathogen#infect()
+set runtimepath+=$GOROOT/misc/vim  " Use upstream Go lang plugins
+filetype plugin indent on          " Enable file type detection
 
 
 " COLORS AND FONTS
@@ -106,7 +107,7 @@ set display=lastline
 set fillchars=vert:\ ,fold:-
 
 " In list mode, use these custom characters
-set listchars=tab:▸\ ,extends:>,precedes:<
+set listchars=tab:\|\ ,extends:>,precedes:<
 
 " Always show the customized statusline
 set laststatus=2
@@ -129,17 +130,15 @@ set wildignore=*.o,*.obj,*.exe,*.class,*.swp
 " TEXT HANDLING
 " --------------------------------------
 
-set autoindent   " Do dumb auto-indentation when no filetype is set
-set linebreak    " Wrap long lines at words boundaries
-set noexpandtab  " Do not convert tabs to spaces
-set smartindent  " Do smart autoindenting when starting a new line
-set smarttab     " Use tabs at the start of a line, spaces elsewhere
-set nowrap       " Do not automatically wrap long lines
+set autoindent  " Do dumb auto-indentation when no filetype is set
+set linebreak   " Wrap long lines at words boundaries
+set expandtab   " Convert tabs to spaces
+set nowrap      " Do not automatically wrap long lines
 
 " Set up default tab spacing
-set shiftwidth=4
-set softtabstop=4
-set tabstop=4
+set shiftwidth=2
+set softtabstop=2
+set tabstop=2
 
 " Indent bulleted lists properly
 set comments=://,b:#,:%,:XCOMM,n:>,fb:-,fb:*
@@ -296,22 +295,18 @@ endif
 " --------------------------------------
 
 " ack.vim - Ack Integration
+let g:ackprg = 'ag --nogroup --nocolor --column'
 nnoremap <Leader>a :Ack
 
-" bufexplorer.vim - Buffer Explorer
-let g:bufExplorerShowRelativePath = 1  " Show relative paths
+" ctrlp.vim - Fuzzy Finder
+let g:ctrlp_map = '<c-l>'
+let g:ctrlp_cmd = 'CtrlPMixed'
+let g:ctrlp_open_multiple_files = '1r'
+let g:ctrlp_max_height = 20
+nnoremap <silent> <Leader>b :CtrlPBuffer<CR>
 
 " factor.vim - Factor Plugin
 let g:FactorRoot = '/Applications/factor'
-
-" NERD_tree.vim - File Explorer
-let g:NERDTreeChDirMode = 2     " the CDW will follow the root folder
-let g:NERDTreeQuitOnOpen = 1    " close the exporer window after opening a file
-let g:NERDTreeWinPos = 'right'  " position the explorer window on the right
-noremap <silent> <Leader>fe :NERDTreeToggle<CR>
-
-" rails.vim - Ruby on Rails
-let g:rails_default_database = 'sqlite3'
 
 " scratch.vim - Scratch Buffer
 noremap <silent> <Leader><Tab> :Scratch<CR>
@@ -324,7 +319,7 @@ let Tlist_Enable_Fold_Column = 0       " Do not show folding tree
 let Tlist_Exit_OnlyWindow = 1          " Exit Vim if only Taglist left open
 let Tlist_GainFocus_On_ToggleOpen = 1  " Taglist window gains focus on open
 let Tlist_Inc_Winwidth = 0             " Do not adjust window width
-nnoremap <silent> <Leader>T :TlistToggle<CR>
+nnoremap <silent> <Leader>t :TlistToggle<CR>
 highlight MyTagListFileName term=reverse ctermbg=8 guibg=#333333
 
 " yankring.vim - Yank Ring
@@ -338,6 +333,10 @@ nnoremap <silent> <Leader>yr :YRShow<CR>
 " FILETYPE SPECIFIC SETTINGS
 " --------------------------------------
 if has("autocmd")
+	" For all go files, use tabs for indentation and auto-format on write
+	autocmd FileType go setlocal noet sts=4 sw=4 ts=4 tw=74
+	autocmd BufWritePre *.go :silent Fmt
+
 	" For all JavaScript/JSON/Ruby/YAML files, use the standard 2 spaces for indentation
 	autocmd FileType javascript,json,ruby,yaml setlocal et sts=2 sw=2 ts=2
 

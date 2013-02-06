@@ -2,16 +2,31 @@
 	name = Aaron Bull Schaefer
 	email = aaron@elasticdog.com
 [alias]
+	ap = add --patch
 	br = branch
 	ci = commit --verbose
 	co = checkout
-	lo = log --graph --date-order -C -M --pretty=format:'<%h> %ad [%an] %Cgreen%d%Creset %s' --all --date=short
+	df = diff
+	ds = diff --stat
+	empty-tree-sha1 = hash-object -t tree /dev/null
+	gone = git log --diff-filter=D --summary
+	lc = log ORIG_HEAD.. --stat --no-merges
+	lo = log --all --date-order --oneline --graph --decorate -M -C
+	low = log --all --date-order --pretty=format:'%C(yellow)%h%C(green)%d%C(reset) %s %C(cyan)[%cr] %C(magenta)<%an>%C(reset)' --graph --date=relative -M -C
+	patch = format-patch --patience --full-index -M -C
+	rb = rebase
+	rbi = rebase --interactive --autosquash
+	serve = !git daemon --reuseaddr --verbose --base-path=. --export-all ./.git
 	st = status --short --branch
-	ribbon = tag --force _ribbon origin/master
-	catchup = log --patch --reverse --topo-order _ribbon..origin/master
+	staged = diff --cached
+	whitespace = !git diff --check $(git empty-tree-sha1)
+	who = shortlog --summary --email --
+	whois = "!sh -c 'git log -i -1 --pretty=\"format:%an <%ae>\n\" --author=\"$1\"' -"
 [color]
 	ui = auto
 [core]
 	excludesfile = ~/.gitignore
 [merge]
 	tool = gvimdiff
+[push]
+	default = simple

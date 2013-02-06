@@ -1,5 +1,6 @@
 Host *
 ControlPath ~/.ssh/master-%h-%p-%r
+ServerAliveInterval 240
 
 Host halcyon
 Hostname elasticdog.bounceme.net
@@ -7,7 +8,7 @@ Port 49645
 User aaron
 
 Host halcyon.lcl
-Hostname 192.168.1.111
+Hostname 172.30.42.23
 User aaron
 
 Host linode
@@ -18,7 +19,3 @@ User aaron
 Host lish
 Hostname dallas139.linode.com
 User linode40707
-
-Host *
-User aarons
-ServerAliveInterval 240
