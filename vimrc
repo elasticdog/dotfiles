@@ -296,7 +296,7 @@ endif
 
 " ack.vim - Ack Integration
 let g:ackprg = 'ag --nogroup --nocolor --column'
-nnoremap <Leader>a :Ack
+nnoremap <Leader>a :Ack<Space>
 
 " ctrlp.vim - Fuzzy Finder
 let g:ctrlp_map = '<c-l>'
@@ -318,6 +318,7 @@ let Tlist_Enable_Fold_Column = 0       " Do not show folding tree
 let Tlist_Exit_OnlyWindow = 1          " Exit Vim if only Taglist left open
 let Tlist_GainFocus_On_ToggleOpen = 1  " Taglist window gains focus on open
 let Tlist_Inc_Winwidth = 0             " Do not adjust window width
+let tlist_go_settings='go;t:type;v:variable;f:function'
 nnoremap <silent> <Leader>t :TlistToggle<CR>
 highlight MyTagListFileName term=reverse ctermbg=8 guibg=#333333
 
