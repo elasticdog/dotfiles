@@ -10,6 +10,7 @@ bash_profile
 bashrc
 bazaar/authentication.conf
 bazaar/bazaar.conf
+ctags
 factor-boot-rc
 gemrc
 gitconfig
