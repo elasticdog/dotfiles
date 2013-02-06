@@ -301,6 +301,8 @@ nnoremap <Leader>a :Ack
 " ctrlp.vim - Fuzzy Finder
 let g:ctrlp_map = '<c-l>'
 let g:ctrlp_cmd = 'CtrlPMixed'
+let g:ctrlp_open_multiple_files = '1r'
+nnoremap <silent> <Leader>b :CtrlPBuffer<CR>
 
 " factor.vim - Factor Plugin
 let g:FactorRoot = '/Applications/factor'
