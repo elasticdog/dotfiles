@@ -2,6 +2,10 @@
 	path = vim/bundle/ack
 	url = git://github.com/mileszs/ack.vim.git
 	ignore = dirty
+[submodule "vim/bundle/ctrlp"]
+	path = vim/bundle/ctrlp
+	url = git://github.com/kien/ctrlp.vim.git
+	ignore = dirty
 [submodule "vim/bundle/endwise"]
 	path = vim/bundle/endwise
 	url = git://github.com/tpope/vim-endwise.git
