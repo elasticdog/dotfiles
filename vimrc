@@ -302,6 +302,7 @@ nnoremap <Leader>a :Ack
 let g:ctrlp_map = '<c-l>'
 let g:ctrlp_cmd = 'CtrlPMixed'
 let g:ctrlp_open_multiple_files = '1r'
+let g:ctrlp_max_height = 20
 nnoremap <silent> <Leader>b :CtrlPBuffer<CR>
 
 " factor.vim - Factor Plugin
