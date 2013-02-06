@@ -130,12 +130,10 @@ set wildignore=*.o,*.obj,*.exe,*.class,*.swp
 " TEXT HANDLING
 " --------------------------------------
 
-set autoindent   " Do dumb auto-indentation when no filetype is set
-set linebreak    " Wrap long lines at words boundaries
-set noexpandtab  " Do not convert tabs to spaces
-set smartindent  " Do smart autoindenting when starting a new line
-set smarttab     " Use tabs at the start of a line, spaces elsewhere
-set nowrap       " Do not automatically wrap long lines
+set autoindent  " Do dumb auto-indentation when no filetype is set
+set linebreak   " Wrap long lines at words boundaries
+set expandtab   " Convert tabs to spaces
+set nowrap      " Do not automatically wrap long lines
 
 " Set up default tab spacing
 set shiftwidth=2
