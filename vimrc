@@ -320,6 +320,7 @@ let Tlist_Exit_OnlyWindow = 1          " Exit Vim if only Taglist left open
 let Tlist_GainFocus_On_ToggleOpen = 1  " Taglist window gains focus on open
 let Tlist_Inc_Winwidth = 0             " Do not adjust window width
 let tlist_go_settings='go;t:type;v:variable;f:function'
+let tlist_puppet_settings='puppet;c:class;s:site;n:node;d:define'
 nnoremap <silent> <Leader>t :TlistToggle<CR>
 highlight MyTagListFileName term=reverse ctermbg=8 guibg=#333333
 
