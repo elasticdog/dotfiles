@@ -299,7 +299,7 @@ let g:ackprg = 'ag --nogroup --nocolor --column'
 nnoremap <Leader>a :Ack<Space>
 
 " ctrlp.vim - Fuzzy Finder
-let g:ctrlp_map = '<c-l>'
+let g:ctrlp_map = '<C-l>'
 let g:ctrlp_open_multiple_files = '1r'
 let g:ctrlp_max_height = 20
 let g:ctrlp_working_path_mode = '0'
