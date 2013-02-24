@@ -70,6 +70,7 @@ case $OSTYPE in
 			alias vim='mvim -v'          # use MacVim for terminal vim
 		fi
 		alias pg_ctl='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log'
+		alias postgres='postgres -D /usr/local/var/postgres'
 
 		# force all traffic through an ssh tunnel to my VPS
 		# useful when using insecure wireless connections
