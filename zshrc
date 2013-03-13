@@ -383,7 +383,7 @@ big_branch_merge() {
 branch_log() {
 	git_environment_vars
 	echo "Commits in branch \"${CURRENT_BRANCH}\", but not \"master\":"
-	git log master..${CURRENT_BRANCH} --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+	git log master..${CURRENT_BRANCH} --pretty=format:'%C(yellow)%h%C(green)%d%C(reset) %s %C(cyan)[%cr]%C(reset)' --graph --date=relative -M -C
 }
 
 branch_diff() {
