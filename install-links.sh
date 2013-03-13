@@ -18,6 +18,7 @@ gitignore
 hgext/hgshelve.py
 hgrc
 irbrc
+psqlrc
 rpmmacros
 screenrc
 ssh/config
