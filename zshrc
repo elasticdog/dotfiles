@@ -105,6 +105,9 @@ for command in bundle git rake; do
 	alias $command="noglob $command"
 done
 
+# make gpg2 use gpg autocompletion (not ideal, but it works for the basics)
+compdef gpg2=gpg
+
 # set default options
 alias grep='grep --color=auto'  # show the matching string in color
 alias less='less --ignore-case --LONG-PROMPT'
