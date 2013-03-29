@@ -460,8 +460,8 @@ setprompt
 
 ##### External Programs
 
-# use autojump if it's available
-[[ -f $HOME/.autojump.zsh ]] && source $HOME/.autojump.zsh
+# use rupa/z to autojump directories
+[[ -f $HOME/.dotfiles/z/z.sh ]] && source $HOME/.dotfiles/z/z.sh
 
 # load Go lang settings/completion if it's available
 [[ -f $GOROOT/share/zsh/site-functions/_go ]] && source $GOROOT/share/zsh/site-functions/_go

@@ -98,3 +98,6 @@
 	path = vim/bundle/yankring
 	url = git://github.com/vim-scripts/YankRing.vim.git
 	ignore = dirty
+[submodule "z"]
+	path = z
+	url = git://github.com/rupa/z.git
