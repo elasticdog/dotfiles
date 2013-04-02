@@ -475,5 +475,5 @@ command -v virtualenvwrapper.sh >/dev/null && source virtualenvwrapper.sh
 
 # invoke keychain to manage ssh/gpg keys
 if command -v keychain >/dev/null; then
-  eval $(keychain --eval --quick --quiet --timeout 480 id_rsa C31E7946)
+  eval $(keychain --eval --quiet --timeout 480 id_rsa C31E7946)
 fi
