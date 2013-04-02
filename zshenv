@@ -3,20 +3,27 @@
 #
 
 export DISPLAY=':0.0'
+export GOPATH="${HOME}/projects/gocode"
+export GOROOT='/usr/local/Cellar/go/HEAD'
 export PAGER='less -iM'
+export WORKON_HOME="$HOME/.virtualenvs"
 
 command -v mvim >/dev/null && export EDITOR='mvim -v' || export EDITOR='vim'
 
-export CVSROOT='aarons@cvs:/cvs'
-export CVS_RSH='ssh'
-
-export WORKON_HOME="$HOME/.virtualenvs"
-export GOROOT='/usr/local/Cellar/go/HEAD'
-export GOPATH="${HOME}/projects/gocode"
-
 unset MANPATH  # man does a better job on its own
 
-# Various profile/rc/login files all get sourced *after* this file, so we
-# source our path file here (for non-login shells) and from .zprofile (which is
-# only sourced for login shells).
-source $HOME/.zpath
+typeset -U fpath path  # keep only the first occurrence of each duplicated value
+
+fpath=($HOME/.zsh/completion $fpath)
+case $OSTYPE in
+	darwin*)
+		path=($HOME/bin $GOPATH/bin /usr/local/bin /usr/local/sbin /usr/local/share/python $path)
+		;;
+	linux*)
+		if [[ -d $HOME/.rbenv/bin ]]; then
+			path=($HOME/bin $HOME/.rbenv/bin /usr/local/bin /usr/local/sbin $path)
+		else
+			path=($HOME/bin /usr/local/bin /usr/local/sbin $path)
+		fi
+		;;
+esac
