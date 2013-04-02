@@ -47,13 +47,15 @@ compinit
 # enable powerful pattern-based renaming
 autoload zmv
 
-setopt share_history         # use common history file for all sessions
 setopt auto_pushd            # cd uses directory stack too
+setopt auto_cd               # change directory without using cd
 setopt correct_all           # correct spelling of all arguments
 setopt extended_glob         # use extended paterns while globbing
+setopt extended_history      # save command timestamp data
 setopt hist_ignore_all_dups  # remove all earlier duplicate lines
 setopt hist_ignore_space     # do not store lines starting with space
 setopt pushd_ignore_dups     # do not push dir multiply on stack
+setopt share_history         # use common history file for all sessions
 
 setopt no_beep               # disable beep on all errors
 setopt no_case_glob          # disable glob case sensitivity
