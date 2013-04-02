@@ -28,6 +28,9 @@
 [core]
 	excludesfile = ~/.gitignore
 [merge]
+	conflictstyle = diff3
 	tool = gvimdiff
 [push]
 	default = simple
+[rerere]
+	enabled = 1
