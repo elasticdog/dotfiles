@@ -65,7 +65,7 @@ case $OSTYPE in
 	darwin*)
 		alias lock='/System/Library/CoreServices/"Menu Extras"/User.menu/Contents/Resources/CGSession -suspend'
 		alias ls='ls -GF'                # list in color with identifiers
-		if [[ -x $(which mvim 2>/dev/null) ]]; then
+		if command -v mvim >/dev/null; then
 			alias gvimdiff='mvim -d -g'  # use MacVim for gvimdiff
 			alias vim='mvim -v'          # use MacVim for terminal vim
 		fi
@@ -74,7 +74,7 @@ case $OSTYPE in
 
 		# force all traffic through an ssh tunnel to my VPS
 		# useful when using insecure wireless connections
-		if [[ -x $(which sshuttle 2>/dev/null) ]]; then
+		if command -v sshuttle >/dev/null; then
 			alias tunnel='sshuttle --daemon --dns --pidfile=/tmp/sshuttle.pid --remote=linode 0/0'
 			alias tunnelx='[[ -f /tmp/sshuttle.pid ]] && kill $(cat /tmp/sshuttle.pid) && echo "Disconnected."'
 		fi
@@ -82,12 +82,12 @@ case $OSTYPE in
 	linux*)
 		alias ls='ls --color=auto --file-type'  # list in color with identifiers
 
-		[[ -x $(which dtach 2>/dev/null) ]] && alias factor='dtach -n /tmp/factor.sock factor'
+		command -v dtach >/dev/null && alias factor='dtach -n /tmp/factor.sock factor'
 
 		# Arch Linux
 		if [[ -f /etc/arch-release ]]; then
 			# shortcut for full system upgrade with root privilege check
-			[[ -x $(which sudo 2>/dev/null) ]] && alias upgrade='sudo pacman -Syu'
+			command -v sudo >/dev/null && alias upgrade='sudo pacman -Syu'
 		fi
 		;;
 esac
@@ -177,7 +177,7 @@ alias humanize="awk '{ split( \"B KB MB GB TB PB\" , unit ); s=1; while( \$1>100
 alias nodups="awk '!x[\$0]++'"
 
 # shortcut for optipng's most exhaustive search
-[[ -x $(which optipng 2>/dev/null) ]] && alias optimax='optipng -zc1-9 -zm1-9 -zs0-3 -f0-5'
+command -v optipng >/dev/null && alias optimax='optipng -zc1-9 -zm1-9 -zs0-3 -f0-5'
 
 # remove color escape codes from output
 alias rc='sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g"'
@@ -196,7 +196,7 @@ alias sshw='ssh -F ~/.ssh/mnx-config'
 alias scpw='scp -F ~/.ssh/mnx-config'
 
 # web cat
-[[ -x $(which wget 2>/dev/null) ]] && alias wcat='wget -q -O - '
+command -v wget >/dev/null && alias wcat='wget -q -O - '
 
 ### git aliases
 
@@ -474,7 +474,7 @@ command -v rbenv >/dev/null && eval "$(rbenv init -)"
 command -v virtualenvwrapper.sh >/dev/null && source virtualenvwrapper.sh
 
 # invoke keychain to manage ssh/gpg keys
-if [[ -x $(which keychain 2>/dev/null) ]]; then
+if command -v keychain >/dev/null; then
 	keychain --agents ssh --quick --quiet id_rsa
 	[[ -f $HOME/.keychain/$HOST-sh ]] && source $HOME/.keychain/$HOST-sh
 fi
