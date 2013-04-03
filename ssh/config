@@ -11,11 +11,3 @@ Host halcyon.lcl
 Hostname 172.30.42.23
 User aaron
 
-Host linode
-Hostname 72.14.191.180
-Port 50454
-User aaron
-
-Host lish
-Hostname dallas139.linode.com
-User linode40707
