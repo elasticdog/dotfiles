@@ -7,5 +7,11 @@
 "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
     XF86AudioNext
 
-"amixer sset IEC958 toggle"
+"toggle-audio"
     XF86AudioMute
+
+"amixer sset 'Stereo Upmixing' 'Front'"
+    XF86AudioLowerVolume
+
+"amixer sset 'Stereo Upmixing' 'Front+Surround'"
+    XF86AudioRaiseVolume
