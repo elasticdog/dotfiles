@@ -3,7 +3,7 @@
 #
 
 export DISPLAY=':0.0'
-export GOPATH="${HOME}/projects/gocode"
+export GOPATH="${HOME}/src/go"
 export GOROOT='/usr/local/Cellar/go/HEAD'
 export PAGER='less -iM'
 export WORKON_HOME="$HOME/.virtualenvs"
