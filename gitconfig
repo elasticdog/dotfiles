@@ -13,7 +13,7 @@
 	lc = log ORIG_HEAD.. --stat --no-merges
 	lo = log --all --date-order --oneline --graph --decorate -M -C
 	lob = log --date-order --oneline --graph --decorate -M -C
-	low = log --all --date-order --pretty=format:'%C(yellow)%h%C(green)%d%C(reset) %s %C(cyan)[%cr] %C(magenta)<%an>%C(reset)' --graph --date=relative -M -C
+	low = log --all --date-order --pretty=custom --graph --date=relative -M -C
 	patch = format-patch --patience --full-index -M -C
 	rb = rebase
 	rbi = rebase --interactive --autosquash
@@ -32,5 +32,7 @@
 	tool = gvimdiff
 [push]
 	default = simple
+[pretty]
+	custom = format:%C(yellow)%h%C(green)%d%C(reset) %s %C(cyan)[%cr] %C(magenta)<%an>%C(reset)
 [rerere]
 	enabled = 1
