@@ -11,3 +11,6 @@ Host halcyon.lcl
 Hostname 172.30.42.23
 User aaron
 
+Host aurora
+Hostname 192.241.222.190
+User root
