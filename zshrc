@@ -286,6 +286,18 @@ function fd {
 	fi
 }
 
+# generate a long random password for cjdns peer configuration
+function hypepass {
+	if [[ -z $1 ]]; then
+		echo 'Usage: hypepass <USERNAME>'
+		echo 'Generate a user-specific password for allowing someone to peer with your cjdns host'
+	else
+		desired=64
+		random=$(tr -cd '[:alnum:]' < /dev/urandom | fold -w $(( ${desired} - ${#1} - 1 )) | head -n 1)
+		echo "${1}:${random}"
+	fi
+}
+
 # ssh and start a screen session on the remote server
 function sshs {
 	if [[ -z $* ]]; then
