@@ -294,7 +294,7 @@ function hypepass {
 	else
 		desired=64
 		random=$(tr -cd '[:alnum:]' < /dev/urandom | fold -w $(( ${desired} - ${#1} - 1 )) | head -n 1)
-		echo "${1}:${random}"
+		echo "{ \"user\": \"${1}\", \"password\": \"${1}:${random}\" }"
 	fi
 }
 
