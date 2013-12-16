@@ -19,4 +19,4 @@ systemd --user &
 [ -f "$HOME/.Xresources" ] && xrdb -merge "$HOME/.Xresources"
 
 # launch window manager
-exec awesome
+exec herbstluftwm --locked
