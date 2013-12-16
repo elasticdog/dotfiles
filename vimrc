@@ -75,6 +75,7 @@ set incsearch        " Enable incremental searching
 set lazyredraw       " Do not redraw screen while executing macros
 set list             " Display unprintable characters
 set matchtime=4      " Blink matched brackets for 4/10ths of a second
+set mouse=a          " Enable mouse use for all modes
 set nojoinspaces     " Do not insert 2 spaces after sentences when joining
 set nomodeline       " Do not read settings from modelines
 set nostartofline    " Do not move cursor to SOL during jump commands
@@ -86,6 +87,7 @@ set showmatch        " Highlight matching brackets
 set sidescrolloff=3  " Keep two columns left and right of cursor when scrolling
 set smartcase        " Override ignorecase if search has upper case characters
 set ttyfast          " Improve smoothness or redraw for newer terminals
+set ttymouse=xterm2  " Use a modern terminal type for mouse handling
 set whichwrap+=h,l   " Allow cursor keys to line wrap
 set winminheight=0   " Minimal height of a non-current window
 
