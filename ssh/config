@@ -1,3 +1,5 @@
+HashKnownHosts yes
+
 Host *
 ControlPath ~/.ssh/master-%h-%p-%r
 ServerAliveInterval 240
