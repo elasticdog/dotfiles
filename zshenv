@@ -17,7 +17,7 @@ fpath=($HOME/.zsh/completion $fpath)
 case $OSTYPE in
 	darwin*)
 		export GOROOT='/usr/local/Cellar/go/HEAD'
-		path=($HOME/bin $GOPATH/bin /usr/local/bin /usr/local/sbin /usr/local/share/python $path)
+		path=($HOME/bin $GOPATH/bin /usr/local/bin /usr/local/sbin $path)
 		;;
 	linux*)
 		export GOROOT="${HOME}/src/vendor/vanilla/go"
