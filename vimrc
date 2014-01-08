@@ -250,7 +250,7 @@ noremap <silent> <Leader>l m`:execute '/\%>' . (&tw ? &tw : 79) . 'v.\+'<CR>``
 nnoremap <Leader>p :set invpaste paste?<CR>
 
 " Copy visual area to the OS X clipboard
-vnoremap <C-c> :w !pbcopy<CR><CR>
+vnoremap <C-c> :w !pbcopy<CR><CR>gv
 
 " Remove trailing whitespace
 noremap <silent> <Leader>rtw :call Preserve("%s/\\s\\+$//e")<CR>
