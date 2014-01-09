@@ -16,8 +16,9 @@ typeset -U fpath path  # keep only the first occurrence of each duplicated value
 fpath=($HOME/.zsh/completion $fpath)
 case $OSTYPE in
 	darwin*)
-		export GOROOT='/usr/local/Cellar/go/HEAD'
+		export GOROOT='/usr/local/go'
 		path=($HOME/bin $GOPATH/bin /usr/local/bin /usr/local/sbin $path)
+		export VAGRANT_DEFAULT_PROVIDER='vmware_fusion'
 		;;
 	linux*)
 		export GOROOT="${HOME}/src/vendor/vanilla/go"
