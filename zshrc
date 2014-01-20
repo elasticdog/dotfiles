@@ -103,7 +103,7 @@ for command in cp git knife mkdir mv ssh; do
 done
 
 # no globbing for these commands
-for command in bundle git rake; do
+for command in ansible ansible-playbook bundle git rake; do
 	alias $command="noglob $command"
 done
 
