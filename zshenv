@@ -18,7 +18,6 @@ case $OSTYPE in
 	darwin*)
 		export GOROOT='/usr/local/go'
 		path=($HOME/bin $GOPATH/bin /usr/local/bin /usr/local/sbin $path)
-		export VAGRANT_DEFAULT_PROVIDER='vmware_fusion'
 		;;
 	linux*)
 		export GOROOT="${HOME}/src/vendor/vanilla/go"
