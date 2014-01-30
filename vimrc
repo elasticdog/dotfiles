@@ -313,6 +313,9 @@ nnoremap <silent> <Leader>b :CtrlPBuffer<CR>
 " factor.vim - Factor Plugin
 let g:FactorRoot = '/Applications/factor'
 
+" paredit.vim - Paredit Mode
+let g:paredit_leader = '\'
+
 " scratch.vim - Scratch Buffer
 noremap <silent> <Leader><Tab> :Scratch<CR>
 
