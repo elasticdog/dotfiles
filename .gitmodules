@@ -46,6 +46,10 @@
 	path = vim/bundle/liquid
 	url = git://github.com/tpope/vim-liquid.git
 	ignore = dirty
+[submodule "vim/bundle/markdown"]
+	path = vim/bundle/markdown
+	url = git://github.com/tpope/vim-markdown.git
+	ignore = dirty
 [submodule "vim/bundle/mustache"]
 	path = vim/bundle/mustache
 	url = git://github.com/juvenn/mustache.vim.git
