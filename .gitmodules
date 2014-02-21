@@ -38,6 +38,10 @@
 	path = vim/bundle/haml
 	url = git://github.com/tpope/vim-haml.git
 	ignore = dirty
+[submodule "vim/bundle/jinja2"]
+	path = vim/bundle/jinja2
+	url = https://github.com/Glench/Vim-Jinja2-Syntax.git
+	ignore = dirty
 [submodule "vim/bundle/json"]
 	path = vim/bundle/json
 	url = git://github.com/leshill/vim-json.git
