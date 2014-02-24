@@ -44,7 +44,7 @@
 	ignore = dirty
 [submodule "vim/bundle/json"]
 	path = vim/bundle/json
-	url = git://github.com/leshill/vim-json.git
+	url = https://github.com/elzr/vim-json.git
 	ignore = dirty
 [submodule "vim/bundle/liquid"]
 	path = vim/bundle/liquid
