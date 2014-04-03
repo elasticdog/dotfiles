@@ -113,6 +113,7 @@ compdef gpg2=gpg
 # set default options
 alias grep='grep --color=auto'  # show the matching string in color
 alias less='less --ignore-case --LONG-PROMPT'
+alias tree='tree --dirsfirst -C'
 
 # ls hacking
 alias lsd='ls -d *(-/N)'      # list visible directories
