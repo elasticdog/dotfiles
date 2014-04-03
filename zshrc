@@ -298,6 +298,20 @@ function hypepass {
 	fi
 }
 
+# generate a salted SHA1 hash for htpasswd use
+function ssha {
+	if [[ -z $1 ]]; then
+		echo 'Usage: ssha <USERNAME> <PASSWORD>'
+		echo 'Generate a salted SHA1 hash for an htpasswd authentication file'
+	else
+		local username=$1
+		local password=$2
+		local salt=$(openssl rand -base64 3)
+		local ssha=$(printf '%s%s' $password $salt | openssl dgst -binary -sha1 | LC_CTYPE=C LANG=C sed 's/$/'"$salt/" | base64)
+		printf '%s:{SSHA}%s\n' $username $ssha
+	fi
+}
+
 # ssh and start a screen session on the remote server
 function sshs {
 	if [[ -z $* ]]; then
@@ -489,5 +503,5 @@ command -v virtualenvwrapper.sh >/dev/null && source virtualenvwrapper.sh
 
 # invoke keychain to manage ssh/gpg keys
 if command -v keychain >/dev/null; then
-  eval $(keychain --eval --quiet --timeout 480 id_rsa work.id_rsa C31E7946)
+  eval $(keychain --eval --quiet --timeout 480 id_rsa work.id_rsa 0x5E340427C31E7946)
 fi
