@@ -308,8 +308,8 @@ function ssha {
 		local username=$1
 		local password=$2
 		local salt=$(openssl rand -base64 3)
-		local ssha=$(printf '%s%s' $password $salt | openssl dgst -binary -sha1 | LC_CTYPE=C LANG=C sed 's/$/'"$salt/" | base64)
-		printf '%s:{SSHA}%s\n' $username $ssha
+		local ssha=$(printf '%s%s' "$password" "$salt" | openssl dgst -binary -sha1 | LC_CTYPE=C LANG=C sed 's/$/'"$salt/" | base64)
+		printf '%s:{SSHA}%s\n' "$username" "$ssha"
 	fi
 }
 
