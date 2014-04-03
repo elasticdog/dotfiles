@@ -301,7 +301,7 @@ function hypepass {
 
 # generate a salted SHA1 hash for htpasswd use
 function ssha {
-	if [[ -z $1 ]]; then
+	if [[ -z $1 || -z $2 ]]; then
 		echo 'Usage: ssha <USERNAME> <PASSWORD>'
 		echo 'Generate a salted SHA1 hash for an htpasswd authentication file'
 	else
