@@ -77,7 +77,7 @@ case $OSTYPE in
 		# force all traffic through an ssh tunnel to my VPS
 		# useful when using insecure wireless connections
 		if command -v sshuttle >/dev/null; then
-			alias tunnel='sshuttle --daemon --dns --pidfile=/tmp/sshuttle.pid --remote=linode 0/0'
+			alias tunnel='sshuttle --daemon --dns --pidfile=/tmp/sshuttle.pid --remote=halcyon 0/0'
 			alias tunnelx='[[ -f /tmp/sshuttle.pid ]] && kill $(cat /tmp/sshuttle.pid) && echo "Disconnected."'
 		fi
 		;;
