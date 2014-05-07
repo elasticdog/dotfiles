@@ -9,7 +9,7 @@
 	df = diff
 	ds = diff --stat
 	empty-tree-sha1 = hash-object -t tree /dev/null
-	gone = git log --diff-filter=D --summary
+	gone = !git log --diff-filter=D --summary
 	lc = log ORIG_HEAD.. --stat --no-merges
 	lo = log --all --date-order --oneline --graph --decorate -M -C
 	lob = log --date-order --oneline --graph --decorate -M -C
