@@ -313,6 +313,9 @@ nnoremap <silent> <Leader>b :CtrlPBuffer<CR>
 " factor.vim - Factor Plugin
 let g:FactorRoot = '/Applications/factor'
 
+" go.vim - Go Plugin
+let g:gofmt_command = 'goimports'
+
 " paredit.vim - Paredit Mode
 let g:paredit_leader = '\'
 
