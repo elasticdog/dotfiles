@@ -2,7 +2,7 @@
 
 # Create needed directories if they don't already exist
 mkdir -p "$HOME/.hgext"
-mkdir -p "$HOME/.ssh"
+mkdir -p "$HOME/.ssh/config.d"
 
 FILES="
 ctags
@@ -13,10 +13,11 @@ hgext/hgshelve.py
 hgrc
 psqlrc
 rpmmacros
-ssh/config
+ssh/config.d/default
 tmux.conf
 vim
 vimrc
+zlogin
 zsh
 zshenv
 zshrc

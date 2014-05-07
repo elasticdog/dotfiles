@@ -1,0 +1,18 @@
+HashKnownHosts yes
+
+Host *
+  ControlPath ~/.ssh/master-%h-%p-%r
+  ServerAliveInterval 240
+
+Host aurora
+  Hostname 192.241.222.190
+
+Host boreas
+  Hostname 162.243.9.11
+
+Host halcyon
+  Hostname elasticdog.ignorelist.com
+  Port 49645
+
+Host halcyon.lcl
+  Hostname 172.30.42.23
