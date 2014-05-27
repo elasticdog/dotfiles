@@ -126,3 +126,6 @@
 	path = z
 	url = git://github.com/rupa/z.git
 	ignore = dirty
+[submodule "vim/bundle/splitjoin"]
+	path = vim/bundle/splitjoin
+	url = https://github.com/AndrewRadev/splitjoin.vim.git
