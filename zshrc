@@ -98,7 +98,7 @@ esac
 ##### Command Aliases
 
 # no spelling correction for these commands
-for command in cp git knife mkdir mv ssh; do
+for command in cp git knife mkdir mv ssh z; do
 	alias $command="nocorrect $command"
 done
 
