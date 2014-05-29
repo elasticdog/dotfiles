@@ -98,6 +98,10 @@
 	path = vim/bundle/speeddating
 	url = git://github.com/tpope/vim-speeddating.git
 	ignore = dirty
+[submodule "vim/bundle/splitjoin"]
+	path = vim/bundle/splitjoin
+	url = https://github.com/AndrewRadev/splitjoin.vim.git
+	ignore = dirty
 [submodule "vim/bundle/surround"]
 	path = vim/bundle/surround
 	url = git://github.com/tpope/vim-surround.git
@@ -109,6 +113,10 @@
 [submodule "vim/bundle/textile"]
 	path = vim/bundle/textile
 	url = git://github.com/timcharper/textile.vim.git
+	ignore = dirty
+[submodule "vim/bundle/toml"]
+	path = vim/bundle/toml
+	url = https://github.com/cespare/vim-toml.git
 	ignore = dirty
 [submodule "vim/bundle/vimroom"]
 	path = vim/bundle/vimroom
@@ -126,6 +134,3 @@
 	path = z
 	url = git://github.com/rupa/z.git
 	ignore = dirty
-[submodule "vim/bundle/splitjoin"]
-	path = vim/bundle/splitjoin
-	url = https://github.com/AndrewRadev/splitjoin.vim.git
