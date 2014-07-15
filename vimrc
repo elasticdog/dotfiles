@@ -364,6 +364,9 @@ if has("autocmd")
 	" For all Python files, use the standard 4 spaces for indentation
 	autocmd FileType python setlocal et sts=4 sw=4 ts=4
 
+	" For all Swift files, use the standard 4 spaces for indentation
+	autocmd FileType swift setlocal et sts=4 sw=4 ts=4
+
 	" Jump to the last known cursor position when opening files
 	autocmd BufReadPost * call RestoreCursor()
 endif
