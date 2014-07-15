@@ -106,6 +106,10 @@
 	path = vim/bundle/surround
 	url = git://github.com/tpope/vim-surround.git
 	ignore = dirty
+[submodule "vim/bundle/swift"]
+	path = vim/bundle/swift
+	url = https://github.com/toyamarinyon/vim-swift.git
+	ignore = dirty
 [submodule "vim/bundle/tabular"]
 	path = vim/bundle/tabular
 	url = git://github.com/godlygeek/tabular.git
