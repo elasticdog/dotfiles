@@ -70,6 +70,10 @@
 	path = vim/bundle/puppet
 	url = git://github.com/rodjek/vim-puppet.git
 	ignore = dirty
+[submodule "vim/bundle/racket"]
+	path = vim/bundle/racket
+	url = https://github.com/wlangstroth/vim-racket.git
+	ignore = dirty
 [submodule "vim/bundle/rainbow_parentheses"]
 	path = vim/bundle/rainbow_parentheses
 	url = https://github.com/kien/rainbow_parentheses.vim.git
