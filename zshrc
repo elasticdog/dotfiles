@@ -112,7 +112,7 @@ compdef gpg2=gpg
 
 # set default options
 alias grep='grep --color=auto'  # show the matching string in color
-alias less='less --ignore-case --LONG-PROMPT'
+alias less='less --chop-long-lines --ignore-case --no-init --quit-if-one-screen --LONG-PROMPT --RAW-CONTROL-CHARS'
 alias tree='tree --dirsfirst -C'
 
 # ls hacking
