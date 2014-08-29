@@ -323,6 +323,9 @@ let g:paredit_leader = '\'
 " scratch.vim - Scratch Buffer
 noremap <silent> <Leader><Tab> :Scratch<CR>
 
+" slime.vim - Slime Mode
+let g:slime_target = 'tmux'
+
 " tabular.vim - Tabularize Plugin
 nnoremap <Leader>A :Tabularize /
 
