@@ -6,6 +6,7 @@ export DISPLAY=':0.0'
 export GOPATH="$HOME/src/go"
 export PAGER='less -iM'
 export WORKON_HOME="$HOME/.virtualenvs"
+export VAGRANT_DEFAULT_PROVIDER='virtualbox'
 
 # set up amazon web services credentials
 export AWS_CONFIG_FILE="$HOME/.aws/config"
