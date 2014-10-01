@@ -46,6 +46,10 @@
 	path = vim/bundle/json
 	url = https://github.com/elzr/vim-json.git
 	ignore = dirty
+[submodule "vim/bundle/ledger"]
+	path = vim/bundle/ledger
+	url = https://github.com/ledger/vim-ledger.git
+	ignore = dirty
 [submodule "vim/bundle/liquid"]
 	path = vim/bundle/liquid
 	url = git://github.com/tpope/vim-liquid.git
