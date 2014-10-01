@@ -201,6 +201,9 @@ alias scpw='scp -F ~/.ssh/mnx-config'
 # web cat
 command -v wget >/dev/null && alias wcat='wget -q -O - '
 
+# simple pattern-based renaming
+alias mmv='noglob zmv -W'
+
 ### git aliases
 
 alias g='git'
