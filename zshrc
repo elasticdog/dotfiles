@@ -218,7 +218,6 @@ function sshx {
 	tmux set-window-option synchronize-panes
 }
 
-done
 ### git aliases
 
 alias g='git'
