@@ -98,12 +98,12 @@ esac
 ##### Command Aliases
 
 # no spelling correction for these commands
-for command in cp git knife mkdir mv ssh workon z; do
+for command in ... .... ..... cp git knife mkdir mv ssh workon z; do
 	alias $command="nocorrect $command"
 done
 
 # no globbing for these commands
-for command in ansible ansible-playbook bundle git rake; do
+for command in ansible ansible-playbook bundle git ledger rake; do
 	alias $command="noglob $command"
 done
 
