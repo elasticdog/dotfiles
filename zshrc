@@ -204,6 +204,21 @@ command -v wget >/dev/null && alias wcat='wget -q -O - '
 # simple pattern-based renaming
 alias mmv='noglob zmv -W'
 
+# query aws for instance data
+function us2 {
+	aws --region us-west-2 ec2 describe-instances --filters "Name=tag:Name, Values=$1"
+}
+
+function sshx {
+	tmux select-layout tiled
+	while IFS= read -r line; do
+		tmux send-keys "sshkh -i ~/.ssh/api-x.id_rsa ubuntu@$line" C-l
+		tmux select-pane -t :.+
+	done
+	tmux set-window-option synchronize-panes
+}
+
+done
 ### git aliases
 
 alias g='git'
@@ -233,6 +248,7 @@ alias -g B='bundle exec'
 alias -g C='clear && '
 alias -g G='| grep'
 alias -g H='| head'
+alias -g IP="| jq --raw-output '.[][].Instances[].NetworkInterfaces[].PrivateIpAddress'"
 alias -g L='| less'
 alias -g N='> /dev/null 2>&1'
 alias -g P='ps aux | head -1 && ps aux | grep -v grep | grep'
