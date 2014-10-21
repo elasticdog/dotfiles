@@ -357,6 +357,11 @@ if has("autocmd")
 	" For all JavaScript/JSON/Ruby/YAML files, use the standard 2 spaces for indentation
 	autocmd FileType javascript,json,ruby,yaml setlocal et sts=2 sw=2 ts=2
 
+	" Make sure all ledger files have the correct filetype set and use standard
+	" 4 spaces for indentation
+	autocmd BufRead,BufNewFile *.dat setfiletype ledger
+	autocmd BufRead,BufNewFile *.dat setlocal et sts=4 sw=4 ts=4
+
 	" Make sure all markdown files have the correct filetype set
 	autocmd BufRead,BufNewFile *.{md,mkd,mkdn,mdown,markdown} setfiletype markdown
 	autocmd BufRead,BufNewFile *.{mmd,multimarkdown} setfiletype markdown
