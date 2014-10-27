@@ -90,6 +90,10 @@
 	path = vim/bundle/ruby
 	url = git://github.com/vim-ruby/vim-ruby.git
 	ignore = dirty
+[submodule "vim/bundle/rust"]
+	path = vim/bundle/rust
+	url = https://github.com/wting/rust.vim.git
+	ignore = dirty
 [submodule "vim/bundle/sass"]
 	path = vim/bundle/sass
 	url = git://github.com/cakebaker/scss-syntax.vim.git
