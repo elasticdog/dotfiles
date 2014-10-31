@@ -22,6 +22,10 @@
 	path = vim/bundle/fireplace
 	url = https://github.com/tpope/vim-fireplace.git
 	ignore = dirty
+[submodule "vim/bundle/fish"]
+	path = vim/bundle/fish
+	url = https://github.com/dag/vim-fish.git
+	ignore = dirty
 [submodule "vim/bundle/fugitive"]
 	path = vim/bundle/fugitive
 	url = git://github.com/tpope/vim-fugitive.git
