@@ -5,6 +5,11 @@
 " GENERAL
 " --------------------------------------
 
+" Force a POSIX compatible shell for internal functions
+if &shell =~# 'fish$'
+	set shell=sh
+endif
+
 set nocompatible  " Use Vim settings (versus Vi compatible)
 set autoread      " Automatically reload when a file is changed outside of Vim
 set nobackup      " Do not automatically backup files
