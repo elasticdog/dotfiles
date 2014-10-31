@@ -26,10 +26,11 @@ function fish_prompt --description 'Write out the prompt'
 	end
 
 	# set desired output options for the __fish_git_prompt function
-	set -g __fish_git_prompt_color black
+	set -g __fish_git_prompt_color 666
 	set -g __fish_git_prompt_color_branch white
 	set -g __fish_git_prompt_showcolorhints true
 	set -g __fish_git_prompt_showdirtystate true
+	set -g __fish_git_prompt_showuntrackedfiles
 
 	# make it obvious if the current user is root
 	switch $USER
