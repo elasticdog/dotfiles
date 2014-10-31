@@ -26,6 +26,7 @@
 [color]
 	ui = auto
 [core]
+	editor = vim -f
 	excludesfile = ~/.gitignore
 [merge]
 	conflictstyle = diff3
