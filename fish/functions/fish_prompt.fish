@@ -43,7 +43,7 @@ function fish_prompt --description 'Write out the prompt'
 	end
 
 	# write out the prompt
-	printf '%s%s%s %s%s\n' $__fish_prompt_color_pwd (smart_pwd) (__fish_git_prompt) $__fish_prompt_color_duration $previous_duration
+	printf '\n%s%s%s %s%s\n' $__fish_prompt_color_pwd (smart_pwd) (__fish_git_prompt) $__fish_prompt_color_duration $previous_duration
 	printf '%s%s ' $__fish_prompt_color_status $__fish_prompt_character
 
 end
