@@ -14,6 +14,10 @@
 	path = vim/bundle/easymotion
 	url = git://github.com/Lokaltog/vim-easymotion.git
 	ignore = dirty
+[submodule "vim/bundle/elixir"]
+	path = vim/bundle/elixir
+	url = https://github.com/elixir-lang/vim-elixir.git
+	ignore = dirty
 [submodule "vim/bundle/endwise"]
 	path = vim/bundle/endwise
 	url = git://github.com/tpope/vim-endwise.git
