@@ -1,6 +1,6 @@
-function ip --description 'Query us-west-2 for EC2 instance data'
+function ip --description 'Query AWS for EC2 instance data'
 
-	if test (count $argv) = 2
+	if test (count $argv) -eq 2
 		set region $argv[2]
 	else
 		set region us-west-2
