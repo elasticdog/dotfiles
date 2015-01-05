@@ -1,4 +1,5 @@
 function fingerprint --description 'Generate an AWS key pair fingerprint'
+	# https://github.com/aws/aws-cli/issues/191
 
 	if set -q $argv
 		echo 'Usage: fingerprint <pubkey>'
