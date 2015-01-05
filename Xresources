@@ -1,5 +1,8 @@
 XTerm.termName: xterm-256color
 
+XTerm.utf8: 1
+XTerm.locale: true
+
 XTerm.vt100.allowTitleOps: false
 XTerm.vt100.cutNewline: false
 XTerm.vt100.faceName: "Ubuntu Mono"
