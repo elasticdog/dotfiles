@@ -1,4 +1,4 @@
-function ip --description 'Query AWS for EC2 instance data'
+function ipa --description 'Query AWS for EC2 instance data'
 
 	if test (count $argv) -eq 2
 		set region $argv[2]
