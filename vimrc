@@ -54,6 +54,7 @@ if has('gui_running')
 else
 	" Make sure folds can be read when using a dark terminal
 	highlight Folded ctermfg=LightGray ctermbg=DarkBlue
+	highlight FoldColumn ctermfg=DarkGray ctermbg=Black
 endif
 
 " Highlight trailing whitespace characters and tabs not used for indention
@@ -163,6 +164,7 @@ set formatoptions+=1  " prefer breaking before, not after, a one-letter word
 " --------------------------------------
 
 set foldmethod=indent  " Lines with equal indent form a fold
+set foldcolumn=2       " Display column indicating open/closed folds
 set foldlevel=99       " Default to no folds closed
 
 
