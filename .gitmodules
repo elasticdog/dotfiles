@@ -2,6 +2,10 @@
 	path = vim/bundle/ack
 	url = git://github.com/mileszs/ack.vim.git
 	ignore = dirty
+[submodule "vim/bundle/beancount"]
+	path = vim/bundle/beancount
+	url = git://github.com/nathangrigg/vim-beancount.git
+	ignore = dirty
 [submodule "vim/bundle/clojure-static"]
 	path = vim/bundle/clojure-static
 	url = https://github.com/guns/vim-clojure-static.git
