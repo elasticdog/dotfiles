@@ -164,7 +164,7 @@ set formatoptions+=1  " prefer breaking before, not after, a one-letter word
 " --------------------------------------
 
 set foldmethod=indent  " Lines with equal indent form a fold
-set foldcolumn=2       " Display column indicating open/closed folds
+set foldcolumn=3       " Display column indicating open/closed folds
 set foldlevel=99       " Default to no folds closed
 
 
