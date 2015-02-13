@@ -55,6 +55,7 @@ else
 	" Make sure folds can be read when using a dark terminal
 	highlight Folded ctermfg=LightGray ctermbg=DarkBlue
 	highlight FoldColumn ctermfg=DarkGray ctermbg=Black
+	highlight CursorLine cterm=bold
 endif
 
 " Highlight trailing whitespace characters and tabs not used for indention
@@ -74,6 +75,7 @@ else
 endif
 
 set cmdheight=1      " Reserve one row for the command bar
+set cursorline       " Highlight the screen line of the cursor
 set hidden           " Allow the changing of buffers without saving
 set hlsearch         " Highlight the last used search pattern
 set ignorecase       " Ignore case when searching
