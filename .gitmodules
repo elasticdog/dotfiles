@@ -74,6 +74,10 @@
 	path = vim/bundle/mustache
 	url = git://github.com/juvenn/mustache.vim.git
 	ignore = dirty
+[submodule "vim/bundle/nimrod"]
+	path = vim/bundle/nimrod
+	url = git@github.com:zah/nimrod.vim.git
+	ignore = dirty
 [submodule "vim/bundle/paredit"]
 	path = vim/bundle/paredit
 	url = https://github.com/vim-scripts/paredit.vim.git
