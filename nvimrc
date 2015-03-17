@@ -46,6 +46,7 @@ Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vividchalk'
+Plug '~/.nvim/vendor/nix'
 
 call plug#end()
 
