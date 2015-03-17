@@ -96,7 +96,6 @@ set foldcolumn=3                " Display column indicating open/closed folds
 set foldlevel=99                " Default to no folds closed
 set foldmethod=indent           " Lines with equal indent form a fold
 set formatoptions+=1            " Prefer breaking before, not after, a one-letter word
-set formatoptions+=j            " Delete comment character when joining commented lines
 set formatoptions+=n            " When formatting text with gq, recognize lists
 set hidden                      " Allow the changing of buffers without saving
 set history=1000                " Remember 1000 lines of command line history
@@ -133,6 +132,11 @@ set whichwrap+=h,l              " Allow cursor keys to line wrap
 set wildmenu                    " Use enhanced command line completion
 set wildmode=longest:list,full  " Set the wildchar completion mode
 set winminheight=0              " Minimal height of a non-current window
+
+" Delete comment character when joining commented lines
+if v:version > 703 || v:version == 703 && has("patch541")
+	set formatoptions+=j
+endif
 
 " Use custom characters for window separators and whitespace
 set fillchars=vert:\ ,fold:-
