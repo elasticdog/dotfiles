@@ -258,6 +258,7 @@ nmap Y y$
 " --------------------------------------
 
 " Use tabs for these file types
+autocmd FileType gitconfig setlocal noexpandtab
 autocmd FileType make setlocal noexpandtab
 autocmd FileType sh setlocal noexpandtab
 autocmd FileType vim setlocal noexpandtab
