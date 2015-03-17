@@ -265,4 +265,4 @@ autocmd FileType vim setlocal noexpandtab
 
 " Use a tab spacing of two spaces for these file types
 autocmd FileType beancount setlocal expandtab shiftwidth=2 softtabstop=4 tabstop=4
-autocmd FileType yaml setlocal expandtab shiftwidth=2 softtabstop=4 tabstop=4
+autocmd FileType yaml setlocal expandtab shiftwidth=2 softtabstop=2 tabstop=2
