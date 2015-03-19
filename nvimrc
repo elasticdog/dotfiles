@@ -27,6 +27,7 @@ nnoremap <silent> <Leader>b :CtrlPBuffer<CR>
 Plug 'Lokaltog/vim-easymotion'
 Plug 'dag/vim-fish'
 Plug 'elixir-lang/vim-elixir'
+Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'godlygeek/tabular'
 
 Plug 'majutsushi/tagbar'
