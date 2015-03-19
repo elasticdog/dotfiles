@@ -19,7 +19,6 @@ let g:airline_symbols.whitespace = 'Ξ'
 
 Plug 'kien/ctrlp.vim'
 let g:ctrlp_clear_cache_on_exit = 0
-let g:ctrlp_default_input = 1
 let g:ctrlp_match_window = 'max:16,results:64'
 let g:ctrlp_open_multiple_files = '1r'
 let g:ctrlp_open_new_file = 'r'
@@ -43,9 +42,12 @@ nnoremap <Leader>a :Ack<Space>
 Plug 'mtth/scratch.vim'
 Plug 'nathangrigg/vim-beancount'
 Plug 'tomtom/tcomment_vim'
+Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-vividchalk'
+Plug '~/.nvim/vendor/nginx'
 Plug '~/.nvim/vendor/nix'
 
 call plug#end()
@@ -265,5 +267,6 @@ autocmd FileType sh setlocal noexpandtab
 autocmd FileType vim setlocal noexpandtab
 
 " Use a tab spacing of two spaces for these file types
-autocmd FileType beancount setlocal expandtab shiftwidth=2 softtabstop=4 tabstop=4
-autocmd FileType yaml setlocal expandtab shiftwidth=2 softtabstop=2 tabstop=2
+autocmd FileType beancount setlocal shiftwidth=2 softtabstop=2 tabstop=2
+autocmd FileType elixir setlocal shiftwidth=2 softtabstop=2 tabstop=2
+autocmd FileType yaml setlocal shiftwidth=2 softtabstop=2 tabstop=2
