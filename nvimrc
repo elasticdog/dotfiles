@@ -17,6 +17,9 @@ let g:airline_symbols.branch = '⎇'
 let g:airline_symbols.linenr = '¶'
 let g:airline_symbols.whitespace = 'Ξ'
 
+Plug 'janko-m/vim-test'
+let test#strategy = 'neovim'
+
 Plug 'kien/ctrlp.vim'
 let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_match_window = 'max:16,results:64'
@@ -24,29 +27,27 @@ let g:ctrlp_open_multiple_files = '1r'
 let g:ctrlp_open_new_file = 'r'
 nnoremap <silent> <Leader>b :CtrlPBuffer<CR>
 
-Plug 'Lokaltog/vim-easymotion'
-Plug 'dag/vim-fish'
-Plug 'elixir-lang/vim-elixir'
-Plug 'Glench/Vim-Jinja2-Syntax'
-Plug 'godlygeek/tabular'
-
 Plug 'majutsushi/tagbar'
 let g:tagbar_autoclose = 1
 nnoremap <silent> <Leader>t :TagbarToggle<CR>
-
-Plug 'maxbrunsfeld/vim-yankstack'
 
 Plug 'mileszs/ack.vim'
 let g:ackprg = 'ag --nogroup --nocolor --column'
 nnoremap <Leader>a :Ack<Space>
 
+Plug 'Glench/Vim-Jinja2-Syntax'
+Plug 'Lokaltog/vim-easymotion'
+Plug 'dag/vim-fish'
+Plug 'elixir-lang/vim-elixir'
+Plug 'godlygeek/tabular'
+Plug 'maxbrunsfeld/vim-yankstack'
 Plug 'mtth/scratch.vim'
 Plug 'nathangrigg/vim-beancount'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-vividchalk'
 Plug '~/.nvim/vendor/nginx'
 Plug '~/.nvim/vendor/nix'
