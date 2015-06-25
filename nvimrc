@@ -267,6 +267,7 @@ nmap Y y$
 autocmd FileType gitconfig setlocal noexpandtab
 autocmd FileType make setlocal noexpandtab
 autocmd FileType sh setlocal noexpandtab
+autocmd FileType tex setlocal noexpandtab
 autocmd FileType vim setlocal noexpandtab
 
 " Use a tab spacing of two spaces for these file types
