@@ -6,6 +6,7 @@ function gmup --description 'Update the Git master branch'
 		gcd
 		command git checkout master
 		command git pull --rebase
+		command git remote prune origin
 		command git checkout $current_branch
 		popd
 	end
