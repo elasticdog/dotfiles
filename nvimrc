@@ -130,7 +130,6 @@ set sidescrolloff=3             " Keep three columns left and right of cursor wh
 set smarttab                    " Insert blanks according to shiftwidth when in front of a line
 set ttimeout                    " Enable terminal timeout for key code sequences
 set ttimeoutlen=100             " Time out on key codes after a tenth of a second
-set ttymouse=xterm2             " Use a modern terminal type for mouse handling
 set viminfo^=!                  " Save and restore all-capital global variables
 set virtualedit=block           " Cursor can be positioned anywhere when in blockwise Visual mode
 set whichwrap+=h,l              " Allow cursor keys to line wrap
