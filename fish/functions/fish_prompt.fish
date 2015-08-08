@@ -11,15 +11,17 @@ function fish_prompt --description 'Write out the prompt'
 		set -g __fish_prompt_color_status (set_color red)
 	end
 
-	# display the previous command's duration if it was > 1 sec
-	#
-	# NOTE: this will be changing soon due to:
-	#     https://github.com/fish-shell/fish-shell/pull/1590
-	# ...and I'll have to do something like this instead:
-	#     date -u -d @$CMD_DURATION "+%kh %Mm %Ss"
+	# display the previous command's duration if it was > 5 seconds
 	set -l previous_duration
 	if test (count $previous_command_info) = 2
-		set previous_duration $previous_command_info[2]
+		set -l milliseconds $previous_command_info[2]
+		set -l one_minute 60000
+		set -l minimum_duration 5000
+		if test $milliseconds -gt $one_minute
+			set previous_duration (echo $previous_command_info[2] | awk '{ printf("%dm %02ds\n", ($1/1000/60), ($1/1000%60)) }')
+		else if test $milliseconds -gt $minimum_duration
+			set previous_duration (echo $previous_command_info[2] | awk '{ printf("%ds\n", ($1/1000%60)) }')
+		end
 	end
 	if not set -q __fish_prompt_color_duration
 		set -g __fish_prompt_color_duration (set_color yellow)
