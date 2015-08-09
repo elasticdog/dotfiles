@@ -9,7 +9,7 @@ hgext.fetch =
 hgext.graphlog =
 hgext.mq =
 hgext.record =
-hgext.shelve = ~/.hgext/hgshelve.py
+shelve =
 pager =
 progress =
 
