@@ -1,9 +1,9 @@
 # set up amazon web services credentials
 set -l AWS_CREDENTIALS_FILE $HOME/.aws/credentials
 if test -f $AWS_CREDENTIALS_FILE
-	set -x AWS_ACCESS_KEY (awk -F= '/^aws_access_key_id/{ print $2 }' $AWS_CREDENTIALS_FILE)
+	set -x AWS_ACCESS_KEY (awk '/^aws_access_key_id/{ print $3 }' $AWS_CREDENTIALS_FILE)
 	set -x AWS_ACCESS_KEY_ID $AWS_ACCESS_KEY
-	set -x AWS_SECRET_KEY (awk -F= '/^aws_secret_access_key/{ print $2 }' $AWS_CREDENTIALS_FILE)
+	set -x AWS_SECRET_KEY (awk '/^aws_secret_access_key/{ print $3 }' $AWS_CREDENTIALS_FILE)
 	set -x AWS_SECRET_ACCESS_KEY $AWS_SECRET_KEY
 end
 
