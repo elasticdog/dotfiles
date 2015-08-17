@@ -1,5 +1,5 @@
 # set up amazon web services credentials
-set -x AWS_CONFIG_FILE $HOME/.aws/config
+set -x AWS_CONFIG_FILE $HOME/.aws/credentials
 if test -f $AWS_CONFIG_FILE
 	set -x AWS_ACCESS_KEY (awk -F= '/^aws_access_key_id/{ print $2 }' $AWS_CONFIG_FILE)
 	set -x AWS_ACCESS_KEY_ID $AWS_ACCESS_KEY
