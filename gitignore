@@ -5,3 +5,5 @@
 .hg
 .svn
 *.test
+.floo
+.flooignore
