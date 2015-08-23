@@ -10,6 +10,9 @@ end
 # disable the shell greeting message
 set -e fish_greeting
 
+# use vi-style command line editing
+fish_vi_mode
+
 set -x GOPATH $HOME/src/go
 set -x GOROOT /usr/local/go
 set -x PATH $HOME/bin $HOME/.nimble/bin $PATH

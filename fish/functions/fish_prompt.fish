@@ -11,6 +11,17 @@ function fish_prompt --description 'Write out the prompt'
 		set -g __fish_prompt_color_status (set_color red)
 	end
 
+	if set -q __fish_vi_mode
+		switch $fish_bind_mode
+			case default
+				set -g __fish_prompt_color_status (set_color --background 555555)
+			case insert
+				set -g __fish_prompt_color_status (set_color --background black)
+			case visual
+				set -g __fish_prompt_color_status (set_color --background blue)
+		end
+	end
+
 	# display the previous command's duration if it was > 5 seconds
 	set -l previous_duration
 	if test (count $previous_command_info) = 2
@@ -45,7 +56,6 @@ function fish_prompt --description 'Write out the prompt'
 	end
 
 	# write out the prompt
-	printf '\n%s%s%s %s%s\n' $__fish_prompt_color_pwd (smart_pwd) (__fish_git_prompt) $__fish_prompt_color_duration $previous_duration
-	printf '%s%s ' $__fish_prompt_color_status $__fish_prompt_character
-
+	printf '%s%s%s %s%s\n' $__fish_prompt_color_pwd (smart_pwd) (__fish_git_prompt) $__fish_prompt_color_duration $previous_duration
+	printf '%s%s%s ' $__fish_prompt_color_status $__fish_prompt_character (set_color normal)
 end
