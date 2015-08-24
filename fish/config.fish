@@ -13,6 +13,16 @@ set -e fish_greeting
 # use vi-style command line editing
 fish_vi_mode
 
+# set custom key bindings here until this is resolved:
+# https://github.com/fish-shell/fish-shell/issues/1495
+function my_vi_key_bindings
+	fish_vi_key_bindings
+
+	# bind Ctrl-l to clear the screen
+	bind -M insert \cl 'clear; commandline -f repaint'
+end
+set -g fish_key_bindings my_vi_key_bindings
+
 set -x GOPATH $HOME/src/go
 set -x GOROOT /usr/local/go
 set -x PATH $HOME/bin $HOME/.nimble/bin $PATH
