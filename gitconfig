@@ -6,6 +6,7 @@
 	br = branch
 	ci = commit --verbose
 	co = checkout
+	dc = diff --color-words="[^[:space:]]|([[:alnum:]]|UTF_8_GUARD)+"
 	df = diff
 	ds = diff --stat
 	empty-tree-sha1 = hash-object -t tree /dev/null
