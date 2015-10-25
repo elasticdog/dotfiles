@@ -7,6 +7,11 @@ if test -f $AWS_CREDENTIALS_FILE
 	set -x AWS_SECRET_ACCESS_KEY $AWS_SECRET_KEY
 end
 
+set -l ATLAS_CREDENTIALS_FILE $HOME/.config/atlas
+if test -f $ATLAS_CREDENTIALS_FILE
+	set -x ATLAS_TOKEN (awk '/^atlas_token/{ print $3 }' $ATLAS_CREDENTIALS_FILE)
+end
+
 # disable the shell greeting message
 set -e fish_greeting
 
