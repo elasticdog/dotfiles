@@ -32,7 +32,7 @@ let g:tagbar_autoclose = 1
 nnoremap <silent> <Leader>t :TagbarToggle<CR>
 
 Plug 'mileszs/ack.vim'
-let g:ackprg = 'ag --nogroup --nocolor --column'
+let g:ackprg = 'ag --vimgrep'
 nnoremap <Leader>a :Ack<Space>
 
 Plug 'Glench/Vim-Jinja2-Syntax'
