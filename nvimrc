@@ -276,4 +276,5 @@ autocmd FileType vim setlocal noexpandtab
 " Use a tab spacing of two spaces for these file types
 autocmd FileType beancount setlocal shiftwidth=2 softtabstop=2 tabstop=2
 autocmd FileType elixir setlocal shiftwidth=2 softtabstop=2 tabstop=2
+autocmd FileType nix setlocal shiftwidth=2 softtabstop=2 tabstop=2
 autocmd FileType yaml setlocal shiftwidth=2 softtabstop=2 tabstop=2
