@@ -33,6 +33,8 @@ set -x GOROOT /usr/local/go
 set -x PATH $HOME/bin $HOME/.nimble/bin $PATH
 set -x PYTHONPATH $HOME/src/vendor/vanilla/beancount/src/python
 
+# add auto-expanding abbreviations
+abbr -a g git
 
 ## NIX SETUP
 #
