@@ -17,6 +17,7 @@ set -e fish_greeting
 
 # use vi-style command line editing
 fish_vi_mode
+set -x GIT_EDITOR nvim
 
 # set custom key bindings here until this is resolved:
 # https://github.com/fish-shell/fish-shell/issues/1495
