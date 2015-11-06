@@ -52,8 +52,8 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vividchalk'
-Plug '~/.nvim/vendor/nginx'
-Plug '~/.nvim/vendor/nix'
+Plug '~/.config/nvim/vendor/nginx'
+Plug '~/.config/nvim/vendor/nix'
 
 call plug#end()
 
