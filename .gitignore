@@ -1,4 +1,5 @@
 .netrwhist
 /nvim/plugged
 plug.vim.old
+ssh/config.d/work
 tags
