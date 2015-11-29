@@ -30,6 +30,8 @@
 [core]
 	editor = vim -f
 	excludesfile = ~/.gitignore
+[diff]
+	algorithm = histogram
 [merge]
 	conflictstyle = diff3
 	tool = gvimdiff
