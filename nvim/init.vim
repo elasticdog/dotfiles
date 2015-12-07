@@ -20,7 +20,7 @@ let g:airline_symbols.whitespace = 'Ξ'
 Plug 'janko-m/vim-test'
 let test#strategy = 'neovim'
 
-Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_match_window = 'max:16,results:64'
 let g:ctrlp_open_multiple_files = '1r'
