@@ -31,9 +31,16 @@ Plug 'majutsushi/tagbar'
 let g:tagbar_autoclose = 1
 nnoremap <silent> <Leader>t :TagbarToggle<CR>
 
-Plug 'mileszs/ack.vim'
-let g:ackprg = 'ag --vimgrep'
-nnoremap <Leader>a :Ack<Space>
+Plug 'mhinz/vim-grepper'
+nnoremap <C-G> :Grepper! -tool ag<CR>
+let g:grepper = {
+	\ 'tools':     ['ag', 'git', 'grep'],
+	\ 'open':      1,
+	\ 'switch':    0,
+	\ 'jump':      0,
+	\ 'next_tool': '<C-G>',
+	\ }
+command! -nargs=* -complete=file Ag Grepper! -tool ag -query <args>
 
 Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'Lokaltog/vim-easymotion'
