@@ -36,6 +36,8 @@ set -x PYTHONPATH $HOME/src/vendor/vanilla/beancount/src/python
 
 # add auto-expanding abbreviations
 abbr -a g git
+abbr -a gdiff "git diff --no-index --color --color-words"
+abbr -a tree "tree -F --dirsfirst"
 
 ## NIX SETUP
 #
