@@ -17,19 +17,12 @@ let g:airline_symbols.branch = '⎇'
 let g:airline_symbols.linenr = '¶'
 let g:airline_symbols.whitespace = 'Ξ'
 
-Plug 'janko-m/vim-test'
-let test#strategy = 'neovim'
-
 Plug 'ctrlpvim/ctrlp.vim'
 let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_match_window = 'max:16,results:64'
 let g:ctrlp_open_multiple_files = '1r'
 let g:ctrlp_open_new_file = 'r'
 nnoremap <silent> <Leader>b :CtrlPBuffer<CR>
-
-Plug 'majutsushi/tagbar'
-let g:tagbar_autoclose = 1
-nnoremap <silent> <Leader>t :TagbarToggle<CR>
 
 Plug 'mhinz/vim-grepper'
 nnoremap <C-G> :Grepper! -tool ag<CR>
@@ -42,24 +35,32 @@ let g:grepper = {
 	\ }
 command! -nargs=* -complete=file Ag Grepper! -tool ag -query <args>
 
-Plug 'Glench/Vim-Jinja2-Syntax'
-Plug 'Lokaltog/vim-easymotion'
-Plug 'dag/vim-fish'
-Plug 'elixir-lang/vim-elixir'
-Plug 'floobits/floobits-neovim'
-Plug 'godlygeek/tabular'
-Plug 'lambdatoast/elm.vim'
-Plug 'maxbrunsfeld/vim-yankstack'
-Plug 'mtth/scratch.vim'
+Plug 'majutsushi/tagbar'
+let g:tagbar_autoclose = 1
+nnoremap <silent> <Leader>t :TagbarToggle<CR>
+
+Plug 'janko-m/vim-test'
+let test#strategy = 'neovim'
+
 Plug 'nathangrigg/vim-beancount'
-Plug 'rodjek/vim-puppet'
-Plug 'tomtom/tcomment_vim'
+Plug 'Lokaltog/vim-easymotion'
+Plug 'elixir-lang/vim-elixir'
+Plug 'lambdatoast/elm.vim'
 Plug 'tpope/vim-endwise'
+Plug 'dag/vim-fish'
+Plug 'floobits/floobits-neovim'
 Plug 'tpope/vim-fugitive'
+Plug 'Glench/Vim-Jinja2-Syntax'
+Plug 'rodjek/vim-puppet'
 Plug 'tpope/vim-repeat'
+Plug 'mtth/scratch.vim'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
+Plug 'godlygeek/tabular'
+Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-vividchalk'
+Plug 'maxbrunsfeld/vim-yankstack'
+
 Plug '~/.config/nvim/vendor/nginx'
 Plug '~/.config/nvim/vendor/nix'
 
