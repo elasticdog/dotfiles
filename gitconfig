@@ -32,6 +32,8 @@
 	excludesfile = ~/.gitignore
 [diff]
 	algorithm = histogram
+[init]
+	templatedir = ~/.git_template
 [merge]
 	conflictstyle = diff3
 	tool = gvimdiff
