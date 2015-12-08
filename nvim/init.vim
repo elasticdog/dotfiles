@@ -277,6 +277,12 @@ nmap Y y$
 " FILETYPE SPECIFIC SETTINGS
 " --------------------------------------
 
+" preview the file without leaving the quickfix window
+autocmd BufReadPost quickfix nnoremap <buffer> p <CR><C-w>w
+
+" open the file then close the quickfix window
+autocmd BufReadPost quickfix nnoremap <silent> <buffer> <M-CR> <CR>:cclose<CR>
+
 " Use tabs for these file types
 autocmd FileType fish setlocal noexpandtab
 autocmd FileType gitconfig setlocal noexpandtab
