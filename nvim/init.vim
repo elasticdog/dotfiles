@@ -18,6 +18,7 @@ let g:airline_symbols.linenr = '¶'
 let g:airline_symbols.whitespace = 'Ξ'
 
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'd11wtq/ctrlp_bdelete.vim'
 let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_match_window = 'max:16,results:64'
 let g:ctrlp_open_multiple_files = '1r'
@@ -67,6 +68,7 @@ Plug '~/.config/nvim/vendor/nix'
 call plug#end()
 
 runtime! macros/matchit.vim
+call ctrlp_bdelete#init()
 call yankstack#setup()
 
 
