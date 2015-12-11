@@ -178,6 +178,15 @@ setglobal tags-=./tags tags^=./tags;
 " HELPER FUNCTIONS
 " --------------------------------------
 
+" Proceed with quit if quickfix is the last open window
+function! CheckLastWindow()
+	if &buftype == "quickfix"
+		if winnr('$') < 2
+			quit
+		endif
+	endif
+endfunction
+
 " Execute a command while preserving the cursor location and search history
 function! Preserve(command)
 	" save the last search and cursor position
@@ -282,6 +291,9 @@ autocmd BufReadPost quickfix nnoremap <buffer> p <CR><C-w>w
 
 " open the file then close the quickfix window
 autocmd BufReadPost quickfix nnoremap <silent> <buffer> <M-CR> <CR>:cclose<CR>
+
+" quit if quickfix is the last open window
+autocmd BufEnter * call CheckLastWindow()
 
 " Use tabs for these file types
 autocmd FileType fish setlocal noexpandtab
