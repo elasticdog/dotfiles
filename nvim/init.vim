@@ -27,11 +27,11 @@ nnoremap <silent> <Leader>b :CtrlPBuffer<CR>
 
 Plug 'mhinz/vim-grepper'
 nnoremap <C-G> :Grepper! -tool ag<CR>
+nnoremap <Leader>* :Grepper! -tool ag -cword!<CR>
 let g:grepper = {
 	\ 'tools':     ['ag', 'git', 'grep'],
 	\ 'open':      1,
-	\ 'switch':    0,
-	\ 'jump':      0,
+	\ 'switch':    1,
 	\ 'next_tool': '<C-G>',
 	\ }
 command! -nargs=* -complete=file Ag Grepper! -tool ag -query <args>
