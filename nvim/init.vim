@@ -26,14 +26,17 @@ let g:ctrlp_open_new_file = 'r'
 nnoremap <silent> <Leader>b :CtrlPBuffer<CR>
 
 Plug 'mhinz/vim-grepper'
-nnoremap <C-G> :Grepper! -tool ag<CR>
-nnoremap <Leader>* :Grepper! -tool ag -cword!<CR>
 let g:grepper = {
 	\ 'tools':     ['ag', 'git', 'grep'],
 	\ 'open':      1,
 	\ 'switch':    1,
+	\ 'jump':      0,
 	\ 'next_tool': '<C-G>',
 	\ }
+nnoremap <C-G> :Grepper! -tool ag<CR>
+nnoremap <Leader>* :Grepper! -tool ag -cword!<CR>
+nmap gG <plug>(GrepperOperator)
+xmap gG <plug>(GrepperOperator)
 command! -nargs=* -complete=file Ag Grepper! -tool ag -query <args>
 
 Plug 'majutsushi/tagbar'
