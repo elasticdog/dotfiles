@@ -220,6 +220,9 @@ autocmd BufReadPost * call RestoreCursor()
 " MAPPINGS & CUSTOM COMMANDS
 " --------------------------------------
 
+" Run the make command silently
+nnoremap <F5> :silent make! <Bar> redraw!<CR>
+
 " Always use very magic regexes for search patterns
 nnoremap / /\v
 vnoremap / /\v
@@ -310,3 +313,10 @@ autocmd FileType elixir setlocal shiftwidth=2 softtabstop=2 tabstop=2
 autocmd FileType elm setlocal shiftwidth=2 softtabstop=2 tabstop=2
 autocmd FileType nix setlocal shiftwidth=2 softtabstop=2 tabstop=2
 autocmd FileType yaml setlocal shiftwidth=2 softtabstop=2 tabstop=2
+
+" Use shellcheck for sh file types
+autocmd FileType sh setlocal makeprg=shellcheck\ -f\ gcc\ %
+
+" Automatically open the quickfix / location list window on errors
+autocmd QuickFixCmdPost [^l]* nested cwindow
+autocmd QuickFixCmdPost    l* nested lwindow
