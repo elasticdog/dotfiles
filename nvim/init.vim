@@ -189,6 +189,7 @@ function! CheckLastWindow()
 		endif
 	endif
 endfunction
+autocmd BufEnter * call CheckLastWindow()
 
 " Execute a command while preserving the cursor location and search history
 function! Preserve(command)
@@ -294,9 +295,6 @@ autocmd BufReadPost quickfix nnoremap <buffer> p <CR><C-w>w
 
 " open the file then close the quickfix window
 autocmd BufReadPost quickfix nnoremap <silent> <buffer> <M-CR> <CR>:cclose<CR>
-
-" quit if quickfix is the last open window
-autocmd BufEnter * call CheckLastWindow()
 
 " Use tabs for these file types
 autocmd FileType fish setlocal noexpandtab
