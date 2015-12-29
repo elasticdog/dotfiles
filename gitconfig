@@ -6,6 +6,7 @@
 	br = branch
 	ci = commit --verbose
 	co = checkout
+	contains = "!sh -c 'git branch -a --contains $1' -"
 	dc = diff --color-words="[^[:space:]]|([[:alnum:]]|UTF_8_GUARD)+"
 	df = diff
 	ds = diff --stat
