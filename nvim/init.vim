@@ -33,11 +33,11 @@ let g:grepper = {
 	\ 'jump':      0,
 	\ 'next_tool': '<C-G>',
 	\ }
-nnoremap <C-G> :Grepper! -tool ag<CR>
-nnoremap <Leader>* :Grepper! -tool ag -cword!<CR>
+nnoremap <silent> <C-G> :Grepper -tool ag<CR>
+nnoremap <silent> <Leader>* :Grepper -tool ag -cword!<CR>
 nmap gG <plug>(GrepperOperator)
 xmap gG <plug>(GrepperOperator)
-command! -nargs=* -complete=file Ag Grepper! -tool ag -query <args>
+command! -nargs=* -complete=file Ag Grepper -tool ag -query <args>
 
 Plug 'majutsushi/tagbar'
 let g:tagbar_autoclose = 1
