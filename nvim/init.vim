@@ -39,6 +39,9 @@ nmap gG <plug>(GrepperOperator)
 xmap gG <plug>(GrepperOperator)
 command! -nargs=* -complete=file Ag Grepper -tool ag -query <args>
 
+Plug 'rust-lang/rust.vim'
+let g:rustfmt_autosave = 1
+
 Plug 'majutsushi/tagbar'
 let g:tagbar_autoclose = 1
 nnoremap <silent> <Leader>t :TagbarToggle<CR>
