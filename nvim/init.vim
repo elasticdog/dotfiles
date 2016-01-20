@@ -315,6 +315,7 @@ autocmd FileType vim setlocal noexpandtab
 autocmd FileType beancount setlocal shiftwidth=2 softtabstop=2 tabstop=2
 autocmd FileType elixir setlocal shiftwidth=2 softtabstop=2 tabstop=2
 autocmd FileType elm setlocal shiftwidth=2 softtabstop=2 tabstop=2
+autocmd FileType haskell setlocal shiftwidth=2 softtabstop=2 tabstop=2
 autocmd FileType nix setlocal shiftwidth=2 softtabstop=2 tabstop=2
 autocmd FileType yaml setlocal shiftwidth=2 softtabstop=2 tabstop=2
 
