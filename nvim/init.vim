@@ -65,6 +65,7 @@ Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'godlygeek/tabular'
 Plug 'tomtom/tcomment_vim'
+Plug 'cespare/vim-toml'
 Plug 'tpope/vim-vividchalk'
 Plug 'maxbrunsfeld/vim-yankstack'
 
