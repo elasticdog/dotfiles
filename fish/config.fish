@@ -25,7 +25,7 @@ set -g fish_key_bindings my_vi_key_bindings
 
 set -x GOPATH $HOME/src/go
 set -x GOROOT /usr/local/go
-set -x PATH $HOME/bin $HOME/.nimble/bin $PATH
+set -x PATH $HOME/bin $HOME/.local/bin $HOME/.cargo/bin $PATH
 set -x PYTHONPATH $HOME/src/vendor/vanilla/beancount/src/python
 
 # add auto-expanding abbreviations
