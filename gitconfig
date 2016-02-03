@@ -42,5 +42,7 @@
 	default = simple
 [pretty]
 	custom = format:%C(yellow)%h%C(green)%d%C(reset) %s %C(cyan)[%cr] %C(magenta)<%an>%C(reset)
+[transfer]
+	fsckobjects = true
 [rerere]
 	enabled = 1
