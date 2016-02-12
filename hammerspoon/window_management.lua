@@ -1,15 +1,12 @@
 require "hs.application"
 
 -- name the common hotkey combinations
-local mash = {"cmd", "alt", "ctrl"}
+local hyper =    {"cmd", "alt", "ctrl", "shift"}
+local mash =     {"cmd", "alt", "ctrl"}
 local minimash = {"cmd", "alt"}
 
 -- disable animations
 hs.window.animationDuration = 0
-
--- launch applications
-hs.hotkey.bind(minimash, "F", function () hs.application.launchOrFocus("Firefox") end)
-hs.hotkey.bind(minimash, "N", function () hs.application.launchOrFocus("nvALT") end)
 
 -- change focus
 hs.hotkey.bind({"cmd", "ctrl"}, "Left", function() hs.window.frontmostWindow():focusWindowWest() end)
@@ -41,15 +38,6 @@ hs.hotkey.bind(mash, "L", hs.grid.pushWindowRight)
 hs.hotkey.bind(mash, "N", hs.grid.pushWindowNextScreen)
 hs.hotkey.bind(mash, "P", hs.grid.pushWindowPrevScreen)
 
--- resize windows
-hs.hotkey.bind(mash, "Y", hs.grid.resizeWindowThinner)
-hs.hotkey.bind(mash, "U", hs.grid.resizeWindowTaller)
-hs.hotkey.bind(mash, "I", hs.grid.resizeWindowShorter)
-hs.hotkey.bind(mash, "O", hs.grid.resizeWindowWider)
-
--- maximize window
-hs.hotkey.bind(mash, "M", hs.grid.maximizeWindow)
-
 -- center window
 hs.hotkey.bind(mash, "C", function()
     local win = hs.window.focusedWindow()
@@ -60,8 +48,11 @@ hs.hotkey.bind(mash, "C", function()
     win:setFrame(f)
 end)
 
--- window hints
-hs.hotkey.bind(mash, ".", hs.hints.windowHints)
+-- resize windows
+hs.hotkey.bind(mash, "Y", hs.grid.resizeWindowThinner)
+hs.hotkey.bind(mash, "U", hs.grid.resizeWindowTaller)
+hs.hotkey.bind(mash, "I", hs.grid.resizeWindowShorter)
+hs.hotkey.bind(mash, "O", hs.grid.resizeWindowWider)
 
 --[[ function factory that takes the multipliers of screen width
 and height to produce the window's x pos, y pos, width, and height ]]
@@ -91,3 +82,9 @@ hs.hotkey.bind(minimash, "L", baseMove(0.5, 0, 0.5, 1))     -- right half of scr
 hs.hotkey.bind(minimash, "B", baseMove(0, 0.5, 0.5, 0.5))   -- bottom-left quarter of screen
 hs.hotkey.bind(minimash, "J", baseMove(0, 0.5, 1, 0.5))     -- bottom half of screen
 hs.hotkey.bind(minimash, "N", baseMove(0.5, 0.5, 0.5, 0.5)) -- bottom-right quarter of screen
+
+-- maximize window
+hs.hotkey.bind(mash, "M", hs.grid.maximizeWindow)
+
+-- display window hints
+hs.hotkey.bind(mash, ".", hs.hints.windowHints)
