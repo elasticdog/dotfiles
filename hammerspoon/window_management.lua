@@ -62,11 +62,12 @@ function baseMove(x, y, w, h)
         local f = win:frame()
         local screen = win:screen()
         local max = screen:fullFrame()
+        local menubar = 22
 
         f.x = max.w * x
-        f.y = max.h * y
+        f.y = max.h * y + (menubar / 2 + 1)
         f.w = max.w * w
-        f.h = max.h * h
+        f.h = (max.h - menubar) * h
         win:setFrame(f)
     end
 end
