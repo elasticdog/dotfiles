@@ -15,7 +15,7 @@ hs.hotkey.bind({"cmd", "ctrl"}, "Up", function() hs.window.frontmostWindow():foc
 hs.hotkey.bind({"cmd", "ctrl"}, "Down", function() hs.window.frontmostWindow():focusWindowSouth() end)
 
 -- set up the default grid
-hs.grid.setGrid("7x6")
+hs.grid.setGrid("14x12")
 hs.grid.setMargins("0,0")
 
 -- adjust the grid size
