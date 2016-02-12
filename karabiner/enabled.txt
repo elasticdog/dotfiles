@@ -1,7 +1,0 @@
-* Control_L to Control_L
-  (+ When you type Control_L only, send Escape)
-
-* Shift to Paretheses
-  When pressed alone, left Shift types left paren (
-  When pressed alone, right Shift types right paren )
-  When used with other keys, they're normal Shifts.
