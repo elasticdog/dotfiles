@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+    https://pqrs.org/osx/karabiner/
+    ~/Library/Application Support/Karabiner/private.xml
+-->
+<root>
+    <item>
+        <name>Tab to Hyper Tab</name>
+        <identifier>private.tab_to_hyper_tab</identifier>
+
+        <appendix>When pressed alone, send normal Tab</appendix>
+        <appendix>When used with other keys, send Hyper (Control + Shift + Option + Command)</appendix>
+
+        <autogen>
+            __KeyOverlaidModifier__
+            KeyCode::TAB,
+
+            KeyCode::COMMAND_L,
+            ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L,
+            KeyCode::TAB
+        </autogen>
+    </item>
+</root>
