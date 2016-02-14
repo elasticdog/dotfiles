@@ -1,3 +1,8 @@
+-- name the common hotkey combinations
+hyper =    {"cmd", "alt", "ctrl", "shift"}
+mash =     {"cmd", "alt", "ctrl"}
+minimash = {"cmd", "alt"}
+
 require "applications"
 require "location"
 require "utilities"

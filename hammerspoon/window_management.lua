@@ -1,10 +1,5 @@
 require "hs.application"
 
--- name the common hotkey combinations
-local hyper =    {"cmd", "alt", "ctrl", "shift"}
-local mash =     {"cmd", "alt", "ctrl"}
-local minimash = {"cmd", "alt"}
-
 -- disable animations
 hs.window.animationDuration = 0
 
