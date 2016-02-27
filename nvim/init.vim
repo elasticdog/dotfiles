@@ -34,7 +34,7 @@ let g:grepper = {
 	\ 'next_tool': '<C-G>',
 	\ }
 nnoremap <silent> <C-G> :Grepper -tool ag<CR>
-nnoremap <silent> <Leader>* :Grepper -tool ag -cword!<CR>
+nnoremap <silent> <Leader>* :Grepper -tool ag -cword -noprompt<CR>
 nmap gG <plug>(GrepperOperator)
 xmap gG <plug>(GrepperOperator)
 command! -nargs=* -complete=file Ag Grepper -tool ag -query <args>
@@ -223,6 +223,9 @@ autocmd BufReadPost * call RestoreCursor()
 
 " MAPPINGS & CUSTOM COMMANDS
 " --------------------------------------
+
+" Exit terminal mode
+tnoremap <Esc> <C-\><C-n>
 
 " Run the make command silently
 nnoremap <F5> :silent make! <Bar> redraw!<CR>
