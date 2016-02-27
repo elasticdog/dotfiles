@@ -82,5 +82,8 @@ hs.hotkey.bind(minimash, "N", baseMove(0.5, 0.5, 0.5, 0.5)) -- bottom-right quar
 -- maximize window
 hs.hotkey.bind(mash, "M", hs.grid.maximizeWindow)
 
+-- zoom  window
+hs.hotkey.bind(mash, "Z", function() hs.window.frontmostWindow():toggleZoom() end)
+
 -- display window hints
 hs.hotkey.bind(mash, ".", hs.hints.windowHints)

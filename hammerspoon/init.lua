@@ -8,6 +8,12 @@ require "location"
 require "utilities"
 require "window_management"
 
+-- toggle the hammerspoon console
+hs.hotkey.bind(hyper, "H", hs.toggleConsole)
+
+-- manually reload the hammerspoon config
+hs.hotkey.bind(hyper, "R", function() hs.reload() end)
+
 function reloadConfig(files)
     doReload = false
     for _,file in pairs(files) do
