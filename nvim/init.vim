@@ -23,7 +23,6 @@ let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_match_window = 'max:16,results:64'
 let g:ctrlp_open_multiple_files = '1r'
 let g:ctrlp_open_new_file = 'r'
-nnoremap <silent> <Leader>b :CtrlPBuffer<CR>
 
 Plug 'terryma/vim-expand-region'
 vmap v <Plug>(expand_region_expand)
@@ -37,18 +36,12 @@ let g:grepper = {
 	\ 'jump':      0,
 	\ 'next_tool': '<C-G>',
 	\ }
-nnoremap <silent> <C-G> :Grepper -tool ag<CR>
-nnoremap <silent> <Leader>* :Grepper -tool ag -cword -noprompt<CR>
-nmap gG <plug>(GrepperOperator)
-xmap gG <plug>(GrepperOperator)
-command! -nargs=* -complete=file Ag Grepper -tool ag -query <args>
 
 Plug 'rust-lang/rust.vim'
 let g:rustfmt_autosave = 1
 
 Plug 'majutsushi/tagbar'
 let g:tagbar_autoclose = 1
-nnoremap <silent> <Leader>t :TagbarToggle<CR>
 
 Plug 'janko-m/vim-test'
 let test#strategy = 'neovim'
@@ -231,6 +224,19 @@ autocmd BufReadPost * call RestoreCursor()
 " Use spacebar as the leader key and prevent moving right after timeout
 let mapleader = "\<Space>"
 noremap <Space> <Nop>
+
+" PLUGIN CONFIG: ctrl-p
+nnoremap <silent> <Leader>b :CtrlPBuffer<CR>
+
+" PLUGIN CONFIG: grepper
+nnoremap <silent> <C-G> :Grepper -tool ag<CR>
+nnoremap <silent> <Leader>* :Grepper -tool ag -cword -noprompt<CR>
+nmap gG <plug>(GrepperOperator)
+xmap gG <plug>(GrepperOperator)
+command! -nargs=* -complete=file Ag Grepper -tool ag -query <args>
+
+" PLUGIN CONFIG: tagbar
+nnoremap <silent> <Leader>t :TagbarToggle<CR>
 
 " Exit terminal mode
 tnoremap <Esc> <C-\><C-n>
