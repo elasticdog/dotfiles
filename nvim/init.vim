@@ -297,6 +297,9 @@ noremap <Leader>sr :%s//g<Left><Left>
 " Select the text that was just pasted
 noremap <Leader>v V`]
 
+" Quickly save the current file
+nnoremap <Leader>w :w<CR>
+
 " Yank from the cursor to the end of the line
 nmap Y y$
 
