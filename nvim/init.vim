@@ -25,6 +25,10 @@ let g:ctrlp_open_multiple_files = '1r'
 let g:ctrlp_open_new_file = 'r'
 nnoremap <silent> <Leader>b :CtrlPBuffer<CR>
 
+Plug 'terryma/vim-expand-region'
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
+
 Plug 'mhinz/vim-grepper'
 let g:grepper = {
 	\ 'tools':     ['ag', 'git', 'grep'],
