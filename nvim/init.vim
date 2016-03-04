@@ -224,6 +224,10 @@ autocmd BufReadPost * call RestoreCursor()
 " MAPPINGS & CUSTOM COMMANDS
 " --------------------------------------
 
+" Use spacebar as the leader key and prevent moving right after timeout
+let mapleader = "\<Space>"
+noremap <Space> <Nop>
+
 " Exit terminal mode
 tnoremap <Esc> <C-\><C-n>
 
