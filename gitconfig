@@ -18,6 +18,7 @@
 	low = log --all --date-order --pretty=custom --graph --date=relative -M -C
 	patch = format-patch --patience --full-index -M -C
 	pr = "!f() { git fetch upstream pull/$1/head:pr/$1; }; f"
+	pushf = push --force-with-lease
 	rb = rebase
 	rbi = rebase --interactive --autosquash
 	serve = !git daemon --reuseaddr --verbose --base-path=. --export-all ./.git
