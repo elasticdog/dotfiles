@@ -279,6 +279,9 @@ inoremap <C-U> <C-G>u<C-U>
 " Change the CWD to where the current file is located
 noremap <silent> <Leader>cd :cd %:p:h<CR>
 
+" Quickly unload the current buffer
+nnoremap <Leader>d :bd<CR>
+
 " Remove last search pattern highlighting
 nnoremap <silent> <Leader>h :nohlsearch<CR>
 
