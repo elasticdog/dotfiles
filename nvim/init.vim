@@ -233,7 +233,6 @@ nnoremap <silent> <C-G> :Grepper -tool ag<CR>
 nnoremap <silent> <Leader>* :Grepper -tool ag -cword -noprompt<CR>
 nmap gG <plug>(GrepperOperator)
 xmap gG <plug>(GrepperOperator)
-command! -nargs=* -complete=file Ag Grepper -tool ag -query <args>
 
 " PLUGIN CONFIG: tagbar
 nnoremap <silent> <Leader>t :TagbarToggle<CR>
