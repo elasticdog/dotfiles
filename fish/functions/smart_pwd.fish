@@ -9,7 +9,7 @@ function smart_pwd --description 'Print the current working directory, dynamical
 	end
 
 	if set prefix (command git rev-parse --show-prefix ^ /dev/null)
-		printf '%s⠵ %s%s/%s\n' $__fish_prompt_color_vcs_indicator $__fish_prompt_color_pwd (command git rev-parse --show-toplevel | sed -e "s|.*/||") $prefix
+		printf '%s⠠⠵ %s%s/%s\n' $__fish_prompt_color_vcs_indicator $__fish_prompt_color_pwd (command git rev-parse --show-toplevel | sed -e "s|.*/||") $prefix
 	else
 		printf '%s\n' $PWD | sed -e "s|^$HOME|~|"
 	end
