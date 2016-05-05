@@ -2,13 +2,16 @@
 	name = Aaron Bull Schaefer
 	email = aaron@elasticdog.com
 [alias]
+	amend = commit --amend
 	ap = add --patch
 	br = branch
+	branches = branch -a
 	ci = commit --verbose
 	co = checkout
 	contains = "!sh -c 'git branch -a --contains $1' -"
 	dc = diff --color-words="[^[:space:]]|([[:alnum:]]|UTF_8_GUARD)+"
 	df = diff
+	discard = checkout --
 	ds = diff --stat
 	empty-tree-sha1 = hash-object -t tree /dev/null
 	gone = !git log --diff-filter=D --summary
@@ -24,6 +27,10 @@
 	serve = !git daemon --reuseaddr --verbose --base-path=. --export-all ./.git
 	st = status --short --branch
 	staged = diff --cached
+	stashes = stash list
+	tags = tag
+	uncommit = reset --mixed HEAD~
+	unstage = reset -q HEAD --
 	whitespace = !git diff --check $(git empty-tree-sha1)
 	who = shortlog --summary --email --
 	whois = "!sh -c 'git log -i -1 --pretty=\"format:%an <%ae>\n\" --author=\"$1\"' -"
