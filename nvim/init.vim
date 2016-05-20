@@ -33,7 +33,7 @@ let g:filebeagle_show_line_numbers = 1
 let g:filebeagle_show_line_relativenumbers = 0
 
 Plug 'tpope/vim-fugitive'
-command Gstaged :Git! diff --staged
+command! Gstaged :Git! diff --staged
 
 Plug 'airblade/vim-gitgutter'
 let g:gitgutter_override_sign_column_highlight = 0
