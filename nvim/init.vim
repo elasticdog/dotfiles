@@ -192,16 +192,6 @@ setglobal tags-=./tags tags^=./tags;
 " HELPER FUNCTIONS
 " --------------------------------------
 
-" Proceed with quit if quickfix is the last open window
-function! CheckLastWindow()
-	if &buftype == "quickfix"
-		if winnr('$') < 2
-			quit
-		endif
-	endif
-endfunction
-autocmd BufEnter * call CheckLastWindow()
-
 " Execute a command while preserving the cursor location and search history
 function! Preserve(command)
 	" save the last search and cursor position
