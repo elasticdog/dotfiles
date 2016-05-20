@@ -28,6 +28,10 @@ Plug 'terryma/vim-expand-region'
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 
+Plug 'jeetsukumaran/vim-filebeagle'
+let g:filebeagle_show_line_numbers = 1
+let g:filebeagle_show_line_relativenumbers = 0
+
 Plug 'mhinz/vim-grepper'
 let g:grepper = {
 	\ 'tools':     ['ag', 'git', 'grep'],
@@ -88,6 +92,9 @@ highlight CursorLine cterm=bold ctermbg=234
 highlight CursorLineNr ctermfg=Yellow ctermbg=234
 highlight LineNr ctermfg=DarkGray ctermbg=232
 highlight FoldColumn ctermfg=DarkGray ctermbg=234
+
+" Highlight directories different from files in listings
+highlight Directory ctermfg=Blue
 
 " Highlight trailing whitespace characters and tabs not used for indentation
 highlight WhitespaceErrors ctermbg=red guibg=red
