@@ -17,13 +17,6 @@ let g:airline_symbols.branch = '⎇'
 let g:airline_symbols.linenr = '¶'
 let g:airline_symbols.whitespace = 'Ξ'
 
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'd11wtq/ctrlp_bdelete.vim'
-let g:ctrlp_clear_cache_on_exit = 0
-let g:ctrlp_match_window = 'max:16,results:64'
-let g:ctrlp_open_multiple_files = '1r'
-let g:ctrlp_open_new_file = 'r'
-
 Plug 'terryma/vim-expand-region'
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
@@ -60,6 +53,8 @@ nmap ga <Plug>(EasyAlign)
 Plug 'Lokaltog/vim-easymotion'
 Plug 'tpope/vim-endwise'
 Plug 'floobits/floobits-neovim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
+Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-repeat'
 Plug 'mtth/scratch.vim'
 Plug 'tpope/vim-speeddating'
@@ -86,7 +81,6 @@ Plug 'tpope/vim-vividchalk'
 call plug#end()
 
 runtime! macros/matchit.vim
-call ctrlp_bdelete#init()
 call yankstack#setup()
 
 
@@ -232,8 +226,11 @@ autocmd BufReadPost * call RestoreCursor()
 let mapleader = "\<Space>"
 noremap <Space> <Nop>
 
-" PLUGIN CONFIG: ctrl-p
-nnoremap <silent> <Leader>b :CtrlPBuffer<CR>
+" PLUGIN CONFIG: fzf
+nnoremap <silent> <C-p> :Files<CR>
+nnoremap <silent> <Leader>b :Buffers<CR>
+nnoremap <silent> <Leader>m :History<CR>
+nnoremap <silent> <Leader>gl :Commits<CR>
 
 " PLUGIN CONFIG: grepper
 nnoremap <silent> <C-G> :Grepper -tool ag<CR>
@@ -243,9 +240,6 @@ xmap gG <plug>(GrepperOperator)
 
 " PLUGIN CONFIG: tagbar
 nnoremap <silent> <Leader>t :TagbarToggle<CR>
-
-" Exit terminal mode
-tnoremap <Esc> <C-\><C-n>
 
 " Run the make command silently
 nnoremap <F5> :silent make! <Bar> redraw!<CR>
