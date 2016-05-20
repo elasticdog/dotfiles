@@ -32,6 +32,9 @@ Plug 'jeetsukumaran/vim-filebeagle'
 let g:filebeagle_show_line_numbers = 1
 let g:filebeagle_show_line_relativenumbers = 0
 
+Plug 'airblade/vim-gitgutter'
+let g:gitgutter_override_sign_column_highlight = 0
+
 Plug 'mhinz/vim-grepper'
 let g:grepper = {
 	\ 'tools':     ['ag', 'git', 'grep'],
@@ -92,6 +95,7 @@ highlight CursorLine cterm=bold ctermbg=234
 highlight CursorLineNr ctermfg=Yellow ctermbg=234
 highlight LineNr ctermfg=DarkGray ctermbg=232
 highlight FoldColumn ctermfg=DarkGray ctermbg=234
+highlight SignColumn ctermfg=DarkGray ctermbg=234
 
 " Highlight directories different from files in listings
 highlight Directory ctermfg=Blue
@@ -122,7 +126,6 @@ set directory=/var/tmp//        " Centrally store all swap files using full path
 set display+=lastline           " Show as much as possible of the last line in a window versus '@' lines
 set expandtab                   " Convert tabs to spaces
 set fileformats+=mac            " Always check for mac end-of-line formats
-set foldcolumn=3                " Display column indicating open/closed folds
 set foldlevel=99                " Default to no folds closed
 set foldmethod=indent           " Lines with equal indent form a fold
 set formatoptions+=1            " Prefer breaking before, not after, a one-letter word
