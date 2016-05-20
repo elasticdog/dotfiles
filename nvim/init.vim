@@ -32,6 +32,9 @@ Plug 'jeetsukumaran/vim-filebeagle'
 let g:filebeagle_show_line_numbers = 1
 let g:filebeagle_show_line_relativenumbers = 0
 
+Plug 'tpope/vim-fugitive'
+command Gstaged :Git! diff --staged
+
 Plug 'airblade/vim-gitgutter'
 let g:gitgutter_override_sign_column_highlight = 0
 
@@ -57,7 +60,6 @@ nmap ga <Plug>(EasyAlign)
 Plug 'Lokaltog/vim-easymotion'
 Plug 'tpope/vim-endwise'
 Plug 'floobits/floobits-neovim'
-Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'mtth/scratch.vim'
 Plug 'tpope/vim-speeddating'
