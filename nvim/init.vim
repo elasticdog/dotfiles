@@ -44,37 +44,39 @@ let g:grepper = {
 	\ 'next_tool': '<C-G>',
 	\ }
 
-Plug 'rust-lang/rust.vim'
-let g:rustfmt_autosave = 1
-
 Plug 'majutsushi/tagbar'
 let g:tagbar_autoclose = 1
 
 Plug 'janko-m/vim-test'
 let test#strategy = 'neovim'
 
-Plug 'nathangrigg/vim-beancount'
 Plug 'Lokaltog/vim-easymotion'
-Plug 'elixir-lang/vim-elixir'
-Plug 'lambdatoast/elm.vim'
 Plug 'tpope/vim-endwise'
-Plug 'dag/vim-fish'
 Plug 'floobits/floobits-neovim'
 Plug 'tpope/vim-fugitive'
-Plug 'Glench/Vim-Jinja2-Syntax'
-Plug 'rodjek/vim-puppet'
 Plug 'tpope/vim-repeat'
 Plug 'mtth/scratch.vim'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'godlygeek/tabular'
 Plug 'tomtom/tcomment_vim'
-Plug 'cespare/vim-toml'
-Plug 'tpope/vim-vividchalk'
 Plug 'maxbrunsfeld/vim-yankstack'
 
+" File Types
+Plug 'nathangrigg/vim-beancount'
+Plug 'elixir-lang/vim-elixir'
+Plug 'lambdatoast/elm.vim'
+Plug 'dag/vim-fish'
+Plug 'Glench/Vim-Jinja2-Syntax'
 Plug '~/.config/nvim/vendor/nginx'
 Plug '~/.config/nvim/vendor/nix'
+Plug 'rodjek/vim-puppet'
+Plug 'rust-lang/rust.vim'
+let g:rustfmt_autosave = 1
+Plug 'cespare/vim-toml'
+
+" Color Schemes
+Plug 'tpope/vim-vividchalk'
 
 call plug#end()
 
