@@ -50,6 +50,10 @@ let g:tagbar_autoclose = 1
 Plug 'janko-m/vim-test'
 let test#strategy = 'neovim'
 
+Plug 'junegunn/vim-easy-align'
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+
 Plug 'Lokaltog/vim-easymotion'
 Plug 'tpope/vim-endwise'
 Plug 'floobits/floobits-neovim'
@@ -58,7 +62,6 @@ Plug 'tpope/vim-repeat'
 Plug 'mtth/scratch.vim'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
-Plug 'godlygeek/tabular'
 Plug 'tomtom/tcomment_vim'
 Plug 'maxbrunsfeld/vim-yankstack'
 
