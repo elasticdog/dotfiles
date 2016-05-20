@@ -17,16 +17,9 @@ let g:airline_symbols.branch = '⎇'
 let g:airline_symbols.linenr = '¶'
 let g:airline_symbols.whitespace = 'Ξ'
 
-Plug 'terryma/vim-expand-region'
-vmap v <Plug>(expand_region_expand)
-vmap <C-v> <Plug>(expand_region_shrink)
-
 Plug 'jeetsukumaran/vim-filebeagle'
 let g:filebeagle_show_line_numbers = 1
 let g:filebeagle_show_line_relativenumbers = 0
-
-Plug 'tpope/vim-fugitive'
-command! Gstaged :Git! diff --staged
 
 Plug 'airblade/vim-gitgutter'
 let g:gitgutter_override_sign_column_highlight = 0
@@ -47,12 +40,11 @@ Plug 'janko-m/vim-test'
 let test#strategy = 'neovim'
 
 Plug 'junegunn/vim-easy-align'
-xmap ga <Plug>(EasyAlign)
-nmap ga <Plug>(EasyAlign)
-
 Plug 'Lokaltog/vim-easymotion'
 Plug 'tpope/vim-endwise'
+Plug 'terryma/vim-expand-region'
 Plug 'floobits/floobits-neovim'
+Plug 'tpope/vim-fugitive'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-repeat'
@@ -225,6 +217,17 @@ autocmd BufReadPost * call RestoreCursor()
 " Use spacebar as the leader key and prevent moving right after timeout
 let mapleader = "\<Space>"
 noremap <Space> <Nop>
+
+" PLUGIN CONFIG: easy-align
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+
+" PLUGIN CONFIG: expand-region
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
+
+" PLUGIN CONFIG: fugitive
+command! Gstaged :Git! diff --staged
 
 " PLUGIN CONFIG: fzf
 nnoremap <silent> <C-p> :Files<CR>
