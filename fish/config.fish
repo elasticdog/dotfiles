@@ -29,6 +29,11 @@ set -x HOMEBREW_NO_ANALYTICS 1
 set -x PATH $HOME/bin $HOME/.local/bin $HOME/.cargo/bin $PATH
 set -x PYTHONPATH $HOME/src/vendor/vanilla/beancount/src/python
 
+switch (uname)
+	case Darwin
+		set -x JAVA_HOME (/usr/libexec/java_home)
+end
+
 # add auto-expanding abbreviations
 abbr -a g git
 abbr -a gdiff "git diff --no-index --color --color-words"
