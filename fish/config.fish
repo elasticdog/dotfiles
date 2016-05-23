@@ -6,6 +6,12 @@ if test -f $ATLAS_CREDENTIALS_FILE
 	set -x ATLAS_TOKEN (awk '/^atlas_token/{ print $3 }' $ATLAS_CREDENTIALS_FILE)
 end
 
+set -l HETZNER_CREDENTIALS_FILE $HOME/.config/hetzner
+if test -f $ATLAS_CREDENTIALS_FILE
+	set -x HETZNER_LOGIN (awk '/^hetzner_login/{ print $3 }' $HETZNER_CREDENTIALS_FILE)
+	set -x HETZNER_PASSWORD (awk '/^hetzner_password/{ print $3 }' $HETZNER_CREDENTIALS_FILE)
+end
+
 # disable the shell greeting message
 set -e fish_greeting
 
