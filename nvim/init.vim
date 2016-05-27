@@ -83,6 +83,7 @@ colorscheme vividchalk
 
 " Remove the underline from the cursorline
 highlight CursorLine cterm=bold ctermbg=234
+highlight CursorColumn cterm=bold ctermbg=233
 
 " Adjust colors for the line numbers and fold indicators
 highlight CursorLineNr ctermfg=Yellow ctermbg=234
@@ -114,6 +115,7 @@ set autoread                    " Automatically reload when a file is changed ou
 set backspace=indent,eol,start  " Allow backspacing over everything
 set cmdheight=2                 " Use two screen lines for the command-line to avoid hit-enter prompts
 set complete-=i                 " Disable scanning of included files for keyword completion
+set cursorcolumn                " Highlight the screen column of the cursor
 set cursorline                  " Highlight the screen line of the cursor
 set directory=/var/tmp//        " Centrally store all swap files using full path names
 set display+=lastline           " Show as much as possible of the last line in a window versus '@' lines
