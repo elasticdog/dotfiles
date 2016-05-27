@@ -45,6 +45,13 @@ function fish_prompt --description 'Write out the prompt'
 	set -g __fish_git_prompt_showdirtystate true
 	set -g __fish_git_prompt_showuntrackedfiles
 
+	# indicate if we're within a nix-shell environment
+	if set -q IN_NIX_SHELL
+		if not set -q __fish_prompt_nix_shell
+			set -g __fish_prompt_nix_shell (printf '%s⊙ %s' (set_color magenta) (set_color normal))
+		end
+	end
+
 	# make it obvious if the current user is root
 	switch $USER
 		case root
@@ -56,6 +63,6 @@ function fish_prompt --description 'Write out the prompt'
 	end
 
 	# write out the prompt
-	printf '%s%s%s %s%s\n' $__fish_prompt_color_pwd (smart_pwd) (__fish_git_prompt) $__fish_prompt_color_duration $previous_duration
+	printf '%s%s%s%s %s%s\n' $__fish_prompt_nix_shell $__fish_prompt_color_pwd (smart_pwd) (__fish_git_prompt) $__fish_prompt_color_duration $previous_duration
 	printf '%s%s%s ' $__fish_prompt_color_status $__fish_prompt_character (set_color normal)
 end

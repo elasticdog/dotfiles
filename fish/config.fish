@@ -43,6 +43,7 @@ end
 # add auto-expanding abbreviations
 abbr -a g git
 abbr -a gdiff "git diff --no-index --color --color-words"
+abbr -a nix-shell "nix-shell --run fish"
 abbr -a tree "tree -F --dirsfirst"
 
 ## NIX SETUP
