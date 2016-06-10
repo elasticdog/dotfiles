@@ -3,6 +3,8 @@
 *~
 .DS_Store
 ._*
+.direnv
+.envrc
 .floo
 .flooignore
 .hg

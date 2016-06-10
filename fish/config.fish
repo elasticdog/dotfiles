@@ -46,6 +46,9 @@ abbr -a gdiff "git diff --no-index --color --color-words"
 abbr -a nix-shell "nix-shell --run fish"
 abbr -a tree "tree -F --dirsfirst"
 
+# http://direnv.net/
+eval (direnv hook fish)
+
 ## NIX SETUP
 #
 #set -x NIX_LINK $HOME/.nix-profile
