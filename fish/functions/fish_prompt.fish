@@ -47,9 +47,9 @@ function fish_prompt --description 'Write out the prompt'
 
 	# indicate if we're within a nix-shell environment
 	if set -q IN_NIX_SHELL
-		if not set -q __fish_prompt_nix_shell
-			set -g __fish_prompt_nix_shell (printf '%s⊙ %s' (set_color magenta) (set_color normal))
-		end
+		set -g __fish_prompt_nix_shell (printf '%s⊙ %s' (set_color magenta) (set_color normal))
+	else
+		set -e __fish_prompt_nix_shell
 	end
 
 	# make it obvious if the current user is root
