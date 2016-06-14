@@ -4,6 +4,10 @@ Host *
   ControlPath ~/.ssh/master-%h-%p-%r
   ServerAliveInterval 240
 
+Host aurora
+  Hostname aurora.elasticdog.com
+  User abs
+
 Host halcyon
   Hostname elasticdog.ignorelist.com
   Port 49645
