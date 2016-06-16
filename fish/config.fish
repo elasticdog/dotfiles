@@ -49,6 +49,10 @@ abbr -a tree "tree -F --dirsfirst"
 # http://direnv.net/
 eval (direnv hook fish)
 
+if status --is-interactive; and test -d $HOME/.ssh/config.d
+	compile-ssh-config
+end
+
 ## NIX SETUP
 #
 #set -x NIX_LINK $HOME/.nix-profile

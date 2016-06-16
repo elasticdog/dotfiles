@@ -3,6 +3,8 @@ HashKnownHosts yes
 Host *
   ControlPath ~/.ssh/master-%h-%p-%r
   ServerAliveInterval 240
+  Compression yes
+  UseRoaming no
 
 Host aurora
   Hostname aurora.elasticdog.com
@@ -15,3 +17,4 @@ Host halcyon
 
 Host halcyon.lcl
   Hostname 192.168.1.200
+  Compression no
