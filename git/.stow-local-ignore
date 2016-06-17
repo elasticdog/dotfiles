@@ -1,0 +1,22 @@
+# Copy of the default ignore list, with `\.gitignore` removed
+# http://git.savannah.gnu.org/cgit/stow.git/tree/default-ignore-list
+
+RCS
+.+,v
+
+CVS
+\.\#.+       # CVS conflict files / emacs lock files
+\.cvsignore
+
+\.svn
+_darcs
+\.hg
+
+\.git
+
+.+~          # emacs backup files
+\#.*\#       # emacs autosave files
+
+^/README.*
+^/LICENSE.*
+^/COPYING<Paste>
