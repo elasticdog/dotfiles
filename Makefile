@@ -1,6 +1,6 @@
 pkgs_all := $(shell echo */)
-pkgs_regular := git neovim ssh tmux
-pkgs_no_fold := fish
+pkgs_regular := git neovim tmux
+pkgs_no_fold := fish ssh
 
 cmd_install := stow --stow
 cmd_uninstall := stow --delete
