@@ -10,19 +10,13 @@ all: ;
 
 .PHONY: install
 install:
-	@for package in $(pkgs_regular); do \
-		$(cmd_install) $$package; \
-	done
-	@for package in $(pkgs_no_fold); do \
-		$(cmd_install) --no-folding $$package; \
-	done
+	$(cmd_install) $(pkgs_regular)
+	$(cmd_install) --no-folding $(pkgs_no_fold)
 
 .PHONY: install-osx
 install-osx: install
-	@$(cmd_install) osx
+	$(cmd_install) osx
 
 .PHONY: uninstall
 uninstall:
-	@for package in $(pkgs_all); do \
-		$(cmd_uninstall) $$package; \
-	done
+	$(cmd_uninstall) $(pkgs_all)
