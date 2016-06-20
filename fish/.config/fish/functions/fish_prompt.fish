@@ -11,7 +11,7 @@ function fish_prompt --description 'Write out the prompt'
 		set -g __fish_prompt_color_status (set_color red)
 	end
 
-	if set -q __fish_vi_mode
+	if test $__fish_active_key_bindings = 'fish_vi_key_bindings'
 		switch $fish_bind_mode
 			case default
 				set -g __fish_prompt_color_status (set_color --background 555555)

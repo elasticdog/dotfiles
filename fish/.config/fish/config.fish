@@ -16,19 +16,14 @@ end
 set -e fish_greeting
 
 # use vi-style command line editing
-fish_vi_mode
-set -x GIT_EDITOR nvim
+set -g fish_key_bindings fish_vi_key_bindings
 
-# set custom key bindings here until this is resolved:
-# https://github.com/fish-shell/fish-shell/issues/1495
-function my_vi_key_bindings
-	fish_vi_key_bindings
-
-	# bind Ctrl-l to clear the screen
-	bind -M insert \cl 'clear; commandline -f repaint'
+# http://direnv.net/
+if command -s direnv >/dev/null
+	eval (direnv hook fish)
 end
-set -g fish_key_bindings my_vi_key_bindings
 
+set -x GIT_EDITOR nvim
 set -x GOPATH $HOME/src/go
 set -x GOROOT /usr/local/go
 set -x HOMEBREW_NO_ANALYTICS 1
@@ -45,11 +40,6 @@ abbr -a g git
 abbr -a gdiff "git diff --no-index --color --color-words"
 abbr -a nix-shell "nix-shell --run fish"
 abbr -a tree "tree -F --dirsfirst"
-
-# http://direnv.net/
-if command -s direnv >/dev/null
-	eval (direnv hook fish)
-end
 
 if status --is-interactive; and test -d $HOME/.ssh/config.d
 	compile-ssh-config
