@@ -47,7 +47,9 @@ abbr -a nix-shell "nix-shell --run fish"
 abbr -a tree "tree -F --dirsfirst"
 
 # http://direnv.net/
-eval (direnv hook fish)
+if command -s direnv >/dev/null
+	eval (direnv hook fish)
+end
 
 if status --is-interactive; and test -d $HOME/.ssh/config.d
 	compile-ssh-config
