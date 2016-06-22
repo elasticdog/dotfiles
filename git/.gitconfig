@@ -31,6 +31,7 @@
 	tags = tag
 	uncommit = reset --mixed HEAD~
 	unstage = reset -q HEAD --
+	weekly = log --all --author 'Aaron Bull Schaefer' --since '1 week ago' --oneline
 	whitespace = !git diff --check $(git empty-tree-sha1)
 	who = shortlog --summary --email --
 	whois = "!sh -c 'git log -i -1 --pretty=\"format:%an <%ae>\n\" --author=\"$1\"' -"
