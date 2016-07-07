@@ -45,6 +45,7 @@ let test#strategy = 'neovim'
 
 Plug 'junegunn/vim-easy-align'
 Plug 'Lokaltog/vim-easymotion'
+Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-endwise'
 Plug 'terryma/vim-expand-region'
 Plug 'tpope/vim-fugitive'
