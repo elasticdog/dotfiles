@@ -3,24 +3,27 @@ function fish_prompt --description 'Write out the prompt'
 	# save the return status and duration of the previous command
 	set -l previous_command_info (command printf '%s\n%s' $status $CMD_DURATION)
 
-	# change the prompt color if the previous command returned an error
+	# change the prompt foreground color if the previous command returned an error
 	set -l previous_status $previous_command_info[1]
 	if test $previous_status -eq 0
-		set -g __fish_prompt_color_status (set_color --bold yellow)
+		set -x foreground '--bold yellow'
 	else
-		set -g __fish_prompt_color_status (set_color red)
+		set -x foreground 'red'
 	end
 
+	# change the prompt background color based on the vi mode
 	if test $__fish_active_key_bindings = 'fish_vi_key_bindings'
 		switch $fish_bind_mode
 			case default
-				set -g __fish_prompt_color_status (set_color --background 555555)
+				set -x background '555555'
 			case insert
-				set -g __fish_prompt_color_status (set_color --background black)
+				set -x background 'black'
 			case visual
-				set -g __fish_prompt_color_status (set_color --background blue)
+				set -x background 'blue'
 		end
 	end
+
+	set -g __fish_prompt_color_status (set_color $foreground --background $background)
 
 	# display the previous command's duration if it was > 5 seconds
 	set -l previous_duration
