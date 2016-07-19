@@ -49,7 +49,7 @@
 	conflictstyle = diff3
 	tool = gvimdiff
 [push]
-	default = simple
+	default = current
 [pretty]
 	custom = format:%C(yellow)%h%C(green)%d%C(reset) %s %C(cyan)[%cr] %C(magenta)<%an>%C(reset)
 [transfer]
