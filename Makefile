@@ -13,6 +13,10 @@ install:
 	$(cmd_install) $(pkgs_regular)
 	$(cmd_install) --no-folding $(pkgs_no_fold)
 
+.PHONY: install-linux
+install-linux: install
+	$(cmd_install) xorg xterm
+
 .PHONY: install-osx
 install-osx: install
 	$(cmd_install) osx
