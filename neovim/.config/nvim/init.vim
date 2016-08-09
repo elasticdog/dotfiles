@@ -237,6 +237,7 @@ command! Gstaged :Git! diff --staged
 nnoremap <silent> <Leader>gc :Gcommit<CR>
 nnoremap <silent> <Leader>gd :Gdiff<CR>
 nnoremap <silent> <Leader>ge :Gedit<CR>
+nnoremap <silent> <Leader>gp :Git pp<CR>
 nnoremap <silent> <Leader>gs :Gstatus<CR>
 nnoremap <silent> <Leader>gw :Gwrite<CR><CR>
 nnoremap <silent> <Leader>gg :Gstaged<CR><CR>
