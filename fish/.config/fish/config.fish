@@ -29,6 +29,7 @@ set -x GOROOT /usr/local/go
 set -x HOMEBREW_NO_ANALYTICS 1
 set -x PATH $HOME/bin $HOME/.local/bin $HOME/.cargo/bin $PATH
 set -x PYTHONPATH $HOME/src/vendor/vanilla/beancount/src/python
+set -x VAULT_ADDR https://secrets.elastic.co:8200
 
 switch (uname)
 	case Darwin
