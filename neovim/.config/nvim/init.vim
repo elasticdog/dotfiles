@@ -40,6 +40,9 @@ let g:grepper = {
 Plug 'majutsushi/tagbar'
 let g:tagbar_autoclose = 1
 
+Plug 'hashivim/vim-terraform'
+let g:terraform_fmt_on_save = 1
+
 Plug 'janko-m/vim-test'
 let test#strategy = 'neovim'
 
