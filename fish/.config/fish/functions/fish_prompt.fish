@@ -32,9 +32,9 @@ function fish_prompt --description 'Write out the prompt'
 		set -l one_minute 60000
 		set -l minimum_duration 5000
 		if test $milliseconds -gt $one_minute
-			set previous_duration (echo $milliseconds | awk '{ printf("%dm %02ds\n", ($1/1000/60), ($1/1000%60)) }')
+			set previous_duration (echo $milliseconds | awk '{ printf(" %dm %02ds\n", ($1/1000/60), ($1/1000%60)) }')
 		else if test $milliseconds -gt $minimum_duration
-			set previous_duration (echo $milliseconds | awk '{ printf("%ds\n", ($1/1000%60)) }')
+			set previous_duration (echo $milliseconds | awk '{ printf(" %ds\n", ($1/1000%60)) }')
 		end
 	end
 	if not set -q __fish_prompt_color_duration
@@ -66,6 +66,6 @@ function fish_prompt --description 'Write out the prompt'
 	end
 
 	# write out the prompt
-	printf '%s%s%s%s %s%s\n' $__fish_prompt_nix_shell $__fish_prompt_color_pwd (smart_pwd) (__fish_git_prompt) $__fish_prompt_color_duration $previous_duration
+	printf '%s%s%s%s%s%s\n' $__fish_prompt_nix_shell $__fish_prompt_color_pwd (smart_pwd) (__fish_git_prompt) $__fish_prompt_color_duration $previous_duration
 	printf '%s%s%s ' $__fish_prompt_color_status $__fish_prompt_character (set_color normal)
 end
