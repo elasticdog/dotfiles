@@ -30,7 +30,7 @@ let g:gitgutter_override_sign_column_highlight = 0
 
 Plug 'mhinz/vim-grepper'
 let g:grepper = {
-	\ 'tools':     ['ag', 'git', 'grep'],
+	\ 'tools':     ['rg', 'git', 'grep'],
 	\ 'open':      1,
 	\ 'switch':    1,
 	\ 'jump':      0,
@@ -252,8 +252,8 @@ nnoremap <silent> <Leader>m :History<CR>
 nnoremap <silent> <Leader>gl :Commits<CR>
 
 " PLUGIN CONFIG: grepper
-nnoremap <silent> <C-G> :Grepper -tool ag<CR>
-nnoremap <silent> <Leader>* :Grepper -tool ag -cword -noprompt<CR>
+nnoremap <silent> <C-G> :Grepper -tool rg<CR>
+nnoremap <silent> <Leader>* :Grepper -tool rg -cword -noprompt<CR>
 nmap gG <plug>(GrepperOperator)
 xmap gG <plug>(GrepperOperator)
 
