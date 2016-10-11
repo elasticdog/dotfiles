@@ -76,6 +76,8 @@ Plug 'cespare/vim-toml'
 
 " Color Schemes
 Plug 'tpope/vim-vividchalk'
+Plug 'morhetz/gruvbox'
+let g:gruvbox_contrast_dark = 'hard'
 
 call plug#end()
 
@@ -86,11 +88,8 @@ call yankstack#setup()
 " COLORS AND FONTS
 " --------------------------------------
 
-colorscheme vividchalk
-
-" Remove the underline from the cursorline
-highlight CursorLine cterm=bold ctermbg=234
-highlight CursorColumn cterm=bold ctermbg=233
+colorscheme gruvbox
+set background=dark
 
 " Adjust colors for the line numbers and fold indicators
 highlight CursorLineNr ctermfg=Yellow ctermbg=234
@@ -158,6 +157,7 @@ set showcmd                     " Display incomplete commands
 set showmatch                   " Highlight matching brackets
 set sidescrolloff=3             " Keep three columns left and right of cursor when scrolling
 set smarttab                    " Insert blanks according to shiftwidth when in front of a line
+set termguicolors               " Enable 24-bit colors in the terminal
 set ttimeout                    " Enable terminal timeout for key code sequences
 set ttimeoutlen=100             " Time out on key codes after a tenth of a second
 set viminfo^=!                  " Save and restore all-capital global variables
