@@ -20,7 +20,7 @@
 	lob = log --date-order --oneline --graph --decorate -M -C
 	low = log --all --date-order --pretty=custom --graph --date=relative -M -C
 	patch = format-patch --patience --full-index -M -C
-	pr = "!f() { git fetch upstream pull/$1/head:pr/$1; }; f"
+	pr = "!f() { git fetch --force --update-head-ok ${2:-origin} refs/pull/$1/head:pr/$1 && git checkout pr/$1; }; f"
 	pp = "!sh -c 'git pull --rebase && git push'"
 	pushf = push --force-with-lease
 	rb = rebase
