@@ -120,6 +120,7 @@ set autoindent                  " Do dumb auto-indentation when no filetype is s
 set autoread                    " Automatically reload when a file is changed outside of Vim
 set backspace=indent,eol,start  " Allow backspacing over everything
 set cmdheight=2                 " Use two screen lines for the command-line to avoid hit-enter prompts
+set colorcolumn=+1              " Highlight the column after the current textwidth
 set complete-=i                 " Disable scanning of included files for keyword completion
 set cursorcolumn                " Highlight the screen column of the cursor
 set cursorline                  " Highlight the screen line of the cursor
@@ -303,10 +304,6 @@ nnoremap <Leader>d :bd<CR>
 
 " Remove last search pattern highlighting
 nnoremap <silent> <Leader>h :nohlsearch<CR>
-
-" Highlight lines longer than textwidth
-" or column 79 if the textwidth option is not set
-noremap <silent> <Leader>l m`:execute '/\%>' . (&tw ? &tw : 79) . 'v.\+'<CR>``
 
 " Toggle paste mode
 nnoremap <Leader>p :set invpaste paste?<CR>
