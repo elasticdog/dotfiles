@@ -203,7 +203,9 @@ function! plug#end()
   endif
   let lod = { 'ft': {}, 'map': {}, 'cmd': {} }
 
-  filetype off
+  if exists('g:did_load_filetypes')
+    filetype off
+  endif
   for name in g:plugs_order
     if !has_key(g:plugs, name)
       continue
@@ -257,8 +259,8 @@ function! plug#end()
     for [mode, map_prefix, key_prefix] in
           \ [['i', '<C-O>', ''], ['n', '', ''], ['v', '', 'gv'], ['o', '', '']]
       execute printf(
-      \ '%snoremap <silent> %s %s:<C-U>call <SID>lod_map(%s, %s, "%s")<CR>',
-      \ mode, map, map_prefix, string(map), string(names), key_prefix)
+      \ '%snoremap <silent> %s %s:<C-U>call <SID>lod_map(%s, %s, %s, "%s")<CR>',
+      \ mode, map, map_prefix, string(map), string(names), mode != 'i', key_prefix)
     endfor
   endfor
 
@@ -498,7 +500,7 @@ function! s:lod_cmd(cmd, bang, l1, l2, args, names)
   execute printf('%s%s%s %s', (a:l1 == a:l2 ? '' : (a:l1.','.a:l2)), a:cmd, a:bang, a:args)
 endfunction
 
-function! s:lod_map(map, names, prefix)
+function! s:lod_map(map, names, with_prefix, prefix)
   call s:lod(a:names, ['ftdetect', 'after/ftdetect', 'plugin', 'after/plugin'])
   call s:dobufread(a:names)
   let extra = ''
@@ -510,15 +512,17 @@ function! s:lod_map(map, names, prefix)
     let extra .= nr2char(c)
   endwhile
 
-  let prefix = v:count ? v:count : ''
-  let prefix .= '"'.v:register.a:prefix
-  if mode(1) == 'no'
-    if v:operator == 'c'
-      let prefix = "\<esc>" . prefix
+  if a:with_prefix
+    let prefix = v:count ? v:count : ''
+    let prefix .= '"'.v:register.a:prefix
+    if mode(1) == 'no'
+      if v:operator == 'c'
+        let prefix = "\<esc>" . prefix
+      endif
+      let prefix .= v:operator
     endif
-    let prefix .= v:operator
+    call feedkeys(prefix, 'n')
   endif
-  call feedkeys(prefix, 'n')
   call feedkeys(substitute(a:map, '^<Plug>', "\<Plug>", '') . extra)
 endfunction
 
@@ -747,7 +751,7 @@ function! s:prepare(...)
   for k in ['<cr>', 'L', 'o', 'X', 'd', 'dd']
     execute 'silent! unmap <buffer>' k
   endfor
-  setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile nowrap cursorline modifiable
+  setlocal buftype=nofile bufhidden=wipe nobuflisted nolist noswapfile nowrap cursorline modifiable
   setf vim-plug
   if exists('g:syntax_on')
     call s:syntax()
