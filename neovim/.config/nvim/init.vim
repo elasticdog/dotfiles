@@ -35,6 +35,7 @@ let g:grepper = {
 	\ 'switch':    1,
 	\ 'jump':      0,
 	\ 'next_tool': '<C-G>',
+	\ 'simple_prompt': 1,
 	\ }
 
 Plug 'majutsushi/tagbar'
