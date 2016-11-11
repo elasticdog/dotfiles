@@ -251,7 +251,7 @@ function! plug#end()
 
   for [cmd, names] in items(lod.cmd)
     execute printf(
-    \ 'command! -nargs=* -range -bang %s call s:lod_cmd(%s, "<bang>", <line1>, <line2>, <q-args>, %s)',
+    \ 'command! -nargs=* -range -bang -complete=file %s call s:lod_cmd(%s, "<bang>", <line1>, <line2>, <q-args>, %s)',
     \ cmd, string(cmd), string(names))
   endfor
 
@@ -312,7 +312,7 @@ endfunction
 
 function! s:git_version_requirement(...)
   if !exists('s:git_version')
-    let s:git_version = map(split(split(s:system('git --version'))[-1], '\.'), 'str2nr(v:val)')
+    let s:git_version = map(split(split(s:system('git --version'))[2], '\.'), 'str2nr(v:val)')
   endif
   return s:version_requirement(s:git_version, a:000)
 endfunction
@@ -401,7 +401,7 @@ function! s:reorg_rtp()
 
   let s:middle = get(s:, 'middle', &rtp)
   let rtps     = map(s:loaded_names(), 's:rtp(g:plugs[v:val])')
-  let afters   = filter(map(copy(rtps), 'globpath(v:val, "after")'), 'isdirectory(v:val)')
+  let afters   = filter(map(copy(rtps), 'globpath(v:val, "after")'), '!empty(v:val)')
   let rtp      = join(map(rtps, 'escape(v:val, ",")'), ',')
                  \ . ','.s:middle.','
                  \ . join(map(afters, 'escape(v:val, ",")'), ',')
@@ -576,8 +576,7 @@ function! s:infer_properties(name, repo)
       let fmt = get(g:, 'plug_url_format', 'https://git::@github.com/%s.git')
       let uri = printf(fmt, repo)
     endif
-    let dir = s:dirpath( fnamemodify(join([g:plug_home, a:name], '/'), ':p') )
-    return { 'dir': dir, 'uri': uri }
+    return { 'dir': s:dirpath(g:plug_home.'/'.a:name), 'uri': uri }
   endif
 endfunction
 
