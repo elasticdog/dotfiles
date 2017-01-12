@@ -42,6 +42,11 @@ abbr -a gdiff "git diff --no-index --color --color-words"
 abbr -a nix-shell "nix-shell --run fish"
 abbr -a tree "tree -F --dirsfirst"
 
+# load asdf extendable version manager shims
+if test -d $HOME/.asdf
+	source ~/.asdf/asdf.fish
+end
+
 if status --is-interactive; and test -d $HOME/.ssh/config.d
 	compile-ssh-config
 end
