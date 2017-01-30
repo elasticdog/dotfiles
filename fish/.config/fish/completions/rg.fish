@@ -25,6 +25,7 @@ complete -c rg -n "__fish_using_command rg" -s f -l file -d "Search for patterns
 complete -c rg -n "__fish_using_command rg" -l ignore-file -d "Specify additional ignore files."
 complete -c rg -n "__fish_using_command rg" -s m -l max-count -d "Limit the number of matches."
 complete -c rg -n "__fish_using_command rg" -l maxdepth -d "Descend at most NUM directories."
+complete -c rg -n "__fish_using_command rg" -l path-separator -d "Path separator to use when printing file paths."
 complete -c rg -n "__fish_using_command rg" -s r -l replace -d "Replace matches with string given."
 complete -c rg -n "__fish_using_command rg" -s j -l threads -d "The approximate number of threads to use."
 complete -c rg -n "__fish_using_command rg" -l type-add -d "Add a new glob for a file type."
@@ -64,4 +65,5 @@ complete -c rg -n "__fish_using_command rg" -l null -d "Print NUL byte after fil
 complete -c rg -n "__fish_using_command rg" -s p -l pretty -d "Alias for --color always --heading -n."
 complete -c rg -n "__fish_using_command rg" -s s -l case-sensitive -d "Search case sensitively."
 complete -c rg -n "__fish_using_command rg" -s S -l smart-case -d "Smart case search."
+complete -c rg -n "__fish_using_command rg" -l sort-files -d "Sort results by file path. Implies --threads=1."
 complete -c rg -n "__fish_using_command rg" -l vimgrep -d "Show results in vim compatible format."
