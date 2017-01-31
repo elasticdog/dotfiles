@@ -18,22 +18,14 @@ set -e fish_greeting
 # use vi-style command line editing
 set -g fish_key_bindings fish_vi_key_bindings
 
-# http://direnv.net/
-if command -s direnv >/dev/null
-	eval (direnv hook fish)
-end
-
 set -x GIT_EDITOR nvim
-set -x GOPATH $HOME/src/go
-set -x GOROOT /usr/local/go
-set -x HOMEBREW_NO_ANALYTICS 1
-set -x PATH $HOME/bin $HOME/.local/bin $HOME/.cargo/bin $HOME/.mix/escripts $PATH
-set -x PYTHONPATH $HOME/src/vendor/vanilla/beancount/src/python
+set -x PATH $HOME/bin $HOME/.local/bin $PATH
 set -x VAULT_ADDR https://secrets.elastic.co:8200
 
 switch (uname)
 	case Darwin
-		set -x JAVA_HOME (/usr/libexec/java_home)
+		set -x HOMEBREW_NO_ANALYTICS 1
+		set -x JAVA_HOME (/usr/libexec/java_home 2> /dev/null)
 end
 
 # add auto-expanding abbreviations
@@ -45,6 +37,11 @@ abbr -a tree "tree -F --dirsfirst"
 # load asdf extendable version manager shims
 if test -d $HOME/.asdf
 	source ~/.asdf/asdf.fish
+end
+
+# http://direnv.net/
+if command -s direnv > /dev/null
+	eval (direnv hook fish)
 end
 
 if status --is-interactive; and test -d $HOME/.ssh/config.d
