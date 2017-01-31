@@ -69,7 +69,7 @@ Plug 'lambdatoast/elm.vim'
 Plug 'dag/vim-fish'
 Plug 'Glench/Vim-Jinja2-Syntax'
 Plug '~/.config/nvim/vendor/nginx'
-Plug '~/.config/nvim/vendor/nix'
+Plug 'LnL7/vim-nix'
 Plug 'rodjek/vim-puppet'
 Plug 'rust-lang/rust.vim'
 let g:rustfmt_autosave = 1
