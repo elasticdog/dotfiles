@@ -38,7 +38,7 @@ if test -d $HOME/.asdf
 end
 
 # http://direnv.net/
-if command -s direnv > /dev/null
+if command -qs direnv
 	eval (direnv hook fish)
 end
 

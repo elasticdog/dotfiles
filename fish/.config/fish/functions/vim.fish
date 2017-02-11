@@ -1,6 +1,6 @@
 function vim --description 'Alias for Neovim, if available'
 
-	if command -s nvim >/dev/null
+	if command -qs nvim
 		command nvim $argv
 	else
 		command vim $argv
