@@ -19,7 +19,7 @@ set -e fish_greeting
 set -g fish_key_bindings fish_vi_key_bindings
 
 set -x GIT_EDITOR nvim
-set -x PATH $HOME/bin $HOME/.local/bin $PATH
+set -x PATH $HOME/bin $HOME/.local/bin $HOME/.cargo/bin $PATH
 set -x VAULT_ADDR https://secrets.elastic.co:8200
 
 switch (uname)
