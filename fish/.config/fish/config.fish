@@ -15,12 +15,10 @@ end
 # disable the shell greeting message
 set -e fish_greeting
 
-# use vi-style command line editing
-set -g fish_key_bindings fish_vi_key_bindings
-
 set -x GIT_EDITOR nvim
 set -x PATH $HOME/bin $HOME/.local/bin $HOME/.cargo/bin $PATH
 set -x VAULT_ADDR https://secrets.elastic.co:8200
+set -x VISUAL nvim
 
 switch (uname)
 	case Darwin

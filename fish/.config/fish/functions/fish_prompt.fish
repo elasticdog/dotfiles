@@ -11,19 +11,7 @@ function fish_prompt --description 'Write out the prompt'
 		set -x foreground 'red'
 	end
 
-	# change the prompt background color based on the vi mode
-	if test $__fish_active_key_bindings = 'fish_vi_key_bindings'
-		switch $fish_bind_mode
-			case default
-				set -x background '555555'
-			case insert
-				set -x background 'black'
-			case visual
-				set -x background 'blue'
-		end
-	end
-
-	set -g __fish_prompt_color_status (set_color $foreground --background $background)
+	set -g __fish_prompt_color_status (set_color $foreground)
 
 	# display the previous command's duration if it was > 5 seconds
 	set -l previous_duration
