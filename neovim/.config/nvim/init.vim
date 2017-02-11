@@ -114,6 +114,7 @@ set autoindent                  " Do dumb auto-indentation when no filetype is s
 set autoread                    " Automatically reload when a file is changed outside of Vim
 set backspace=indent,eol,start  " Allow backspacing over everything
 set cmdheight=2                 " Use two screen lines for the command-line to avoid hit-enter prompts
+set clipboard+=unnamedplus      " Use system clipboard for ALL operations
 set colorcolumn=+1              " Highlight the column after the current textwidth
 set complete-=i                 " Disable scanning of included files for keyword completion
 set cursorcolumn                " Highlight the screen column of the cursor
@@ -300,9 +301,6 @@ nnoremap <silent> <Leader>h :nohlsearch<CR>
 
 " Toggle paste mode
 nnoremap <Leader>p :set invpaste paste?<CR>
-
-" Copy visual area to the OS X clipboard
-vnoremap <C-C> :w !pbcopy<CR><CR>gv
 
 " Remove trailing whitespace
 noremap <silent> <Leader>rtw :call Preserve("%s/\\s\\+$//e")<CR>
