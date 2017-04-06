@@ -50,13 +50,15 @@
 [merge]
 	conflictstyle = diff3
 	tool = gvimdiff
-[push]
-	default = current
 [pretty]
 	custom = format:%C(yellow)%h%C(green)%d%C(reset) %s %C(cyan)[%cr] %C(magenta)<%an>%C(reset)
-[transfer]
-	fsckobjects = true
+[push]
+	default = current
+[rebase]
+	autostash = true
 [rerere]
 	enabled = 1
 [stash]
 	showPatch = true
+[transfer]
+	fsckobjects = true
