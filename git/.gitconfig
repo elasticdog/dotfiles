@@ -58,3 +58,5 @@
 	fsckobjects = true
 [rerere]
 	enabled = 1
+[stash]
+	showPatch = true
