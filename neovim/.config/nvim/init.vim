@@ -81,7 +81,6 @@ Plug 'morhetz/gruvbox'
 
 call plug#end()
 
-runtime! macros/matchit.vim
 call yankstack#setup()
 
 
@@ -110,17 +109,12 @@ set ignorecase                  " Ignore case when searching
 set infercase                   " Base insert mode completion based on the typed text
 set smartcase                   " Override ignorecase if search has upper case characters
 
-set autoindent                  " Do dumb auto-indentation when no filetype is set
-set autoread                    " Automatically reload when a file is changed outside of Vim
-set backspace=indent,eol,start  " Allow backspacing over everything
 set cmdheight=2                 " Use two screen lines for the command-line to avoid hit-enter prompts
 set clipboard+=unnamedplus      " Use system clipboard for ALL operations
 set colorcolumn=+1              " Highlight the column after the current textwidth
-set complete-=i                 " Disable scanning of included files for keyword completion
 set cursorcolumn                " Highlight the screen column of the cursor
 set cursorline                  " Highlight the screen line of the cursor
 set directory=/var/tmp//        " Centrally store all swap files using full path names
-set display+=lastline           " Show as much as possible of the last line in a window versus '@' lines
 set expandtab                   " Convert tabs to spaces
 set fileformats+=mac            " Always check for mac end-of-line formats
 set foldlevel=99                " Default to no folds closed
@@ -128,38 +122,27 @@ set foldmethod=indent           " Lines with equal indent form a fold
 set formatoptions+=1            " Prefer breaking before, not after, a one-letter word
 set formatoptions+=n            " When formatting text with gq, recognize lists
 set hidden                      " Allow the changing of buffers without saving
-set history=1000                " Remember 1000 lines of command line history
-set hlsearch                    " Highlight the last used search pattern
-set incsearch                   " Enable incremental searching
-set laststatus=2                " Always show the statusline
 set lazyredraw                  " Do not redraw screen while executing macros
 set linebreak                   " Wrap long lines at word boundaries
 set list                        " Display unprintable characters
 set matchtime=4                 " Blink matched brackets for 4/10ths of a second
-set mouse=a                     " Enable mouse use for all modes
 set nobackup                    " Do not automatically backup files
 set nojoinspaces                " Do not insert 2 spaces after sentences when joining
 set nomodeline                  " Do not read settings from modelines
 set nostartofline               " Do not move cursor to SOL during jump commands
 set nowrap                      " Do not automatically wrap long lines
-set nrformats-=octal            " Consider numbers starting with a zero to still be decimal
 set number                      " Precede each line with its line number
 set numberwidth=1               " Use the minimal number of columns for line numbers
 set relativenumber              " Show line numbers relative to the cursor's line
-set ruler                       " Show the cursor position at all times
 set scrolloff=2                 " Keep two lines above and below cursor when scrolling
 set sessionoptions-=options     " Adjust behavior of mksession
-set showcmd                     " Display incomplete commands
 set showmatch                   " Highlight matching brackets
 set sidescrolloff=3             " Keep three columns left and right of cursor when scrolling
-set smarttab                    " Insert blanks according to shiftwidth when in front of a line
 set ttimeout                    " Enable terminal timeout for key code sequences
 set ttimeoutlen=100             " Time out on key codes after a tenth of a second
-set viminfo^=!                  " Save and restore all-capital global variables
 set virtualedit=block           " Cursor can be positioned anywhere when in blockwise Visual mode
 set whichwrap+=h,l              " Allow cursor keys to line wrap
-set wildmenu                    " Use enhanced command line completion
-set wildmode=longest:list,full  " Set the wildchar completion mode
+set wildmode=longest:full,full  " Set the wildchar completion mode
 set winminheight=0              " Minimal height of a non-current window
 
 " Delete comment character when joining commented lines
