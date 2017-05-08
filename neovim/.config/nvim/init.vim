@@ -110,7 +110,6 @@ set infercase                   " Base insert mode completion based on the typed
 set smartcase                   " Override ignorecase if search has upper case characters
 
 set cmdheight=2                 " Use two screen lines for the command-line to avoid hit-enter prompts
-set clipboard+=unnamedplus      " Use system clipboard for ALL operations
 set colorcolumn=+1              " Highlight the column after the current textwidth
 set cursorcolumn                " Highlight the screen column of the cursor
 set cursorline                  " Highlight the screen line of the cursor
@@ -284,6 +283,9 @@ nnoremap <silent> <Leader>h :nohlsearch<CR>
 
 " Toggle paste mode
 nnoremap <Leader>p :set invpaste paste?<CR>
+
+" Copy visual area to the system clipboard
+vnoremap <C-C> "+ygv
 
 " Remove trailing whitespace
 noremap <silent> <Leader>rtw :call Preserve("%s/\\s\\+$//e")<CR>
