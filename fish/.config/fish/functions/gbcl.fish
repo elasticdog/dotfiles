@@ -5,7 +5,7 @@ function gbcl --description 'Clean up local branches that have already been merg
 		pushd $PWD
 		gcd
 		command git checkout master
-		command git branch --merged master | grep -v '^* master$' | xargs -n 1 git branch -d
+		command git branch --merged master | grep -v -e '^* master$' -e '^  master$' | xargs -n 1 git branch -d
 		popd
 	end
 
