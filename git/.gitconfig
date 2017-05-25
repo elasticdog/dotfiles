@@ -45,6 +45,7 @@
 	untrackedCache = true
 [diff]
 	algorithm = histogram
+	indentHeuristic = on
 [init]
 	templatedir = ~/.git_template
 [merge]
