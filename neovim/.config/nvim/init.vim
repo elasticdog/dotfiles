@@ -110,6 +110,7 @@ set infercase                   " Base insert mode completion based on the typed
 set smartcase                   " Override ignorecase if search has upper case characters
 
 set breakindent                 " Preserve horizontal blocks of text when wrapping
+set breakindentopt=shift:-2     " Add negative indent to the showbreak value when wrapping
 set cmdheight=2                 " Use two screen lines for the command-line to avoid hit-enter prompts
 set colorcolumn=+1              " Highlight the column after the current textwidth
 set cursorcolumn                " Highlight the screen column of the cursor
@@ -136,7 +137,7 @@ set numberwidth=1               " Use the minimal number of columns for line num
 set relativenumber              " Show line numbers relative to the cursor's line
 set scrolloff=2                 " Keep two lines above and below cursor when scrolling
 set sessionoptions-=options     " Adjust behavior of mksession
-set showbreak=+++\              " String to put at the start of lines that have been wrapped
+set showbreak=↪\                " String to put at the start of lines that have been wrapped
 set showmatch                   " Highlight matching brackets
 set sidescrolloff=3             " Keep three columns left and right of cursor when scrolling
 set ttimeout                    " Enable terminal timeout for key code sequences
