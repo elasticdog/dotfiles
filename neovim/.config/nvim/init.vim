@@ -249,9 +249,10 @@ vnoremap / /\v
 " Save a keystroke when entering command-line mode
 noremap ; :
 
-" Don't move linewise when long lines are wrapped
-noremap j gj
-noremap k gk
+" Don't move linewise when long lines are wrapped; but, do so when preceded by
+" a count; also add to jumplist if the count is larger than 5
+nnoremap <expr> j v:count ? (v:count > 5 ? "m'" . v:count : '') . 'j' : 'gj'
+nnoremap <expr> k v:count ? (v:count > 5 ? "m'" . v:count : '') . 'k' : 'gk'
 
 " Q formats paragraphs, instead of entering Ex mode
 noremap Q gqip
