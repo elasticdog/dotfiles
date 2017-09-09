@@ -11,11 +11,12 @@ function __fish_using_command
     return 1
 end
 
-complete -c rg -n "__fish_using_command rg" -s e -l regexp -d "A regular expression used for searching."
+complete -c rg -n "__fish_using_command rg" -s e -l regexp -d "Use pattern to search."
 complete -c rg -n "__fish_using_command rg" -l color -d "When to use color. [default: auto]" -r -f -a "never auto always ansi"
 complete -c rg -n "__fish_using_command rg" -l colors -d "Configure color settings and styles."
 complete -c rg -n "__fish_using_command rg" -s E -l encoding -d "Specify the text encoding of files to search."
 complete -c rg -n "__fish_using_command rg" -s g -l glob -d "Include or exclude files/directories."
+complete -c rg -n "__fish_using_command rg" -l iglob -d "Include or exclude files/directories case insensitively."
 complete -c rg -n "__fish_using_command rg" -s t -l type -d "Only search files matching TYPE."
 complete -c rg -n "__fish_using_command rg" -s T -l type-not -d "Do not search files matching TYPE."
 complete -c rg -n "__fish_using_command rg" -s A -l after-context -d "Show NUM lines after each match."
@@ -47,6 +48,7 @@ complete -c rg -n "__fish_using_command rg" -s q -l quiet -d "Do not print anyth
 complete -c rg -n "__fish_using_command rg" -s u -l unrestricted -d "Reduce the level of "smart" searching."
 complete -c rg -n "__fish_using_command rg" -s v -l invert-match -d "Invert matching."
 complete -c rg -n "__fish_using_command rg" -s w -l word-regexp -d "Only show matches surrounded by word boundaries."
+complete -c rg -n "__fish_using_command rg" -s x -l line-regexp -d "Only show matches surrounded by line boundaries."
 complete -c rg -n "__fish_using_command rg" -l column -d "Show column numbers"
 complete -c rg -n "__fish_using_command rg" -l debug -d "Show debug messages."
 complete -c rg -n "__fish_using_command rg" -s l -l files-with-matches -d "Only show the paths with at least one match."
@@ -65,7 +67,7 @@ complete -c rg -n "__fish_using_command rg" -l no-ignore-parent -d "Don't respec
 complete -c rg -n "__fish_using_command rg" -l no-ignore-vcs -d "Don't respect VCS ignore files"
 complete -c rg -n "__fish_using_command rg" -s 0 -l null -d "Print NUL byte after file names"
 complete -c rg -n "__fish_using_command rg" -s o -l only-matching -d "Print only matched parts of a line."
-complete -c rg -n "__fish_using_command rg" -s p -l pretty -d "Alias for --color always --heading -n."
+complete -c rg -n "__fish_using_command rg" -s p -l pretty -d "Alias for --color always --heading --line-number."
 complete -c rg -n "__fish_using_command rg" -s s -l case-sensitive -d "Search case sensitively."
 complete -c rg -n "__fish_using_command rg" -s S -l smart-case -d "Smart case search."
 complete -c rg -n "__fish_using_command rg" -l sort-files -d "Sort results by file path. Implies --threads=1."
