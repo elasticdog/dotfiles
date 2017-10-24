@@ -37,6 +37,11 @@ if test -d $HOME/.asdf
 	source ~/.asdf/asdf.fish
 end
 
+# load google cloud sdk utilities
+if test -d $HOME/.local/google-cloud-sdk
+	source $HOME/.local/google-cloud-sdk/path.fish.inc
+end
+
 # http://direnv.net/
 if command -qs direnv
 	eval (direnv hook fish)
