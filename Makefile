@@ -18,7 +18,7 @@ install-linux: install
 	$(cmd_install) xorg xterm
 
 .PHONY: install-macos
-install-osx: install
+install-macos: install
 	$(cmd_install) macos
 
 .PHONY: uninstall
