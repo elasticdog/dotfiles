@@ -28,6 +28,7 @@ switch (uname)
 end
 
 # add auto-expanding abbreviations
+abbr -a duv "du -hs ./* | sort -hs"
 abbr -a g git
 abbr -a gdiff "git diff --no-index --color --color-words"
 abbr -a nix-shell "nix-shell --run fish"
