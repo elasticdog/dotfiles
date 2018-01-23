@@ -55,6 +55,7 @@ Plug 'terryma/vim-expand-region'
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
+Plug 'fatih/vim-go'
 Plug 'tpope/vim-repeat'
 Plug 'mtth/scratch.vim'
 Plug 'tpope/vim-speeddating'

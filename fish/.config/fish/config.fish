@@ -17,7 +17,7 @@ set -e fish_greeting
 
 set -x GIT_EDITOR nvim
 set -x GOPATH $HOME/src/go
-set -x PATH $HOME/bin $HOME/.local/bin $HOME/.cargo/bin $PATH
+set -x PATH $HOME/bin $HOME/.local/bin $HOME/.cargo/bin $HOME/src/go/bin $PATH
 set -x VAULT_ADDR https://secrets.elastic.co:8200
 set -x VISUAL nvim
 
