@@ -1,6 +1,3 @@
-# set up amazon web services credentials
-export-aws-creds default
-
 set -l ATLAS_CREDENTIALS_FILE $HOME/.config/atlas
 if test -f $ATLAS_CREDENTIALS_FILE
 	set -x ATLAS_TOKEN (awk '/^atlas_token/{ print $3 }' $ATLAS_CREDENTIALS_FILE)
@@ -15,6 +12,7 @@ end
 # disable the shell greeting message
 set -e fish_greeting
 
+set -x AWS_PROFILE default
 set -x GIT_EDITOR nvim
 set -x GOPATH $HOME/src/go
 set -x PATH $HOME/bin $HOME/.local/bin $HOME/.cargo/bin $HOME/src/go/bin $PATH
