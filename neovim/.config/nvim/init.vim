@@ -143,6 +143,7 @@ set showmatch                   " Highlight matching brackets
 set sidescrolloff=3             " Keep three columns left and right of cursor when scrolling
 set ttimeout                    " Enable terminal timeout for key code sequences
 set ttimeoutlen=100             " Time out on key codes after a tenth of a second
+set updatetime=100              " How long to wait after nothing is typed before updates
 set virtualedit=block           " Cursor can be positioned anywhere when in blockwise Visual mode
 set whichwrap+=h,l              " Allow cursor keys to line wrap
 set wildmode=longest:full,full  " Set the wildchar completion mode
