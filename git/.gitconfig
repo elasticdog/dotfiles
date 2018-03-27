@@ -17,9 +17,9 @@
 	empty-tree-sha1 = hash-object -t tree /dev/null
 	gone = !git log --diff-filter=D --summary
 	lc = log ORIG_HEAD.. --stat --no-merges
-	lo = log --all --date-order --oneline --graph --decorate -M -C
-	lob = log --date-order --oneline --graph --decorate -M -C
-	low = log --all --date-order --pretty=custom --graph --date=relative -M -C
+	l = log --all --decorate --oneline --graph -M -C
+	ll = log --all --pretty=custom --date=relative --graph -M -C
+	lob = log --decorate --oneline --graph -M -C
 	patch = format-patch --patience --full-index -M -C
 	pr = "!f() { git fetch --force --update-head-ok ${2:-origin} refs/pull/$1/head:pr-$1 && git checkout pr-$1; }; f"
 	pp = "!sh -c 'git pull --rebase && git push'"
