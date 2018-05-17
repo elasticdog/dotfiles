@@ -68,10 +68,12 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'fatih/vim-go'
 Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-rhubarb'
 Plug 'mtth/scratch.vim'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'tomtom/tcomment_vim'
+Plug 'tpope/vim-unimpaired'
 Plug 'maxbrunsfeld/vim-yankstack'
 
 " File Types
