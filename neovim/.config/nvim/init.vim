@@ -53,6 +53,7 @@ Plug 'majutsushi/tagbar'
 let g:tagbar_autoclose = 1
 
 Plug 'hashivim/vim-terraform'
+let g:terraform_align = 1
 let g:terraform_fmt_on_save = 1
 
 Plug 'janko-m/vim-test'
@@ -336,6 +337,10 @@ autocmd BufReadPost quickfix nnoremap <buffer> p <CR><C-w>w
 
 " open the file then close the quickfix window
 autocmd BufReadPost quickfix nnoremap <silent> <buffer> <M-CR> <CR>:cclose<CR>
+
+" treat HCL files as Terraform
+autocmd BufNewFile,BufRead *.hcl setlocal filetype=terraform
+autocmd BufWritePre,FileWritePre *.hcl :TerraformFmt
 
 " Use tabs for these file types
 autocmd FileType fish setlocal noexpandtab
