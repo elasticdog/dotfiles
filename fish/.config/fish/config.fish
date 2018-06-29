@@ -27,8 +27,21 @@ end
 
 # add auto-expanding abbreviations
 abbr -a duv "du -hs ./* | sort -hs"
-abbr -a g git
+abbr -a g "git"
+abbr -a ga "git add"
+abbr -a gap "git add --patch"
+abbr -a gb "git branch"
+abbr -a gci "git commit"
+abbr -a gco "git checkout"
+abbr -a gcob "git checkout -b"
+abbr -a gd "git diff"
 abbr -a gdiff "git diff --no-index --color --color-words"
+abbr -a gr "git reset"
+abbr -a grb "git rebase"
+abbr -a grbi "git rebase --interactive --autosquash"
+abbr -a gs "git status"
+abbr -a gss "git status --short --branch"
+abbr -a gst "git diff --cached"
 abbr -a nix-shell "nix-shell --run fish"
 abbr -a tree "tree -F --dirsfirst"
 

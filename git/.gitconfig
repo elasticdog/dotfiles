@@ -3,17 +3,10 @@
 	email = aaron@elasticdog.com
 [alias]
 	aliases = "!git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /' | sort"
-	amend = commit --amend
-	ap = add --patch
-	br = branch
 	branches = branch -a
-	ci = commit --verbose
-	co = checkout
 	contains = "!sh -c 'git branch -a --contains $1' -"
 	dc = diff --color-words="[^[:space:]]|([[:alnum:]]|UTF_8_GUARD)+"
-	df = diff
 	discard = checkout --
-	ds = diff --stat
 	empty-tree-sha1 = hash-object -t tree /dev/null
 	gone = !git log --diff-filter=D --summary
 	lc = log ORIG_HEAD.. --stat --no-merges
@@ -24,10 +17,7 @@
 	pr = "!f() { git fetch --force --update-head-ok ${2:-origin} refs/pull/$1/head:pr-$1 && git checkout pr-$1; }; f"
 	pp = "!sh -c 'git pull --rebase && git push'"
 	pushf = push --force-with-lease
-	rb = rebase
-	rbi = rebase --interactive --autosquash
 	serve = !git daemon --reuseaddr --verbose --base-path=. --export-all ./.git
-	st = status --short --branch
 	staged = diff --cached
 	stashes = stash list
 	tags = tag
@@ -39,6 +29,8 @@
 	whois = "!sh -c 'git log -i -1 --pretty=\"format:%an <%ae>\n\" --author=\"$1\"' -"
 [color]
 	ui = auto
+[commit]
+	verbose = true
 [core]
 	editor = vim -f
 	excludesfile = ~/.gitignore
@@ -57,6 +49,8 @@
 	default = current
 [rebase]
 	autostash = true
+[remote]
+	pushdefault = origin
 [rerere]
 	enabled = 1
 [stash]
