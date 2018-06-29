@@ -43,6 +43,7 @@ abbr -a gs "git status"
 abbr -a gss "git status --short --branch"
 abbr -a gst "git diff --cached"
 abbr -a nix-shell "nix-shell --run fish"
+abbr -a sshf "ssh -F ssh_config"
 abbr -a tree "tree -F --dirsfirst"
 
 # load asdf extendable version manager shims
