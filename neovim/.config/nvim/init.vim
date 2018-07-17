@@ -64,13 +64,6 @@ let g:terraform_fmt_on_save = 1
 Plug 'janko-m/vim-test'
 let test#strategy = 'neovim'
 
-Plug 'vimwiki/vimwiki'
-let zettelkasten = {}
-let zettelkasten.path = '~/src/zettelkasten/zettel/'
-let zettelkasten.auto_tags = 1
-let g:vimwiki_list = [zettelkasten]
-let g:vimwiki_auto_chdir = 1
-
 Plug 'junegunn/vim-easy-align'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'editorconfig/editorconfig-vim'
@@ -89,7 +82,6 @@ Plug 'GothenburgBitFactory/taskwarrior', { 'rtp': 'scripts/vim' }
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-unimpaired'
 Plug 'maxbrunsfeld/vim-yankstack'
-Plug 'michal-h21/vim-zettel'
 
 " File Types
 Plug 'nathangrigg/vim-beancount'
