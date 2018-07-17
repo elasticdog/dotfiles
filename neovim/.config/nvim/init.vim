@@ -21,6 +21,11 @@ Plug 'pearofducks/ansible-vim'
 let g:ansible_extra_keywords_highlight = 1
 let g:ansible_attribute_highlight = 'n'
 
+if has('python3')
+	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+	let g:deoplete#enable_at_startup = 1
+endif
+
 Plug 'jeetsukumaran/vim-filebeagle'
 let g:filebeagle_show_line_numbers = 1
 let g:filebeagle_show_line_relativenumbers = 0
