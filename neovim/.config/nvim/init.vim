@@ -89,6 +89,7 @@ Plug 'GothenburgBitFactory/taskwarrior', { 'rtp': 'scripts/vim' }
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-unimpaired'
 Plug 'maxbrunsfeld/vim-yankstack'
+Plug 'michal-h21/vim-zettel'
 
 " File Types
 Plug 'nathangrigg/vim-beancount'
