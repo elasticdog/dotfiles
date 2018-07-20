@@ -64,6 +64,11 @@ if command -qs direnv
 	eval (direnv hook fish)
 end
 
+# https://github.com/aelsabbahy/goss/tree/master/extras/dgoss
+if command -qs dgoss; and test -f $HOME/.local/src/goss/goss-linux-amd64
+	set -x GOSS_PATH $HOME/.local/src/goss/goss-linux-amd64
+end
+
 if status --is-interactive; and test -d $HOME/.ssh/config.d
 	compile-ssh-config
 end
