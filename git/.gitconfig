@@ -55,4 +55,6 @@
 [stash]
 	showPatch = true
 [transfer]
-	fsckobjects = true
+	mfsckobjects = true
+[includeIf "gitdir:~/work/"]
+	path = .gitconfig-work
