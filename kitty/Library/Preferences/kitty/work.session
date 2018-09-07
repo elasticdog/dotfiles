@@ -1,0 +1,8 @@
+cd ~/work/infra
+layout tall
+#title infra
+launch bash -lc 'fish'
+focus
+launch bash -lc 'fish'
+launch bash -lc 'fish'
+launch kitty @ set-tab-title 'infra'

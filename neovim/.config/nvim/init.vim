@@ -97,8 +97,9 @@ let g:rustfmt_autosave = 1
 Plug 'cespare/vim-toml'
 
 " Color Schemes
-Plug 'tpope/vim-vividchalk'
 Plug 'morhetz/gruvbox'
+let g:gruvbox_italic = 1
+let g:gruvbox_contrast_dark = 'hard'
 
 call plug#end()
 
@@ -110,6 +111,7 @@ call yankstack#setup()
 
 colorscheme gruvbox
 set background=dark
+set termguicolors
 
 " Highlight directories different from files in listings
 highlight Directory ctermfg=Blue
