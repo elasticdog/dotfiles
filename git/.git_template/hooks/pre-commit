@@ -3,6 +3,6 @@
 current_branch=$(git symbolic-ref -q HEAD | sed -e 's|^refs/heads/||')
 
 if [[ $current_branch = 'master' ]]; then
-	echo 'Direct commits to the master branch are not allowed.'
+	printf 'Direct commits to the master branch are not allowed.\n'
 	exit 1
 fi
