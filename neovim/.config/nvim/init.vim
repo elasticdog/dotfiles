@@ -368,6 +368,7 @@ autocmd FileType yaml setlocal shiftwidth=2 softtabstop=2 tabstop=2
 
 " Use shellcheck for sh file types
 autocmd FileType sh setlocal makeprg=shellcheck\ -f\ gcc\ %
+autocmd FileType yaml setlocal makeprg=yamllint\ -f\ parsable\ %
 
 " Automatically open the quickfix / location list window on errors
 autocmd QuickFixCmdPost [^l]* nested cwindow
