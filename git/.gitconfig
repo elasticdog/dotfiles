@@ -16,10 +16,11 @@
 	patch = format-patch --patience --full-index -M -C
 	pr = "!f() { git fetch --force --update-head-ok ${2:-origin} refs/pull/$1/head:pr-$1 && git checkout pr-$1; }; f"
 	pp = "!sh -c 'git pull --rebase && git push'"
+	remotes = remote -v
 	serve = !git daemon --reuseaddr --verbose --base-path=. --export-all ./.git
 	staged = diff --cached
 	stashes = stash list
-	tags = tag
+	tags = tag --list
 	uncommit = reset --mixed HEAD~
 	unstage = reset -q HEAD --
 	weekly = log --all --author 'Aaron Bull Schaefer' --since '1 week ago' --oneline
