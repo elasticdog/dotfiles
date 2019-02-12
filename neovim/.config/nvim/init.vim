@@ -43,6 +43,9 @@ let g:grepper = {
 	\ 'simple_prompt': 1,
 	\ }
 
+Plug 'junegunn/limelight.vim'
+let g:limelight_priority = -1
+
 function! BuildComposer(info)
   if a:info.status != 'unchanged' || a:info.force
     if has('nvim')
@@ -73,7 +76,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'fatih/vim-go'
-Plug 'junegunn/limelight.vim'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-rhubarb'
 Plug 'mtth/scratch.vim'
