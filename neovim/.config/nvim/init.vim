@@ -73,6 +73,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'fatih/vim-go'
+Plug 'junegunn/limelight.vim'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-rhubarb'
 Plug 'mtth/scratch.vim'
@@ -260,6 +261,9 @@ nnoremap <silent> <C-G> :Grepper -tool rg<CR>
 nnoremap <silent> <Leader>* :Grepper -tool rg -cword -noprompt<CR>
 nmap gG <plug>(GrepperOperator)
 xmap gG <plug>(GrepperOperator)
+
+" PLUGIN CONFIG: limelight
+nnoremap <silent> <Leader>l :Limelight!!<CR>
 
 " PLUGIN CONFIG: tagbar
 nnoremap <silent> <Leader>t :TagbarToggle<CR>
