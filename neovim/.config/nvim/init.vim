@@ -152,6 +152,7 @@ set foldmethod=indent           " Lines with equal indent form a fold
 set formatoptions+=1            " Prefer breaking before, not after, a one-letter word
 set formatoptions+=n            " When formatting text with gq, recognize lists
 set hidden                      " Allow the changing of buffers without saving
+set inccommand=nosplit          " Show command effects incrementally
 set lazyredraw                  " Do not redraw screen while executing macros
 set linebreak                   " Wrap long lines at word boundaries
 set list                        " Display unprintable characters
