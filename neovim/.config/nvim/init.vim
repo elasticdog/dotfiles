@@ -21,6 +21,9 @@ Plug 'pearofducks/ansible-vim'
 let g:ansible_extra_keywords_highlight = 1
 let g:ansible_attribute_highlight = 'n'
 
+Plug 'google/vim-maktaba'
+Plug 'bazelbuild/vim-bazel'
+
 if has('python3')
 	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 	let g:deoplete#enable_at_startup = 1
