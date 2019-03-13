@@ -85,7 +85,6 @@ Plug 'tpope/vim-rhubarb'
 Plug 'mtth/scratch.vim'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
-Plug 'GothenburgBitFactory/taskwarrior', { 'rtp': 'scripts/vim' }
 Plug 'tomtom/tcomment_vim'
 Plug 'mbbill/undotree'
 Plug 'tpope/vim-unimpaired'
