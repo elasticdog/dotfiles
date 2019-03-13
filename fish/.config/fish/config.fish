@@ -27,6 +27,11 @@ switch (uname)
 end
 
 # add auto-expanding abbreviations
+abbr -a b "bazel"
+abbr -a bb "bazel build"
+abbr -a bq "bazel query"
+abbr -a br "bazel run"
+abbr -a bt "bazel test"
 abbr -a duv "du -hs ./* | sort -hs"
 abbr -a g "git"
 abbr -a ga "git add"
@@ -44,6 +49,7 @@ abbr -a gp "git push"
 abbr -a gpf "git pull --ff-only"
 abbr -a gpr "git pull --rebase"
 abbr -a gr "git reset"
+abbr -a graph "dot -Gdpi=180 -Tpng | icat"
 abbr -a grb "git rebase"
 abbr -a grbi "git rebase --interactive --autosquash"
 abbr -a gs "git status"
