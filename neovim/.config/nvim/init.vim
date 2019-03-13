@@ -122,10 +122,13 @@ highlight Directory ctermfg=Blue
 " Highlight trailing whitespace characters and tabs not used for indentation
 highlight WhitespaceErrors ctermbg=red guibg=red
 match WhitespaceErrors /\s\+$/
-autocmd BufWinEnter * match WhitespaceErrors /\s\+$\|[^\t]\@<=\t\+/
-autocmd InsertEnter * match WhitespaceErrors /\s\+\%#\@<!$\|[^\t]\@<=\t\+/
-autocmd InsertLeave * match WhitespaceErrors /\s\+$\|[^\t]\@<=\t\+/
-autocmd BufWinLeave * call clearmatches()
+augroup errors
+	autocmd!
+	autocmd BufWinEnter * match WhitespaceErrors /\s\+$\|[^\t]\@<=\t\+/
+	autocmd InsertEnter * match WhitespaceErrors /\s\+\%#\@<!$\|[^\t]\@<=\t\+/
+	autocmd InsertLeave * match WhitespaceErrors /\s\+$\|[^\t]\@<=\t\+/
+	autocmd BufWinLeave * call clearmatches()
+augroup end
 
 
 " SETTINGS
@@ -186,8 +189,11 @@ if &termencoding ==# 'utf-8' || &encoding ==# 'utf-8'
 	let &fillchars = "vert:\u259a,fold:\u00b7"
 	let &listchars = "tab:\u21e5 ,trail:\u2423,extends:\u21c9,precedes:\u21c7,nbsp:\u00b7"
 endif
-autocmd InsertEnter * setlocal nolist
-autocmd InsertLeave * setlocal list
+augroup list
+	autocmd!
+	autocmd InsertEnter * setlocal nolist
+	autocmd InsertLeave * setlocal list
+augroup end
 
 " Set up default tab spacing
 set shiftwidth=4
@@ -224,7 +230,10 @@ function! RestoreCursor()
 		exe "normal! g`\""
 	endif
 endfunction
-autocmd BufReadPost * call RestoreCursor()
+augroup cursor
+	autocmd!
+	autocmd BufReadPost * call RestoreCursor()
+augroup end
 
 
 " MAPPINGS & CUSTOM COMMANDS
@@ -346,36 +355,49 @@ nmap Y y$
 " FILETYPE SPECIFIC SETTINGS
 " --------------------------------------
 
-" preview the file without leaving the quickfix window
-autocmd BufReadPost quickfix nnoremap <buffer> p <CR><C-w>w
+augroup lint
+	autocmd!
+	" Set custom make commands for various file types
+	autocmd FileType bzl setlocal makeprg=buildifier\ %
+	autocmd FileType sh setlocal makeprg=shellcheck\ -f\ gcc\ %
+	autocmd FileType yaml setlocal makeprg=yamllint\ -f\ parsable\ %
+augroup end
 
-" open the file then close the quickfix window
-autocmd BufReadPost quickfix nnoremap <silent> <buffer> <M-CR> <CR>:cclose<CR>
+augroup quickfix
+	autocmd!
+	" preview the file without leaving the quickfix window
+	autocmd BufReadPost quickfix nnoremap <buffer> p <CR><C-w>w
 
-" treat HCL files as Terraform
-autocmd BufNewFile,BufRead *.hcl setlocal filetype=terraform
-autocmd BufWritePre,FileWritePre *.hcl :TerraformFmt
+	" open the file then close the quickfix window
+	autocmd BufReadPost quickfix nnoremap <silent> <buffer> <M-CR> <CR>:cclose<CR>
 
-" Use tabs for these file types
-autocmd FileType fish setlocal noexpandtab
-autocmd FileType gitconfig setlocal noexpandtab
-autocmd FileType make setlocal noexpandtab
-autocmd FileType sh setlocal noexpandtab
-autocmd FileType tex setlocal noexpandtab
-autocmd FileType vim setlocal noexpandtab
+	" Automatically open the quickfix / location list window on errors
+	autocmd QuickFixCmdPost [^l]* nested cwindow
+	autocmd QuickFixCmdPost    l* nested lwindow
+augroup end
 
-" Use a tab spacing of two spaces for these file types
-autocmd FileType beancount setlocal shiftwidth=2 softtabstop=2 tabstop=2
-autocmd FileType elixir setlocal shiftwidth=2 softtabstop=2 tabstop=2
-autocmd FileType elm setlocal shiftwidth=2 softtabstop=2 tabstop=2
-autocmd FileType haskell setlocal shiftwidth=2 softtabstop=2 tabstop=2
-autocmd FileType nix setlocal shiftwidth=2 softtabstop=2 tabstop=2
-autocmd FileType yaml setlocal shiftwidth=2 softtabstop=2 tabstop=2
+augroup terraform
+	autocmd!
+	" treat HCL files as Terraform
+	autocmd BufNewFile,BufRead *.hcl setlocal filetype=terraform
+	autocmd BufWritePre,FileWritePre *.hcl :TerraformFmt
+augroup end
 
-" Use shellcheck for sh file types
-autocmd FileType sh setlocal makeprg=shellcheck\ -f\ gcc\ %
-autocmd FileType yaml setlocal makeprg=yamllint\ -f\ parsable\ %
+augroup whitespace
+	autocmd!
+	" Use tabs for these file types
+	autocmd FileType fish setlocal noexpandtab
+	autocmd FileType gitconfig setlocal noexpandtab
+	autocmd FileType make setlocal noexpandtab
+	autocmd FileType sh setlocal noexpandtab
+	autocmd FileType tex setlocal noexpandtab
+	autocmd FileType vim setlocal noexpandtab
 
-" Automatically open the quickfix / location list window on errors
-autocmd QuickFixCmdPost [^l]* nested cwindow
-autocmd QuickFixCmdPost    l* nested lwindow
+	" Use a tab spacing of two spaces for these file types
+	autocmd FileType beancount setlocal shiftwidth=2 softtabstop=2 tabstop=2
+	autocmd FileType elixir setlocal shiftwidth=2 softtabstop=2 tabstop=2
+	autocmd FileType elm setlocal shiftwidth=2 softtabstop=2 tabstop=2
+	autocmd FileType haskell setlocal shiftwidth=2 softtabstop=2 tabstop=2
+	autocmd FileType nix setlocal shiftwidth=2 softtabstop=2 tabstop=2
+	autocmd FileType yaml setlocal shiftwidth=2 softtabstop=2 tabstop=2
+augroup end
