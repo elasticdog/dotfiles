@@ -70,6 +70,7 @@ let g:terraform_fmt_on_save = 1
 Plug 'janko-m/vim-test'
 let test#strategy = 'neovim'
 
+Plug 'vmchale/dhall-vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'editorconfig/editorconfig-vim'
