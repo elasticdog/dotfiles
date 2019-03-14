@@ -1,2 +1,19 @@
 source "%val{config}/plugins/plug.kak/rc/plug.kak"
 plug "andreyorst/plug.kak" noload
+
+colorscheme gruvbox
+
+set global autoinfo normal
+set global grepcmd "rg --column"
+set global ui_options ncurses_assistant=none
+
+add-highlighter global/ number-lines -hlcursor -relative
+add-highlighter global/ show-matching
+add-highlighter global/ show-whitespaces -spc " "
+
+hook global WinCreate [^*]* %{
+    editorconfig-load
+}
+
+# allow for overriding/extending this configuration
+try %{ source .kakrc.local }
