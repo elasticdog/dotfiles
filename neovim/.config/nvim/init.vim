@@ -11,6 +11,7 @@ Plug 'bling/vim-airline'
 if !exists('g:airline_symbols')
 	let g:airline_symbols = {}
 endif
+let g:airline_highlighting_cache = 1
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
 let g:airline_symbols.branch = '⎇'
@@ -24,17 +25,8 @@ let g:ansible_attribute_highlight = 'n'
 Plug 'google/vim-maktaba'
 Plug 'bazelbuild/vim-bazel'
 
-if has('python3')
-	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-	let g:deoplete#enable_at_startup = 1
-endif
-
-Plug 'jeetsukumaran/vim-filebeagle'
-let g:filebeagle_show_line_numbers = 1
-let g:filebeagle_show_line_relativenumbers = 0
-
-Plug 'airblade/vim-gitgutter'
-let g:gitgutter_override_sign_column_highlight = 0
+" Plug 'airblade/vim-gitgutter'
+" let g:gitgutter_override_sign_column_highlight = 0
 
 Plug 'mhinz/vim-grepper'
 let g:grepper = {
@@ -45,6 +37,11 @@ let g:grepper = {
 	\ 'next_tool': '<C-G>',
 	\ 'simple_prompt': 1,
 	\ }
+
+if executable("rg")
+	set grepprg=rg\ --vimgrep\ --no-heading
+	set grepformat=%f:%l:%c:%m,%f:%l:%m
+endif
 
 Plug 'junegunn/limelight.vim'
 let g:limelight_priority = -1
@@ -60,6 +57,9 @@ function! BuildComposer(info)
 endfunction
 Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
 
+Plug 'mhinz/vim-signify'
+let g:signify_vcs_list = [ 'git' ]
+
 Plug 'majutsushi/tagbar'
 let g:tagbar_autoclose = 1
 
@@ -70,15 +70,16 @@ let g:terraform_fmt_on_save = 1
 Plug 'janko-m/vim-test'
 let test#strategy = 'neovim'
 
-Plug 'vmchale/dhall-vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-endwise'
 Plug 'terryma/vim-expand-region'
+Plug 'justinmk/vim-dirvish'
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
+Plug 'rhysd/git-messenger.vim'
 Plug 'fatih/vim-go'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-rhubarb'
@@ -93,7 +94,7 @@ Plug 'maxbrunsfeld/vim-yankstack'
 " File Types
 Plug 'nathangrigg/vim-beancount'
 Plug 'elixir-lang/vim-elixir'
-Plug 'lambdatoast/elm.vim'
+Plug 'vmchale/dhall-vim'
 Plug 'dag/vim-fish'
 Plug 'Glench/Vim-Jinja2-Syntax'
 Plug '~/.config/nvim/vendor/nginx'
@@ -176,6 +177,7 @@ set showmatch                   " Highlight matching brackets
 set sidescrolloff=3             " Keep three columns left and right of cursor when scrolling
 set ttimeout                    " Enable terminal timeout for key code sequences
 set ttimeoutlen=100             " Time out on key codes after a tenth of a second
+set undofile                    " Preserve undo history for buffers on disk
 set updatetime=100              " How long to wait after nothing is typed before updates
 set virtualedit=block           " Cursor can be positioned anywhere when in blockwise Visual mode
 set whichwrap+=h,l              " Allow cursor keys to line wrap
@@ -269,8 +271,11 @@ nnoremap <silent> <Leader>gg :Gstaged<CR><CR>
 " PLUGIN CONFIG: fzf
 nnoremap <silent> <C-p> :Files<CR>
 nnoremap <silent> <Leader>b :Buffers<CR>
-nnoremap <silent> <Leader>m :History<CR>
 nnoremap <silent> <Leader>gl :Commits<CR>
+nnoremap <silent> <Leader>gs :Gfiles?<CR>
+
+" PLUGIN CONFIG: git-messenger
+nmap <Leader>gb <Plug>(git-messenger)
 
 " PLUGIN CONFIG: grepper
 nnoremap <silent> <C-G> :Grepper -tool rg<CR>
