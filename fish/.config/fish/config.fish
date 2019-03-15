@@ -66,9 +66,11 @@ if test -d $HOME/.asdf
 	source ~/.asdf/asdf.fish
 end
 
-# load google cloud sdk utilities
-if test -d $HOME/.local/google-cloud-sdk
-	source $HOME/.local/google-cloud-sdk/path.fish.inc
+# bootstrap fisher package manager
+if not functions -q fisher
+	set -q XDG_CONFIG_HOME; or set XDG_CONFIG_HOME ~/.config
+	curl https://git.io/fisher --create-dirs -sLo $XDG_CONFIG_HOME/fish/functions/fisher.fish
+	fish -c fisher
 end
 
 # http://direnv.net/
@@ -79,6 +81,11 @@ end
 # https://github.com/aelsabbahy/goss/tree/master/extras/dgoss
 if command -qs dgoss; and test -f $HOME/.local/src/goss/goss-linux-amd64
 	set -x GOSS_PATH $HOME/.local/src/goss/goss-linux-amd64
+end
+
+# load google cloud sdk utilities
+if test -d $HOME/.local/google-cloud-sdk
+	source $HOME/.local/google-cloud-sdk/path.fish.inc
 end
 
 if command -qs kitty
