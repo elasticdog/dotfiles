@@ -1,5 +1,6 @@
 .netrwhist
 /kakoune/.config/kak/plugins/
+/kakoune/.config/kakrc.local
 /neovim/.config/nvim/plugged/
 plug.vim.old
 ssh/.ssh/config.d/work
