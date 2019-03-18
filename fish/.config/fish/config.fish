@@ -13,12 +13,12 @@ end
 set -e fish_greeting
 
 set -x AWS_PROFILE default
-set -x GIT_EDITOR nvim
+set -x GIT_EDITOR kak
 set -x GOPATH $HOME/src/go
 set -x OBJC_DISABLE_INITIALIZE_FORK_SAFETY YES
 set -x PATH $HOME/bin $HOME/.local/bin $HOME/.cargo/bin $HOME/src/go/bin $PATH
 set -x VAULT_ADDR https://secrets.elastic.co:8200
-set -x VISUAL nvim
+set -x VISUAL kak
 
 switch (uname)
 	case Darwin
