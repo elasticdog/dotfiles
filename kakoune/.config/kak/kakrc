@@ -74,11 +74,11 @@ hook global -always BufOpenFifo "\*make\*" %{ map global normal "'" ":make-next-
 # Various mappings
 # ────────────────
 
-map -- global normal - ": lf<ret>"
+map -- global normal - ": explore<ret>"
 map global normal "#" ": comment-line<ret>"
 map global normal = ": format<ret>"
 map global normal <c-g> ":grep "
-map global normal <c-p> ": fzf-files<ret>"
+map global normal <c-p> ": fuzzy-files<ret>"
 map global normal + ": lint<ret>"
 
 map global user -docstring "Run the make utility wrapper with no arguments" m ": make<ret>"
@@ -87,21 +87,10 @@ map global user -docstring "Format lines to a width of `autowrap_column` charact
 # Helper commands
 # ───────────────
 
-define-command fzf-files \
-    -docstring "fzf: fuzzy find files to select buffers to open" \
-    %{ evaluate-commands %{ fzf --multi }
-}
-
-define-command -hidden fzf -params .. \
-    %{ evaluate-commands %{
-        terminal sh -c "export PATH=%val(client_env_PATH) kak_session=%val(session) kak_client=%val(client); cd %val{client_env_PWD} && %val{config}/scripts/fzf.sh %arg(@)"
-    }
-}
-
-define-command lf \
+define-command explore \
     -params ..1 -file-completion \
-    -docstring "lf [<path>]: launch file system explorer to select buffers to open
-    The optional path argument will set the initial location" \
+    -docstring "explore [<path>]: explore the directory of the current file
+    The optional path argument will override the initial location" \
     %{ evaluate-commands %sh{
         if [ $# -ge 1 ] && [ -e $1 ]; then
             path=$1
@@ -110,14 +99,25 @@ define-command lf \
         else
             path=$PWD
         fi
-        printf 'lf- "%s"\n' "$path"
+        printf 'explore- "%s"\n' "$path"
     }
 }
 
-define-command -hidden lf- \
+define-command -hidden explore- \
     -params ..1 -file-completion \
     %{ evaluate-commands %{
         terminal sh -c "export kak_session=%val(session) kak_client=%val(client); %val{config}/scripts/lf.sh %arg(1)"
+    }
+}
+
+define-command fuzzy-files \
+    -docstring "fuzzy-files: fuzzy find files to select buffers to open" \
+    %{ evaluate-commands %{ fuzzy --multi }
+}
+
+define-command -hidden fuzzy -params .. \
+    %{ evaluate-commands %{
+        terminal sh -c "export kak_session='%val(session)' kak_client='%val(client)' FZF_DEFAULT_COMMAND='%val(client_env_FZF_DEFAULT_COMMAND)'; cd '%val{client_env_PWD}' && '%val{config}/scripts/fzf.sh' %arg(@)"
     }
 }
 
