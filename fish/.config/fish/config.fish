@@ -13,6 +13,7 @@ end
 set -e fish_greeting
 
 set -x AWS_PROFILE default
+set -x EDITOR kak
 set -x GIT_EDITOR kak
 set -x GOPATH $HOME/src/go
 set -x OBJC_DISABLE_INITIALIZE_FORK_SAFETY YES

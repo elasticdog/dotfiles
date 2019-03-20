@@ -1,5 +1,5 @@
 pkgs_all := $(shell echo */)
-pkgs_regular := git kakoune neovim tmux
+pkgs_regular := git kakoune lf neovim tmux
 pkgs_no_fold := fish ssh
 
 cmd_install := stow --stow

@@ -44,12 +44,10 @@ hook global WinSetOption filetype=go %{
 
 hook global WinSetOption filetype=markdown %{
     set-option window formatcmd "prettier --parser markdown"
-    # hook buffer BufWritePre .* %{ format }
 }
 
 hook global WinSetOption filetype=python %{
     set-option window formatcmd "black"
-    hook buffer BufWritePre .* %{ format }
 }
 
 hook global WinSetOption filetype=rust %{
@@ -60,38 +58,68 @@ hook global WinSetOption filetype=rust %{
 hook global WinSetOption filetype=sh %{
     set-option window formatcmd "shfmt"
     set-option window lintcmd "shellcheck --format=gcc"
-    hook buffer BufWritePre .* %{
-        format
-        lint
-    }
+    hook buffer BufWritePre .* %{ lint }
 }
 
 hook global WinSetOption filetype=yaml %{
     set-option window formatcmd "prettier --parser yaml"
     set-option window lintcmd "yamllint -f parsable"
-    # hook buffer BufWritePre .* %{
-    #     format
-    #     lint
-    # }
+    hook buffer BufWritePre .* %{ lint }
 }
 
-hook global -always BufOpenFifo "\*grep\*" %{ map -- global normal - ":grep-next-match<ret>" }
-hook global -always BufOpenFifo "\*lint-output\*" %{ map -- global normal - ":lint-next-error<ret>" }
-hook global -always BufOpenFifo "\*make\*" %{ map -- global normal - ":make-next-error<ret>" }
+hook global -always BufOpenFifo "\*grep\*" %{ map global normal "'" ":grep-next-match<ret>" }
+hook global -always BufOpenFifo "\*lint-output\*" %{ map global normal "'" ":lint-next-error<ret>" }
+hook global -always BufOpenFifo "\*make\*" %{ map global normal "'" ":make-next-error<ret>" }
 
 # Various mappings
 # ────────────────
 
+map -- global normal - ": lf<ret>"
 map global normal "#" ": comment-line<ret>"
+map global normal = ": format<ret>"
 map global normal <c-g> ":grep "
+map global normal <c-p> ": fzf-files<ret>"
+map global normal + ": lint<ret>"
 
-map global user -docstring "Format the contents of the current buffer" f ": format<ret>"
-map global user -docstring "Parse the current buffer with a linter" l ": lint<ret>"
 map global user -docstring "Run the make utility wrapper with no arguments" m ": make<ret>"
 map global user -docstring "Format lines to a width of `autowrap_column` characters" q "|par -w $kak_opt_autowrap_column<ret>"
 
 # Helper commands
 # ───────────────
+
+define-command fzf-files \
+    -docstring "fzf: fuzzy find files to select buffers to open" \
+    %{ evaluate-commands %{ fzf --multi }
+}
+
+define-command -hidden fzf -params .. \
+    %{ evaluate-commands %{
+        terminal sh -c "export PATH=%val(client_env_PATH) kak_session=%val(session) kak_client=%val(client); cd %val{client_env_PWD} && %val{config}/scripts/fzf.sh %arg(@)"
+    }
+}
+
+define-command lf \
+    -params ..1 -file-completion \
+    -docstring "lf [<path>]: launch file system explorer to select buffers to open
+    The optional path argument will set the initial location" \
+    %{ evaluate-commands %sh{
+        if [ $# -ge 1 ] && [ -e $1 ]; then
+            path=$1
+        elif [ -f $kak_buffile ]; then
+            path=$kak_buffile
+        else
+            path=$PWD
+        fi
+        printf 'lf- "%s"\n' "$path"
+    }
+}
+
+define-command -hidden lf- \
+    -params ..1 -file-completion \
+    %{ evaluate-commands %{
+        terminal sh -c "export kak_session=%val(session) kak_client=%val(client); %val{config}/scripts/lf.sh %arg(1)"
+    }
+}
 
 define-command new-docs %{
     rename-client main
@@ -109,6 +137,8 @@ define-command new-tools %{
     set-option global toolsclient tools
 }
 
+# tig blame +%val{cursor_line} %val{buffile}
+
 define-command trim-trailing-whitespace %{
   try %{ execute-keys -draft <a-x> s \h+$ <ret> d }
 }
@@ -116,19 +146,19 @@ define-command trim-trailing-whitespace %{
 # Third-party plugins
 # ───────────────────
 
-source "%val{config}/plugins/plug.kak/rc/plug.kak"
-plug "andreyorst/plug.kak" noload
+# source "%val{config}/plugins/plug.kak/rc/plug.kak"
+# plug "andreyorst/plug.kak" noload
 
-plug "andreyorst/fzf.kak" config %{
-    map -docstring "fzf mode" global normal "<c-p>" ": fzf-mode<ret>"
-    set-option global fzf_preview_width "65%"
-    set-option global fzf_highlighter "bat"
-    # evaluate-commands %sh{
-    #     if [ ! -z "$(command -v fd)" ]; then
-    #         echo "set-option global fzf_file_command 'fd . --no-ignore --type f --follow --hidden'"
-    #     fi
-    # }
-}
+# plug "andreyorst/fzf.kak" config %{
+#     map -docstring "fzf mode" global normal "<c-p>" ": fzf-mode<ret>"
+#     set-option global fzf_preview_width "65%"
+#     set-option global fzf_highlighter "bat"
+#     # evaluate-commands %sh{
+#     #     if [ ! -z "$(command -v fd)" ]; then
+#     #         echo "set-option global fzf_file_command 'fd . --no-ignore --type f --follow --hidden'"
+#     #     fi
+#     # }
+# }
 
 # System clipboard handling
 # ─────────────────────────
@@ -150,73 +180,3 @@ evaluate-commands %sh{
 evaluate-commands %sh{
     [ -f $kak_config/kakrc.local ] && echo "source $kak_config/kakrc.local"
 }
-
-
-
-
-# def suspend-and-resume \
-#     -params 1..2 \
-#     -docstring 'suspend-and-resume <cli command> [<kak command after resume>]: backgrounds current kakoune client and runs specified cli command.  Upon exit of command the optional kak command is executed.' \
-#     %{ evaluate-commands %sh{
-
-#     # Note we are adding '&& fg' which resumes the kakoune client process after the cli command exits
-#     cli_cmd="$1 && fg"
-#     post_resume_cmd="$2"
-
-#     # automation is different platform to platform
-#     platform=$(uname -s)
-#     case $platform in
-#         Darwin)
-#             automate_cmd="sleep 0.01; osascript -e 'tell application \"System Events\" to keystroke \"$cli_cmd\\n\" '"
-#             kill_cmd="/bin/kill"
-#             break
-#             ;;
-#         Linux)
-#             automate_cmd="sleep 0.2; xdotool type '$cli_cmd'; xdotool key Return"
-#             kill_cmd="/usr/bin/kill"
-#             break
-#             ;;
-#     esac
-
-#     # Uses platforms automation to schedule the typing of our cli command
-#     nohup sh -c "$automate_cmd"  > /dev/null 2>&1 &
-#     # Send kakoune client to the background
-#     $kill_cmd -SIGTSTP $kak_client_pid
-
-#     # ...At this point the kakoune client is paused until the " && fg " gets run in the $automate_cmd
-
-#     # Upon resume, run the kak command is specified
-#     if [ ! -z "$post_resume_cmd" ]; then
-#         echo "$post_resume_cmd"
-#     fi
-# }}
-
-# def tig-blame -override -docstring 'Open blame in tig for current file and line' %{
-#     # Note here we aren't passing any command on resume of kakoune
-#     suspend-and-resume "tig blame +%val{cursor_line} %val{buffile}"
-# }
-
-# declare-user-mode tig
-# map global tig b ': tig-blame<ret>' -docstring 'show blame (with tig)'
-# map global tig s ': suspend-and-resume "tig status"<ret>' -docstring 'show git status (with tig)'
-# map global tig m ': suspend-and-resume "tig"<ret>' -docstring 'show main view (with tig)'
-
-# map global user t ': enter-user-mode tig<ret>' -docstring 'tig commands'
-
-# def for-each-line \
-#     -docstring "for-each-line <command> <path to file>: run command with the value of each line in the file" \
-#     -params 2 \
-#     %{ evaluate-commands %sh{
-
-#     while read f; do
-#         printf "$1 $f\n"
-#     done < "$2"
-# }}
-
-# def toggle-ranger %{
-#     suspend-and-resume \
-#         "ranger --choosefiles=/tmp/ranger-files-%val{client_pid}" \
-#         "for-each-line edit /tmp/ranger-files-%val{client_pid}"
-# }
-
-# map global user r ': toggle-ranger<ret>' -docstring 'select files in ranger'

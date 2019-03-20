@@ -1,0 +1,7 @@
+set color256 on
+set hidden on
+set incsearch on
+
+map <esc> quit
+map - updir
+map i $bat --paging=always $f
