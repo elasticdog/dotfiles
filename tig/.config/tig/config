@@ -1,0 +1,13 @@
+set ignore-case = smart-case
+set line-graphics = utf-8
+set tab-size = 4
+
+color cursor black green
+
+set blame-view-date = relative-compact
+set blame-view-author = abbreviated
+set main-view-date = relative-compact
+set main-view-author = abbreviated
+set tree-view-author = abbreviated
+set tree-view-date = relative
+set tree-view-file-size-display = units
