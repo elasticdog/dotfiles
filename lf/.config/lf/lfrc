@@ -1,6 +1,7 @@
 set color256 on
 set hidden on
 set incsearch on
+set ratios 1:2
 
 map <esc> quit
 map - updir

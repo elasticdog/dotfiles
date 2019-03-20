@@ -18,7 +18,10 @@ add-highlighter global/trailing-whitespace regex "\h+$" 0:default,red
 hook global WinCreate ^[^*]+$ %{
     add-highlighter window/ number-lines -hlcursor -relative
     lint-enable
+    git show-diff
 }
+
+hook global BufWritePost ^[^*]+$ %{ git update-diff }
 
 # Enable editor config
 # ────────────────────
@@ -78,11 +81,12 @@ map -- global normal - ": explore<ret>"
 map global normal "#" ": comment-line<ret>"
 map global normal = ": format<ret>"
 map global normal <c-g> ":grep "
-map global normal <c-p> ": fuzzy-files<ret>"
+map global normal <c-p> ": fuzzy-file<ret>"
 map global normal + ": lint<ret>"
 
+map global user -docstring "Fuzzy find a buffer from the current buflist to open" b ": fuzzy-buffer<ret>"
 map global user -docstring "Run the make utility wrapper with no arguments" m ": make<ret>"
-map global user -docstring "Format lines to a width of `autowrap_column` characters" q "|par -w $kak_opt_autowrap_column<ret>"
+map global user -docstring "Format lines to a width of `autowrap_column` characters" q "|par -w $kak_opt_autowrap_column<ret>vm%opt{autowrap_column}vh"
 
 # Helper commands
 # ───────────────
@@ -99,25 +103,43 @@ define-command explore \
         else
             path=$PWD
         fi
-        printf 'explore- "%s"\n' "$path"
+        printf 'explore-terminal "%s"\n' "$path"
     }
 }
 
-define-command -hidden explore- \
+define-command -hidden explore-terminal \
     -params ..1 -file-completion \
     %{ evaluate-commands %{
-        terminal sh -c "export kak_session=%val(session) kak_client=%val(client); %val{config}/scripts/lf.sh %arg(1)"
+        terminal sh -c "export kak_session='%val{session}' kak_client='%val{client}'; %val{config}/scripts/lf.sh %arg(1)"
     }
 }
 
-define-command fuzzy-files \
-    -docstring "fuzzy-files: fuzzy find files to select buffers to open" \
-    %{ evaluate-commands %{ fuzzy --multi }
+declare-option -hidden str fuzzy_buflist ""
+
+define-command fuzzy-buffer \
+    -docstring "fuzzy-buffer: fuzzy find a buffer from the current buflist to open" \
+    %{ evaluate-commands %sh{
+        readonly buffers=$(mktemp)
+        eval "set -- $kak_buflist"
+        while [ $# -gt 0 ]; do
+            printf "%s\n" "$1" >> $buffers
+            shift
+        done
+        printf 'set-option global fuzzy_buflist "%s"' "$buffers"
+    }
+    evaluate-commands %{ fuzzy-terminal --no-multi }
 }
 
-define-command -hidden fuzzy -params .. \
+define-command fuzzy-file \
+    -docstring "fuzzy-file: fuzzy find files to select buffers to open" \
     %{ evaluate-commands %{
-        terminal sh -c "export kak_session='%val(session)' kak_client='%val(client)' FZF_DEFAULT_COMMAND='%val(client_env_FZF_DEFAULT_COMMAND)'; cd '%val{client_env_PWD}' && '%val{config}/scripts/fzf.sh' %arg(@)"
+        fuzzy-terminal --multi --preview="bat --color=always --style=plain {}"
+    }
+}
+
+define-command -hidden fuzzy-terminal -params .. \
+    %{ evaluate-commands %{
+        terminal sh -c "export kak_session='%val{session}' kak_client='%val{client}' kak_buflist='%opt{fuzzy_buflist}' FZF_DEFAULT_COMMAND='%val{client_env_FZF_DEFAULT_COMMAND}'; cd '%val{client_env_PWD}' && '%val{config}/scripts/fzf.sh' %arg{@}"
     }
 }
 

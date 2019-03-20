@@ -4,11 +4,18 @@
 readonly TEMP_FILE=$(mktemp)
 trap 'rm -f "$TEMP_FILE"' EXIT
 
-fzf --preview="bat --color=always --style=plain {}" "$@" >"$TEMP_FILE"
+if [ -s "$kak_buflist" ]; then
+	fzf "$@" <"$kak_buflist" >"$TEMP_FILE"
+	rm -f "$kak_buflist"
+	command="buffer"
+else
+	fzf "$@" >"$TEMP_FILE"
+	command="edit"
+fi
 
 if [ -s "$TEMP_FILE" ]; then
 	# the logical OR deals with a lacking final newline character
 	while IFS= read -r line || [ -n "$line" ]; do
-		printf 'evaluate-commands -client "%s" edit "%s"\n' "$kak_client" "$line" | kak -p "$kak_session"
+		printf 'evaluate-commands -client "%s" "%s" "%s"\n' "$kak_client" "$command" "$line" | kak -p "$kak_session"
 	done <"$TEMP_FILE"
 fi
