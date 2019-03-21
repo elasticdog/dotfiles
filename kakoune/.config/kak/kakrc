@@ -46,6 +46,10 @@ hook global WinSetOption filetype=go %{
     }
 }
 
+hook global WinSetOption filetype=json %{
+    set-option window formatcmd "prettier --parser json"
+}
+
 hook global WinSetOption filetype=markdown %{
     set-option window formatcmd "prettier --parser markdown"
 }
@@ -63,6 +67,14 @@ hook global WinSetOption filetype=sh %{
     set-option window formatcmd "shfmt"
     set-option window lintcmd "shellcheck --format=gcc"
     hook buffer BufWritePre .* %{ lint }
+}
+
+hook global BufCreate .*\.(hcl|tfvars|tf) %{
+    set-option buffer filetype hcl
+}
+
+hook global WinSetOption filetype=hcl %{
+    set-option window formatcmd "terraform fmt -"
 }
 
 hook global WinSetOption filetype=yaml %{
