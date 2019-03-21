@@ -34,6 +34,7 @@ hook global BufNewFile .* %{ editorconfig-load }
 
 hook global WinSetOption filetype=git-(commit|rebase) %{
     set-option window autowrap_column 72
+    autowrap-enable
 }
 
 hook global WinSetOption filetype=go %{
