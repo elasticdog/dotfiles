@@ -1,6 +1,6 @@
 .netrwhist
 /kakoune/.config/kak/plugins/
-/kakoune/.config/kakrc.local
+/kakoune/.config/kak/kakrc.local
 /karabiner/.config/karabiner/automatic_backups/
 /neovim/.config/nvim/plugged/
 plug.vim.old

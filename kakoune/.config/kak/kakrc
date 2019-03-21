@@ -250,8 +250,9 @@ evaluate-commands %sh{
 
     printf "map global user -docstring 'Paste (after) from system clipboard' p '!%s<ret>'\n" "$paste"
     printf "map global user -docstring 'Paste (before) from system clipboard' P '<a-!>%s<ret>'\n" "$paste"
-    printf "map global user -docstring 'Yank to system clipboard' y '<a-|>%s<ret>: echo -markup %%{{Information}copied selection to system clipboard}<ret>'\n" "$copy"
     printf "map global user -docstring 'Replace from system clipboard' R '|%s<ret>'\n" "$paste"
+    printf "map global user -docstring 'Yank to system clipboard' y '<a-|>%s<ret>: echo -markup %%{{Information}copied selection to system clipboard}<ret>'\n" "$copy"
+
     printf "set-option global system_clipboard_copy '%s'\n" "$copy"
     printf "set-option global system_clipboard_paste '%s'\n" "$paste"
 }
@@ -259,5 +260,5 @@ evaluate-commands %sh{
 # Load local Kakoune config file if it exists
 # ───────────────────────────────────────────
 evaluate-commands %sh{
-    [ -f $kak_config/kakrc.local ] && echo "source $kak_config/kakrc.local"
+    [ -f "${kak_config}/kakrc.local" ] && echo "source '${kak_config}/kakrc.local'"
 }
