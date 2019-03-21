@@ -149,12 +149,15 @@ define-command fuzzy-buffer \
         readonly buffers=$(mktemp)
         eval "set -- $kak_buflist"
         while [ $# -gt 0 ]; do
-            printf "%s\n" "$1" >> $buffers
+            if [ "$1" != "$kak_bufname" ]; then
+                printf "%s\n" "$1" >>"$buffers"
+            fi
             shift
         done
+        printf "%s\n" "$kak_bufname" >>"$buffers"
         printf "set-option global fuzzy_buflist '%s'\n" "$buffers"
     }
-    evaluate-commands %{ fuzzy-terminal --no-multi --tac --sort }
+    evaluate-commands %{ fuzzy-terminal --no-multi --tac --no-sort }
 }
 
 define-command fuzzy-file \
