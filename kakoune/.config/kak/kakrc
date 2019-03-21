@@ -83,13 +83,13 @@ map global normal <space> , -docstring "leader"
 map global normal <backspace> <space> -docstring "remove all selections except main"
 map global normal <a-backspace> <a-space> -docstring "remove main selection"
 
-map -- global normal - ": explore<ret>"
 map global normal "#" ": comment-line<ret>"
 map global normal + ": lint<ret>"
-map global normal = ": format<ret>"
+map global normal , ": explore<ret>"
 map global normal / "/(?i)"
 map global normal <c-g> ":grep "
 map global normal <c-p> ": fuzzy-file<ret>"
+map global normal = ": format<ret>"
 
 map global user -docstring "Enter command prompt" <space> ":"
 map global user -docstring "Fuzzy find a buffer from the current buflist to open" b ": fuzzy-buffer<ret>"
@@ -163,7 +163,7 @@ define-command fuzzy-buffer \
 define-command fuzzy-file \
     -docstring "fuzzy-file: fuzzy find files to select buffers to open" \
     %{ evaluate-commands %{
-        fuzzy-terminal --multi --preview="bat --color=always --style=plain {}" --bind ?:toggle-preview
+        fuzzy-terminal --multi --preview="bat --color=always --style=plain {}" --bind -:toggle-preview
     }
 }
 
