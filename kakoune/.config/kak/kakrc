@@ -90,6 +90,7 @@ map global normal <c-p> ": fuzzy-file<ret>"
 map global normal + ": lint<ret>"
 
 map global user -docstring "Fuzzy find a buffer from the current buflist to open" b ": fuzzy-buffer<ret>"
+map global user -docstring "Delete current buffer" d ": delete-buffer<ret>"
 map global user -docstring "Run the make utility wrapper with no arguments" m ": make<ret>"
 map global user -docstring "Enable Git keymap mode for next key" g ": enter-user-mode<space>git<ret>"
 map global user -docstring "Format lines to a width of `autowrap_column` characters" q "|par -w $kak_opt_autowrap_column<ret>vm%opt{autowrap_column}vh"
