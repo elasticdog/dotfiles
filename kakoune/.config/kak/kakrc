@@ -95,6 +95,7 @@ map global user -docstring "Delete current buffer" d ": delete-buffer<ret>"
 map global user -docstring "Run the make utility wrapper with no arguments" m ": make<ret>"
 map global user -docstring "Enable Git keymap mode for next key" g ": enter-user-mode<space>git<ret>"
 map global user -docstring "Format lines to a width of `autowrap_column` characters" q "|par -w $kak_opt_autowrap_column<ret>vm%opt{autowrap_column}vh"
+map global user -docstring "Write the current buffer to its file" w ": write<ret>"
 
 declare-user-mode git
 map global git -docstring "blame - Show what revision and author last modified each line of the current file" b ': repl tig blame -C "+%val{cursor_line}" -- "%val{buffile}"<ret>'
