@@ -195,7 +195,7 @@ define-command github-url \
     -docstring "github-url: copy the canonical GitHub URL to the system clipboard" \
     %{ evaluate-commands %sh{
         # use the remote configured for fetching
-        fetch_remote=$(git config --get "branch.$(git symbolic-ref --short HEAD).remote" || echo origin)
+        fetch_remote=$(git config --get "branch.$(git symbolic-ref --short HEAD).remote" || printf origin)
         base_url=$(git remote get-url "$fetch_remote" | sed -e "s|^git@github.com:|https://github.com/|")
         # assume the master branch; this is what I want 95% of the time
         master_commit=$(git ls-remote "$fetch_remote" master | awk '{ print $1 }')
@@ -272,5 +272,5 @@ evaluate-commands %sh{
 # Load local Kakoune config file if it exists
 # ───────────────────────────────────────────
 evaluate-commands %sh{
-    [ -f "${kak_config}/kakrc.local" ] && echo "source '${kak_config}/kakrc.local'"
+    [ -f "${kak_config}/kakrc.local" ] && printf "source '${kak_config}/kakrc.local'\n"
 }
