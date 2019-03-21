@@ -99,10 +99,12 @@ map global user -docstring "Format lines to a width of `autowrap_column` charact
 declare-user-mode git
 map global git -docstring "blame - Show what revision and author last modified each line of the current file" b ': repl tig blame -C "+%val{cursor_line}" -- "%val{buffile}"<ret>'
 map global git -docstring "commit - Record changes to the repository" c ": git commit<ret>"
+map global git -docstring "diff - Show changes between HEAD and working tree" d ": git diff<ret>"
 map global git -docstring "git - Explore the repository history" g ": repl tig<ret>"
 map global git -docstring "log - Show commit logs for the current file" l ': repl tig log -- "%val{buffile}"<ret>'
 map global git -docstring "prompt - Run a free-form Git command prompt" p ":repl tig "
 map global git -docstring "status - Show the working tree status" s ": repl tig status<ret>"
+map global git -docstring "staged - Show staged changes" t ": git diff --staged<ret>"
 map global git -docstring "write - Write and stage the current file" w ": write<ret>: git add<ret>: git update-diff<ret>"
 
 # Helper commands
