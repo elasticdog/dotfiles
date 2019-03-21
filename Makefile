@@ -19,7 +19,7 @@ install-linux: install
 
 .PHONY: install-macos
 install-macos: install
-	$(cmd_install) kitty macos
+	$(cmd_install) karabiner kitty
 
 .PHONY: uninstall
 uninstall:
