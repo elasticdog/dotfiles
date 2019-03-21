@@ -116,7 +116,7 @@ map global git -docstring "blame - Show what revision and author last modified e
 map global git -docstring "commit - Record changes to the repository" c ": git commit<ret>"
 map global git -docstring "diff - Show changes between HEAD and working tree" d ": git diff<ret>"
 map global git -docstring "git - Explore the repository history" g ": repl tig<ret>"
-map global git -docstring "github - Echo the canonical GitHub URL for the current file" h ": github-url<ret>"
+map global git -docstring "github - Copy canonical GitHub URL to system clipboard" h ": github-url<ret>"
 map global git -docstring "log - Show commit logs for the current file" l ': repl tig log -- "%val{buffile}"<ret>'
 map global git -docstring "prompt - Run a free-form Git command prompt" p ":repl tig "
 map global git -docstring "status - Show the working tree status" s ": repl tig status<ret>"
