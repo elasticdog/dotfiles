@@ -89,6 +89,7 @@ map global normal <c-g> ":grep "
 map global normal <c-p> ": fuzzy-file<ret>"
 map global normal + ": lint<ret>"
 
+map global user -docstring "Enter command prompt" <space> ":"
 map global user -docstring "Fuzzy find a buffer from the current buflist to open" b ": fuzzy-buffer<ret>"
 map global user -docstring "Delete current buffer" d ": delete-buffer<ret>"
 map global user -docstring "Run the make utility wrapper with no arguments" m ": make<ret>"
