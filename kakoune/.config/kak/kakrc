@@ -77,6 +77,11 @@ hook global -always BufOpenFifo "\*make\*" %{ map global normal "'" ":make-next-
 # Various mappings
 # ────────────────
 
+# space is my leader
+map global normal <space> , -docstring "leader"
+map global normal <backspace> <space> -docstring "remove all selections except main"
+map global normal <a-backspace> <a-space> -docstring "remove main selection"
+
 map -- global normal - ": explore<ret>"
 map global normal "#" ": comment-line<ret>"
 map global normal = ": format<ret>"
@@ -86,7 +91,17 @@ map global normal + ": lint<ret>"
 
 map global user -docstring "Fuzzy find a buffer from the current buflist to open" b ": fuzzy-buffer<ret>"
 map global user -docstring "Run the make utility wrapper with no arguments" m ": make<ret>"
+map global user -docstring "Enable Git keymap mode for next key" g ": enter-user-mode<space>git<ret>"
 map global user -docstring "Format lines to a width of `autowrap_column` characters" q "|par -w $kak_opt_autowrap_column<ret>vm%opt{autowrap_column}vh"
+
+declare-user-mode git
+map global git -docstring "blame - Show what revision and author last modified each line of the current file" b ': repl tig blame -C "+%val{cursor_line}" -- "%val{buffile}"<ret>'
+map global git -docstring "commit - Record changes to the repository" c ": git commit<ret>"
+map global git -docstring "git - Explore the repository history" g ": repl tig<ret>"
+map global git -docstring "log - Show commit logs for the current file" l ': repl tig log -- "%val{buffile}"<ret>'
+map global git -docstring "prompt - Run a free-form Git command prompt" p ":repl tig "
+map global git -docstring "status - Show the working tree status" s ": repl tig status<ret>"
+map global git -docstring "write - Write and stage the current file" w ": write<ret>: git add<ret>: git update-diff<ret>"
 
 # Helper commands
 # ───────────────
@@ -101,7 +116,7 @@ define-command explore \
         elif [ -f $kak_buffile ]; then
             path=$kak_buffile
         else
-            path=$PWD
+            path="${PWD}/"
         fi
         printf 'explore-terminal "%s"\n' "$path"
     }
@@ -158,8 +173,6 @@ define-command new-tools %{
     new rename-client tools
     set-option global toolsclient tools
 }
-
-# tig blame +%val{cursor_line} %val{buffile}
 
 define-command trim-trailing-whitespace %{
   try %{ execute-keys -draft <a-x> s \h+$ <ret> d }
