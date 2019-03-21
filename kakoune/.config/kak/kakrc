@@ -177,7 +177,7 @@ define-command -hidden fuzzy-terminal -params .. \
 }
 
 define-command github-url \
-    -docstring "github-url: echo the canonical GitHub URL for the current file" \
+    -docstring "github-url: copy the canonical GitHub URL to the system clipboard" \
     %{ evaluate-commands %sh{
         # use the remote configured for fetching
         fetch_remote=$(git config --get "branch.$(git symbolic-ref --short HEAD).remote" || echo origin)
@@ -188,14 +188,22 @@ define-command github-url \
         selection_start="${kak_selection_desc%,*}"
         selection_end="${kak_selection_desc##*,}"
 
-        if [ "$selection_start" != "$selection_end" ]; then
-            # highlight the currently selected lines
-            github_url=$(printf "%s/blob/%s/%s#L%s-L%s" "${base_url%.git}" "$master_commit" "$relative_path" "${selection_start%\.*}" "${selection_end%\.*}")
-        else
+        if [ "$selection_start" == "$selection_end" ]; then
             github_url=$(printf "%s/blob/%s/%s" "${base_url%.git}" "$master_commit" "$relative_path")
+        else
+            start_line="${selection_start%\.*}"
+            end_line="${selection_end%\.*}"
+
+            # highlight the currently selected line(s)
+            if [ "$start_line" == "$end_line" ]; then
+                github_url=$(printf "%s/blob/%s/%s#L%s" "${base_url%.git}" "$master_commit" "$relative_path" "${start_line}")
+            else
+                github_url=$(printf "%s/blob/%s/%s#L%s-L%s" "${base_url%.git}" "$master_commit" "$relative_path" "${start_line}" "${end_line}")
+            fi
         fi
-        printf 'echo %s\n' "$github_url"
-        # TODO: copy to clipboard
+        printf "echo -debug %s\n" "$github_url"
+        printf "execute-keys -draft '!echo $github_url | $kak_opt_system_clipboard_copy<ret>'\n"
+        printf "echo -markup %%{{Information}copied canonical GitHub URL to system clipboard}\n"
     }
 }
 
