@@ -85,10 +85,11 @@ map global normal <a-backspace> <a-space> -docstring "remove main selection"
 
 map -- global normal - ": explore<ret>"
 map global normal "#" ": comment-line<ret>"
+map global normal + ": lint<ret>"
 map global normal = ": format<ret>"
+map global normal / "/(?i)"
 map global normal <c-g> ":grep "
 map global normal <c-p> ": fuzzy-file<ret>"
-map global normal + ": lint<ret>"
 
 map global user -docstring "Enter command prompt" <space> ":"
 map global user -docstring "Fuzzy find a buffer from the current buflist to open" b ": fuzzy-buffer<ret>"
@@ -215,7 +216,7 @@ define-command new-tools %{
 }
 
 define-command trim-trailing-whitespace %{
-  try %{ execute-keys -draft <a-x> s \h+$ <ret> d }
+    try %{ execute-keys -draft <a-x> s \h+$ <ret> d }
 }
 
 # Third-party plugins
