@@ -217,7 +217,7 @@ define-command github-url \
             fi
         fi
         printf "echo -debug %s\n" "$github_url"
-        printf "execute-keys -draft '!echo $github_url | $kak_opt_system_clipboard_copy<ret>'\n"
+        printf "execute-keys -draft '!printf %s $github_url | $kak_opt_system_clipboard_copy<ret>'\n"
         printf "echo -markup %%{{Information}copied canonical GitHub URL to system clipboard}\n"
     }
 }
