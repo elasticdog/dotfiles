@@ -1,0 +1,234 @@
+{
+    "title": "Personal rules (@elasticdog)",
+    "rules": [
+        {
+            "description": "caps_lock -> left_control (escape if pressed alone)",
+            "manipulators": [
+                {
+                    "from": {
+                        "key_code": "caps_lock",
+                        "modifiers": {
+                            "optional": ["any"]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "left_control",
+                            "lazy": true
+                        }
+                    ],
+                    "to_if_alone": [
+                        {
+                            "key_code": "escape"
+                        }
+                    ],
+                    "type": "basic"
+                }
+            ]
+        },
+        {
+            "description": "left_command + right_command -> caps_lock",
+            "manipulators": [
+                {
+                    "from": {
+                        "simultaneous": [
+                            {
+                                "key_code": "left_command"
+                            },
+                            {
+                                "key_code": "right_command"
+                            }
+                        ],
+                        "modifiers": {
+                            "optional": ["any"]
+                        }
+                    },
+                    "parameters": {
+                        "basic.simultaneous_threshold_milliseconds": 500
+                    },
+                    "to": [
+                        {
+                            "key_code": "caps_lock"
+                        }
+                    ],
+                    "type": "basic"
+                }
+            ]
+        },
+        {
+            "description": "left/right shift -> opening/closing parenthesis if pressed alone",
+            "manipulators": [
+                {
+                    "from": {
+                        "key_code": "left_shift"
+                    },
+                    "to": [
+                        {
+                            "key_code": "left_shift"
+                        }
+                    ],
+                    "to_if_alone": [
+                        {
+                            "key_code": "9",
+                            "modifiers": ["left_shift"]
+                        }
+                    ],
+                    "type": "basic"
+                },
+                {
+                    "from": {
+                        "key_code": "right_shift"
+                    },
+                    "to": [
+                        {
+                            "key_code": "right_shift"
+                        }
+                    ],
+                    "to_if_alone": [
+                        {
+                            "key_code": "0",
+                            "modifiers": ["right_shift"]
+                        }
+                    ],
+                    "type": "basic"
+                }
+            ]
+        },
+        {
+            "description": "left/right shift rolls insert intended parenthesis pairs",
+            "manipulators": [
+                {
+                    "from": {
+                        "key_code": "left_shift",
+                        "modifiers": {
+                            "mandatory": ["right_shift"]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "left_shift"
+                        },
+                        {
+                            "key_code": "right_shift"
+                        }
+                    ],
+                    "to_if_alone": [
+                        {
+                            "key_code": "0",
+                            "modifiers": ["right_shift"]
+                        },
+                        {
+                            "key_code": "9",
+                            "modifiers": ["left_shift"]
+                        }
+                    ],
+                    "type": "basic"
+                },
+                {
+                    "from": {
+                        "key_code": "right_shift",
+                        "modifiers": {
+                            "mandatory": ["left_shift"]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "right_shift"
+                        },
+                        {
+                            "key_code": "left_shift"
+                        }
+                    ],
+                    "to_if_alone": [
+                        {
+                            "key_code": "9",
+                            "modifiers": ["left_shift"]
+                        },
+                        {
+                            "key_code": "0",
+                            "modifiers": ["right_shift"]
+                        }
+                    ],
+                    "type": "basic"
+                }
+            ]
+        },
+        {
+            "description": "right_shift + spacebar -> closing_parenthesis, spacebar",
+            "manipulators": [
+                {
+                    "from": {
+                        "key_code": "spacebar",
+                        "modifiers": {
+                            "mandatory": ["right_shift"]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "0",
+                            "modifiers": ["right_shift"]
+                        },
+                        {
+                            "key_code": "spacebar"
+                        }
+                    ],
+                    "type": "basic"
+                }
+            ]
+        },
+        {
+            "description": "spacebar -> left_option (spacebar if pressed alone)",
+            "manipulators": [
+                {
+                    "from": {
+                        "key_code": "spacebar",
+                        "modifiers": {
+                            "optional": ["any"]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "left_option",
+                            "lazy": true
+                        }
+                    ],
+                    "to_if_alone": [
+                        {
+                            "key_code": "spacebar"
+                        }
+                    ],
+                    "type": "basic"
+                }
+            ]
+        },
+        {
+            "description": "tab -> hyper (tab if pressed alone)",
+            "manipulators": [
+                {
+                    "from": {
+                        "key_code": "tab",
+                        "modifiers": {
+                            "optional": ["any"]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "left_shift",
+                            "modifiers": [
+                                "left_command",
+                                "left_control",
+                                "left_option"
+                            ]
+                        }
+                    ],
+                    "to_if_alone": [
+                        {
+                            "key_code": "tab"
+                        }
+                    ],
+                    "type": "basic"
+                }
+            ]
+        }
+    ]
+}

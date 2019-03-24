@@ -15,7 +15,7 @@
                 },
                 "rules": [
                     {
-                        "description": "Change caps_lock to left_control. (Post escape if pressed alone)",
+                        "description": "caps_lock -> left_control (escape if pressed alone)",
                         "manipulators": [
                             {
                                 "from": {
@@ -28,7 +28,8 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "left_control"
+                                        "key_code": "left_control",
+                                        "lazy": true
                                     }
                                 ],
                                 "to_if_alone": [
@@ -41,30 +42,29 @@
                         ]
                     },
                     {
-                        "description": "Change left_control to hyper. (Post caps_lock if pressed alone)",
+                        "description": "left_command + right_command -> caps_lock",
                         "manipulators": [
                             {
                                 "from": {
-                                    "key_code": "left_control",
                                     "modifiers": {
                                         "optional": [
                                             "any"
                                         ]
-                                    }
+                                    },
+                                    "simultaneous": [
+                                        {
+                                            "key_code": "left_command"
+                                        },
+                                        {
+                                            "key_code": "right_command"
+                                        }
+                                    ]
+                                },
+                                "parameters": {
+                                    "basic.simultaneous_threshold_milliseconds": 500
                                 },
                                 "to": [
                                     {
-                                        "key_code": "left_shift",
-                                        "modifiers": [
-                                            "left_command",
-                                            "left_control",
-                                            "left_option"
-                                        ]
-                                    }
-                                ],
-                                "to_if_alone": [
-                                    {
-                                        "hold_down_milliseconds": 500,
                                         "key_code": "caps_lock"
                                     }
                                 ],
@@ -73,7 +73,7 @@
                         ]
                     },
                     {
-                        "description": "Change left/right shift keys to opening/closing parenthesis if pressed alone",
+                        "description": "left/right shift -> opening/closing parenthesis if pressed alone",
                         "manipulators": [
                             {
                                 "from": {
@@ -116,7 +116,7 @@
                         ]
                     },
                     {
-                        "description": "Ensure left/right shift rolls insert intended parenthesis pairs",
+                        "description": "left/right shift rolls insert intended parenthesis pairs",
                         "manipulators": [
                             {
                                 "from": {
@@ -139,14 +139,12 @@
                                     {
                                         "key_code": "0",
                                         "modifiers": [
-                                            "right_shift",
-                                            "left_shift"
+                                            "right_shift"
                                         ]
                                     },
                                     {
                                         "key_code": "9",
                                         "modifiers": [
-                                            "right_shift",
                                             "left_shift"
                                         ]
                                     }
@@ -174,7 +172,7 @@
                                     {
                                         "key_code": "9",
                                         "modifiers": [
-                                            "right_shift"
+                                            "left_shift"
                                         ]
                                     },
                                     {
@@ -189,7 +187,7 @@
                         ]
                     },
                     {
-                        "description": "Change right_shift+spacebar to closing_parenthesis,spacebar",
+                        "description": "right_shift + spacebar -> closing_parenthesis, spacebar",
                         "manipulators": [
                             {
                                 "from": {
@@ -209,6 +207,64 @@
                                     },
                                     {
                                         "key_code": "spacebar"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "spacebar -> left_option (spacebar if pressed alone)",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "spacebar",
+                                    "modifiers": {
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "left_option",
+                                        "lazy": true
+                                    }
+                                ],
+                                "to_if_alone": [
+                                    {
+                                        "key_code": "spacebar"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "tab -> hyper (tab if pressed alone)",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "tab",
+                                    "modifiers": {
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "left_shift",
+                                        "modifiers": [
+                                            "left_command",
+                                            "left_control",
+                                            "left_option"
+                                        ]
+                                    }
+                                ],
+                                "to_if_alone": [
+                                    {
+                                        "key_code": "tab"
                                     }
                                 ],
                                 "type": "basic"
@@ -354,24 +410,7 @@
             ],
             "name": "Default profile",
             "selected": true,
-            "simple_modifications": [
-                {
-                    "from": {
-                        "key_code": "right_command"
-                    },
-                    "to": {
-                        "key_code": "right_option"
-                    }
-                },
-                {
-                    "from": {
-                        "key_code": "right_option"
-                    },
-                    "to": {
-                        "key_code": "right_command"
-                    }
-                }
-            ],
+            "simple_modifications": [],
             "virtual_hid_keyboard": {
                 "country_code": 0
             }
