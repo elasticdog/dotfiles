@@ -214,8 +214,31 @@
                         ]
                     },
                     {
-                        "description": "spacebar -> left_option (spacebar if pressed alone)",
+                        "description": "spacebar -> left_option (spacebar if pressed alone; spacebar_x2 -> repeating spacebar)",
                         "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "spacebar pressed",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "spacebar",
+                                    "modifiers": {
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "spacebar"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
                             {
                                 "from": {
                                     "key_code": "spacebar",
@@ -227,10 +250,34 @@
                                 },
                                 "to": [
                                     {
+                                        "set_variable": {
+                                            "name": "spacebar pressed",
+                                            "value": 1
+                                        }
+                                    },
+                                    {
                                         "key_code": "left_option",
                                         "lazy": true
                                     }
                                 ],
+                                "to_delayed_action": {
+                                    "to_if_canceled": [
+                                        {
+                                            "set_variable": {
+                                                "name": "spacebar pressed",
+                                                "value": 0
+                                            }
+                                        }
+                                    ],
+                                    "to_if_invoked": [
+                                        {
+                                            "set_variable": {
+                                                "name": "spacebar pressed",
+                                                "value": 0
+                                            }
+                                        }
+                                    ]
+                                },
                                 "to_if_alone": [
                                     {
                                         "key_code": "spacebar"
