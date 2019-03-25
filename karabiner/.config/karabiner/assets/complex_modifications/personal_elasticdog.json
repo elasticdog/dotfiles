@@ -56,6 +56,46 @@
             ]
         },
         {
+            "description": "left_control + spacebar -> repeating spacebar",
+            "manipulators": [
+                {
+                    "from": {
+                        "key_code": "spacebar",
+                        "modifiers": {
+                            "mandatory": ["left_control"]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "spacebar",
+                            "repeat": true
+                        }
+                    ],
+                    "type": "basic"
+                }
+            ]
+        },
+        {
+            "description": "left_control + tab -> repeating tab",
+            "manipulators": [
+                {
+                    "from": {
+                        "key_code": "tab",
+                        "modifiers": {
+                            "mandatory": ["left_control"]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "tab",
+                            "repeat": true
+                        }
+                    ],
+                    "type": "basic"
+                }
+            ]
+        },
+        {
             "description": "left/right shift -> opening/closing parenthesis if pressed alone",
             "manipulators": [
                 {
