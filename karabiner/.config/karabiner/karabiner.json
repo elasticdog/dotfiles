@@ -244,7 +244,8 @@
                                 ],
                                 "to_if_held_down": [
                                     {
-                                        "key_code": "left_option"
+                                        "key_code": "left_option",
+                                        "lazy": true
                                     }
                                 ],
                                 "type": "basic"
@@ -266,6 +267,7 @@
                                 "to": [
                                     {
                                         "key_code": "left_shift",
+                                        "lazy": true,
                                         "modifiers": [
                                             "left_command",
                                             "left_control",
