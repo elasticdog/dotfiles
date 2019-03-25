@@ -214,16 +214,9 @@
                         ]
                     },
                     {
-                        "description": "spacebar -> left_option (spacebar if pressed alone; spacebar_x2 -> repeating spacebar)",
+                        "description": "spacebar -> left_option (spacebar if pressed alone)",
                         "manipulators": [
                             {
-                                "conditions": [
-                                    {
-                                        "name": "spacebar pressed",
-                                        "type": "variable_if",
-                                        "value": 1
-                                    }
-                                ],
                                 "from": {
                                     "key_code": "spacebar",
                                     "modifiers": {
@@ -232,55 +225,26 @@
                                         ]
                                     }
                                 },
-                                "to": [
-                                    {
-                                        "key_code": "spacebar"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "spacebar",
-                                    "modifiers": {
-                                        "optional": [
-                                            "any"
-                                        ]
-                                    }
+                                "parameters": {
+                                    "basic.to_delayed_action_delay_milliseconds": 200,
+                                    "basic.to_if_held_down_threshold_milliseconds": 200
                                 },
-                                "to": [
-                                    {
-                                        "set_variable": {
-                                            "name": "spacebar pressed",
-                                            "value": 1
-                                        }
-                                    },
-                                    {
-                                        "key_code": "left_option",
-                                        "lazy": true
-                                    }
-                                ],
                                 "to_delayed_action": {
                                     "to_if_canceled": [
                                         {
-                                            "set_variable": {
-                                                "name": "spacebar pressed",
-                                                "value": 0
-                                            }
-                                        }
-                                    ],
-                                    "to_if_invoked": [
-                                        {
-                                            "set_variable": {
-                                                "name": "spacebar pressed",
-                                                "value": 0
-                                            }
+                                            "key_code": "spacebar"
                                         }
                                     ]
                                 },
                                 "to_if_alone": [
                                     {
+                                        "halt": true,
                                         "key_code": "spacebar"
+                                    }
+                                ],
+                                "to_if_held_down": [
+                                    {
+                                        "key_code": "left_option"
                                     }
                                 ],
                                 "type": "basic"
