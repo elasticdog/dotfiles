@@ -190,18 +190,6 @@
                         "basic.to_delayed_action_delay_milliseconds": 200,
                         "basic.to_if_held_down_threshold_milliseconds": 200
                     },
-                    "to_if_held_down": [
-                        {
-                            "key_code": "left_option",
-                            "lazy": true
-                        }
-                    ],
-                    "to_if_alone": [
-                        {
-                            "key_code": "spacebar",
-                            "halt": true
-                        }
-                    ],
                     "to_delayed_action": {
                         "to_if_canceled": [
                             {
@@ -209,6 +197,18 @@
                             }
                         ]
                     },
+                    "to_if_alone": [
+                        {
+                            "key_code": "spacebar",
+                            "halt": true
+                        }
+                    ],
+                    "to_if_held_down": [
+                        {
+                            "key_code": "left_option",
+                            "lazy": true
+                        }
+                    ],
                     "type": "basic"
                 }
             ]
