@@ -55,7 +55,7 @@ hook global WinSetOption filetype=markdown %{
 }
 
 hook global WinSetOption filetype=python %{
-    set-option window formatcmd "black"
+    set-option window formatcmd "black -"
 }
 
 hook global WinSetOption filetype=rust %{
