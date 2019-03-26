@@ -60,9 +60,6 @@
                                         }
                                     ]
                                 },
-                                "parameters": {
-                                    "basic.simultaneous_threshold_milliseconds": 500
-                                },
                                 "to": [
                                     {
                                         "key_code": "caps_lock"
