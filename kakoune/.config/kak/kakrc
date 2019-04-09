@@ -51,7 +51,7 @@ hook global WinSetOption filetype=json %{
 }
 
 hook global WinSetOption filetype=markdown %{
-    set-option window formatcmd "prettier --parser markdown"
+    set-option window formatcmd "prettier --parser markdown --prose-wrap always"
 }
 
 hook global WinSetOption filetype=python %{
