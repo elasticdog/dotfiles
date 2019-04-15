@@ -27,6 +27,10 @@ complete -c rg -n "__fish_use_subcommand" -s t -l type -d 'Only search files mat
 complete -c rg -n "__fish_use_subcommand" -l type-add -d 'Add a new glob for a file type.'
 complete -c rg -n "__fish_use_subcommand" -l type-clear -d 'Clear globs for a file type.'
 complete -c rg -n "__fish_use_subcommand" -s T -l type-not -d 'Do not search files matching TYPE.'
+complete -c rg -n "__fish_use_subcommand" -l auto-hybrid-regex -d 'Dynamically use PCRE2 if necessary.'
+complete -c rg -n "__fish_use_subcommand" -l no-auto-hybrid-regex
+complete -c rg -n "__fish_use_subcommand" -l binary -d 'Search binary files.'
+complete -c rg -n "__fish_use_subcommand" -l no-binary
 complete -c rg -n "__fish_use_subcommand" -l block-buffered -d 'Force block buffering.'
 complete -c rg -n "__fish_use_subcommand" -l no-block-buffered
 complete -c rg -n "__fish_use_subcommand" -s b -l byte-offset -d 'Print the 0-based byte offset for each matching line.'
@@ -52,6 +56,8 @@ complete -c rg -n "__fish_use_subcommand" -l no-heading -d 'Don\'t group matches
 complete -c rg -n "__fish_use_subcommand" -l hidden -d 'Search hidden files and directories.'
 complete -c rg -n "__fish_use_subcommand" -l no-hidden
 complete -c rg -n "__fish_use_subcommand" -s i -l ignore-case -d 'Case insensitive search.'
+complete -c rg -n "__fish_use_subcommand" -l ignore-file-case-insensitive -d 'Process ignore files case insensitively.'
+complete -c rg -n "__fish_use_subcommand" -l no-ignore-file-case-insensitive
 complete -c rg -n "__fish_use_subcommand" -s v -l invert-match -d 'Invert matching.'
 complete -c rg -n "__fish_use_subcommand" -l json -d 'Show search results in a JSON Lines format.'
 complete -c rg -n "__fish_use_subcommand" -l no-json
@@ -60,6 +66,8 @@ complete -c rg -n "__fish_use_subcommand" -l no-line-buffered
 complete -c rg -n "__fish_use_subcommand" -s n -l line-number -d 'Show line numbers.'
 complete -c rg -n "__fish_use_subcommand" -s N -l no-line-number -d 'Suppress line numbers.'
 complete -c rg -n "__fish_use_subcommand" -s x -l line-regexp -d 'Only show matches surrounded by line boundaries.'
+complete -c rg -n "__fish_use_subcommand" -l max-columns-preview -d 'Print a preview for lines exceeding the limit.'
+complete -c rg -n "__fish_use_subcommand" -l no-max-columns-preview
 complete -c rg -n "__fish_use_subcommand" -l mmap -d 'Search using memory maps when possible.'
 complete -c rg -n "__fish_use_subcommand" -l no-mmap -d 'Never use memory maps.'
 complete -c rg -n "__fish_use_subcommand" -s U -l multiline -d 'Enable matching across multiple lines.'
@@ -69,6 +77,8 @@ complete -c rg -n "__fish_use_subcommand" -l no-multiline-dotall
 complete -c rg -n "__fish_use_subcommand" -l no-config -d 'Never read configuration files.'
 complete -c rg -n "__fish_use_subcommand" -l no-ignore -d 'Don\'t respect ignore files.'
 complete -c rg -n "__fish_use_subcommand" -l ignore
+complete -c rg -n "__fish_use_subcommand" -l no-ignore-dot -d 'Don\'t respect .ignore files.'
+complete -c rg -n "__fish_use_subcommand" -l ignore-dot
 complete -c rg -n "__fish_use_subcommand" -l no-ignore-global -d 'Don\'t respect global ignore files.'
 complete -c rg -n "__fish_use_subcommand" -l ignore-global
 complete -c rg -n "__fish_use_subcommand" -l no-ignore-messages -d 'Suppress gitignore parse error messages.'
@@ -89,6 +99,7 @@ complete -c rg -n "__fish_use_subcommand" -s o -l only-matching -d 'Print only m
 complete -c rg -n "__fish_use_subcommand" -l passthru -d 'Print both matching and non-matching lines.'
 complete -c rg -n "__fish_use_subcommand" -s P -l pcre2 -d 'Enable PCRE2 matching.'
 complete -c rg -n "__fish_use_subcommand" -l no-pcre2
+complete -c rg -n "__fish_use_subcommand" -l pcre2-version -d 'Print the version of PCRE2 that ripgrep uses.'
 complete -c rg -n "__fish_use_subcommand" -l no-pre
 complete -c rg -n "__fish_use_subcommand" -s p -l pretty -d 'Alias for --color always --heading --line-number.'
 complete -c rg -n "__fish_use_subcommand" -s q -l quiet -d 'Do not print anything to stdout.'
@@ -107,7 +118,7 @@ complete -c rg -n "__fish_use_subcommand" -l type-list -d 'Show all supported fi
 complete -c rg -n "__fish_use_subcommand" -s u -l unrestricted -d 'Reduce the level of "smart" searching.'
 complete -c rg -n "__fish_use_subcommand" -l vimgrep -d 'Show results in vim compatible format.'
 complete -c rg -n "__fish_use_subcommand" -s H -l with-filename -d 'Print the file path with the matched lines.'
-complete -c rg -n "__fish_use_subcommand" -l no-filename -d 'Never print the file path with the matched lines.'
+complete -c rg -n "__fish_use_subcommand" -s I -l no-filename -d 'Never print the file path with the matched lines.'
 complete -c rg -n "__fish_use_subcommand" -s w -l word-regexp -d 'Only show matches surrounded by word boundaries.'
 complete -c rg -n "__fish_use_subcommand" -s h -l help -d 'Prints help information. Use --help for more details.'
 complete -c rg -n "__fish_use_subcommand" -s V -l version -d 'Prints version information'
