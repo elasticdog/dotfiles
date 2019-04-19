@@ -1,6 +1,6 @@
 # ╭─────────────╥──────────╥─────────────╮
 # │ Author:     ║ File:    ║ Branch:     │
-# │ Andrey Orst ║ plug.kak ║ v2019.01.20 │
+# │ Andrey Orst ║ plug.kak ║ master      │
 # ╞═════════════╩══════════╩═════════════╡
 # │ plug.kak is a plugin manager for     │
 # │ Kakoune. It can install plugins      │
@@ -22,6 +22,10 @@ declare-option -docstring \
 
     Default value: 'https://github.com'" \
 str plug_git_domain 'https://github.com'
+
+declare-option -docstring \
+"sort sourced files by depth" \
+bool plug_depth_sort false
 
 declare-option -docstring \
 "Maximum amount of simultaneously active downloads when installing or updating all plugins
@@ -52,10 +56,14 @@ declare-option -hidden -docstring \
 "List of post update/install hooks to be executed" \
 str-list plug_post_hooks ''
 
+declare-option -hidden -docstring \
+"List of post update/install hooks to be executed" \
+str-list plug_domains ''
+
 # kakrc highlighters
 try %<
-    add-highlighter shared/kakrc/code/plug_keywords   regex \b(plug|do|config|load)\b(\h+)?((?=")|(?=')|(?=%)|(?=\w)) 0:keyword
-    add-highlighter shared/kakrc/code/plug_attributes regex \b(noload|ensure|branch|tag|commit|theme)\b 0:attribute
+    add-highlighter shared/kakrc/code/plug_keywords   regex \b(plug|do|config|load|domain)\b(\h+)?((?=")|(?=')|(?=%)|(?=\w)) 0:keyword
+    add-highlighter shared/kakrc/code/plug_attributes regex \b(noload|ensure|branch|tag|commit|theme|(no-)?depth-sort)\b 0:attribute
     add-highlighter shared/kakrc/plug_post_hooks      region -recurse '\{' '\bdo\h+%\{' '\}' ref sh
 > catch %{
     echo -debug "plug.kak: Can't declare highlighters for kakrc."
@@ -100,6 +108,8 @@ plug -params 1.. -shell-script-candidates %{ ls -1 ${kak_opt_plug_install_dir} }
             printf "%s\n" "set-option -add global plug_plugins %{${plugin} }"
         fi
 
+        [ "$kak_opt_plug_depth_sort" = "true" ] && depth_sort="true" || depth_sort="false"
+
         while [ $# -gt 0 ]; do
             case $1 in
                 branch|tag|commit)
@@ -122,6 +132,13 @@ plug -params 1.. -shell-script-candidates %{ ls -1 ${kak_opt_plug_install_dir} }
                     theme_hooks="mkdir -p ${kak_config}/colors
                            find -type f -name '*.kak' -exec cp {} ${kak_config}/colors/ \;"
                     hooks="${hooks} %{${plugin_name}} %{${theme_hooks}}" ;;
+                depth-sort)
+                    depth_sort="true" ;;
+                no-depth-sort)
+                    depth_sort="false" ;;
+                domain)
+                    shift
+                    domains="${domains} %{${plugin_name}} %{$1}" ;;
                 config)
                     shift
                     configurations="${configurations} $1" ;;
@@ -142,6 +159,10 @@ plug -params 1.. -shell-script-candidates %{ ls -1 ${kak_opt_plug_install_dir} }
 
         if [ -n "${hooks}" ]; then
             printf "%s\n" "set-option -add global plug_post_hooks ${hooks}"
+        fi
+
+        if [ -n "${domains}" ]; then
+            printf "%s\n" "set-option -add global plug_domains ${domains}"
         fi
 
         if [ -n "${noload}" ] && [ -n "${load}" ]; then
@@ -169,12 +190,18 @@ plug -params 1.. -shell-script-candidates %{ ls -1 ${kak_opt_plug_install_dir} }
                     # trim leading and trailing whitespaces. Looks ugly, but faster than `sed'
                     file="${file#"${file%%[![:space:]]*}"}"
                     file="${file%"${file##*[![:space:]]}"}"
-                    # performance hungry place. We need to sort find's output by depth.
-                    find -L ${kak_opt_plug_install_dir}/${plugin_name} -path '*/.git' -prune -o -type f -name "${file}" -print | perl -e '
-                        print map  { $_->[0] }
-                              sort { $a->[1] <=> $b->[1] }
-                              map  { [$_, ($_ =~ s/^/source "/ && $_ =~ s/$/"/ && $_ =~ s/\//\//g)] }
-                                       <>;'
+                    if [ "$depth_sort" = "true" ]; then
+                        # performance hungry place.
+                        find -L ${kak_opt_plug_install_dir}/${plugin_name} -path '*/.git' -prune -o -type f -name "${file}" -print | perl -e '
+                            print map  { $_->[0] }
+                                  sort { $a->[1] <=> $b->[1] }
+                                  map  { [$_, ($_ =~ s/^/source "/ && $_ =~ s/$/"/ && $_ =~ s/\//\//g)] }
+                                           <>;'
+                    else
+                        # source files in order that `find' is returning
+                        # may or may not break some plugins
+                        find -L ${kak_opt_plug_install_dir}/${plugin_name} -path '*/.git' -prune -o -type f -name "${file}" -exec printf 'source "%s"\n' {} \;
+                    fi
                 done
             } fi
             printf "%s\n" "evaluate-commands \"%opt{plug_${plugin_opt_name}_conf}\""
@@ -239,12 +266,23 @@ plug-install -params ..1 %{ nop %sh{ (
 
     for plugin in ${plugin_list}; do
         plugin_name="${plugin##*/}"
+        git_domain=${kak_opt_plug_git_domain}
+
+        eval "set -- ${kak_opt_plug_domains}"
+        while [ $# -ne 0 ]; do
+            if [ "$1" = "${plugin_name}" ]; then
+                git_domain="https://$2"
+                break
+            fi
+            shift
+        done
+
         if [ ! -d "${kak_opt_plug_install_dir}/${plugin_name}" ]; then
             case ${plugin} in
                 http*|git*)
                     git="git clone ${plugin}" ;;
                 *)
-                    git="git clone ${kak_opt_plug_git_domain}/${plugin}" ;;
+                    git="git clone ${git_domain}/${plugin}" ;;
             esac
 
             (
@@ -287,7 +325,6 @@ plug-update -params ..1 -shell-script-candidates %{ printf "%s\n" ${kak_opt_plug
         printf "%s\n" "evaluate-commands -client ${kak_client:-client0} %{ try %{ buffer *plug* } catch %{ plug-list noupdate } }" | kak -p ${kak_session}
 
         lockfile="${kak_opt_plug_install_dir}/.${plugin_name:-global}.plug.kak.lock"
-        echo "echo -debug %{$lockfile}" | kak -p $kak_session
         if [ -d "${lockfile}" ]; then
             printf "%s\n" "evaluate-commands -client ${kak_client:-client0} %{ plug-update-fifo %{${plugin##*/}} %{Waiting for .plug.kak.lock} }" | kak -p ${kak_session}
         fi
@@ -339,9 +376,8 @@ plug-clean -params ..1 -shell-script-candidates %{ ls -1 ${kak_opt_plug_install_
     printf "%s\n" "evaluate-commands -client ${kak_client:-client0} %{ try %{ buffer *plug* } catch %{ plug-list noupdate } }" | kak -p ${kak_session}
 
     lockfile="${kak_opt_plug_install_dir}/.${plugin_name:-global}.plug.kak.lock"
-    echo "echo -debug %{$lockfile}" | kak -p $kak_session
     if [ -d "${lockfile}" ]; then
-        printf "%s\n" "evaluate-commands -client ${kak_client:-client0} %{ plug-update-fifo %{${plugin##*/}} %{Waiting for .plug.kak.lock} }" | kak -p ${kak_session}
+        printf "%s\n" "evaluate-commands -client ${kak_client:-client0} %{ plug-update-fifo %{${plugin_name}} %{Waiting for .plug.kak.lock} }" | kak -p ${kak_session}
     fi
 
     while ! mkdir "${lockfile}" 2>/dev/null; do sleep 1; done
@@ -349,8 +385,10 @@ plug-clean -params ..1 -shell-script-candidates %{ ls -1 ${kak_opt_plug_install_
 
     if [ -n "${plugin}" ]; then
         if [ -d "${kak_opt_plug_install_dir}/${plugin_name}" ]; then
-            printf "%s\n" "evaluate-commands -client ${kak_client:-client0} %{ plug-update-fifo %{${plugin_name}} %{Deleted} }" | kak -p ${kak_session}
-            (cd ${kak_opt_plug_install_dir} && rm -rf "${plugin_name}")
+            (
+                cd "${kak_opt_plug_install_dir}" && rm -rf "${plugin_name}"
+                printf "%s\n" "evaluate-commands -client ${kak_client:-client0} %{ plug-update-fifo %{${plugin_name}} %{Deleted} }" | kak -p ${kak_session}
+            )
         else
             printf "%s\n" "evaluate-commands -client ${kak_client:-client0} echo -markup %{{Error}No such plugin '${plugin}'}" | kak -p ${kak_session}
             exit
@@ -364,7 +402,7 @@ plug-clean -params ..1 -shell-script-candidates %{ ls -1 ${kak_opt_plug_install_
             [ "${skip}" = "1" ] || plugins_to_remove=${plugins_to_remove}" ${installed_plugin}"
         done
         for plugin in ${plugins_to_remove}; do
-            printf "%s\n" "evaluate-commands -client ${kak_client:-client0} %{ plug-update-fifo %{${plugin_name}} %{Deleted} }" | kak -p ${kak_session}
+            printf "%s\n" "evaluate-commands -client ${kak_client:-client0} %{ plug-update-fifo %{${plugin##*/}} %{Deleted} }" | kak -p ${kak_session}
             rm -rf ${plugin}
         done
     fi
@@ -516,9 +554,7 @@ plug-fifo-operate -params 1 %{ evaluate-commands -save-regs t %{
                 printf "%s\n" "echo -markup %{{Information}${plugin}' already installed}"
             fi ;;
         clean)
-            if [ -d "${kak_opt_plug_install_dir}/${plugin##*/}" ]; then
-                printf "%s\n" "plug-clean ${plugin}'"
-            fi ;;
+                printf "%s\n" "plug-clean ${plugin}'" ;;
         log)
             printf "%s\n" "plug-display-log ${plugin}'" ;;
         *)
