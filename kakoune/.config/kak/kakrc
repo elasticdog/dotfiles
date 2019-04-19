@@ -244,8 +244,10 @@ define-command trim-trailing-whitespace %{
 # Third-party plugins
 # ───────────────────
 
-# source "%val{config}/plugins/plug.kak/rc/plug.kak"
-# plug "andreyorst/plug.kak" noload
+source "%val{config}/plugins/plug.kak/rc/plug.kak"
+plug "andreyorst/plug.kak" noload
+
+plug "Delapouite/kakoune-livedown"
 
 # System clipboard handling
 # ─────────────────────────
