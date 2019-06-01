@@ -1,0 +1,17 @@
+" launch kakoune for editing text areas (via <Ctrl-i>)
+set editorcmd /Applications/kitty.app/Contents/MacOS/kitty -o remember_window_size=no -o initial_window_width=132c -o initial_window_height=43c kak +%l:%c
+
+" always allow ex mode commands
+bind --mode=ignore : fillcmdline_notrail
+
+" use all gmail keyboard bindings, but re-enable tab switching
+autocmd DocStart mail.google.com/* mode ignore
+bindurl mail.google.com/* --mode=ignore J tabprev
+bindurl mail.google.com/* --mode=ignore K tabnext
+
+" prefer basic navigation bindings from reddit enhancement suite
+unbindurl reddit.com/* c
+unbindurl reddit.com/* j
+unbindurl reddit.com/* k
+unbindurl reddit.com/* l
+unbindurl reddit.com/* x
