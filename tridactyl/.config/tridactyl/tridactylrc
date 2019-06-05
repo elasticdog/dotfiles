@@ -1,16 +1,17 @@
 " start fresh with default Tridactyl settings each time this file is sourced
 sanitize tridactyllocal tridactylsync
 
+colorscheme dark
+
 " launch Kakoune for editing text areas (via <Ctrl-i>)
 set editorcmd /Applications/kitty.app/Contents/MacOS/kitty -o remember_window_size=no -o initial_window_width=132c -o initial_window_height=43c kak +%l:%c
 
-" always allow ex mode commands and tab switching
-bind --mode=ignore : fillcmdline_notrail
-bind --mode=ignore J tabprev
-bind --mode=ignore K tabnext
+set searchurls.issue https://github.com/elastic/infra/issues/%s
 
-" use all Gmail keyboard bindings
+" use all Gmail keyboard bindings, but allow for tab switching
 autocmd DocStart mail.google.com/* mode ignore
+bindurl mail.google.com/* --mode=ignore J tabprev
+bindurl mail.google.com/* --mode=ignore K tabnext
 
 " use some Reddit Enhancement Suite keyboard bindings for basic navigation
 unbindurl reddit.com/* c
