@@ -8,10 +8,8 @@ set editorcmd /Applications/kitty.app/Contents/MacOS/kitty -o remember_window_si
 
 set searchurls.issue https://github.com/elastic/infra/issues/%s
 
-" use all Gmail keyboard bindings, but allow for tab switching
+" use all Gmail keyboard bindings
 autocmd DocStart mail.google.com/* mode ignore
-bindurl mail.google.com/* --mode=ignore J tabprev
-bindurl mail.google.com/* --mode=ignore K tabnext
 
 " use some Reddit Enhancement Suite keyboard bindings for basic navigation
 unbindurl reddit.com/* c
