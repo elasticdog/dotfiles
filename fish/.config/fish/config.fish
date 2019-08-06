@@ -22,6 +22,12 @@ set -x RIPGREP_CONFIG_PATH $HOME/.config/ripgrep/ripgrep.conf
 set -x VAULT_ADDR https://secrets.elastic.co:8200
 set -x VISUAL kak
 
+# fuzzy search settings
+set -x SKIM_ALT_C_COMMAND "fd --type d --follow --hidden --exclude .git/"
+set -x SKIM_CTRL_T_COMMAND "fd --follow --hidden --exclude .git/"
+set -x SKIM_DEFAULT_COMMAND "fd --type f --follow --hidden --exclude .git/"
+set -x SKIM_DEFAULT_OPTIONS "--bind='?:toggle-preview' --preview='bat --color always --style numbers {}' --preview-window='right:50%:hidden'"
+
 switch (uname)
 	case Darwin
 		set -x HOMEBREW_NO_ANALYTICS 1

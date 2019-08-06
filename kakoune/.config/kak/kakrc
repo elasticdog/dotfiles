@@ -185,6 +185,7 @@ define-command -hidden fuzzy-terminal -params .. \
             export kak_client='%val{client}'
             export kak_buflist='%opt{fuzzy_buflist}'
             export SKIM_DEFAULT_COMMAND='%val{client_env_SKIM_DEFAULT_COMMAND}'
+            export SKIM_DEFAULT_OPTIONS='%val{client_env_SKIM_DEFAULT_OPTIONS}'
             cd '%val{client_env_PWD}' && '%val{config}/scripts/skim.sh' %arg{@}
         "
     }
