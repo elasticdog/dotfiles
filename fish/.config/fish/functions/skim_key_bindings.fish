@@ -4,6 +4,35 @@
 
 function skim_key_bindings
 
+  function skim-git-branch-widget -d "List local Git branch names"
+    set -l commandline (__skim_parse_commandline)
+    set -l dir $commandline[1]
+    set -l skim_query $commandline[2]
+
+    set -q SKIM_CTRL_G_COMMAND; or set -l SKIM_CTRL_G_COMMAND "
+    git for-each-ref --format '%(refname:short)' refs/heads 2> /dev/null"
+
+    set -q SKIM_TMUX_HEIGHT; or set SKIM_TMUX_HEIGHT 40%
+    begin
+      set -lx SKIM_DEFAULT_OPTIONS "
+      --height $SKIM_TMUX_HEIGHT --reverse $SKIM_DEFAULT_OPTIONS \
+      --preview='git log --no-merges --oneline --color=always -n 200 {}' $SKIM_CTRL_G_OPTS"
+      eval "$SKIM_CTRL_G_COMMAND | "(__skimcmd)' -m --query "'$skim_query'"' | while read -l r; set result $result $r; end
+    end
+    if [ -z "$result" ]
+      commandline -f repaint
+      return
+    else
+      # Remove last token from commandline.
+      commandline -t ""
+    end
+    for i in $result
+      commandline -it -- (string escape $i)
+      commandline -it -- ' '
+    end
+    commandline -f repaint
+  end
+
   # Store current token in $dir as root for the 'find' command
   function skim-file-widget -d "List files and folders"
     set -l commandline (__skim_parse_commandline)
@@ -93,11 +122,13 @@ function skim_key_bindings
     end
   end
 
+  bind \cg skim-git-branch-widget
   bind \ct skim-file-widget
   bind \cr skim-history-widget
   bind \ec skim-cd-widget
 
   if bind -M insert > /dev/null 2>&1
+    bind -M insert \cg skim-git-branch-widget
     bind -M insert \ct skim-file-widget
     bind -M insert \cr skim-history-widget
     bind -M insert \ec skim-cd-widget
