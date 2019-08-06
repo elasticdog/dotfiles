@@ -168,13 +168,13 @@ define-command fuzzy-buffer \
         printf "%s\n" "$kak_bufname" >>"$buffers"
         printf "set-option global fuzzy_buflist '%s'\n" "$buffers"
     }
-    evaluate-commands %{ fuzzy-terminal --no-multi --tac --no-sort }
+    evaluate-commands %{ fuzzy-terminal --no-multi --tac }
 }
 
 define-command fuzzy-file \
     -docstring "fuzzy-file: fuzzy find files to select buffers to open" \
     %{ evaluate-commands %{
-        fuzzy-terminal --multi --preview="bat --color=always --style=plain {}" --bind -:toggle-preview
+        fuzzy-terminal --multi --preview="bat --color=always --style=plain {}"
     }
 }
 
@@ -184,8 +184,8 @@ define-command -hidden fuzzy-terminal -params .. \
             export kak_session='%val{session}'
             export kak_client='%val{client}'
             export kak_buflist='%opt{fuzzy_buflist}'
-            export FZF_DEFAULT_COMMAND='%val{client_env_FZF_DEFAULT_COMMAND}'
-            cd '%val{client_env_PWD}' && '%val{config}/scripts/fzf.sh' %arg{@}
+            export SKIM_DEFAULT_COMMAND='%val{client_env_SKIM_DEFAULT_COMMAND}'
+            cd '%val{client_env_PWD}' && '%val{config}/scripts/skim.sh' %arg{@}
         "
     }
 }

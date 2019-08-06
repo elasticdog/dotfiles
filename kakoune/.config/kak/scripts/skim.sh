@@ -5,11 +5,11 @@ readonly TEMP_FILE=$(mktemp)
 trap 'rm -f "$TEMP_FILE"' EXIT
 
 if [ -s "$kak_buflist" ]; then
-	fzf "$@" <"$kak_buflist" >"$TEMP_FILE"
+	sk "$@" <"$kak_buflist" >"$TEMP_FILE"
 	rm -f "$kak_buflist"
 	command="buffer"
 else
-	fzf "$@" >"$TEMP_FILE"
+	sk "$@" >"$TEMP_FILE"
 	command="edit"
 fi
 
