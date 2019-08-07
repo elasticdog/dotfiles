@@ -174,7 +174,7 @@ define-command fuzzy-buffer \
 define-command fuzzy-file \
     -docstring "fuzzy-file: fuzzy find files to select buffers to open" \
     %{ evaluate-commands %{
-        fuzzy-terminal --multi --preview="bat --color=always --style=plain {}"
+        fuzzy-terminal --multi --preview='bat --color always --style numbers {}'
     }
 }
 
