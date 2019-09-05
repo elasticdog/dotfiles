@@ -103,3 +103,8 @@ end
 if status --is-interactive; and test -d $HOME/.ssh/config.d
 	compile-ssh-config
 end
+
+# https://starship.rs/
+if command -qs starship
+	eval (starship init fish)
+end
