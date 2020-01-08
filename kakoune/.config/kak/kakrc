@@ -144,7 +144,7 @@ define-command explore \
 define-command -hidden explore-terminal \
     -params ..1 -file-completion \
     %{ evaluate-commands %{
-        terminal sh -c "
+        repl sh -c "
             export kak_session='%val{session}'
             export kak_client='%val{client}'
             %val{config}/scripts/lf.sh %arg(1)
@@ -180,7 +180,7 @@ define-command fuzzy-file \
 
 define-command -hidden fuzzy-terminal -params .. \
     %{ evaluate-commands %{
-        terminal sh -c "
+        repl sh -c "
             export kak_session='%val{session}'
             export kak_client='%val{client}'
             export kak_buflist='%opt{fuzzy_buflist}'
