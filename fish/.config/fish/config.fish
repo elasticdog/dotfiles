@@ -108,3 +108,10 @@ end
 if command -qs starship
 	eval (starship init fish)
 end
+
+# Automatically startx on login to the Linux console
+if status is-login
+    if test -z "$DISPLAY" -a $XDG_VTNR = 1
+        exec startx -- -keeptty
+    end
+end
