@@ -37,8 +37,7 @@ eval $(ssh-agent)
 
 setxkbmap \
   -option ctrl:nocaps \
-  -option shift:both_capslock \
-  -option terminate:ctrl_alt_bksp
+  -option shift:both_capslock
 
 xbindkeys
 
