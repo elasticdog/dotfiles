@@ -1,4 +1,7 @@
 configuration {
+  modi: "window,drun,ssh,combi";
+  theme: "solarized";
+  combi-modi: "window,drun,ssh";
 /*	modi: "window,run,ssh";*/
 /*	width: 50;*/
 /*	lines: 15;*/
