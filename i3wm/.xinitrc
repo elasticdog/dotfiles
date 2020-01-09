@@ -39,6 +39,4 @@ setxkbmap \
   -option ctrl:nocaps \
   -option shift:both_capslock_cancel
 
-xbindkeys
-
 exec i3 -V >> ~/.config/i3/logfile
