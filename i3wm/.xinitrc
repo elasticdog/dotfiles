@@ -39,4 +39,7 @@ setxkbmap \
   -option ctrl:nocaps \
   -option shift:both_capslock_cancel
 
+xkbcomp ~/.xkeymap $DISPLAY
+xcape -e "Control_L=Escape;Hyper_L=space"
+
 exec i3 -V >> ~/.config/i3/logfile
