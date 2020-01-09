@@ -6,7 +6,7 @@
 ## CONFIGURATION ##############################################################
 
 # Options to pass to i3lock
-i3lock_options="-d"
+i3lock_options="-f -i ${HOME}/Pictures/backgrounds/firewatch-sd-1920x1080.png"
 
 # Run before starting the locker
 pre_lock() {
