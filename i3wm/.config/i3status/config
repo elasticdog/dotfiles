@@ -29,7 +29,7 @@ battery all {
         # https://fontawesome.com/icons/bolt?style=solid
         status_chr = "<span font_family='Font Awesome 5 Free Solid' fgcolor='#FFCB6B'>&#xf0e7;</span>"
         # https://fontawesome.com/icons/battery-half?style=solid
-        status_bat = "<span font_family='Font Awesome 5 Free Solid' fgcolor='#F78C6C'>&#xf242;</span>"
+        status_bat = "<span font_family='Font Awesome 5 Free Solid' fgcolor='#FFCB6B'>&#xf242;</span>"
         # https://fontawesome.com/icons/battery-full?style=solid
         status_full = "<span font_family='Font Awesome 5 Free Solid' fgcolor='#C3E88D'>&#xf240;</span>"
 }
