@@ -56,6 +56,9 @@ bindsym $mod+BackSpace kill
 # start rofi (a program launcher)
 bindsym $mod+d exec --no-startup-id rofi -show combi
 
+# start calculator mode using qalc
+bindsym $mod+equal exec --no-startup-id rofi -show calc -modi calc -no-show-match -no-sort -no-history -terse -calc-command "echo '{result}' | xclip"
+
 # change focus
 bindsym $mod+$left focus left
 bindsym $mod+$down focus down
