@@ -25,7 +25,7 @@ order += "volume master"
 order += "tztime local"
 
 battery all {
-        format = "%status %percentage %remaining"
+        format = " %status %percentage %remaining "
         # https://fontawesome.com/icons/bolt?style=solid
         status_chr = "<span font_family='Font Awesome 5 Free Solid' fgcolor='#FFCB6B'>&#xf0e7;</span>"
         # https://fontawesome.com/icons/battery-half?style=solid
@@ -35,11 +35,11 @@ battery all {
 }
 
 cpu_usage {
-        format = "CPU %usage"
+        format = " CPU %usage "
 }
 
 memory {
-        format = "MEM %percentage_used"
+        format = " MEM %percentage_used "
         threshold_degraded = "1G"
         format_degraded = "MEM < %available"
 }
@@ -48,8 +48,8 @@ wireless _first_ {
         color_bad = "#F78C6C"
         color_good = "#FFFFFF"
         # https://fontawesome.com/icons/wifi?style=solid
-        format_up = "<span font_family='Font Awesome 5 Free Solid' fgcolor='#C3E88D'>&#xf1eb;</span> (%quality at %essid) %ip"
-        format_down = "<span font_family='Font Awesome 5 Free Solid'>&#xf1eb;</span> down"
+        format_up = " <span font_family='Font Awesome 5 Free Solid' fgcolor='#C3E88D'>&#xf1eb;</span> (%quality at %essid) %ip "
+        format_down = " <span font_family='Font Awesome 5 Free Solid'>&#xf1eb;</span> down "
         format_quality = "%d%s"
 }
 
@@ -57,18 +57,18 @@ ethernet _first_ {
         color_bad = "#FFFFFF"
         color_good = "#FFFFFF"
         # https://fontawesome.com/icons/ethernet?style=solid
-        format_up = "<span font_family='Font Awesome 5 Free Solid' fgcolor='#C3E88D'>&#xf796;</span> %ip (%speed)"
-        format_down = "<span font_family='Font Awesome 5 Free Solid' fgcolor='#89DDFF'>&#xf796;</span> down"
+        format_up = " <span font_family='Font Awesome 5 Free Solid' fgcolor='#C3E88D'>&#xf796;</span> %ip (%speed) "
+        format_down = " <span font_family='Font Awesome 5 Free Solid' fgcolor='#89DDFF'>&#xf796;</span> down "
 }
 
 volume master {
         device = "pulse"
         # https://fontawesome.com/icons/volume-off?style=solid
-        format = "<span font_family='Font Awesome 5 Free Solid'>&#xf026;</span> %volume"
+        format = " <span font_family='Font Awesome 5 Free Solid'>&#xf026;</span> %volume "
         # https://fontawesome.com/icons/volume-mute?style=solid
-        format_muted = "<span font_family='Font Awesome 5 Free Solid'>&#xf6a9;</span> muted"
+        format_muted = " <span font_family='Font Awesome 5 Free Solid'>&#xf6a9;</span> muted "
 }
 
 tztime local {
-        format = "%Y-%m-%d %H:%M:%S"
+        format = " %Y-%m-%d %H:%M:%S"
 }
