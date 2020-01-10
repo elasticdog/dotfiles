@@ -13,7 +13,7 @@ font pango:Iosevka Semibold 10
 
 # i3-gaps configuration
 for_window [class=".*"] border pixel 2
-gaps inner 12
+gaps inner 18
 smart_gaps on
 
 exec --no-startup-id feh --bg-scale ~/Pictures/backgrounds/small-memory-lp-1920x1080.jpg
