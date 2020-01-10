@@ -7,45 +7,66 @@
 # If the above line is not correctly displayed, fix your editor first!
 
 general {
+        color_bad = "#FF5370"
+        color_degraded = "#F78C6C"
+        color_good = "#C3E88D"
         colors = true
         interval = 5
+        markup = "pango"
+        output_format = "i3bar"
 }
 
-order += "ipv6"
+order += "battery all"
+order += "cpu_usage"
+order += "memory"
 order += "wireless _first_"
 order += "ethernet _first_"
-order += "battery all"
-order += "disk /"
-order += "load"
-order += "memory"
+order += "volume master"
 order += "tztime local"
-
-wireless _first_ {
-        format_up = "W: (%quality at %essid) %ip"
-        format_down = "W: down"
-}
-
-ethernet _first_ {
-        format_up = "E: %ip (%speed)"
-        format_down = "E: down"
-}
 
 battery all {
         format = "%status %percentage %remaining"
+        # https://fontawesome.com/icons/bolt?style=solid
+        status_chr = "<span font_family='Font Awesome 5 Free Solid' fgcolor='#FFCB6B'>&#xf0e7;</span>"
+        # https://fontawesome.com/icons/battery-half?style=solid
+        status_bat = "<span font_family='Font Awesome 5 Free Solid' fgcolor='#F78C6C'>&#xf242;</span>"
+        # https://fontawesome.com/icons/battery-full?style=solid
+        status_full = "<span font_family='Font Awesome 5 Free Solid' fgcolor='#C3E88D'>&#xf240;</span>"
 }
 
-disk "/" {
-        format = "%avail"
-}
-
-load {
-        format = "%1min"
+cpu_usage {
+        format = "CPU %usage"
 }
 
 memory {
-        format = "%used | %available"
+        format = "MEM %percentage_used"
         threshold_degraded = "1G"
-        format_degraded = "MEMORY < %available"
+        format_degraded = "MEM < %available"
+}
+
+wireless _first_ {
+        color_bad = "#F78C6C"
+        color_good = "#FFFFFF"
+        # https://fontawesome.com/icons/wifi?style=solid
+        format_up = "<span font_family='Font Awesome 5 Free Solid' fgcolor='#C3E88D'>&#xf1eb;</span> (%quality at %essid) %ip"
+        format_down = "<span font_family='Font Awesome 5 Free Solid'>&#xf1eb;</span> down"
+        format_quality = "%d%s"
+}
+
+ethernet _first_ {
+        color_bad = "#FFFFFF"
+        color_good = "#FFFFFF"
+        # https://fontawesome.com/icons/ethernet?style=solid
+        format_up = "<span font_family='Font Awesome 5 Free Solid' fgcolor='#C3E88D'>&#xf796;</span> %ip (%speed)"
+        format_down = "<span font_family='Font Awesome 5 Free Solid' fgcolor='#89DDFF'>&#xf796;</span> down"
+}
+
+volume master {
+        device = "pulse"
+        # https://fontawesome.com/icons/volume-off?style=solid
+        format = "<span font_family='Font Awesome 5 Free Solid'>&#xf026;</span> %volume"
+        # https://fontawesome.com/icons/volume-mute?style=solid
+        format_muted = "<span font_family='Font Awesome 5 Free Solid'>&#xf6a9;</span> muted"
 }
 
 tztime local {
