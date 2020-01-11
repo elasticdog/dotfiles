@@ -42,7 +42,7 @@ evaluate-commands %sh{
     ## markup
     echo "
         face global title ${base0D}+b
-        face global header ${base0D}
+        face global header ${base0C}
         face global bold ${base0A}+b
         face global italic ${base0E}+i
         face global mono ${base0B}
@@ -55,12 +55,12 @@ evaluate-commands %sh{
     ## builtin
     echo "
         face global Default ${base05},${base00}
-        face global PrimarySelection default,${base02}+g
-        face global SecondarySelection ${base04},${base01}
-        face global PrimaryCursor ${base00},${base05}
-        face global SecondaryCursor ${base00},${base03}+fg
-        face global PrimaryCursorEol default,${base0D}
-        face global SecondaryCursorEol default,${base03}
+        face global PrimarySelection ${base05},${base0D}+fg
+        face global SecondarySelection ${base00},${base0D}+fg
+        face global PrimaryCursor ${base00},${base05}+fg
+        face global SecondaryCursor ${base00},${base05}+fg
+        face global PrimaryCursorEol default,${base0D}+fg
+        face global SecondaryCursorEol default,${base03}+fg
         face global MenuForeground ${base00},${base0D}
         face global MenuBackground ${base05},${base01}
         face global MenuInfo ${base02},default
@@ -73,9 +73,9 @@ evaluate-commands %sh{
         face global StatusCursor ${base01},${base0D}
         face global Prompt ${base0D},${base01}
         face global BufferPadding ${base01},default
-        face global LineNumbers ${base02},${base00}
-        face global LineNumberCursor ${base0A},${base00}
-        face global MatchingChar default,${base02}
-        face global Whitespace ${base01},default+f
+        face global LineNumbers ${base03},${base00}
+        face global LineNumberCursor ${base0A},${base00}+b
+        face global MatchingChar default,${base03}+b
+        face global Whitespace ${base02},default+f
     "
 }
