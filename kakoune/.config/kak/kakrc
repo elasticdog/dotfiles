@@ -8,7 +8,7 @@ set-option global grepcmd "rg --column --follow"
 set-option global tabstop 4
 set-option global ui_options ncurses_assistant=none
 
-colorscheme gruvbox-hard-contrast
+colorscheme base16-material
 
 add-highlighter global/ show-matching
 add-highlighter global/ show-whitespaces -spc " "
