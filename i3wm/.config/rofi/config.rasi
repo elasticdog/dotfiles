@@ -1,7 +1,9 @@
 configuration {
-  modi: "window,drun,ssh,combi";
-  theme: "solarized";
   combi-modi: "window,drun,ssh";
+  matching: "fuzzy";
+  modi: "window,drun,ssh,combi";
+  show-icons: true;
+  theme: "solarized";
 /*	modi: "window,run,ssh";*/
 /*	width: 50;*/
 /*	lines: 15;*/
