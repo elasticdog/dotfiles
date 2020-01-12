@@ -63,12 +63,12 @@ ethernet _first_ {
 
 volume master {
         device = "pulse"
-        # https://fontawesome.com/icons/volume-off?style=solid
-        format = " <span font_family='Font Awesome 5 Free Solid'>&#xf026;</span> %volume "
+        # https://fontawesome.com/icons/volume-up?style=solid
+        format = " <span font_family='Font Awesome 5 Free Solid'>&#xf028;</span> %volume "
         # https://fontawesome.com/icons/volume-mute?style=solid
         format_muted = " <span font_family='Font Awesome 5 Free Solid'>&#xf6a9;</span> muted "
 }
 
 tztime local {
-        format = " %Y-%m-%d %H:%M:%S"
+        format = " %a %d %b - %I:%M %p "
 }
