@@ -36,7 +36,8 @@ redshift &
 eval $(ssh-agent)
 
 setxkbmap \
+  -option altwin:prtsc_rwin \
   -option ctrl:nocaps \
-  -option shift:both_capslock_cancel
+  -option shift:both_capslock
 
 exec i3 -V >> ~/.config/i3/logfile
