@@ -16,7 +16,7 @@ for_window [class=".*"] border pixel 2
 gaps inner 18
 smart_gaps on
 
-exec --no-startup-id feh --bg-scale ~/Pictures/backgrounds/small-memory-lp-1920x1080.jpg
+exec --no-startup-id feh --bg-scale ~/pics/backgrounds/small-memory-lp-1920x1080.jpg
 exec --no-startup-id picom
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
