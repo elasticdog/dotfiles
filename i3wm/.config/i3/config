@@ -12,8 +12,8 @@ workspace_layout stacking
 font pango:Iosevka Semibold 10
 
 # i3-gaps configuration
-for_window [class=".*"] border pixel 2
-gaps inner 18
+for_window [class=".*"] border pixel 3
+gaps inner 25
 smart_gaps on
 
 exec --no-startup-id feh --bg-scale ~/pics/backgrounds/small-memory-lp-1920x1080.jpg
