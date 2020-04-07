@@ -12,12 +12,22 @@ end
 # disable the shell greeting message
 set -e fish_greeting
 
+# clear out the path and set it from scratch
+set -gx PATH
+test -d $HOME/bin; and set -a PATH $HOME/bin
+test -d $HOME/.local/bin; and set -a PATH $HOME/.local/bin
+test -d $HOME/.cargo/bin; and set -a PATH $HOME/.cargo/bin
+test -d $HOME/src/go/bin; and set -a PATH $HOME/src/go/bin
+test -d /usr/local/sbin; and set -a PATH /usr/local/sbin
+test -d /usr/local/bin; and set -a PATH /usr/local/bin
+test -d /usr/sbin; and set -a PATH /usr/sbin
+test -d /usr/bin; and set -a PATH /usr/bin
+
 set -x AWS_PROFILE default
 set -x EDITOR kak
 set -x GIT_EDITOR kak
 set -x GOPATH $HOME/src/go
 set -x OBJC_DISABLE_INITIALIZE_FORK_SAFETY YES
-set -x PATH $HOME/bin $HOME/.local/bin $HOME/.cargo/bin $HOME/src/go/bin $PATH
 set -x RIPGREP_CONFIG_PATH $HOME/.config/ripgrep/ripgrep.conf
 set -x SUDO_EDITOR kak
 set -x VAULT_ADDR https://secrets.elastic.co:8200
