@@ -69,11 +69,11 @@ hook global WinSetOption filetype=sh %{
     hook buffer BufWritePre .* %{ lint }
 }
 
-hook global BufCreate .*\.(hcl|tfvars|tf) %{
-    set-option buffer filetype hcl
+hook global BufCreate .*[.](hcl) %{
+    set-option buffer filetype terraform
 }
 
-hook global WinSetOption filetype=hcl %{
+hook global WinSetOption filetype=terraform %{
     set-option window formatcmd "terraform fmt -"
 }
 
