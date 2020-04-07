@@ -19,6 +19,7 @@ set -x GOPATH $HOME/src/go
 set -x OBJC_DISABLE_INITIALIZE_FORK_SAFETY YES
 set -x PATH $HOME/bin $HOME/.local/bin $HOME/.cargo/bin $HOME/src/go/bin $PATH
 set -x RIPGREP_CONFIG_PATH $HOME/.config/ripgrep/ripgrep.conf
+set -x SUDO_EDITOR kak
 set -x VAULT_ADDR https://secrets.elastic.co:8200
 set -x VISUAL kak
 
