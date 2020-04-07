@@ -32,6 +32,10 @@ hook global BufNewFile .* %{ editorconfig-load }
 # Filetype specific hooks
 # ───────────────────────
 
+hook global WinSetOption filetype=cue %{
+    set-option window formatcmd "cue fmt -"
+}
+
 hook global WinSetOption filetype=git-(commit|rebase) %{
     set-option window autowrap_column 72
     autowrap-enable
