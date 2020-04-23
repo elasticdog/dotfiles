@@ -83,6 +83,9 @@ bindsym $mod+Shift+Down move down 30 px
 bindsym $mod+Shift+Up move up 30 px
 bindsym $mod+Shift+Right move right 30 px
 
+# move floating container to the center of all outputs
+bindsym $mod+Shift+c move absolute position center
+
 # split in horizontal orientation
 bindsym $mod+b split h
 
