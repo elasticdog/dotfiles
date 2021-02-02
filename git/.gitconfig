@@ -40,6 +40,7 @@
 	colorMoved = default
 	indentHeuristic = on
 [init]
+	defaultBranch = main
 	templatedir = ~/.git_template
 [merge]
 	conflictstyle = diff3
