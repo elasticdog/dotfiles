@@ -40,4 +40,8 @@ setxkbmap \
   -option ctrl:nocaps \
   -option shift:both_capslock
 
+xset b off
+xset dpms 3600 3600 3600
+xset s 3600 3600
+
 exec i3 -V >> ~/.config/i3/logfile
