@@ -37,6 +37,7 @@
 	untrackedCache = true
 [diff]
 	algorithm = histogram
+	colorMoved = default
 	indentHeuristic = on
 [init]
 	templatedir = ~/.git_template
