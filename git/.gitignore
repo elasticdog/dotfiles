@@ -8,5 +8,6 @@
 .floo
 .flooignore
 .hg
+.rgignore
 .svn
 tags
