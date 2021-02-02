@@ -34,7 +34,19 @@
 [core]
 	editor = vim -f
 	excludesfile = ~/.gitignore
+	pager = delta
 	untrackedCache = true
+[delta]
+	features = side-by-side line-numbers decorations
+	minus-style = syntax "#400000"
+	minus-emph-style = syntax "#700000"
+	plus-style = syntax "#004000"
+	plus-emph-style = syntax "#007000"
+	syntax-theme = base16-256
+[delta "decorations"]
+	commit-decoration-style = bold yellow box ul
+	file-decoration-style = none
+	file-style = bold yellow ul
 [diff]
 	algorithm = histogram
 	colorMoved = default
@@ -42,6 +54,8 @@
 [init]
 	defaultBranch = main
 	templatedir = ~/.git_template
+[interactive]
+	diffFilter = delta --color-only
 [merge]
 	conflictstyle = diff3
 	tool = gvimdiff
