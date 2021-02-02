@@ -1,6 +1,7 @@
 [user]
 	name = Aaron Bull Schaefer
 	email = aaron@elasticdog.com
+	useConfigOnly = true
 [alias]
 	aliases = "!git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /' | sort"
 	branches = branch -a
