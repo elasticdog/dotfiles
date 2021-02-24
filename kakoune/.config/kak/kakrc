@@ -17,7 +17,6 @@ add-highlighter global/trailing-whitespace regex "\h+$" 0:default,red
 # for everything except built-in read-only buffers
 hook global WinCreate ^[^*]+$ %{
     add-highlighter window/ number-lines -hlcursor -relative
-    lint-enable
     git show-diff
 }
 
