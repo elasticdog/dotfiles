@@ -1,0 +1,22 @@
+---
+extends: default
+
+# match the output from `prettier` formatting
+rules:
+  braces:
+    min-spaces-inside: 1
+    max-spaces-inside: 1
+    min-spaces-inside-empty: 0
+    max-spaces-inside-empty: 0
+  comments:
+    min-spaces-from-content: 1
+  empty-lines:
+    max: 1
+  indentation:
+    spaces: 2
+    indent-sequences: true
+  line-length:
+    level: warning
+  quoted-strings:
+    quote-type: double
+    required: only-when-needed

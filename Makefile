@@ -1,5 +1,5 @@
 pkgs_all := $(shell echo */)
-pkgs_regular := git kakoune lf neovim ripgrep starship tig tmux tridactyl
+pkgs_regular := git kakoune lf neovim ripgrep starship tig tmux tridactyl yamllint
 pkgs_no_fold := fish ssh
 
 cmd_install := stow --stow
