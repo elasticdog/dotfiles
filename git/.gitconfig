@@ -8,6 +8,7 @@
 	contains = "!sh -c 'git branch -a --contains $1' -"
 	dc = diff --color-words="[^[:space:]]|([[:alnum:]]|UTF_8_GUARD)+"
 	discard = checkout --
+	dupes = "!cd `pwd`/$GIT_PREFIX && git ls-tree -r HEAD | cut -c 13- | sort | uniq -D -w 40"
 	empty-tree-sha1 = hash-object -t tree /dev/null
 	gone = !git log --diff-filter=D --summary
 	lc = log ORIG_HEAD.. --stat --no-merges
