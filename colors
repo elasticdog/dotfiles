@@ -1,0 +1,74 @@
+#!/usr/bin/env bash
+
+# Slightly tweaked version of:
+#   https://github.com/zaiste/zaiste-emacs-theme
+
+background="f0f0f0"
+foreground="424242"
+
+black="1b2229"
+black_bright="a0a1a7" # dark gray
+
+red="e45649"
+red_bright="dd8844" # orange
+
+green="50a14f"
+green_bright="44b9b1"
+
+yellow="c5a332"
+yellow_bright="c0d9f2" # baby blue
+
+blue="275fe4"
+blue_bright="0098dd"
+
+magenta="a626a4"
+magenta_bright="823ff1" # violet
+
+cyan="005478"
+cyan_bright="0078ab"
+
+white="c6c7c7"        # light gray
+white_bright="fafbfc" # white
+
+spaces="       "
+
+echo " black   red     green   yellow  blue    magenta cyan    white"
+echo " ------- ------- ------- ------  ------- ------- ------- -------"
+echo " $black  $red  $green  $yellow  $blue  $magenta  $cyan  $white"
+
+for _ in {1..4}; do
+	for color in $black $red $green $yellow $blue $magenta $cyan $white; do
+		printf " "
+		pastel paint "$color" --on "$color" --no-newline "$spaces"
+	done
+	printf '\n'
+done
+
+for _ in {1..4}; do
+	for color in $black_bright $red_bright $green_bright $yellow_bright $blue_bright $magenta_bright $cyan_bright $white_bright; do
+		printf " "
+		pastel paint "$color" --on "$color" --no-newline "$spaces"
+	done
+	printf '\n'
+done
+
+echo " $black_bright  $red_bright  $green_bright  $yellow_bright  $blue_bright  $magenta_bright  $cyan_bright  $white_bright"
+
+echo
+echo " black   fg                      blk_alt white                   bg      wht_alt"
+echo " ------- <------ ------- ------> ------- ------- <------ ------- ------> -------"
+
+gradient=$(printf "%s %s" "$(pastel gradient --number 5 $black $black_bright | pastel format hex)" "$(pastel gradient --number 5 $white $white_bright | pastel format hex)")
+
+for _ in {1..4}; do
+	for color in $gradient; do
+		printf " "
+		pastel paint "$color" --on "$color" --no-newline "$spaces"
+	done
+	printf '\n'
+done
+
+for color in $gradient; do
+	printf " %s " "${color#\#}"
+done
+printf '\n'
