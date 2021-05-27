@@ -10,4 +10,5 @@
 .hg
 .rgignore
 .svn
+scratchpad.*
 tags
