@@ -19,3 +19,7 @@ $character"""
 [directory]
 truncation_length = 4
 truncation_symbol = "…/"
+
+[character]
+success_symbol = "[▶](bold green)"
+error_symbol = "[●](bold red)"
