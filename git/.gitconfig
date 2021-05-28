@@ -40,11 +40,18 @@
 	untrackedCache = true
 [delta]
 	features = side-by-side line-numbers decorations
-	minus-style = syntax "#400000"
-	minus-emph-style = syntax "#700000"
-	plus-style = syntax "#004000"
-	plus-emph-style = syntax "#007000"
-	syntax-theme = base16-256
+	file-style = bold brightblue
+	hunk-header-decoration-style = brightcyan box
+	line-numbers-left-format = "{nm:^4} "
+	line-numbers-left-style = yellow
+	line-numbers-right-format = "│{np:^4} "
+	line-numbers-right-style = yellow
+	line-numbers-zero-style = white
+	minus-emph-style = syntax "#f3afa4"
+	minus-style = syntax "#f1d9d6"
+	plus-emph-style = syntax "#accda9"
+	plus-style = syntax "#d7e3d7"
+	syntax-theme = OneHalfLight
 [delta "decorations"]
 	commit-decoration-style = bold yellow box ul
 	file-decoration-style = none
