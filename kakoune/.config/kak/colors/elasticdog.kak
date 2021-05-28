@@ -58,7 +58,7 @@ evaluate-commands %sh{
 
     ## builtin
     echo "
-        face global Default ${base07},${base00}
+        face global Default ${base07},default
         face global PrimarySelection ${base06},${yellow_bright}+fg
         face global SecondarySelection ${base05},${base01}+fg
         face global PrimaryCursor ${base00},${blue_bright}+fg
@@ -77,8 +77,8 @@ evaluate-commands %sh{
         face global StatusCursor ${base01},${blue_bright}
         face global Prompt ${cyan_bright},${base01}
         face global BufferPadding ${base01},default
-        face global LineNumbers ${base03},${base00}
-        face global LineNumberCursor ${base04},${base00}+b
+        face global LineNumbers ${base03},default
+        face global LineNumberCursor ${base04},default+b
         face global MatchingChar default,${base01}+b
         face global Whitespace ${base01},default+f
     "
