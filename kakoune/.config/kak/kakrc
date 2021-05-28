@@ -8,7 +8,7 @@ set-option global grepcmd "rg --column --follow"
 set-option global tabstop 4
 set-option global ui_options ncurses_assistant=none
 
-colorscheme base16-material
+colorscheme elasticdog
 
 add-highlighter global/ show-matching
 add-highlighter global/ show-whitespaces -spc " "
@@ -16,7 +16,7 @@ add-highlighter global/trailing-whitespace regex "\h+$" 0:default,red
 
 # for everything except built-in read-only buffers
 hook global WinCreate ^[^*]+$ %{
-    add-highlighter window/ number-lines -hlcursor -relative
+    add-highlighter window/ number-lines -hlcursor -separator "  " -relative
     git show-diff
 }
 

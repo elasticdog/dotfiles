@@ -2,7 +2,7 @@ set ignore-case = smart-case
 set line-graphics = utf-8
 set tab-size = 4
 
-color cursor black green
+source ~/.config/tig/colorscheme.tigrc
 
 set blame-view-date = relative-compact
 set blame-view-author = abbreviated

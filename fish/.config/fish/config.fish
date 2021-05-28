@@ -37,7 +37,8 @@ set -x VISUAL kak
 set -x SKIM_ALT_C_COMMAND "fd --type d --follow --hidden --exclude .git/"
 set -x SKIM_CTRL_T_COMMAND "fd --follow --hidden --exclude .git/"
 set -x SKIM_DEFAULT_COMMAND "fd --type f --follow --hidden --exclude .git/"
-set -x SKIM_DEFAULT_OPTIONS "--bind='?:toggle-preview' --preview='bat --color always --style numbers {}' --preview-window='right:50%:hidden'"
+set -x SKIM_DEFAULT_OPTIONS "--bind='?:toggle-preview' --color light --preview='bat --color always --style numbers {}' --preview-window='right:50%:hidden'"
+set -x FZF_DEFAULT_OPTS "--color light"
 
 switch (uname)
 	case Darwin

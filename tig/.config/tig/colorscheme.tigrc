@@ -1,0 +1,3 @@
+# disable importing colors from git config
+# (breaks main-ref coloring, probably others)
+#set git-colors = no

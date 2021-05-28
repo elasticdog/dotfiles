@@ -5,11 +5,13 @@ readonly TEMP_FILE=$(mktemp)
 trap 'rm -f "$TEMP_FILE"' EXIT
 
 if [ -s "$kak_buflist" ]; then
-	sk "$@" <"$kak_buflist" >"$TEMP_FILE"
+	# sk --color light "$@" <"$kak_buflist" >"$TEMP_FILE"
+	fzf --color light "$@" <"$kak_buflist" >"$TEMP_FILE"
 	rm -f "$kak_buflist"
 	command="buffer"
 else
-	sk "$@" >"$TEMP_FILE"
+	# sk --color light "$@" >"$TEMP_FILE"
+	fd --type f --hidden --exclude /.git/ --color never | fzf --color light "$@" >"$TEMP_FILE"
 	command="edit"
 fi
 
