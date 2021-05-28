@@ -35,6 +35,10 @@ hook global WinSetOption filetype=cue %{
     set-option window formatcmd "cue fmt -"
 }
 
+hook global WinSetOption filetype=fish %{
+    set-option window formatcmd "fish_indent"
+}
+
 hook global WinSetOption filetype=git-(commit|rebase) %{
     set-option window autowrap_column 72
     autowrap-enable
@@ -50,25 +54,34 @@ hook global WinSetOption filetype=go %{
 }
 
 hook global WinSetOption filetype=json %{
-    set-option window formatcmd "prettier --parser json"
+    set-option window formatcmd "/usr/sbin/prettier --parser json"
+}
+
+hook global BufCreate .*[.](jsonnet) %{
+    set-option buffer filetype jsonnet
+}
+
+hook global WinSetOption filetype=jsonnet %{
+    set-option window formatcmd "/usr/sbin/jsonnetfmt --string-style d -"
+    hook buffer BufWritePre .* %{ format }
 }
 
 hook global WinSetOption filetype=markdown %{
-    set-option window formatcmd "prettier --parser markdown --prose-wrap always"
+    set-option window formatcmd "/usr/sbin/prettier --parser markdown --prose-wrap always"
 }
 
 hook global WinSetOption filetype=python %{
-    set-option window formatcmd "black -"
+    set-option window formatcmd "/usr/sbin/black -"
 }
 
 hook global WinSetOption filetype=rust %{
-    set-option window formatcmd "rustfmt"
+    set-option window formatcmd "/usr/sbin/rustfmt"
     hook buffer BufWritePre .* %{ format }
 }
 
 hook global WinSetOption filetype=sh %{
-    set-option window formatcmd "shfmt"
-    set-option window lintcmd "shellcheck --format=gcc"
+    set-option window formatcmd "/usr/sbin/shfmt -s"
+    set-option window lintcmd "/usr/sbin/shellcheck --external-sources --format=gcc"
     hook buffer BufWritePre .* %{ lint }
 }
 
@@ -77,12 +90,12 @@ hook global BufCreate .*[.](hcl) %{
 }
 
 hook global WinSetOption filetype=terraform %{
-    set-option window formatcmd "terraform fmt -"
+    set-option window formatcmd "/usr/sbin/terraform fmt -"
 }
 
 hook global WinSetOption filetype=yaml %{
-    set-option window formatcmd "prettier --parser yaml"
-    set-option window lintcmd "yamllint -f parsable"
+    set-option window formatcmd "/usr/sbin/prettier --parser yaml"
+    set-option window lintcmd "/usr/sbin/yamllint -f parsable"
     hook buffer BufWritePre .* %{ lint }
 }
 
