@@ -1,5 +1,7 @@
 set hidden on
+set icons on
 set incsearch on
+set promptfmt "\033[34;1m%d\033[0m\033[1m%f\033[0m"
 set ratios 1:2
 
 map , updir
