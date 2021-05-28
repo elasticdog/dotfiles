@@ -3,32 +3,33 @@
 # Slightly tweaked version of:
 #   https://github.com/zaiste/zaiste-emacs-theme
 
-background="f0f0f0"
-foreground="424242"
+# shellcheck disable=SC2034
+background="edeeef"
+foreground="393f46"
 
 black="1b2229"
-black_bright="a0a1a7" # dark gray
+bright_black="a0a1a7" # dark gray
 
 red="e45649"
-red_bright="dd8844" # orange
+bright_red="dd8844" # orange
 
 green="50a14f"
-green_bright="44b9b1"
+bright_green="44b9b1"
 
 yellow="c5a332"
-yellow_bright="c0d9f2" # baby blue
+bright_yellow="c0d9f2" # baby blue
 
 blue="275fe4"
-blue_bright="0098dd"
+bright_blue="0098dd"
 
 magenta="a626a4"
-magenta_bright="823ff1" # violet
+bright_magenta="823ff1" # violet
 
 cyan="005478"
-cyan_bright="0078ab"
+bright_cyan="0078ab"
 
 white="c6c7c7"        # light gray
-white_bright="fafbfc" # white
+bright_white="fafbfc" # white
 
 spaces="       "
 
@@ -37,38 +38,40 @@ echo " ------- ------- ------- ------  ------- ------- ------- -------"
 echo " $black  $red  $green  $yellow  $blue  $magenta  $cyan  $white"
 
 for _ in {1..4}; do
-	for color in $black $red $green $yellow $blue $magenta $cyan $white; do
-		printf " "
-		pastel paint "$color" --on "$color" --no-newline "$spaces"
-	done
-	printf '\n'
+    for color in $black $red $green $yellow $blue $magenta $cyan $white; do
+        printf " "
+        pastel paint "$color" --on "$color" --no-newline "$spaces"
+    done
+    printf '\n'
 done
 
 for _ in {1..4}; do
-	for color in $black_bright $red_bright $green_bright $yellow_bright $blue_bright $magenta_bright $cyan_bright $white_bright; do
-		printf " "
-		pastel paint "$color" --on "$color" --no-newline "$spaces"
-	done
-	printf '\n'
+    for color in $bright_black $bright_red $bright_green $bright_yellow $bright_blue $bright_magenta $bright_cyan $bright_white; do
+        printf " "
+        pastel paint "$color" --on "$color" --no-newline "$spaces"
+    done
+    printf '\n'
 done
 
-echo " $black_bright  $red_bright  $green_bright  $yellow_bright  $blue_bright  $magenta_bright  $cyan_bright  $white_bright"
+echo " $bright_black  $bright_red  $bright_green  $bright_yellow  $bright_blue  $bright_magenta  $bright_cyan  $bright_white"
 
 echo
-echo " black   fg                      blk_alt white                   bg      wht_alt"
+echo " black   fg                      brt_blk white                   bg      brt_wht"
 echo " ------- <------ ------- ------> ------- ------- <------ ------- ------> -------"
 
-gradient=$(printf "%s %s" "$(pastel gradient --number 5 $black $black_bright | pastel format hex)" "$(pastel gradient --number 5 $white $white_bright | pastel format hex)")
+dark_gradient=$(pastel gradient --number 5 $black $bright_black | pastel format hex)
+light_gradient=$(pastel gradient --number 5 $white $bright_white | pastel format hex)
+gradient=$(printf "%s %s" "${dark_gradient}" "${light_gradient}")
 
 for _ in {1..4}; do
-	for color in $gradient; do
-		printf " "
-		pastel paint "$color" --on "$color" --no-newline "$spaces"
-	done
-	printf '\n'
+    for color in $gradient; do
+        printf " "
+        pastel paint "$color" --on "$color" --no-newline "$spaces"
+    done
+    printf '\n'
 done
 
 for color in $gradient; do
-	printf " %s " "${color#\#}"
+    printf " %s " "${color#\#}"
 done
 printf '\n'
