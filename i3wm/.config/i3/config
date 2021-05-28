@@ -17,7 +17,7 @@ gaps inner 25
 smart_gaps on
 
 exec --no-startup-id feh --bg-scale ~/pics/backgrounds/small-memory-lp-1920x1080.jpg
-exec --no-startup-id picom
+#exec --no-startup-id picom
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
