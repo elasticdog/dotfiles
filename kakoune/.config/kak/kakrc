@@ -6,7 +6,7 @@ set-option global autoreload true
 set-option global autowrap_column 80
 set-option global grepcmd "rg --column --follow"
 set-option global tabstop 4
-set-option global ui_options ncurses_assistant=none
+set-option global ui_options terminal_assistant=none
 
 colorscheme elasticdog
 
