@@ -32,7 +32,8 @@ hook global BufNewFile .* %{ editorconfig-load }
 # ───────────────────────
 
 hook global WinSetOption filetype=cue %{
-    set-option window formatcmd "cue fmt -"
+    set-option window formatcmd "cue fmt --simplify -"
+    set-option window lintcmd "cue vet -"
 }
 
 hook global WinSetOption filetype=fish %{
@@ -97,6 +98,10 @@ hook global WinSetOption filetype=yaml %{
     set-option window formatcmd "/usr/sbin/prettier --parser yaml"
     set-option window lintcmd "/usr/sbin/yamllint -f parsable"
     hook buffer BufWritePre .* %{ lint }
+}
+
+hook global WinSetOption filetype=zig %{
+    set-option window formatcmd "/usr/sbin/zig fmt --stdin"
 }
 
 hook global -always BufOpenFifo "\*grep\*" %{ map global normal "'" ":grep-next-match<ret>" }
