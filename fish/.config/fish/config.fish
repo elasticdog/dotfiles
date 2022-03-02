@@ -22,6 +22,8 @@ test -d /usr/local/sbin; and set -a PATH /usr/local/sbin
 test -d /usr/local/bin; and set -a PATH /usr/local/bin
 test -d /usr/sbin; and set -a PATH /usr/sbin
 test -d /usr/bin; and set -a PATH /usr/bin
+# /etc/profile.d/perlbin.sh
+test -d /usr/bin/core_perl; and set -a PATH /usr/bin/core_perl
 
 set -x AWS_PROFILE default
 set -x EDITOR kak
@@ -29,6 +31,7 @@ set -x GIT_EDITOR kak
 set -x GOPATH $HOME/src/go
 set -x OBJC_DISABLE_INITIALIZE_FORK_SAFETY YES
 set -x RIPGREP_CONFIG_PATH $HOME/.config/ripgrep/ripgrep.conf
+set -x JULIA_NUM_THREADS 4
 set -x SUDO_EDITOR kak
 set -x VAULT_ADDR https://secrets.elastic.co:8200
 set -x VISUAL kak
@@ -60,9 +63,9 @@ abbr -a gb "git branch"
 abbr -a gbd "git branch -d"
 abbr -a gbD "git branch -D"
 abbr -a gci "git commit"
-abbr -a gco "git checkout"
-abbr -a gcob "git checkout -b"
-abbr -a gcom "git checkout master"
+abbr -a gco "git switch"
+abbr -a gcob "git switch -c"
+abbr -a gcom "git switch master"
 abbr -a gd "git diff"
 abbr -a gdiff "git diff --no-index --color --color-words"
 abbr -a gp "git push"
@@ -70,11 +73,12 @@ abbr -a gpf "git pull --ff-only"
 abbr -a gpr "git pull --rebase"
 abbr -a gr "git reset"
 abbr -a graph "dot -Gdpi=180 -Tpng | icat"
-abbr -a grb "git rebase"
+abbr -a grb "git rebase --rebase-merges @{u}"
 abbr -a grbi "git rebase --interactive --autosquash"
 abbr -a gs "git status"
 abbr -a gss "git status --short --branch"
 abbr -a gst "git diff --cached"
+abbr -a gup "git fetch --all --prune; git merge --ff-only @{u}"
 abbr -a k "kubectl"
 abbr -a kk "kitty +kitten"
 abbr -a ks "kitty @ send-text --match"

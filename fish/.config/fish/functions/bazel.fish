@@ -1,5 +1,5 @@
 function bazel
 
-	command bazelisk $argv
+    command --query bazelisk; and bazelisk $argv
 
 end
