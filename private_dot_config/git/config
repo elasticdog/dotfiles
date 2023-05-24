@@ -1,0 +1,14 @@
+[commit]
+	verbose = true
+[core]
+	excludesFile = ~/.config/git/ignore
+[init]
+	defaultBranch = main
+[push]
+	default = current
+[remote]
+	pushdefault = origin
+[user]
+	name = Aaron Bull Schaefer
+	email = aaron@elasticdog.com
+	useConfigOnly = true
