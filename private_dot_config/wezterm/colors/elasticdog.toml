@@ -1,0 +1,40 @@
+[colors]
+ansi = [
+  "#1b2229", # black
+  "#e45649", # red
+  "#50a14f", # green
+  "#c5a332", # yellow
+  "#275fe4", # blue
+  "#a626a4", # magenta
+  "#005478", # cyan
+  "#c6c7c7", # white (light gray)
+]
+brights = [
+  "#a0a1a7", # bright black (dark gray)
+  "#dd8844", # bright red (orange)
+  "#44b9b1", # bright green (turquoise)
+  "#c0d9f2", # bright yellow (baby blue)
+  "#0098dd", # bright blue
+  "#823ff1", # bright magenta (violet)
+  "#0078ab", # bright cyan
+  "#fafbfc", # bright white (white)
+]
+
+background = "#edeeef"
+foreground = "#393f46"
+
+cursor_bg = "#0098dd"
+cursor_border = "#0098dd"
+cursor_fg = "#edeeef"
+
+selection_bg = "#c0d9f2"
+selection_fg = "#595e64"
+
+quick_select_label_bg.Color = "#0078ab"
+quick_select_label_fg.Color = "#edeeef"
+quick_select_match_bg.Color = "#c0d9f2"
+quick_select_match_fg.Color = "#595e64"
+
+[metadata]
+name = "ElasticDog"
+origin_url = "https://github.com/elasticdog/elasticdog-color-scheme"
