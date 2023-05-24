@@ -19,8 +19,8 @@ log = "builtin_log_comfortable"
 show = "builtin_log_detailed"
 
 [user]
-name = "Aaron Bull Schaefer"
-email = "aaron@elasticdog.com"
+name = {{ .full_name | quote }}
+email = {{ .email | quote }}
 
 [ui]
 default-command = "log"
