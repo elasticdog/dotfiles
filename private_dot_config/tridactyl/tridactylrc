@@ -1,0 +1,12 @@
+# start fresh with the upstream default settings
+sanitize tridactyllocal tridactylsync
+
+blacklistadd ^https://mail.google.com
+
+colorscheme shydactyl
+
+set newtab about:blank
+set smoothscroll true
+
+unbindurl ^https://duckduckgo.com j
+unbindurl ^https://duckduckgo.com k
