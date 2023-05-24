@@ -1,2 +1,9 @@
 README.md
 archive/
+
+{{ if ne .chezmoi.os "darwin" }}
+Library/Application Support/jj/
+{{ end }}
+{{ if ne .chezmoi.os "linux" }}
+.config/jj/
+{{ end }}

@@ -1,0 +1,27 @@
+[aliases]
+l = ["log", "-r", "all() ~ EMPTY_MERGES"]
+
+[revsets]
+# having root keeps graphs with merge commits less complicated
+log = "DEFAULT | root"
+
+[revset-aliases]
+EMPTY_MERGES = 'merges() & empty()'
+MINE = 'author("aaron@elasticdog.com")'
+MY_HEADS = "((visible_heads() & :MINE & ~empty()) | @)"
+MAIN = '(present("main") | present("master"))'
+DEFAULT = "MAIN | (:MY_HEADS~:MAIN) | (:MY_HEADS~:MAIN)-"
+
+[templates]
+log = "builtin_log_comfortable"
+
+[template-aliases]
+show = "builtin_log_detailed"
+
+[user]
+name = "Aaron Bull Schaefer"
+email = "aaron@elasticdog.com"
+
+[ui]
+default-command = "log"
+diff-editor = "meld"
