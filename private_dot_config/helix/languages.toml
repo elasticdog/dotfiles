@@ -1,0 +1,52 @@
+[[language]]
+name = "bash"
+indent = { tab-width = 4, unit = "\t" }
+formatter = { command = "shfmt", args = ["--simplify"] }
+auto-format = true
+
+[[language]]
+name = "css"
+formatter = { command = "prettier", args = ["--parser", "css"] }
+auto-format = true
+
+[[language]]
+name = "cue"
+formatter = { command = "cue", args = ["fmt", "--simplify", "-"] }
+
+[[grammar]]
+name = "cue"
+source = { git = "https://github.com/eonpatapon/tree-sitter-cue", rev = "27a9bd6ee874feb34e4382ca06a0d1f4e5eb5e58" }
+
+[[language]]
+name = "fish"
+formatter = { command = "fish_indent" }
+auto-format = true
+
+[[language]]
+name = "jj-description"
+scope = "source.jjdescription"
+comment-token = "JJ:"
+file-types = ["jjdescription"]
+roots = []
+indent = { tab-width = 2, unit = "  " }
+rulers = [50, 72]
+text-width = 72
+
+[[language]]
+name = "json"
+formatter = { command = "prettier", args = ["--parser", "json"] }
+
+[[language]]
+name = "markdown"
+formatter = { command = "prettier", args = ["--parser", "markdown", "--prose-wrap", "always"] }
+
+[[language]]
+name = "rust"
+config.rust-analyzer.check.command = "clippy"
+config.rust-analyzer.check.extraArgs = ["--locked"]
+config.rust-analyzer.rustfmt.extraArgs = ["+nightly"]
+
+[[language]]
+name = "yaml"
+formatter = { command = "prettier", args = ["--parser", "yaml"] }
+auto-format = true

@@ -1,0 +1,216 @@
+# Author : Aaron Bull Schaefer <aaron@elasticdog.com>
+# Source : https://github.com/elasticdog/elasticdog-color-scheme
+
+### SYNTAX HIGHLIGHTING
+
+"attribute" = "cyan"
+
+"type" = "light-red"
+"type.builtin" = "light-red"
+"type.enum" = "light-red"
+"type.enum.variant" = "light-red"
+
+"constructor" = "cyan"
+
+"constant" = "red"
+"constant.builtin" = { fg = "red", modifiers = ["bold"] }
+"constant.builtin.boolean" = "red"
+"constant.character" = "red"
+"constant.character.escape" = "red"
+"constant.numeric" = "red"
+"constant.numeric.integer" = "red"
+"constant.numeric.float" = "red"
+
+"string" = "green"
+"string.regexp" = "light-green"
+"string.special" = "light-green"
+"string.special.path" = "light-green"
+"string.special.url" = "light-green"
+"string.special.symbol" = "light-green"
+
+"comment" = { fg = "base04", modifiers = ["italic"] }
+"comment.line" = { fg = "base04", modifiers = ["italic"] }
+"comment.block" = { fg = "base04", modifiers = ["italic"] }
+"comment.block.documentation" = { fg = "base04", modifiers = ["italic"] }
+
+"variable" = "base07"
+"variable.builtin" = { fg = "base07", modifiers = ["bold"] }
+"variable.parameter" = "base07"
+"variable.other" = "base07"
+"variable.other.member" = "base07"
+
+"label" = "light-red"
+
+"punctuation" = "base04"
+"punctuation.delimiter" = "base04"
+"punctuation.bracket" = "base05"
+"punctuation.special" = "base04"
+
+"keyword" = "magenta"
+"keyword.control" = "magenta"
+"keyword.control.conditional" = "magenta"
+"keyword.control.repeat" = "magenta"
+"keyword.control.import" = { fg = "magenta", modifiers = ["bold"] }
+"keyword.control.return" = "magenta"
+"keyword.control.exception" = "magenta"
+"keyword.directive" = "magenta"
+"keyword.function" = "magenta"
+"keyword.storage" = "magenta"
+"keyword.storage.type" = "magenta"
+"keyword.storage.modifier" = "magenta"
+
+"operator" = "light-blue"
+
+"function" = "light-cyan"
+"function.builtin" = "light-cyan"
+"function.method" = "light-cyan"
+"function.macro" = "light-cyan"
+"function.special" = "light-cyan"
+
+"tag" = "light-red"
+"tag.builtin" = { fg = "light-red", modifiers = ["bold"] }
+
+"namespace" = "blue"
+
+"special" = { fg = "yellow", modifiers = ["bold"] }
+
+"markup.heading" = { fg = "magenta", modifiers = ["bold"] }
+"markup.heading.marker" = { fg = "magenta", modifiers = ["bold"] }
+"markup.heading.1" = { fg = "magenta", modifiers = ["bold"] }
+"markup.heading.2" = { fg = "magenta", modifiers = ["bold"] }
+"markup.heading.3" = { fg = "magenta", modifiers = ["bold"] }
+"markup.heading.4" = { fg = "magenta", modifiers = ["bold"] }
+"markup.heading.5" = { fg = "magenta", modifiers = ["bold"] }
+"markup.heading.6" = { fg = "magenta", modifiers = ["bold"] }
+"markup.list" = { modifiers = ["bold"] }
+"markup.list.unnumbered" = { modifiers = ["bold"] }
+"markup.list.numbered" = { modifiers = ["bold"] }
+"markup.bold" = { modifiers = ["bold"] }
+"markup.italic" = { modifiers = ["italic"] }
+"markup.strikethrough" = { modifiers = ["crossed_out"] }
+"markup.link" = "light-magenta"
+"markup.link.url" = { fg = "blue", modifiers = ["underlined"] }
+"markup.link.label" = "red"
+"markup.link.text" = "light-blue"
+"markup.raw" = "green"
+"markup.raw.inline" = "green"
+"markup.raw.block" = "green"
+
+"diff" = "red"
+"diff.plus" = "green"
+"diff.minus" = "red"
+"diff.delta" = "magenta"
+"diff.delta.moved" = "magenta"
+
+### INTERFACE
+
+"markup.normal.completion" = { bg = "red" }     # TODO: unused scope?
+"markup.normal.hover" = { bg = "red" }          # TODO: unused scope?
+"markup.heading.completion" = { bg = "red" }    # TODO: unused scope?
+"markup.heading.hover" = { bg = "red" }         # TODO: unused scope?
+"markup.raw.inline.completion" = { bg = "red" } # TODO: unused scope?
+"markup.raw.inline.hover" = { bg = "red" }      # TODO: unused scope?
+
+"ui.background" = { bg = "base00" }
+"ui.background.separator" = "cyan"
+
+"ui.cursor" = { fg = "base01", bg = "base04" }
+"ui.cursor.normal" = { fg = "base01", bg = "base04" }
+"ui.cursor.insert" = { fg = "base01", bg = "base04" }
+"ui.cursor.select" = { fg = "base01", bg = "base04" }
+"ui.cursor.match" = { fg = "base06", bg = "base01", modifiers = ["bold"] }
+"ui.cursor.primary" = { fg = "base00", bg = "light-blue" }
+"ui.cursor.primary.normal" = { fg = "base00", bg = "light-blue" }
+"ui.cursor.primary.insert" = { fg = "base00", bg = "light-blue" }
+"ui.cursor.primary.select" = { fg = "base00", bg = "light-blue" }
+
+"ui.gutter" = "base07"
+"ui.gutter.selected" = { modifiers = ["bold"] }
+
+"ui.linenr" = "base02"
+"ui.linenr.selected" = { fg = "base04", modifiers = ["bold"] }
+
+"ui.statusline" = { fg = "base05", bg = "base01" }
+"ui.statusline.inactive" = { fg = "base04", bg = "base00" }
+"ui.statusline.normal" = { fg = "base00", bg = "base03" }
+"ui.statusline.insert" = { fg = "base00", bg = "green" }
+"ui.statusline.select" = { fg = "base00", bg = "light-cyan" }
+"ui.statusline.separator" = "base03"
+
+"ui.popup" = { bg = "base01" }
+"ui.popup.info" = "base06"
+
+"ui.window" = "base04"
+
+"ui.help" = { fg = "base05", bg = "base01" }
+
+"ui.text" = "base07"
+"ui.text.focus" = { fg = "base00", bg = "light-cyan" }
+"ui.text.inactive" = "base04"
+"ui.text.info" = "light-cyan"
+
+"ui.virtual" = "base02"
+"ui.virtual.ruler" = { bg = "base01" }
+"ui.virtual.whitespace" = "base02"
+"ui.virtual.indent-guide" = "base01"
+"ui.virtual.inlay-hint" = "base02"
+"ui.virtual.inlay-hint.parameter" = "base02"
+"ui.virtual.inlay-hint.type" = "base02"
+"ui.virtual.wrap" = "base02"
+
+"ui.menu" = { fg = "base05", bg = "base01" }
+"ui.menu.selected" = { fg = "base00", bg = "light-cyan" }
+"ui.menu.scroll" = { fg = "base05", bg = "base02" }
+
+"ui.selection" = { fg = "base05", bg = "base02" }
+"ui.selection.primary" = { fg = "base06", bg = "light-yellow" }
+
+"ui.highlight" = { fg = "base06", bg = "light-yellow" }
+
+"ui.cursorline.primary" = { bg = "base01" }
+"ui.cursorline.secondary" = { bg = "base00" }
+
+"ui.cursorcolumn.primary" = { bg = "base01" }
+"ui.cursorcolumn.secondary" = { bg = "base00" }
+
+"warning" = "yellow"
+"error" = "red"
+"info" = "magenta"
+"hint" = "blue"
+
+"diagnostic" = { underline.style = "curl" }
+"diagnostic.hint" = { underline = { color = "blue", style = "curl" } }
+"diagnostic.info" = { underline = { color = "magenta", style = "curl" } }
+"diagnostic.warning" = { underline = { color = "yellow", style = "curl" } }
+"diagnostic.error" = { underline = { color = "red", style = "curl" } }
+
+### NAMED COLORS
+
+[palette]
+black = "#1b2229"
+red = "#e45649"
+green = "#50a14f"
+yellow = "#c5a332"
+blue = "#275fe4"
+magenta = "#a626a4"
+cyan = "#005478"
+gray = "#a0a1a7"          # dark gray
+light-red = "#dd8844"     # orange
+light-green = "#44b9b1"   # turquoise
+light-yellow = "#c0d9f2"  # baby blue
+light-blue = "#0098dd"
+light-magenta = "#823ff1" # violet
+light-cyan = "#0078ab"
+light-gray = "#c6c7c7"
+white = "#fafbfc"
+
+# ------------------------ white
+base00 = "#edeeef" # ----  background
+base01 = "#e0e1e1" # ---
+base02 = "#d3d4d4" # --
+base03 = "#c6c7c7" # -     light gray
+base04 = "#a0a1a7" # +     dark gray
+base05 = "#7c7e85" # ++
+base06 = "#595e64" # +++
+base07 = "#393f46" # ++++  foreground
+# ++++++++++++++++++++++++ black

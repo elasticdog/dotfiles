@@ -1,0 +1,30 @@
+theme = "elasticdog"
+
+[editor]
+auto-pairs = false
+color-modes = true
+idle-timeout = 200
+true-color = true  # required for blink shell
+
+[editor.statusline]
+right = [
+  "diagnostics",
+  "selections",
+  "separator",
+  "position",
+  "position-percentage",
+  "spacer",
+  "separator",
+  "file-encoding",
+  "file-type",
+]
+mode.normal = "NORMAL"
+mode.insert = "INSERT"
+mode.select = "SELECT"
+
+[editor.file-picker]
+hidden = false
+
+[editor.indent-guides]
+render = true
+skip-levels = 1
