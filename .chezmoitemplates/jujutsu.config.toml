@@ -9,9 +9,9 @@ log = "DEFAULT | root"
 [revset-aliases]
 EMPTY_MERGES = 'merges() & empty()'
 MINE = 'author("aaron@elasticdog.com")'
-MY_HEADS = "((visible_heads() & :MINE & ~empty()) | @)"
+MY_HEADS = "((visible_heads() & MINE) | @)"
 MAIN = '(present("main") | present("master"))'
-DEFAULT = "MAIN | (:MY_HEADS~:MAIN) | (:MY_HEADS~:MAIN)-"
+DEFAULT = "MY_HEADS | MAIN | (:MY_HEADS~:MAIN) | (:MY_HEADS~:MAIN)-"
 
 [templates]
 log = "builtin_log_comfortable"
