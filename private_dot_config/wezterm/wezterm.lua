@@ -5,7 +5,10 @@ return {
 
 	front_end = "WebGpu",
 
+	-- font = wezterm.font("Fira Code"),
+	-- font = wezterm.font({ family = "Iosevka Term", harfbuzz_features = { "ss04", "cv82" }, weight = "Medium" }),
 	font = wezterm.font("JetBrains Mono", { weight = "Medium" }),
+	-- font = wezterm.font("Victor Mono", { weight = "Medium" }),
 	font_size = 17.0,
 
 	font_rules = {
@@ -38,4 +41,11 @@ return {
 			}),
 		},
 	},
+
+	-- window_background_image = wezterm.home_dir .. "/.config/wezterm/terminal-wallpaper.jpg",
+	-- window_background_image_hsb = {
+	-- 	brightness = 1.1,
+	-- 	saturation = 0.2,
+	-- },
+	window_background_opacity = 0.95,
 }

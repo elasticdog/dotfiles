@@ -111,7 +111,7 @@
 "markup.raw.inline.completion" = { bg = "red" } # TODO: unused scope?
 "markup.raw.inline.hover" = { bg = "red" }      # TODO: unused scope?
 
-"ui.background" = { bg = "base00" }
+#"ui.background" = { bg = "base00" }
 "ui.background.separator" = "cyan"
 
 "ui.cursor" = { fg = "base01", bg = "base04" }
