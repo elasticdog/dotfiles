@@ -1,5 +1,6 @@
 [aliases]
 l = ["log", "-r", "all() ~ EMPTY_MERGES"]
+ll = ["log", "-r", "all() ~ EMPTY_MERGES", "-T", "builtin_log_detailed"]
 
 [revsets]
 # having root keeps graphs with merge commits less complicated
