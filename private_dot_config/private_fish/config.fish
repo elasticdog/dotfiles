@@ -62,6 +62,11 @@ if status is-interactive
             --preview='bat -n --color=always {} 2> /dev/null || tree -C --dirsfirst {} | head -128'"
     end
 
+    # when installed, configure homebrew
+    if type -q brew; and test -f $HOME/.config/homebrew/Brewfile
+        set -x HOMEBREW_BUNDLE_FILE $HOME/.config/homebrew/Brewfile
+    end
+
     # when installed, configure ripgrep
     if type -q rg; and test -f $HOME/.config/ripgrep/ripgreprc
         set -x RIPGREP_CONFIG_PATH $HOME/.config/ripgrep/ripgreprc
