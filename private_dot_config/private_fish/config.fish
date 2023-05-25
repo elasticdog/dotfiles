@@ -73,6 +73,7 @@ if status is-interactive
     end
 
     # add auto-expanding abbreviations
+    abbr -a cz chezmoi
     abbr -a tree "tree --dirsfirst"
     abbr -a x "cargo xtask"
 end
