@@ -13,10 +13,6 @@ auto-format = true
 name = "cue"
 formatter = { command = "cue", args = ["fmt", "--simplify", "-"] }
 
-[[grammar]]
-name = "cue"
-source = { git = "https://github.com/eonpatapon/tree-sitter-cue", rev = "27a9bd6ee874feb34e4382ca06a0d1f4e5eb5e58" }
-
 [[language]]
 name = "fish"
 formatter = { command = "fish_indent" }
@@ -38,15 +34,25 @@ formatter = { command = "prettier", args = ["--parser", "json"] }
 
 [[language]]
 name = "markdown"
-formatter = { command = "prettier", args = ["--parser", "markdown", "--prose-wrap", "always"] }
+formatter = { command = "prettier", args = [
+  "--parser",
+  "markdown",
+  "--prose-wrap",
+  "always",
+] }
 
 [[language]]
-name = "rust"
-config.rust-analyzer.check.command = "clippy"
-config.rust-analyzer.check.extraArgs = ["--locked"]
-config.rust-analyzer.rustfmt.extraArgs = ["+nightly"]
+name = "toml"
+formatter = { command = "taplo", args = ["format", "-"] }
 
 [[language]]
 name = "yaml"
 formatter = { command = "prettier", args = ["--parser", "yaml"] }
 auto-format = true
+
+### LANGUAGE SERVERS
+
+[[language-server.rust-analyzer.config]]
+check.command = "clippy"
+check.extraArgs = ["--locked"]
+rustfmt.extraArgs = ["+nightly"]
