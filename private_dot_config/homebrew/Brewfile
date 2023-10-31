@@ -40,7 +40,6 @@ cask "font-iosevka"
 cask "font-jetbrains-mono"
 cask "font-victor-mono"
 cask "google-cloud-sdk"
-cask "meld"
 cask "musescore"
 cask "wezterm"
 

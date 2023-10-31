@@ -3,15 +3,13 @@ l = ["log", "-r", "all() ~ EMPTY_MERGES"]
 ll = ["log", "-r", "all() ~ EMPTY_MERGES", "-T", "builtin_log_detailed"]
 
 [revsets]
-# having root keeps graphs with merge commits less complicated
-log = "DEFAULT | root"
+log = "DEFAULT"
 
 [revset-aliases]
 EMPTY_MERGES = 'merges() & empty()'
 MINE = 'author("aaron@elasticdog.com")'
 MY_HEADS = "((visible_heads() & MINE) | @)"
-MAIN = '(present("main") | present("master"))'
-DEFAULT = "MY_HEADS | MAIN | (:MY_HEADS~:MAIN) | (:MY_HEADS~:MAIN)-"
+DEFAULT = "MY_HEADS | trunk() | (:MY_HEADS~:trunk()) | (:MY_HEADS~:trunk())-"
 
 [templates]
 log = "builtin_log_comfortable"
@@ -25,4 +23,3 @@ email = {{ .email | quote }}
 
 [ui]
 default-command = "log"
-diff-editor = "meld"
