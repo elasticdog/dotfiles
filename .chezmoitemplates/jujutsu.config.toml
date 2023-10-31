@@ -23,3 +23,6 @@ email = {{ .email | quote }}
 
 [ui]
 default-command = "log"
+
+[snapshot]
+max-new-file-size = "2MiB"

@@ -5,6 +5,7 @@ set fish_greeting
 set --erase --universal fish_user_paths
 test -d /opt/homebrew/bin; and fish_add_path /opt/homebrew/bin
 test -d $HOME/.cargo/bin; and fish_add_path $HOME/.cargo/bin
+test -d $HOME/.juliaup/bin; and fish_add_path $HOME/.juliaup/bin
 test -d $HOME/.local/bin; and fish_add_path $HOME/.local/bin
 test -d $HOME/bin; and fish_add_path $HOME/bin
 
