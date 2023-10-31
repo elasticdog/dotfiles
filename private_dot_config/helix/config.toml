@@ -1,7 +1,6 @@
 theme = "elasticdog"
 
 [editor]
-auto-pairs = false
 color-modes = true
 idle-timeout = 200
 true-color = true  # required for blink shell
