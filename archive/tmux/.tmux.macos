@@ -1,3 +1,0 @@
-# fix native clipboard copy/paste on macOS
-set -g default-shell $SHELL
-set -g default-command "reattach-to-user-namespace -l ${SHELL}"

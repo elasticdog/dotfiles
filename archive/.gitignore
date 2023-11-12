@@ -1,8 +1,0 @@
-.netrwhist
-/kakoune/.config/kak/plugins/
-/kakoune/.config/kak/kakrc.local
-/karabiner/.config/karabiner/automatic_backups/
-/neovim/.config/nvim/plugged/
-plug.vim.old
-ssh/.ssh/config.d/work
-tags

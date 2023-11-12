@@ -1,2 +1,0 @@
-#!/bin/sh
-exec /usr/bin/X -nolisten tcp -nolisten local -ardelay 200 -arinterval 20 -keeptty "$@" vt$XDG_VTNR > $HOME/.local/share/xorg/Xorg.session.log 2>&1
