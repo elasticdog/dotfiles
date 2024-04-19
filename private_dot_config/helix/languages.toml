@@ -33,6 +33,13 @@ name = "json"
 formatter = { command = "prettier", args = ["--parser", "json"] }
 
 [[language]]
+name = "lilypond"
+scope = "source.lilypond"
+file-types = ["ly"]
+comment-tokens = ["%"]
+block-comment-tokens = { start = "%{", end = "%}" }
+
+[[language]]
 name = "markdown"
 formatter = { command = "prettier", args = [
   "--parser",
@@ -49,6 +56,10 @@ formatter = { command = "taplo", args = ["format", "-"] }
 name = "yaml"
 formatter = { command = "prettier", args = ["--parser", "yaml"] }
 auto-format = true
+
+[[language]]
+name = "zig"
+rulers = [101]
 
 ### LANGUAGE SERVERS
 
