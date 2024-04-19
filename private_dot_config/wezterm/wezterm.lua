@@ -1,7 +1,7 @@
 local wezterm = require("wezterm")
 
 return {
-	color_scheme = "ElasticDog",
+	color_scheme = "nightfox",
 
 	front_end = "WebGpu",
 
