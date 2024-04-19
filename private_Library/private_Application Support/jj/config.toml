@@ -9,7 +9,7 @@ log = "DEFAULT"
 EMPTY_MERGES = 'merges() & empty()'
 MINE = 'author("aaron@elasticdog.com")'
 MY_HEADS = "((visible_heads() & MINE) | @)"
-DEFAULT = "MY_HEADS | trunk() | (:MY_HEADS~:trunk()) | (:MY_HEADS~:trunk())-"
+DEFAULT = "MY_HEADS | trunk() | (::MY_HEADS~::trunk()) | (::MY_HEADS~::trunk())-"
 
 [templates]
 log = "builtin_log_comfortable"
@@ -18,8 +18,8 @@ log = "builtin_log_comfortable"
 show = "builtin_log_detailed"
 
 [user]
-name = {{ .full_name | quote }}
-email = {{ .email | quote }}
+name = "Aaron Bull Schaefer"
+email = "aaron@elasticdog.com"
 
 [ui]
 default-command = "log"
