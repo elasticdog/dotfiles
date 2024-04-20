@@ -9,7 +9,7 @@ return {
 	-- font = wezterm.font({ family = "Iosevka Term", harfbuzz_features = { "ss04", "cv82" }, weight = "Medium" }),
 	font = wezterm.font("JetBrains Mono", { weight = "Medium" }),
 	-- font = wezterm.font("Victor Mono", { weight = "Medium" }),
-	font_size = 17.0,
+	font_size = 18.0,
 
 	font_rules = {
 		{
