@@ -14,7 +14,7 @@ function fish_prompt --description 'Write out the prompt'
     set -q fish_prompt_pwd_dir_length
     or set -lx fish_prompt_pwd_dir_length 0
 
-    # Color the prompt differently when we're root
+    # Color the prompt differently when we're root.
     set -l color_cwd $fish_color_cwd
     set -l suffix '❯'
     if functions -q fish_is_root_user; and fish_is_root_user
@@ -22,6 +22,11 @@ function fish_prompt --description 'Write out the prompt'
             set color_cwd $fish_color_cwd_root
         end
         set suffix '#'
+    end
+
+    # Display duration of previous command if it took over 5 seconds.
+    if test $CMD_DURATION -gt (math "1000 * 5")
+        set duration (set_color yellow)"⧗ "(humantime $CMD_DURATION)
     end
 
     # Write pipestatus
@@ -36,9 +41,9 @@ function fish_prompt --description 'Write out the prompt'
     set -l statusb_color (set_color $bold_flag $fish_color_status)
     set -l prompt_status (__fish_print_pipestatus " " "" "|" "$status_color" "$statusb_color" $last_pipestatus)
 
-    echo -s (set_color $color_cwd) (prompt_pwd) $normal (fish_git_prompt " on$vcs_color  %s") $normal " "$prompt_status
+    echo -s (set_color $color_cwd) (prompt_pwd) $normal (fish_git_prompt " on$vcs_color  %s") $normal " "$duration " "$prompt_status
     echo -n -s $suffix_color $suffix " "
 
-    # Add a blank line after execution output before the next prompt
+    # Add a blank line after execution output before the next prompt.
     source $HOME/.config/fish/functions/postexec_newline.fish
 end
