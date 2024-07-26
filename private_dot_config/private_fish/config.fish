@@ -32,13 +32,6 @@ if status is-interactive
 
         set -x FZF_DEFAULT_COMMAND "fd --type f --hidden --follow --exclude .git/ --exclude .jj/"
         set -x FZF_DEFAULT_OPTS "
-            --color=fg:#7c7e85,fg+:#d3d4d4
-            --color=bg:#edeeef,bg+:#0078ab
-            --color=hl:#393f46:bold:underline,hl+:#fafbfc:bold:underline
-            --color=gutter:#d3d4d4,border:#595e64
-            --color=info:#c5a332,prompt:#e45649
-            --color=pointer:#c0d9f2,marker:#fafbfc:bold
-            --color=spinner:#dd8844,header:#a626a4
             --exit-0
             --info=inline
             --margin=1,0,0,0"
