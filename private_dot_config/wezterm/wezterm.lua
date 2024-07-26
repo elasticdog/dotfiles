@@ -47,5 +47,5 @@ return {
 	-- 	brightness = 1.1,
 	-- 	saturation = 0.2,
 	-- },
-	window_background_opacity = 0.95,
+	window_background_opacity = 0.85,
 }

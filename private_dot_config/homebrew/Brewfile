@@ -47,6 +47,7 @@ cask "font-victor-mono"
 cask "losslesscut"
 cask "secretive"
 cask "transcribe"
+cask "utm"
 cask "wezterm"
 
 # These casks can be installed, but not upgraded by brew (they update themselves)
