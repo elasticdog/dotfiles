@@ -47,7 +47,7 @@ if status is-interactive
         set -x FZF_ALT_C_COMMAND "fd --type d --hidden --follow --exclude .git/ --exclude .jj/"
         set -x FZF_ALT_C_OPTS "
             --bind='?:toggle-preview'
-            --preview='tree --dirsfirst {} | head -128'"
+            --preview='tree --dirsfirst --gitignore {} | head -128'"
 
         # CTRL+R = shell history
         set -x FZF_CTRL_R_OPTS "
@@ -60,7 +60,7 @@ if status is-interactive
         set -x FZF_CTRL_T_OPTS "
             --bind='?:toggle-preview'
             --height=80%
-            --preview='bat -n --color=always {} 2> /dev/null || tree -C --dirsfirst {} | head -128'"
+            --preview='bat -n --color=always {} 2> /dev/null || tree -C --dirsfirst --gitignore {} | head -128'"
     end
 
     # when installed, configure homebrew
@@ -73,8 +73,13 @@ if status is-interactive
         set -x RIPGREP_CONFIG_PATH $HOME/.config/ripgrep/ripgreprc
     end
 
+    # when installed, use secretive for ssh-agent auth
+    if test -d $HOME/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/
+        set -x SSH_AUTH_SOCK /Users/abs/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
+    end
+
     # add auto-expanding abbreviations
     abbr -a cz chezmoi
-    abbr -a tree "tree --dirsfirst"
+    abbr -a tree "tree --dirsfirst --gitignore"
     abbr -a x "cargo xtask"
 end
