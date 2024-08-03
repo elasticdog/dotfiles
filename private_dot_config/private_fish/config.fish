@@ -66,11 +66,6 @@ if status is-interactive
         set -x RIPGREP_CONFIG_PATH $HOME/.config/ripgrep/ripgreprc
     end
 
-    # when installed, use secretive for ssh-agent auth
-    if test -d $HOME/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/
-        set -x SSH_AUTH_SOCK /Users/abs/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
-    end
-
     # add auto-expanding abbreviations
     abbr -a cz chezmoi
     abbr -a tree "tree --dirsfirst --gitignore"
