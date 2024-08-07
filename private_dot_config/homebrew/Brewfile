@@ -2,6 +2,7 @@ tap "homebrew/bundle"
 tap "homebrew/cask-fonts"
 
 brew "actionlint"
+brew "aria2"
 brew "bash-language-server"
 brew "bat"
 brew "chezmoi"
