@@ -2,14 +2,22 @@
 l = ["log", "-r", "all() ~ EMPTY_MERGES"]
 ll = ["log", "-r", "all() ~ EMPTY_MERGES", "-T", "builtin_log_detailed"]
 
-[revsets]
-log = "DEFAULT"
-
 [revset-aliases]
 EMPTY_MERGES = 'merges() & empty()'
 MINE = 'author("aaron@elasticdog.com")'
 MY_HEADS = "((visible_heads() & MINE) | @)"
 DEFAULT = "MY_HEADS | trunk() | (::MY_HEADS~::trunk()) | (::MY_HEADS~::trunk())-"
+
+[revsets]
+log = "DEFAULT"
+
+[signing]
+sign-all = true
+backend = "ssh"
+key = "/Users/abs/.ssh/id_ed25519_sign.pub"
+
+[snapshot]
+max-new-file-size = "2MiB"
 
 [templates]
 log = "builtin_log_comfortable"
@@ -23,6 +31,3 @@ email = "aaron@elasticdog.com"
 
 [ui]
 default-command = "log"
-
-[snapshot]
-max-new-file-size = "2MiB"

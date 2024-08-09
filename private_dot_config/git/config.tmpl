@@ -1,14 +1,22 @@
 [commit]
+	gpgsign = true
 	verbose = true
 [core]
 	excludesFile = ~/.config/git/ignore
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	allowedSignersFile = ~/.ssh/allowed_signers
 [init]
 	defaultBranch = main
 [push]
 	default = current
 [remote]
 	pushdefault = origin
+[tag]
+	gpgsign = true
 [user]
 	name = {{ .full_name }}
 	email = {{ .email }}
 	useConfigOnly = true
+	signingkey = ~/.ssh/id_ed25519_sign.pub
