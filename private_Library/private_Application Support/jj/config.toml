@@ -14,7 +14,7 @@ log = "DEFAULT"
 [signing]
 sign-all = true
 backend = "ssh"
-key = "/Users/abs/.ssh/id_ed25519_sign.pub"
+key = "~/.ssh/id_ed25519_sign.pub"
 
 [snapshot]
 max-new-file-size = "2MiB"

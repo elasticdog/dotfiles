@@ -38,7 +38,7 @@ brew "vale"
 brew "watchexec"
 brew "yaml-language-server"
 brew "yazi"
-brew "youtube-dl"
+brew "yt-dlp"
 
 cask "font-0xproto"
 cask "font-cascadia-code"
