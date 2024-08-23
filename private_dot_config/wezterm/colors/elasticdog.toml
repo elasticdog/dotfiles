@@ -36,5 +36,5 @@ quick_select_match_bg.Color = "#c0d9f2"
 quick_select_match_fg.Color = "#595e64"
 
 [metadata]
-name = "ElasticDog"
+name = "elasticdog"
 origin_url = "https://github.com/elasticdog/elasticdog-color-scheme"

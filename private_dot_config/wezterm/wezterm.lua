@@ -1,14 +1,11 @@
 local wezterm = require("wezterm")
 
 return {
-	color_scheme = "nightfox",
+	color_scheme = "elasticdog",
 
 	front_end = "WebGpu",
 
-	-- font = wezterm.font("Fira Code"),
-	-- font = wezterm.font({ family = "Iosevka Term", harfbuzz_features = { "ss04", "cv82" }, weight = "Medium" }),
-	font = wezterm.font("JetBrains Mono", { weight = "Medium" }),
-	-- font = wezterm.font("Victor Mono", { weight = "Medium" }),
+	font = wezterm.font("JetBrains Mono", { weight = "DemiBold" }),
 	font_size = 18.0,
 
 	font_rules = {
@@ -18,9 +15,9 @@ return {
 			font = wezterm.font("JetBrains Mono", { weight = "ExtraBold" }),
 		},
 	},
-	
+
 	bold_brightens_ansi_colors = false,
-	
+
 	hide_tab_bar_if_only_one_tab = true,
 
 	keys = {
@@ -42,10 +39,21 @@ return {
 		},
 	},
 
-	-- window_background_image = wezterm.home_dir .. "/.config/wezterm/terminal-wallpaper.jpg",
-	-- window_background_image_hsb = {
-	-- 	brightness = 1.1,
-	-- 	saturation = 0.2,
-	-- },
-	window_background_opacity = 0.85,
+	background = {
+		{
+			source = {
+				File = wezterm.home_dir .. "/.config/wezterm/terminal-wallpaper.jpg"
+			},
+			hsb = {
+				brightness = 1.1,
+				saturation = 0.2,
+			},
+			opacity = 0.9,
+		}
+	},
+
+	inactive_pane_hsb = {
+		saturation = 0.4,
+		brightness = 0.8,
+	},
 }

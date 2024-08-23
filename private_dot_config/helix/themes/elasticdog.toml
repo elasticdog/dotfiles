@@ -5,10 +5,10 @@
 
 "attribute" = "cyan"
 
-"type" = "light-red"
-"type.builtin" = "light-red"
-"type.enum" = "light-red"
-"type.enum.variant" = "light-red"
+"type" = { fg = "light-red", modifiers = ["italic"] }
+"type.builtin" = { fg = "light-red", modifiers = ["italic"] }
+"type.enum" = { fg = "light-red", modifiers = ["italic"] }
+"type.enum.variant" = { fg = "light-red", modifiers = ["italic"] }
 
 "constructor" = "cyan"
 
@@ -61,7 +61,7 @@
 
 "operator" = "light-blue"
 
-"function" = "light-cyan"
+"function" = { fg = "light-cyan", modifiers = ["bold"] }
 "function.builtin" = "light-cyan"
 "function.method" = "light-cyan"
 "function.macro" = "light-cyan"
@@ -111,7 +111,7 @@
 "markup.raw.inline.completion" = { bg = "red" } # TODO: unused scope?
 "markup.raw.inline.hover" = { bg = "red" }      # TODO: unused scope?
 
-#"ui.background" = { bg = "base00" }
+# "ui.background" = { bg = "base00" }
 "ui.background.separator" = "cyan"
 
 "ui.cursor" = { fg = "base01", bg = "base04" }
