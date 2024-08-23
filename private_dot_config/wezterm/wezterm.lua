@@ -7,6 +7,7 @@ return {
 
 	font = wezterm.font("JetBrains Mono", { weight = "DemiBold" }),
 	font_size = 18.0,
+	cell_width = 0.9,
 
 	font_rules = {
 		{
