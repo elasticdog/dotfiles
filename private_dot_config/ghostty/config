@@ -1,0 +1,19 @@
+font-family = JetBrains Mono
+font-style = SemiBold
+font-style-bold = ExtraBold
+font-style-italic = SemiBold Italic
+font-style-bold-italic = ExtraBold Italic
+
+font-size = 18
+adjust-cell-width = -10%
+
+theme = elasticdog
+
+background-opacity = 0.9
+
+keybind = global:super+`=toggle_quick_terminal
+
+window-padding-x = 6
+window-padding-balance = true
+
+macos-titlebar-style = native
