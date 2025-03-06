@@ -63,6 +63,9 @@ rulers = [101]
 
 ### LANGUAGE SERVERS
 
+[language-server.gopls.config]
+gofumpt = true
+
 [[language-server.rust-analyzer.config]]
 check.command = "clippy"
 check.extraArgs = ["--locked"]

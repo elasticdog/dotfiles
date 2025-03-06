@@ -12,7 +12,7 @@ DEFAULT = "MY_HEADS | trunk() | (::MY_HEADS~::trunk()) | (::MY_HEADS~::trunk())-
 log = "DEFAULT"
 
 [signing]
-sign-all = true
+behavior = "own"
 backend = "ssh"
 key = "~/.ssh/id_ed25519_sign.pub"
 
