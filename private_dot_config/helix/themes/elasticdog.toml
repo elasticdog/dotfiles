@@ -156,6 +156,7 @@
 "ui.virtual.inlay-hint" = "base02"
 "ui.virtual.inlay-hint.parameter" = "base02"
 "ui.virtual.inlay-hint.type" = "base02"
+"ui.virtual.jump-label" = { fg = "yellow", modifiers = ["bold"] }
 "ui.virtual.wrap" = "base02"
 
 "ui.menu" = { fg = "base05", bg = "base01" }
