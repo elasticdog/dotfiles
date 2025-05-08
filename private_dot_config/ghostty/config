@@ -11,8 +11,6 @@ theme = elasticdog
 
 background-opacity = 0.95
 
-keybind = global:super+`=toggle_quick_terminal
-
 window-padding-x = 6
 window-padding-balance = true
 
