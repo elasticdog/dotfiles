@@ -19,6 +19,16 @@ formatter = { command = "fish_indent" }
 auto-format = true
 
 [[language]]
+name = "html"
+formatter = { command = "prettier", args = ["--parser", "html"] }
+auto-format = true
+
+[[language]]
+name = "javascript"
+formatter = { command = "prettier", args = ["--parser", "typescript"] }
+auto-format = true
+
+[[language]]
 name = "jj-description"
 scope = "source.jjdescription"
 comment-token = "JJ:"
