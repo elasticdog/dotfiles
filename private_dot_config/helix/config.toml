@@ -2,6 +2,7 @@ theme = "elasticdog"
 
 [editor]
 color-modes = true
+end-of-line-diagnostics = "hint"
 true-color = true  # required for blink shell
 
 [editor.statusline]
@@ -26,3 +27,9 @@ hidden = false
 [editor.indent-guides]
 render = true
 skip-levels = 1
+
+[editor.inline-diagnostics]
+cursor-line = "hint"
+
+[editor.lsp]
+display-inlay-hints = true
