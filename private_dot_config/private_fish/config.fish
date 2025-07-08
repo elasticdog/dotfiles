@@ -9,11 +9,6 @@ test -d $HOME/.juliaup/bin; and fish_add_path $HOME/.juliaup/bin
 test -d $HOME/.local/bin; and fish_add_path $HOME/.local/bin
 test -d $HOME/bin; and fish_add_path $HOME/bin
 
-# load direnv shell extension hooks
-if type -q direnv
-    direnv hook fish | source
-end
-
 # load google cloud sdk utilities
 if test -d "$(brew --prefix)/Caskroom/google-cloud-sdk"
     source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.fish.inc"
