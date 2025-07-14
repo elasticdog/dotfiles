@@ -59,7 +59,7 @@ cask "utm"
 #
 cask "appcleaner"
 cask "firefox"
-cask "google-cloud-sdk"
+cask "gcloud-cli"
 cask "iina"
 cask "musescore"
 cask "obsidian"
