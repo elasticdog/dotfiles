@@ -60,7 +60,12 @@ formatter = { command = "prettier", args = [
 
 [[language]]
 name = "toml"
-formatter = { command = "taplo", args = ["format", "-"] }
+formatter = { command = "tombi", args = ["format", "-"] }
+
+[[language]]
+name = "typescript"
+formatter = { command = "prettier", args = ["--parser", "typescript"] }
+auto-format = true
 
 [[language]]
 name = "yaml"

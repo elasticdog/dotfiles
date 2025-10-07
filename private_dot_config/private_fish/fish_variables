@@ -40,4 +40,4 @@ SETUVAR fish_pager_color_selected_background:\x2d\x2dbackground\x3dbryellow
 SETUVAR fish_pager_color_selected_completion:\x1d
 SETUVAR fish_pager_color_selected_description:\x1d
 SETUVAR fish_pager_color_selected_prefix:\x1d
-SETUVAR fish_user_paths:/Users/abs/bin\x1e/Users/abs/\x2elocal/bin\x1e/Users/abs/\x2ejuliaup/bin\x1e/Users/abs/\x2ecargo/bin\x1e/opt/homebrew/bin
+SETUVAR fish_user_paths:/Users/abs/bin\x1e/Users/abs/\x2elocal/bin\x1e/Users/abs/\x2ejuliaup/bin\x1e/Users/abs/\x2ecargo/bin\x1e/opt/homebrew/bin\x1e/Applications/Ghostty\x2eapp/Contents/MacOS
