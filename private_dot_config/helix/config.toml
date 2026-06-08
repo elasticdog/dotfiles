@@ -33,3 +33,9 @@ cursor-line = "hint"
 
 [editor.lsp]
 display-inlay-hints = true
+
+[keys.normal]
+A-q = "@<C-s>mip:reflow<ret><C-o>,<A-;>l"
+
+[keys.insert]
+A-q = "@<esc><C-s>mip:reflow<ret><C-o>li"
