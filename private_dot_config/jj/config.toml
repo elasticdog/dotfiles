@@ -1,9 +1,22 @@
 [aliases]
 l = ["log", "-r", "all() ~ EMPTY_MERGES"]
-ll = ["log", "-r", "all() ~ EMPTY_MERGES", "-T", "builtin_log_detailed"]
+ll = [
+  "log",
+  "-r",
+  "all() ~ EMPTY_MERGES",
+  "-T",
+  "builtin_log_compact_full_description"
+]
+release-log = [
+  "log",
+  "-r",
+  "latest(tags()):: & ~@",
+  "-T",
+  "builtin_log_compact_full_description"
+]
 
 [revset-aliases]
-EMPTY_MERGES = 'merges() & empty()'
+EMPTY_MERGES = "merges() & empty()"
 MINE = 'author(exact:"aaron@elasticdog.com")'
 MY_HEADS = "((visible_heads() & MINE) | @)"
 DEFAULT = "MY_HEADS | trunk() | (::MY_HEADS~::trunk()) | (::MY_HEADS~::trunk())-"
