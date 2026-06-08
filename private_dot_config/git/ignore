@@ -1,6 +1,13 @@
+.claude/
 .DS_Store
 .envrc
 .ignore
 .jj/
+.reasonix/
+AGENTS.md
+AGENTS.override.md
+CLAUDE.local.md
+CLAUDE.md
 mise.local.toml
+REASONIX.md
 scratchpad.*
