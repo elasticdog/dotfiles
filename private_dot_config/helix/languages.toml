@@ -29,12 +29,7 @@ formatter = { command = "prettier", args = ["--parser", "typescript"] }
 auto-format = true
 
 [[language]]
-name = "jj-description"
-scope = "source.jjdescription"
-comment-token = "JJ:"
-file-types = ["jjdescription"]
-roots = []
-indent = { tab-width = 2, unit = "  " }
+name = "jjdescription"
 rulers = [51, 73]
 text-width = 72
 formatter = { command = "prettier", args = [

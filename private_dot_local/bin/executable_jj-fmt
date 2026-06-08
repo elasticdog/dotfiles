@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+PRETTIER=$(command -v prettier) || {
+	echo "jj-fmt: prettier not found in PATH" >&2
+	exit 127
+}
+
+tmpdir=$(mktemp -d)
+trap 'rm -rf "$tmpdir"' EXIT
+
+body=$tmpdir/body.md
+footer=$tmpdir/footer.txt
+
+awk -v body="$body" -v footer="$footer" '
+  /^JJ:/ { in_footer = 1 }
+
+  {
+    if (in_footer) {
+      print >> footer
+    } else {
+      print >> body
+    }
+  }
+' </dev/stdin
+
+if [[ -s $body ]]; then
+	"$PRETTIER" \
+		--parser markdown \
+		--prose-wrap always \
+		--print-width 72 \
+		<"$body"
+fi
+
+if [[ -s $footer ]]; then
+	[[ -s $body ]] && printf '\n'
+	cat "$footer"
+fi
