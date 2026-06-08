@@ -37,6 +37,15 @@ roots = []
 indent = { tab-width = 2, unit = "  " }
 rulers = [51, 73]
 text-width = 72
+formatter = { command = "prettier", args = [
+  "--parser",
+  "markdown",
+  "--print-width",
+  "72",
+  "--prose-wrap",
+  "always",
+] }
+auto-format = true
 
 [[language]]
 name = "json"
