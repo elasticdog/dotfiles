@@ -18,6 +18,8 @@ if test -d "$(brew --prefix)/Caskroom/google-cloud-sdk"
 end
 
 if status is-interactive
+    bind \cz __fg_or_undo
+
     # use helix as the default editor
     set -x EDITOR hx
 
