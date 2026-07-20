@@ -65,6 +65,11 @@ formatter = { command = "prettier", args = ["--parser", "typescript"] }
 auto-format = true
 
 [[language]]
+name = "typst"
+formatter = { command = "typstyle", args = ["--wrap-text"] }
+auto-format = true
+
+[[language]]
 name = "yaml"
 formatter = { command = "prettier", args = ["--parser", "yaml"] }
 auto-format = true
