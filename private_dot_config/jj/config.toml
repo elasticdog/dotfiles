@@ -33,6 +33,13 @@ key = "~/.ssh/id_ed25519_sign.pub"
 max-new-file-size = "2MiB"
 
 [templates]
+draft_commit_description = '''
+concat(
+  builtin_draft_commit_description,
+  "\nJJ: ignore-rest\n",
+  diff.git(),
+)
+'''
 log = "builtin_log_comfortable"
 
 [template-aliases]
