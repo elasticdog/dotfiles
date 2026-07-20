@@ -65,7 +65,7 @@ cask "losslesscut"
 cask "transcribe"
 cask "utm"
 
-# These casks can be installed, but not upgraded by brew (they update themselves)
+# These applications include built-in auto-update mechanisms.
 #
 #     $ brew info --cask --json=v2 (brew ls --cask) | jq -r '.casks[]|select(.auto_updates==true)|.token'
 #
