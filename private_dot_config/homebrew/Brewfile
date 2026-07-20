@@ -1,3 +1,4 @@
+tap "EarthmanMuons/tap"
 tap "homebrew/bundle"
 tap "homebrew/cask-fonts"
 
@@ -52,6 +53,7 @@ brew "yaml-language-server"
 brew "yazi"
 brew "yt-dlp"
 brew "zizmor"
+brew "zmx-picker"
 
 cask "font-0xproto"
 cask "font-cascadia-code"
