@@ -6,6 +6,7 @@ set --erase --universal fish_user_paths
 test -d /opt/homebrew/bin; and fish_add_path /opt/homebrew/bin
 test -d $HOME/.cargo/bin; and fish_add_path $HOME/.cargo/bin
 test -d $HOME/.juliaup/bin; and fish_add_path $HOME/.juliaup/bin
+test -d $HOME/.pub-cache/bin; and fish_add_path $HOME/.pub-cache/bin
 test -d $HOME/Library/Android/sdk/cmdline-tools/latest/bin; and fish_add_path $HOME/Library/Android/sdk/cmdline-tools/latest/bin
 test -d $HOME/Library/Android/sdk/emulator; and fish_add_path $HOME/Library/Android/sdk/emulator
 test -d $HOME/Library/Android/sdk/platform-tools; and fish_add_path $HOME/Library/Android/sdk/platform-tools
@@ -55,6 +56,17 @@ if status is-interactive
             --bind='?:toggle-preview'
             --height=80%
             --preview='bat -n --color=always {} 2> /dev/null || tree -C --dirsfirst --gitignore {} | head -128'"
+    end
+
+    # when installed, configure zmx-picker
+    if type -q zp
+        set -gx ZP_ROOT $HOME/src
+
+        # bind Ctrl-\ to zp when not inside a zmx session;
+        # inside zmx, Ctrl-\ detaches the current session
+        if not set -q ZMX_SESSION
+            bind ctrl-\\ 'zp; commandline -f execute'
+        end
     end
 
     # when installed, configure homebrew
