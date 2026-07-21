@@ -1,8 +1,8 @@
 function y
-    set tmp (mktemp -t "yazi-cwd.XXXXXX")
+    set -l tmp (mktemp -t "yazi-cwd.XXXXXX")
     yazi $argv --cwd-file="$tmp"
     if test -f "$tmp"
-        set cwd (cat "$tmp")
+        set -l cwd (cat "$tmp")
         rm "$tmp"
         if test -n "$cwd"; and test "$cwd" != "$PWD"
             cd "$cwd"

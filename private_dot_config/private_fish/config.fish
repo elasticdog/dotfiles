@@ -1,60 +1,71 @@
 # disable the welcome message
-set fish_greeting
+set -g fish_greeting
 
-fish_config theme choose catppuccin-macchiato
+# use helix as the default editor
+set -gx EDITOR hx
 
-# clear out the user paths and set them from scratch
-set --erase --universal fish_user_paths
-test -d /opt/homebrew/bin; and fish_add_path /opt/homebrew/bin
-test -d $HOME/.cargo/bin; and fish_add_path $HOME/.cargo/bin
-test -d $HOME/.juliaup/bin; and fish_add_path $HOME/.juliaup/bin
-test -d $HOME/.pub-cache/bin; and fish_add_path $HOME/.pub-cache/bin
-test -d $HOME/Library/Android/sdk/cmdline-tools/latest/bin; and fish_add_path $HOME/Library/Android/sdk/cmdline-tools/latest/bin
-test -d $HOME/Library/Android/sdk/emulator; and fish_add_path $HOME/Library/Android/sdk/emulator
-test -d $HOME/Library/Android/sdk/platform-tools; and fish_add_path $HOME/Library/Android/sdk/platform-tools
-test -d $HOME/.local/bin; and fish_add_path $HOME/.local/bin
-test -d $HOME/bin; and fish_add_path $HOME/bin
+# cache the prefix once instead of spawning `brew --prefix` repeatedly
+set -l brew_prefix /opt/homebrew
+
+# build the user paths from scratch each session, global (not universal) so
+# nothing is persisted to fish_variables and precedence stays deterministic
+for dir in \
+    $brew_prefix/bin \
+    $HOME/.cargo/bin \
+    $HOME/.juliaup/bin \
+    $HOME/.pub-cache/bin \
+    $HOME/Library/Android/sdk/cmdline-tools/latest/bin \
+    $HOME/Library/Android/sdk/emulator \
+    $HOME/Library/Android/sdk/platform-tools \
+    $HOME/.local/bin \
+    $HOME/bin
+    test -d $dir; and fish_add_path -g $dir
+end
 
 # load google cloud sdk utilities
-if test -d "$(brew --prefix)/Caskroom/google-cloud-sdk"
-    source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.fish.inc"
+if test -d "$brew_prefix/Caskroom/google-cloud-sdk"
+    source "$brew_prefix/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.fish.inc"
 end
 
 if status is-interactive
+    fish_config theme choose catppuccin-macchiato
+
     bind \cz __fg_or_undo
 
-    # use helix as the default editor
-    set -x EDITOR hx
+    # git prompt styling (set once here, not on every prompt redraw)
+    set -g __fish_git_prompt_showcolorhints 1
+    set -g __fish_git_prompt_color_branch_detached purple
+    set -q fish_color_status; or set -g fish_color_status red
 
     # prefer using colors in output
-    set -x CLICOLOR_FORCE 1
-    set -x LS_COLORS (vivid generate catppuccin-macchiato)
+    set -gx CLICOLOR_FORCE 1
+    set -gx LS_COLORS (vivid generate catppuccin-macchiato)
 
     # use fzf for fuzzy search shell integration
-    if test -d "$(brew --prefix)/opt/fzf"
-        source "$(brew --prefix)/opt/fzf/shell/key-bindings.fish"; and fzf_key_bindings
+    if type -q fzf
+        fzf --fish | source
 
-        set -x FZF_DEFAULT_COMMAND "fd --type f --hidden --follow --exclude .git/ --exclude .jj/"
-        set -x FZF_DEFAULT_OPTS "
+        set -gx FZF_DEFAULT_COMMAND "fd --type f --hidden --follow --exclude .git/ --exclude .jj/"
+        set -gx FZF_DEFAULT_OPTS "
             --exit-0
             --info=inline
             --margin=1,0,0,0"
 
         # ALT+C = change directory
-        set -x FZF_ALT_C_COMMAND "fd --type d --hidden --follow --exclude .git/ --exclude .jj/"
-        set -x FZF_ALT_C_OPTS "
+        set -gx FZF_ALT_C_COMMAND "fd --type d --hidden --follow --exclude .git/ --exclude .jj/"
+        set -gx FZF_ALT_C_OPTS "
             --bind='?:toggle-preview'
             --preview='eza -TaF --color=always --group-directories-first --git-ignore {} | head -128'"
 
         # CTRL+R = shell history
-        set -x FZF_CTRL_R_OPTS "
+        set -gx FZF_CTRL_R_OPTS "
             --bind='?:toggle-preview'
             --preview='echo {}'
             --preview-window='down:3:hidden:wrap'"
 
         # CTRL+T = file completion
-        set -x FZF_CTRL_T_COMMAND "fd --hidden --follow --exclude .git/ --exclude .jj/ --search-path \$dir"
-        set -x FZF_CTRL_T_OPTS "
+        set -gx FZF_CTRL_T_COMMAND "fd --hidden --follow --exclude .git/ --exclude .jj/ --search-path \$dir"
+        set -gx FZF_CTRL_T_OPTS "
             --bind='?:toggle-preview'
             --height=80%
             --preview='bat -n --color=always {} 2> /dev/null || eza -TaF --color=always --group-directories-first --git-ignore {} | head -128'"
@@ -73,24 +84,24 @@ if status is-interactive
 
     # when installed, configure homebrew
     if type -q brew; and test -f $HOME/.config/homebrew/Brewfile
-        set -x HOMEBREW_BUNDLE_FILE $HOME/.config/homebrew/Brewfile
+        set -gx HOMEBREW_BUNDLE_FILE $HOME/.config/homebrew/Brewfile
     end
 
     # when installed, configure nono
     if type -q nono
-        set -x NONO_THEME macchiato
+        set -gx NONO_THEME macchiato
     end
 
     # when installed, configure ripgrep
     if type -q rg; and test -f $HOME/.config/ripgrep/ripgreprc
-        set -x RIPGREP_CONFIG_PATH $HOME/.config/ripgrep/ripgreprc
+        set -gx RIPGREP_CONFIG_PATH $HOME/.config/ripgrep/ripgreprc
     end
 
     # add auto-expanding abbreviations
     abbr -a cz chezmoi
     abbr -a x "cargo xtask"
 
-    # aliases
+    # command aliases
     alias ls='eza --hyperlink=auto'
     alias ll='eza -lag --icons --git --group-directories-first --hyperlink=auto'
     alias li='y'

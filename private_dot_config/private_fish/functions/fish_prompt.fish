@@ -3,12 +3,7 @@ function fish_prompt --description 'Write out the prompt'
     set -lx __fish_last_status $status # Export for __fish_print_pipestatus.
     set -l normal (set_color normal)
     set -l vcs_color (set_color brpurple)
-    set -l suffix_color (set_color f4a261) # Pink
-    set -q fish_color_status
-    or set -g fish_color_status red
-
-    set -g __fish_git_prompt_showcolorhints 1
-    set -g __fish_git_prompt_color_branch_detached purple
+    set -l suffix_color (set_color f4a261) # Orange
 
     # Since we display the prompt on a new line allow the directory names to be longer.
     set -q fish_prompt_pwd_dir_length
@@ -43,7 +38,4 @@ function fish_prompt --description 'Write out the prompt'
 
     echo -s (set_color $color_cwd) (prompt_pwd) $normal (fish_git_prompt " on$vcs_color  %s") $normal " "$duration " "$prompt_status
     echo -n -s $suffix_color $suffix " "
-
-    # Add a blank line after execution output before the next prompt.
-    source $HOME/.config/fish/functions/postexec_newline.fish
 end
