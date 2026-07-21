@@ -28,7 +28,7 @@ if status is-interactive
 
     # prefer using colors in output
     set -x CLICOLOR_FORCE 1
-    set -x LS_COLORS 'di=38;5;12:ln=38;5;14:so=38;5;6:pi=38;5;6:ex=38;5;2;1:bd=38;5;3:cd=38;5;3:su=38;5;1:sg=38;5;1:tw=38;5;1:ow=38;5;1:or=38;5;1:mi=38;5;1:fi=0:*.tar=38;5;9:*.tgz=38;5;9:*.zip=38;5;9:*.gz=38;5;9:*.bz2=38;5;9:*.xz=38;5;9:*.7z=38;5;9:*.jpg=38;5;13:*.jpeg=38;5;13:*.png=38;5;13:*.gif=38;5;13:*.svg=38;5;13:*.webp=38;5;13:*.mp3=38;5;5:*.wav=38;5;5:*.flac=38;5;5:*.mp4=38;5;5:*.mkv=38;5;5:*.mov=38;5;5:*.pdf=38;5;4:*.md=38;5;8:*.txt=38;5;8'
+    set -x LS_COLORS (vivid generate catppuccin-macchiato)
 
     # use fzf for fuzzy search shell integration
     if test -d "$(brew --prefix)/opt/fzf"
@@ -44,7 +44,7 @@ if status is-interactive
         set -x FZF_ALT_C_COMMAND "fd --type d --hidden --follow --exclude .git/ --exclude .jj/"
         set -x FZF_ALT_C_OPTS "
             --bind='?:toggle-preview'
-            --preview='tree --dirsfirst --gitignore {} | head -128'"
+            --preview='eza -Ta --classify=always --color=always --group-directories-first --git-ignore {} | head -128'"
 
         # CTRL+R = shell history
         set -x FZF_CTRL_R_OPTS "
@@ -57,7 +57,7 @@ if status is-interactive
         set -x FZF_CTRL_T_OPTS "
             --bind='?:toggle-preview'
             --height=80%
-            --preview='bat -n --color=always {} 2> /dev/null || tree -C --dirsfirst --gitignore {} | head -128'"
+            --preview='bat -n --color=always {} 2> /dev/null || eza -Ta --classify=always --color=always --group-directories-first --git-ignore {} | head -128'"
     end
 
     # when installed, configure zmx-picker
@@ -88,6 +88,11 @@ if status is-interactive
 
     # add auto-expanding abbreviations
     abbr -a cz chezmoi
-    abbr -a tree "tree --dirsfirst --gitignore"
     abbr -a x "cargo xtask"
+
+    # aliases
+    alias ls='eza --hyperlink=auto'
+    alias ll='eza -lag --icons --git --group-directories-first --hyperlink=auto'
+    alias lt='eza -Ta --classify=always --color=always --group-directories-first --git-ignore --hyperlink=auto'
+    alias li='y'
 end
