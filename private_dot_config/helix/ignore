@@ -1,5 +1,7 @@
 # unignore in file picker and global search
+!.envrc
+!.gitattributes
 !.github/
 !.gitignore
-!.gitattributes
+!mise.local.toml
 !scratchpad.*
