@@ -1,0 +1,4 @@
+inherits = "catppuccin_macchiato"
+
+# Let the terminal draw the editor background.
+"ui.background" = {}

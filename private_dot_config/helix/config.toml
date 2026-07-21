@@ -1,7 +1,8 @@
-theme = "catppuccin_macchiato"
+theme = "catppuccin_macchiato_transparent"
 
 [editor]
 color-modes = true
+cursorline = true
 end-of-line-diagnostics = "hint"
 true-color = true  # required for blink shell
 
