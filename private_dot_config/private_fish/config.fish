@@ -38,12 +38,7 @@ if status is-interactive
         set -x FZF_DEFAULT_OPTS "
             --exit-0
             --info=inline
-            --margin=1,0,0,0
-            --color=bg+:#363A4F,bg:#24273A,spinner:#F4DBD6,hl:#ED8796
-            --color=fg:#CAD3F5,header:#ED8796,info:#C6A0F6,pointer:#F4DBD6
-            --color=marker:#B7BDF8,fg+:#CAD3F5,prompt:#C6A0F6,hl+:#ED8796 
-            --color=selected-bg:#494D64
-            --color=border:#6E738D,label:#CAD3F5"
+            --margin=1,0,0,0"
 
         # ALT+C = change directory
         set -x FZF_ALT_C_COMMAND "fd --type d --hidden --follow --exclude .git/ --exclude .jj/"
