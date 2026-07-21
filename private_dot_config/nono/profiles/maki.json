@@ -1,0 +1,23 @@
+{
+  "extends": ["default"],
+  "meta": {
+    "name": "maki"
+  },
+  "groups": {
+    "include": []
+  },
+  "workdir": {
+    "access": "readwrite"
+  },
+  "filesystem": {
+    "allow": [
+      "$HOME/.cache/maki",
+      "$HOME/.config/maki",
+      "$HOME/.local/state/maki"
+    ],
+    "read": []
+  },
+  "diagnostics": {
+    "suppress_system_services": ["user-preference-read"]
+  }
+}

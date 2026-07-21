@@ -1,0 +1,23 @@
+{
+  "extends": "default",
+  "meta": {
+    "name": "flutter-dev"
+  },
+  "groups": {
+    "include": []
+  },
+  "workdir": {
+    "access": "readwrite"
+  },
+  "filesystem": {
+    "allow": [
+      "/opt/homebrew/share/flutter/bin/cache"
+      "$HOME/.config/flutter",
+      "$HOME/.dart-tool",
+      "$HOME/.dartServer",
+      "$HOME/.pub-cache",
+      "$HOME/Library/Caches/flutter_engine",
+    ],
+    "read": ["/opt/homebrew/share/flutter"]
+  }
+}
