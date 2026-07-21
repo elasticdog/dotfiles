@@ -85,6 +85,7 @@ if status is-interactive
     # when installed, configure homebrew
     if type -q brew; and test -f $HOME/.config/homebrew/Brewfile
         set -gx HOMEBREW_BUNDLE_FILE $HOME/.config/homebrew/Brewfile
+        set -gx HOMEBREW_NO_ENV_HINTS 1
     end
 
     # when installed, configure nono
