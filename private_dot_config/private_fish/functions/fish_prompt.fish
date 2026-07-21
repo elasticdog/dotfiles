@@ -3,7 +3,8 @@ function fish_prompt --description 'Write out the prompt'
     set -lx __fish_last_status $status # Export for __fish_print_pipestatus.
     set -l normal (set_color normal)
     set -l vcs_color (set_color brpurple)
-    set -l suffix_color (set_color f4a261) # Orange
+    set -l peach f5a97f
+    set -l suffix_color (set_color $peach)
 
     # Since we display the prompt on a new line allow the directory names to be longer.
     set -q fish_prompt_pwd_dir_length
@@ -21,7 +22,7 @@ function fish_prompt --description 'Write out the prompt'
 
     # Display duration of previous command if it took over 5 seconds.
     if test $CMD_DURATION -gt (math "1000 * 5")
-        set duration (set_color yellow)"⧗ "(humantime $CMD_DURATION)
+        set duration (set_color $peach)"⧗ "(humantime $CMD_DURATION)
     end
 
     # Write pipestatus
