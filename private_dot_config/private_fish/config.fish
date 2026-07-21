@@ -44,7 +44,7 @@ if status is-interactive
         set -x FZF_ALT_C_COMMAND "fd --type d --hidden --follow --exclude .git/ --exclude .jj/"
         set -x FZF_ALT_C_OPTS "
             --bind='?:toggle-preview'
-            --preview='eza -Ta --classify=always --color=always --group-directories-first --git-ignore {} | head -128'"
+            --preview='eza -TaF --color=always --group-directories-first --git-ignore {} | head -128'"
 
         # CTRL+R = shell history
         set -x FZF_CTRL_R_OPTS "
@@ -57,7 +57,7 @@ if status is-interactive
         set -x FZF_CTRL_T_OPTS "
             --bind='?:toggle-preview'
             --height=80%
-            --preview='bat -n --color=always {} 2> /dev/null || eza -Ta --classify=always --color=always --group-directories-first --git-ignore {} | head -128'"
+            --preview='bat -n --color=always {} 2> /dev/null || eza -TaF --color=always --group-directories-first --git-ignore {} | head -128'"
     end
 
     # when installed, configure zmx-picker
@@ -93,6 +93,7 @@ if status is-interactive
     # aliases
     alias ls='eza --hyperlink=auto'
     alias ll='eza -lag --icons --git --group-directories-first --hyperlink=auto'
-    alias lt='eza -Ta --classify=always --color=always --group-directories-first --git-ignore --hyperlink=auto'
     alias li='y'
+    alias lt='eza -TaF --color=always --group-directories-first --git-ignore --hyperlink=auto'
+    alias tree='eza -TaF --color=always --group-directories-first --git-ignore --hyperlink=auto'
 end
