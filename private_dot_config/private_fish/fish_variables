@@ -1,4 +1,4 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR __fish_initialized:4300
-SETUVAR fish_user_paths:/Users/abs/bin\x1e/Users/abs/\x2elocal/bin\x1e/Users/abs/Library/Android/sdk/platform\x2dtools\x1e/Users/abs/Library/Android/sdk/emulator\x1e/Users/abs/Library/Android/sdk/cmdline\x2dtools/latest/bin\x1e/Users/abs/\x2ejuliaup/bin\x1e/Users/abs/\x2ecargo/bin\x1e/opt/homebrew/bin
+SETUVAR fish_user_paths:/Users/abs/bin\x1e/Users/abs/\x2elocal/bin\x1e/Users/abs/Library/Android/sdk/platform\x2dtools\x1e/Users/abs/Library/Android/sdk/emulator\x1e/Users/abs/Library/Android/sdk/cmdline\x2dtools/latest/bin\x1e/Users/abs/\x2epub\x2dcache/bin\x1e/Users/abs/\x2ejuliaup/bin\x1e/Users/abs/\x2ecargo/bin\x1e/opt/homebrew/bin
