@@ -1,6 +1,8 @@
 # disable the welcome message
 set fish_greeting
 
+fish_config theme choose catppuccin-macchiato
+
 # clear out the user paths and set them from scratch
 set --erase --universal fish_user_paths
 test -d /opt/homebrew/bin; and fish_add_path /opt/homebrew/bin
@@ -36,7 +38,12 @@ if status is-interactive
         set -x FZF_DEFAULT_OPTS "
             --exit-0
             --info=inline
-            --margin=1,0,0,0"
+            --margin=1,0,0,0
+            --color=bg+:#363A4F,bg:#24273A,spinner:#F4DBD6,hl:#ED8796
+            --color=fg:#CAD3F5,header:#ED8796,info:#C6A0F6,pointer:#F4DBD6
+            --color=marker:#B7BDF8,fg+:#CAD3F5,prompt:#C6A0F6,hl+:#ED8796 
+            --color=selected-bg:#494D64
+            --color=border:#6E738D,label:#CAD3F5"
 
         # ALT+C = change directory
         set -x FZF_ALT_C_COMMAND "fd --type d --hidden --follow --exclude .git/ --exclude .jj/"
@@ -72,6 +79,11 @@ if status is-interactive
     # when installed, configure homebrew
     if type -q brew; and test -f $HOME/.config/homebrew/Brewfile
         set -x HOMEBREW_BUNDLE_FILE $HOME/.config/homebrew/Brewfile
+    end
+
+    # when installed, configure nono
+    if type -q nono
+        set -x NONO_THEME macchiato
     end
 
     # when installed, configure ripgrep

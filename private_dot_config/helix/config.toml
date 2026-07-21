@@ -1,4 +1,4 @@
-theme = "elasticdog"
+theme = "catppuccin_macchiato"
 
 [editor]
 color-modes = true

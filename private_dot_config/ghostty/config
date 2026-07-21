@@ -7,11 +7,14 @@ font-style-bold-italic = ExtraBold Italic
 font-size = 18
 adjust-cell-width = -10%
 
-theme = elasticdog
+theme = Catppuccin Macchiato
 
 background-opacity = 0.95
 
 window-padding-x = 6
 window-padding-balance = true
+
+# Catppuccin overlay0
+split-divider-color = #6C7086
 
 macos-titlebar-style = native
