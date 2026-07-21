@@ -17,7 +17,7 @@ release-log = [
 
 [revset-aliases]
 EMPTY_MERGES = "merges() & empty()"
-MINE = 'author(exact:"aaron@elasticdog.com")'
+MINE = 'author(exact:"{{ .email }}")'
 MY_HEADS = "((visible_heads() & MINE) | @)"
 DEFAULT = "MY_HEADS | trunk() | (::MY_HEADS~::trunk()) | (::MY_HEADS~::trunk())-"
 
@@ -46,8 +46,8 @@ log = "builtin_log_comfortable"
 show = "builtin_log_detailed"
 
 [user]
-name = "Aaron Bull Schaefer"
-email = "aaron@elasticdog.com"
+name = "{{ .full_name }}"
+email = "{{ .email }}"
 
 [ui]
 default-command = "log"
