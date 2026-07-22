@@ -17,6 +17,9 @@
     ],
     "read": []
   },
+  "env_credentials": {
+    "openrouter_api_key": "OPENROUTER_API_KEY"
+  },
   "diagnostics": {
     "suppress_system_services": ["user-preference-read"]
   }
